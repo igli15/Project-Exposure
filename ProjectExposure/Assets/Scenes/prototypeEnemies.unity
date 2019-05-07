@@ -344,7 +344,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  m_targetPosition: {x: 3, y: 0, z: 60}
+  m_targetPosition: {x: 5, y: 2, z: 60}
   speed: 0.1
 --- !u!114 &172601243
 MonoBehaviour:
@@ -1249,7 +1249,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  m_targetPosition: {x: -5, y: 0, z: 60}
+  m_targetPosition: {x: -5, y: -2, z: 60}
   speed: 0.1
 --- !u!114 &318107720
 MonoBehaviour:
@@ -5865,7 +5865,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  m_targetPosition: {x: 0, y: 0, z: 60}
+  m_targetPosition: {x: -5, y: 5, z: 60}
   speed: 0.1
 --- !u!114 &2072220403
 MonoBehaviour:
