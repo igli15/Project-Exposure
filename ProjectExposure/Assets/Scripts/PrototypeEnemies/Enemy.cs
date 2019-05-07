@@ -6,7 +6,11 @@ public class Enemy : MonoBehaviour
 {
     public Color color;
     public Color damageColor;
-    public float range = 20;
+
+    public float baseDamage = 10;
+    public float extraDamage = 20;
+
+    public float range = 30;
 
     private Health m_health;
 
@@ -20,16 +24,23 @@ public class Enemy : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            float myHue = GetColorHue(color);
-            float attackHue = GetColorHue(damageColor);
-            float hueDiff = Mathf.Abs(myHue - attackHue);
 
-            if (hueDiff < range)
-            {
-                m_health.InflictDamage(5);
-                Debug.Log("Damaged");
-            }
-            Debug.Log("DIF: " + hueDiff);
+            float attackHue = GetColorHue(damageColor);
+            GetDamageByHue(attackHue);
+        }
+    }
+
+    void GetDamageByHue(float hue)
+    {
+        float myHue = GetColorHue(color);
+        float hueDiff = Mathf.Abs(myHue - hue);
+
+        if (hueDiff < range)
+        {
+            float precisionLevel= ((range - hueDiff) / range);
+            m_health.InflictDamage(baseDamage + precisionLevel * extraDamage);
+            Debug.Log("precisionLevel: " + precisionLevel);
+
         }
     }
 
