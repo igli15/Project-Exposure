@@ -16,7 +16,7 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
         m_direction = m_targetPosition-transform.position;
         m_direction = m_direction.normalized;
 
-        Debug.Log("Movement Enter");
+        //Debug.Log("Movement Enter");
     }
 
     private void Update()
@@ -31,7 +31,7 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
 
     public override void Exit(IAgent pAgent)
     {
-        Debug.Log("Movement Exit");
+        //Debug.Log("Movement Exit");
         base.Exit(pAgent);
     }
 }

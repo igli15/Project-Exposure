@@ -11,7 +11,7 @@ public class EnemyAttackState : AbstractState<EnemyFSM> {
     public override void Enter(IAgent pAgent)
     {
         base.Enter(pAgent);
-        Debug.Log("Attack ENTER");
+        //Debug.Log("Attack ENTER");
 
         m_lastShotTime = Time.time;
     }
@@ -28,11 +28,11 @@ public class EnemyAttackState : AbstractState<EnemyFSM> {
     public override void Exit(IAgent pAgent)
     {
         base.Exit(pAgent);
-        Debug.Log("Attack EXIT");
+       // Debug.Log("Attack EXIT");
     }
 
     void Attack()
     {
-        Debug.Log("Pew Pew");
+        //Debug.Log("Pew Pew");
     }
 }
