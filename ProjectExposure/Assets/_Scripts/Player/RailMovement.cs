@@ -13,7 +13,7 @@ public class RailMovement : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody>();
         StartMovement();
-
+        Debug.Log("start");
     }
 
     void Update()
@@ -23,6 +23,7 @@ public class RailMovement : MonoBehaviour
 
     public void StopMovement()
     {
+        Debug.Log("stop");
         m_rb.velocity = Vector3.zero;
     }
 
@@ -33,19 +34,14 @@ public class RailMovement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("colliaion");
         if (other.CompareTag("EnemyZone"))
         {
+            Debug.Log("inside zone");
             other.GetComponent<EnemySpawner>().SpawnEnemies();
             other.GetComponent<EnemySpawner>().railMovement = this;
             StopMovement();
         }
             
-    }
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("EnemyZone"))
-        {
-            StartMovement();
-        }
     }
 }

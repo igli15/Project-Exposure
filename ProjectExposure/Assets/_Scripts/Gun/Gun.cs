@@ -81,9 +81,7 @@ public class Gun : MonoBehaviour
 		
 		Color.RGBToHSV(color,out hue,out saturation,out value);
 
-		
-		Debug.Log(newHue);
-		
+	
 		return Color.HSVToRGB(newHue/360, saturation, value);
 	}
 

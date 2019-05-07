@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour {
 
+    [HideInInspector]
     public RailMovement railMovement;
 
     [SerializeField]
