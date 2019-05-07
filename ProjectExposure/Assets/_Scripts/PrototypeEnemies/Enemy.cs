@@ -22,15 +22,10 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-
-            float attackHue = GetColorHue(damageColor);
-            GetDamageByHue(attackHue);
-        }
+       
     }
 
-    void GetDamageByHue(float hue)
+   public void GetDamagedByHue(float hue)
     {
         float myHue = GetColorHue(color);
         float hueDiff = Mathf.Abs(myHue - hue);
