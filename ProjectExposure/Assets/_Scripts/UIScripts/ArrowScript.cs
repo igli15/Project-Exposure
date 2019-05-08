@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ArrowScript : MonoBehaviour
+public class ArrowScript : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
 {
 
 	enum ArrowType
@@ -17,7 +17,9 @@ public class ArrowScript : MonoBehaviour
 
 	[SerializeField] 
 	private ArrowType m_arrowType;
-	
+
+	private bool m_mouseEntered = false;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -27,6 +29,7 @@ public class ArrowScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		/*
 		if (Input.GetMouseButton(0) && IsMouseOver())
 		{
 			if (m_arrowType == ArrowType.RIGHT)
@@ -38,7 +41,21 @@ public class ArrowScript : MonoBehaviour
 				m_gun.IncreaseCharge();
 			}
 		}
+		*/
+
+		if (m_mouseEntered)
+		{
+			if (m_arrowType == ArrowType.RIGHT)
+			{
+				m_gun.DecreaseCharge();
+			}
+			else
+			{
+				m_gun.IncreaseCharge();
+			}
+		}
 	}
+
 	
 	
 	bool IsMouseOver()
@@ -62,5 +79,17 @@ public class ArrowScript : MonoBehaviour
 			return true;
 		}
 		else return false;
+	}
+
+
+
+	public void OnPointerDown(PointerEventData eventData)
+	{
+		m_mouseEntered = true;
+	}
+
+	public void OnPointerUp(PointerEventData eventData)
+	{
+		m_mouseEntered = false;
 	}
 }

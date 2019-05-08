@@ -18,6 +18,9 @@ public class Gun : MonoBehaviour
 
     [SerializeField]
     private float m_gunChargeSpeed = 10;
+    
+    [SerializeField]
+    private float m_hueDamageRange = 40;
 
     [SerializeField]
     private KeyCode m_keyCode;
@@ -25,8 +28,17 @@ public class Gun : MonoBehaviour
     private Renderer m_renderer;
 
     private float m_hue = 0;
+    
+    [SerializeField]
+    private float m_baseDamage = 10;
 
-    private bool m_isAoe = true;
+    [SerializeField] 
+    private float m_extraDamage = 20;
+
+    [SerializeField] 
+    private float m_aoeDamage = 5;
+
+    private bool m_isAoe = false;
     // Use this for initialization
     void Start()
     {
@@ -59,16 +71,17 @@ public class Gun : MonoBehaviour
             RaycastHit hit = hits[i];
             if (hit.transform.gameObject.CompareTag("Enemy"))
             {
-                Debug.Log(m_hue);
-                hit.transform.gameObject.GetComponent<Enemy>().GetDamagedByHue(m_hue);
+                Enemy enemy = hit.transform.gameObject.GetComponent<Enemy>();
+                enemy.GetDamagedByHue(CalculateDamage(enemy));
+                
                 if (m_isAoe)
                 {
 
-                    Collider[] aoeColliders = Physics.OverlapSphere(hit.point, 2);
+                    Collider[] aoeColliders = Physics.OverlapSphere(hit.point, 5);
                     foreach (Collider coll in aoeColliders)
                     {
                         if(hit.collider!=coll && coll.CompareTag("Enemy"))
-                        coll.gameObject.GetComponent<Enemy>().GetDamagedByHue(m_hue,true);
+                        coll.gameObject.GetComponent<Enemy>().GetDamagedByHue(m_aoeDamage);
                     }
                 }
             }
@@ -117,8 +130,29 @@ public class Gun : MonoBehaviour
         return Color.HSVToRGB(newHue / 360, saturation, value);
     }
 
+    float CalculateDamage(Enemy enemy)
+    {
+        float damage = 0;
+        float myHue = GetColorHue(enemy.color);
+        float hueDiff = Mathf.Abs(myHue - m_hue);
+
+        if (hueDiff <= m_hueDamageRange)
+        {
+            float precisionLevel= ((m_hueDamageRange - hueDiff) / m_hueDamageRange);
+            damage =  m_baseDamage + precisionLevel * m_extraDamage;
+        }
+
+        return damage;
+    }
+
     public float Hue()
     {
         return m_hue;
     }
+
+    public void SetAoe(bool b)
+    {
+        m_isAoe = b;
+    }
+    
 }

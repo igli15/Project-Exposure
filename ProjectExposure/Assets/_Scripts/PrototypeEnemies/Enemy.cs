@@ -25,27 +25,10 @@ public class Enemy : MonoBehaviour
        
     }
 
-   public void GetDamagedByHue(float hue,bool isAoe=false)
+    public void GetDamagedByHue(float damage)
     {
-        float myHue = GetColorHue(color);
-        float hueDiff = Mathf.Abs(myHue - hue);
-
-        if (hueDiff < range)
-        {
-            float precisionLevel= ((range - hueDiff) / range);
-            m_health.InflictDamage( isAoe?aoeDamage:baseDamage + precisionLevel * extraDamage);
-            Debug.Log("precisionLevel: " + precisionLevel);
-
-        }
+        m_health.InflictDamage(damage);
     }
 
-    float GetColorHue(Color color)
-    {
-        float hue = 0;
-        float saturation = 0;
-        float value = 0;
-
-        Color.RGBToHSV(color, out hue, out saturation, out value);
-        return hue*360;
-    }
+  
 }

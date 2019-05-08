@@ -220,7 +220,7 @@ GameObject:
   - component: {fileID: 110877497}
   - component: {fileID: 110877500}
   - component: {fileID: 110877499}
-  - component: {fileID: 110877498}
+  - component: {fileID: 110877501}
   m_Layer: 5
   m_Name: Arrow1 (1)
   m_TagString: Untagged
@@ -246,19 +246,6 @@ RectTransform:
   m_AnchoredPosition: {x: -681, y: -537.99994}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &110877498
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 110877496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd1c29b2d654d4f75b73d33a856b9b3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_gun: {fileID: 2032118551}
-  m_arrowType: 1
 --- !u!114 &110877499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,6 +279,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 110877496}
+--- !u!114 &110877501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 110877496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1c29b2d654d4f75b73d33a856b9b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_gun: {fileID: 2032118551}
+  m_arrowType: 1
 --- !u!1 &144620555
 GameObject:
   m_ObjectHideFlags: 0
@@ -324,7 +324,11 @@ MonoBehaviour:
   m_gunColorRange: {x: 0, y: 300}
   m_gunColor: {r: 1, g: 0, b: 0, a: 1}
   m_gunChargeSpeed: 40
+  m_hueDamageRange: 40
   m_keyCode: 100
+  m_baseDamage: 10
+  m_extraDamage: 20
+  m_aoeDamage: 5
 --- !u!23 &144620558
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1296,16 +1300,16 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 556260588}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1294703992}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 229.99998, y: 100.999985}
+  m_AnchoredPosition: {x: 229.99998, y: 101.00001}
   m_SizeDelta: {x: 112, y: 117}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &556260590
@@ -1457,6 +1461,7 @@ MonoBehaviour:
   damageColor: {r: 0, g: 0.2905326, b: 1, a: 0}
   baseDamage: 10
   extraDamage: 20
+  aoeDamage: 5
   range: 30
 --- !u!135 &585498952
 SphereCollider:
@@ -2072,7 +2077,11 @@ MonoBehaviour:
   m_gunColorRange: {x: 0, y: 300}
   m_gunColor: {r: 1, g: 0, b: 1, a: 1}
   m_gunChargeSpeed: 40
+  m_hueDamageRange: 40
   m_keyCode: 97
+  m_baseDamage: 10
+  m_extraDamage: 20
+  m_aoeDamage: 5
 --- !u!23 &864289064
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2218,6 +2227,7 @@ MonoBehaviour:
   damageColor: {r: 0, g: 0.2905326, b: 1, a: 0}
   baseDamage: 10
   extraDamage: 20
+  aoeDamage: 5
   range: 30
 --- !u!135 &884147788
 SphereCollider:
@@ -2366,6 +2376,7 @@ GameObject:
   - component: {fileID: 920208021}
   - component: {fileID: 920208020}
   - component: {fileID: 920208019}
+  - component: {fileID: 920208024}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -2423,19 +2434,44 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!4 &920208022
-Transform:
+--- !u!224 &920208022
+RectTransform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 920208018}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.8764845, y: -0.010002017, z: 0.09200001}
+  m_LocalPosition: {x: 0, y: 0, z: 0.09200001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1018826993}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.8764845, y: -0.010002017}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &920208024
+Canvas:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 920208018}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &970480410
 GameObject:
   m_ObjectHideFlags: 0
@@ -2740,6 +2776,7 @@ MonoBehaviour:
   damageColor: {r: 0, g: 0.2905326, b: 1, a: 0}
   baseDamage: 10
   extraDamage: 20
+  aoeDamage: 5
   range: 30
 --- !u!135 &1101769831
 SphereCollider:
@@ -2951,7 +2988,7 @@ GameObject:
   - component: {fileID: 1202614667}
   - component: {fileID: 1202614670}
   - component: {fileID: 1202614669}
-  - component: {fileID: 1202614668}
+  - component: {fileID: 1202614671}
   m_Layer: 5
   m_Name: Arrow1
   m_TagString: Untagged
@@ -2977,19 +3014,6 @@ RectTransform:
   m_AnchoredPosition: {x: -840, y: -538}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1202614668
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1202614666}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fd1c29b2d654d4f75b73d33a856b9b3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_gun: {fileID: 2032118551}
-  m_arrowType: 0
 --- !u!114 &1202614669
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3023,6 +3047,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1202614666}
+--- !u!114 &1202614671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1202614666}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd1c29b2d654d4f75b73d33a856b9b3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_gun: {fileID: 2032118551}
+  m_arrowType: 0
 --- !u!1 &1217007312
 GameObject:
   m_ObjectHideFlags: 0
@@ -3194,6 +3231,7 @@ MonoBehaviour:
   damageColor: {r: 0, g: 0.2905326, b: 1, a: 0}
   baseDamage: 10
   extraDamage: 20
+  aoeDamage: 5
   range: 30
 --- !u!135 &1236515174
 SphereCollider:
@@ -3358,6 +3396,7 @@ GameObject:
   - component: {fileID: 1294703992}
   - component: {fileID: 1294703994}
   - component: {fileID: 1294703993}
+  - component: {fileID: 1294703995}
   m_Layer: 5
   m_Name: Rainbow bar
   m_TagString: Untagged
@@ -3375,8 +3414,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
-  - {fileID: 2042466796}
   - {fileID: 556260589}
+  - {fileID: 2042466796}
   m_Father: {fileID: 179834160}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3418,6 +3457,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1294703991}
+--- !u!114 &1294703995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1294703991}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0655293aca23045b2961211721aee384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_pointerRange: 20
 --- !u!1 &1402607576
 GameObject:
   m_ObjectHideFlags: 0
@@ -3589,6 +3640,7 @@ MonoBehaviour:
   damageColor: {r: 0, g: 0.2905326, b: 1, a: 0}
   baseDamage: 10
   extraDamage: 20
+  aoeDamage: 5
   range: 60
 --- !u!1 &1423863943
 GameObject:
@@ -4008,7 +4060,11 @@ MonoBehaviour:
   m_gunColorRange: {x: 0, y: 300}
   m_gunColor: {r: 1, g: 0, b: 0, a: 1}
   m_gunChargeSpeed: 40
+  m_hueDamageRange: 40
   m_keyCode: 100
+  m_baseDamage: 10
+  m_extraDamage: 20
+  m_aoeDamage: 5
 --- !u!23 &1824892483
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4097,7 +4153,11 @@ MonoBehaviour:
   m_gunColorRange: {x: 0, y: 300}
   m_gunColor: {r: 1, g: 0, b: 1, a: 1}
   m_gunChargeSpeed: 40
+  m_hueDamageRange: 40
   m_keyCode: 97
+  m_baseDamage: 10
+  m_extraDamage: 20
+  m_aoeDamage: 5
 --- !u!23 &2032118553
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4169,7 +4229,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1294703992}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}

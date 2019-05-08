@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 
 public class PointerScript : MonoBehaviour
@@ -13,6 +15,10 @@ public class PointerScript : MonoBehaviour
 	private RectTransform m_transform;
 
 	private float m_parentHalfWidth;
+
+	private PointerScript m_otherPointer;
+
+	public Action<PointerScript> OnPointerUpdated;
 	
 	// Use this for initialization
 	void Awake ()
@@ -21,6 +27,8 @@ public class PointerScript : MonoBehaviour
 		m_parentHalfWidth = m_barRectTransform.rect.width/2;
 
 		targetGun.OnChargeChanged += SetPositionBasedOnHue;
+		
+		
 	}
 	
 	// Update is called once per frame
@@ -35,5 +43,12 @@ public class PointerScript : MonoBehaviour
 		float pos = ((gun.Hue()/300) * 2 -1) * m_parentHalfWidth ; //flip it also
 		
 		m_transform.anchoredPosition = new Vector2(pos,m_transform.anchoredPosition.y);
+
+		if (OnPointerUpdated != null) OnPointerUpdated(this);
+	}
+
+	public Gun GetGun()
+	{
+		return targetGun;
 	}
 }
