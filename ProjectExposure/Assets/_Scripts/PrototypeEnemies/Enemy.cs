@@ -9,7 +9,7 @@ public class Enemy : MonoBehaviour
 
     public float baseDamage = 10;
     public float extraDamage = 20;
-
+    public float aoeDamage = 5;
     public float range = 30;
 
     private Health m_health;
@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
        
     }
 
-   public void GetDamagedByHue(float hue)
+   public void GetDamagedByHue(float hue,bool isAoe=false)
     {
         float myHue = GetColorHue(color);
         float hueDiff = Mathf.Abs(myHue - hue);
@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
         if (hueDiff < range)
         {
             float precisionLevel= ((range - hueDiff) / range);
-            m_health.InflictDamage(baseDamage + precisionLevel * extraDamage);
+            m_health.InflictDamage( isAoe?aoeDamage:baseDamage + precisionLevel * extraDamage);
             Debug.Log("precisionLevel: " + precisionLevel);
 
         }

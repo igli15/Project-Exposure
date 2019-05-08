@@ -15,7 +15,10 @@ public class HealthBarManager : MonoBehaviour
         m_health = GetComponent<Health>();
         m_health.OnHealthDecreased += OnHealthChanged;
         m_health.OnHealthIncreased += OnHealthChanged;
+
+        m_slider.maxValue = m_health.MaxHealth;
         OnHealthChanged(m_health);
+        
 	}
 	
 	// Update is called once per frame

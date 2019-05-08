@@ -31,15 +31,16 @@ public class Health : MonoBehaviour
 	{
         if (m_canTakeDamage)
         {
-            if (OnHealthDecreased != null) OnHealthDecreased(this);
             m_health -= damageAmount;
+
+            if (OnHealthDecreased != null) OnHealthDecreased(this);
         }
 	}
 	
 	public void HealUp(float healAmount)
 	{
-		if(OnHealthIncreased != null) OnHealthIncreased(this);
-		m_health += healAmount;
+        m_health += healAmount;
+        if (OnHealthIncreased != null) OnHealthIncreased(this);
 	}
 
 	public void ResetHealth()
