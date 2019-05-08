@@ -1,10 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class RailMovement : MonoBehaviour
 {
-
+    public Slider slider;
     public float speed = 0.5f;
 
     private Rigidbody m_rb;
@@ -13,6 +13,17 @@ public class RailMovement : MonoBehaviour
     {
         m_rb = GetComponent<Rigidbody>();
         StartMovement();
+
+        Health health = GetComponent<Health>();
+        slider.maxValue = health.MaxHealth;
+        health.OnHealthDecreased += OnHealthChanged;
+        health.OnHealthIncreased += OnHealthChanged;
+        OnHealthChanged(health);
+    }
+
+    void OnHealthChanged(Health health)
+    {
+        slider.value = health.HP;
     }
 
     void Update()
