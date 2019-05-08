@@ -88,6 +88,13 @@ public class Gun : MonoBehaviour
                     }
                 }
             }
+            if (hit.transform.gameObject.CompareTag("Projectile"))
+            {
+                Projectile projectile = hit.collider.GetComponent<Projectile>();
+                float enemyHue = GetColorHue(projectile.color) * 360;
+                float hueDiff = Mathf.Abs(enemyHue - m_hue);
+                if (hueDiff <= m_hueDamageRange) Destroy(hit.collider.gameObject);
+            }
         }
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour {
-
+    public Color color;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

@@ -37,6 +37,7 @@ public class EnemyAttackState : AbstractState<EnemyFSM> {
     {
         GameObject projectile = GameObject.Instantiate(prefab,transform.position,transform.rotation,null);
         projectile.GetComponent<MeshRenderer>().material.color = m_color;
+        projectile.GetComponent<Projectile>().color = m_color;
         projectile.GetComponent<Rigidbody>().velocity =(  Camera.main.transform.position- transform.position ).normalized*2;
     }
 }
