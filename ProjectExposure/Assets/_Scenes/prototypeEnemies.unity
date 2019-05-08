@@ -319,7 +319,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  m_targetPosition: {x: 3, y: 0, z: 86}
+  m_targetPosition: {x: 3, y: 0, z: 95}
   speed: 0.1
 --- !u!114 &36749770
 MonoBehaviour:
@@ -1594,7 +1594,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  m_targetPosition: {x: -5, y: 0, z: 86}
+  m_targetPosition: {x: -5, y: 2, z: 95}
   speed: 0.1
 --- !u!114 &413835416
 MonoBehaviour:
@@ -2105,7 +2105,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  m_targetPosition: {x: 0, y: 3, z: 86}
+  m_targetPosition: {x: 1, y: 3, z: 95}
   speed: 0.1
 --- !u!114 &554635327
 MonoBehaviour:
@@ -2384,7 +2384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1c30d4dd16c1a4080b55f4be4f001b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 1, g: 0.017601715, b: 0, a: 0}
+  color: {r: 0.021381378, g: 1, b: 0, a: 1}
   baseDamage: 10
   extraDamage: 20
   aoeDamage: 5
@@ -3485,7 +3485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1c30d4dd16c1a4080b55f4be4f001b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0.42802, b: 1, a: 0}
+  color: {r: 0.021381378, g: 1, b: 0, a: 1}
   baseDamage: 10
   extraDamage: 20
   aoeDamage: 5
@@ -4492,7 +4492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1c30d4dd16c1a4080b55f4be4f001b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 1, b: 0.07011509, a: 0}
+  color: {r: 0.021381378, g: 1, b: 0, a: 1}
   baseDamage: 10
   extraDamage: 20
   aoeDamage: 5
@@ -4947,7 +4947,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1c30d4dd16c1a4080b55f4be4f001b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 1, g: 0, b: 0.86353207, a: 0}
+  color: {r: 0.021381378, g: 1, b: 0, a: 1}
   baseDamage: 10
   extraDamage: 20
   aoeDamage: 5
@@ -5283,7 +5283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  m_targetPosition: {x: 0, y: 0, z: 86}
+  m_targetPosition: {x: 0, y: -3, z: 95}
   speed: 0.1
 --- !u!114 &1284938118
 MonoBehaviour:
@@ -5631,7 +5631,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1c30d4dd16c1a4080b55f4be4f001b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0.42802, b: 1, a: 0}
+  color: {r: 0.021381378, g: 1, b: 0, a: 1}
   baseDamage: 10
   extraDamage: 20
   aoeDamage: 5
@@ -6329,7 +6329,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  m_targetPosition: {x: 0, y: -3, z: 86}
+  m_targetPosition: {x: 0, y: -3, z: 95}
   speed: 0.1
 --- !u!114 &1668460978
 MonoBehaviour:
@@ -6949,8 +6949,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.25}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: -5, y: 0}
-  m_SizeDelta: {x: -20, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1824892479
 GameObject:

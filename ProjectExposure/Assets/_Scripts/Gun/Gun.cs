@@ -79,7 +79,7 @@ public class Gun : MonoBehaviour
                 
                 if (m_isAoe)
                 {
-
+                    Debug.Log("AOE");
                     Collider[] aoeColliders = Physics.OverlapSphere(hit.point, m_aoeRange);
                     foreach (Collider coll in aoeColliders)
                     {
