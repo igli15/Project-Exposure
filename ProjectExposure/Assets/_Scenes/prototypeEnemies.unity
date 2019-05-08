@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.49641287, b: 0.5748173, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -292,6 +292,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_gun: {fileID: 2032118551}
   m_arrowType: 1
+--- !u!1 &143685798 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1378509260144752, guid: 10f907db940d8f242923dfa0e41373e5,
+    type: 2}
+  m_PrefabInternal: {fileID: 359856150}
 --- !u!1 &144620555
 GameObject:
   m_ObjectHideFlags: 0
@@ -325,6 +330,7 @@ MonoBehaviour:
   m_gunColor: {r: 1, g: 0, b: 0, a: 1}
   m_gunChargeSpeed: 40
   m_hueDamageRange: 40
+  m_aoeRange: 5
   m_keyCode: 100
   m_baseDamage: 10
   m_extraDamage: 20
@@ -1126,6 +1132,48 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1001 &359856150
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4173162103388662, guid: 10f907db940d8f242923dfa0e41373e5, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4173162103388662, guid: 10f907db940d8f242923dfa0e41373e5, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -68.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4173162103388662, guid: 10f907db940d8f242923dfa0e41373e5, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4173162103388662, guid: 10f907db940d8f242923dfa0e41373e5, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4173162103388662, guid: 10f907db940d8f242923dfa0e41373e5, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4173162103388662, guid: 10f907db940d8f242923dfa0e41373e5, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4173162103388662, guid: 10f907db940d8f242923dfa0e41373e5, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4173162103388662, guid: 10f907db940d8f242923dfa0e41373e5, type: 2}
+      propertyPath: m_RootOrder
+      value: 6
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 10f907db940d8f242923dfa0e41373e5, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &423141465
 GameObject:
   m_ObjectHideFlags: 0
@@ -1420,7 +1468,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  waitingTime: 1
+  prefab: {fileID: 143685798}
+  waitingTime: 5
 --- !u!114 &585498949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1457,8 +1506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1c30d4dd16c1a4080b55f4be4f001b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0.42802, b: 1, a: 0}
-  damageColor: {r: 0, g: 0.2905326, b: 1, a: 0}
+  color: {r: 1, g: 0.017601715, b: 0, a: 0}
   baseDamage: 10
   extraDamage: 20
   aoeDamage: 5
@@ -2042,7 +2090,6 @@ GameObject:
   - component: {fileID: 864289061}
   - component: {fileID: 864289065}
   - component: {fileID: 864289064}
-  - component: {fileID: 864289062}
   m_Layer: 0
   m_Name: indicator
   m_TagString: Untagged
@@ -2063,25 +2110,6 @@ Transform:
   m_Father: {fileID: 2032118550}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &864289062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 864289060}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2696cd31f7a034232bcc4a2d42700893, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_gunColorRange: {x: 0, y: 300}
-  m_gunColor: {r: 1, g: 0, b: 1, a: 1}
-  m_gunChargeSpeed: 40
-  m_hueDamageRange: 40
-  m_keyCode: 97
-  m_baseDamage: 10
-  m_extraDamage: 20
-  m_aoeDamage: 5
 --- !u!23 &864289064
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2097,7 +2125,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 601115a39d4e838469f848113e3324a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2186,7 +2214,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  waitingTime: 1
+  prefab: {fileID: 143685798}
+  waitingTime: 5
 --- !u!114 &884147785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2224,7 +2253,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0, g: 0.42802, b: 1, a: 0}
-  damageColor: {r: 0, g: 0.2905326, b: 1, a: 0}
   baseDamage: 10
   extraDamage: 20
   aoeDamage: 5
@@ -2517,9 +2545,10 @@ GameObject:
   - component: {fileID: 1018826996}
   - component: {fileID: 1018826995}
   - component: {fileID: 1018826994}
+  - component: {fileID: 1018826997}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2579,6 +2608,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1018826997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1018826992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30fbcda5b89314e21b1caf23992cdd96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_health: 100
+  m_maxHealth: 100
+  m_shouldBeDestroyed: 0
 --- !u!1 &1067636116
 GameObject:
   m_ObjectHideFlags: 0
@@ -2735,7 +2778,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  waitingTime: 1
+  prefab: {fileID: 143685798}
+  waitingTime: 5
 --- !u!114 &1101769828
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2772,8 +2816,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1c30d4dd16c1a4080b55f4be4f001b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0.42802, b: 1, a: 0}
-  damageColor: {r: 0, g: 0.2905326, b: 1, a: 0}
+  color: {r: 0, g: 1, b: 0.07011509, a: 0}
   baseDamage: 10
   extraDamage: 20
   aoeDamage: 5
@@ -3190,7 +3233,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  waitingTime: 1
+  prefab: {fileID: 143685798}
+  waitingTime: 5
 --- !u!114 &1236515171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3227,8 +3271,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b1c30d4dd16c1a4080b55f4be4f001b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  color: {r: 0, g: 0.42802, b: 1, a: 0}
-  damageColor: {r: 0, g: 0.2905326, b: 1, a: 0}
+  color: {r: 1, g: 0, b: 0.86353207, a: 0}
   baseDamage: 10
   extraDamage: 20
   aoeDamage: 5
@@ -3584,7 +3627,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  waitingTime: 1
+  prefab: {fileID: 143685798}
+  waitingTime: 5
 --- !u!114 &1402607583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3637,7 +3681,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0, g: 0.42802, b: 1, a: 0}
-  damageColor: {r: 0, g: 0.2905326, b: 1, a: 0}
   baseDamage: 10
   extraDamage: 20
   aoeDamage: 5
@@ -4025,7 +4068,6 @@ GameObject:
   - component: {fileID: 1824892480}
   - component: {fileID: 1824892484}
   - component: {fileID: 1824892483}
-  - component: {fileID: 1824892481}
   m_Layer: 0
   m_Name: indicator
   m_TagString: Untagged
@@ -4046,25 +4088,6 @@ Transform:
   m_Father: {fileID: 144620560}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1824892481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1824892479}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2696cd31f7a034232bcc4a2d42700893, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_gunColorRange: {x: 0, y: 300}
-  m_gunColor: {r: 1, g: 0, b: 0, a: 1}
-  m_gunChargeSpeed: 40
-  m_hueDamageRange: 40
-  m_keyCode: 100
-  m_baseDamage: 10
-  m_extraDamage: 20
-  m_aoeDamage: 5
 --- !u!23 &1824892483
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4080,7 +4103,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 1d838770adcf48148999dce6a57bfb2e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4154,6 +4177,7 @@ MonoBehaviour:
   m_gunColor: {r: 1, g: 0, b: 1, a: 1}
   m_gunChargeSpeed: 40
   m_hueDamageRange: 40
+  m_aoeRange: 5
   m_keyCode: 97
   m_baseDamage: 10
   m_extraDamage: 20

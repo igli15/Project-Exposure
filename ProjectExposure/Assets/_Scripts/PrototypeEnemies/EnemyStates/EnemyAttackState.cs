@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class EnemyAttackState : AbstractState<EnemyFSM> {
 
+    public GameObject prefab;
     public float waitingTime = 1;
 
+    private Color m_color;
     private float m_lastShotTime = 0;
 
     public override void Enter(IAgent pAgent)
     {
         base.Enter(pAgent);
         //Debug.Log("Attack ENTER");
-
+        m_color = GetComponent<Enemy>().color;
         m_lastShotTime = Time.time;
     }
 
@@ -33,6 +35,8 @@ public class EnemyAttackState : AbstractState<EnemyFSM> {
 
     void Attack()
     {
-        //Debug.Log("Pew Pew");
+        GameObject projectile = GameObject.Instantiate(prefab,transform.position,transform.rotation,null);
+        projectile.GetComponent<MeshRenderer>().material.color = m_color;
+        projectile.GetComponent<Rigidbody>().velocity =(  Camera.main.transform.position- transform.position ).normalized*2;
     }
 }

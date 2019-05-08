@@ -136,9 +136,11 @@ public class Gun : MonoBehaviour
     float CalculateDamage(Enemy enemy)
     {
         float damage = 0;
-        float myHue = GetColorHue(enemy.color);
-        float hueDiff = Mathf.Abs(myHue - m_hue);
-
+        float enemyHue = GetColorHue(enemy.color)*360;
+        float hueDiff = Mathf.Abs(enemyHue - m_hue);
+        Debug.Log("GUN_HUE: " + m_hue);
+        Debug.Log("ENEMY_HUE: " + enemyHue);
+        Debug.Log("DIFF " + hueDiff);
         if (hueDiff <= m_hueDamageRange)
         {
             float precisionLevel= ((m_hueDamageRange - hueDiff) / m_hueDamageRange);
