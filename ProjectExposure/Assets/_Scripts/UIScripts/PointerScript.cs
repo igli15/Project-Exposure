@@ -14,7 +14,7 @@ public class PointerScript : MonoBehaviour
 	
 	private RectTransform m_transform;
 
-	private float m_parentHalfWidth;
+	private float m_parentHalfHeight;
 
 	private PointerScript m_otherPointer;
 
@@ -24,7 +24,7 @@ public class PointerScript : MonoBehaviour
 	void Awake ()
 	{
 		m_transform = GetComponent<RectTransform>();
-		m_parentHalfWidth = m_barRectTransform.rect.width/2;
+		m_parentHalfHeight = m_barRectTransform.rect.width/2;
 
 		targetGun.OnChargeChanged += SetPositionBasedOnHue;
 		
@@ -40,7 +40,7 @@ public class PointerScript : MonoBehaviour
 
 	void SetPositionBasedOnHue(Gun gun)
 	{
-		float pos = ((gun.Hue()/300) * 2 -1) * m_parentHalfWidth ; //flip it also
+		float pos = ((gun.Hue()/300) * 2 -1) * m_parentHalfHeight ; //flip it also
 		
 		m_transform.anchoredPosition = new Vector2(pos,m_transform.anchoredPosition.y);
 
