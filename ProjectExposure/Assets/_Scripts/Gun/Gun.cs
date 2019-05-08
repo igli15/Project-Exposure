@@ -23,6 +23,9 @@ public class Gun : MonoBehaviour
     private float m_hueDamageRange = 40;
 
     [SerializeField]
+    private float m_aoeRange = 5;
+    
+    [SerializeField]
     private KeyCode m_keyCode;
 
     private Renderer m_renderer;
@@ -77,7 +80,7 @@ public class Gun : MonoBehaviour
                 if (m_isAoe)
                 {
 
-                    Collider[] aoeColliders = Physics.OverlapSphere(hit.point, 5);
+                    Collider[] aoeColliders = Physics.OverlapSphere(hit.point, m_aoeRange);
                     foreach (Collider coll in aoeColliders)
                     {
                         if(hit.collider!=coll && coll.CompareTag("Enemy"))
