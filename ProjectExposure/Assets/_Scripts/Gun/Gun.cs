@@ -47,8 +47,9 @@ public class Gun : MonoBehaviour
     {
         m_renderer = GetComponent<Renderer>();
 
-        m_renderer.material.color = m_gunColor;
-
+        //m_renderer.material.color = m_gunColor;
+        m_renderer.material.SetColor("_Color",m_gunColor);
+        
         m_hue = GetColorHue(m_renderer.material.color) * 360;
         if (OnChargeChanged != null) OnChargeChanged(this);
     }
