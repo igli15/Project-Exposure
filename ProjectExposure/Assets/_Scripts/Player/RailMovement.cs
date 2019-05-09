@@ -7,6 +7,7 @@ public class RailMovement : MonoBehaviour
     public Slider slider;
     public float speed = 0.5f;
 
+    private Vector3 m_direction;
     private Rigidbody m_rb;
 
     void Start()
@@ -14,6 +15,8 @@ public class RailMovement : MonoBehaviour
         m_rb = GetComponent<Rigidbody>();
         StartMovement();
 
+        //Health part
+        //TODO: move to separate script
         Health health = GetComponent<Health>();
         slider.maxValue = health.MaxHealth;
         health.OnHealthDecreased += OnHealthChanged;
@@ -29,6 +32,11 @@ public class RailMovement : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void SetDirecton(Vector3 dir)
+    {
+        m_direction = dir;
     }
 
     public void StopMovement()

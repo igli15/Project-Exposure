@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMovementState : AbstractState<EnemyFSM>
 {
-    public Vector3 m_targetPosition;
+    public Transform targetTransform;
     public float speed = 0.1f;
 
     private Vector3 m_direction;
@@ -13,7 +13,7 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
     {
         base.Enter(pAgent);
 
-        m_direction = m_targetPosition-transform.position;
+        m_direction = targetTransform .position- transform.position;
         m_direction = m_direction.normalized;
 
         //Debug.Log("Movement Enter");
@@ -23,7 +23,7 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
     {
         transform.position += m_direction*speed;
 
-        if ( (transform.position - m_targetPosition).magnitude <= speed)
+        if ( (transform.position - targetTransform.position).magnitude <= speed)
         {
             target.fsm.ChangeState<EnemyAttackState>();
         }
