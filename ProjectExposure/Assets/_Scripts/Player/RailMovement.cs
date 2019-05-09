@@ -73,7 +73,7 @@ public class RailMovement : MonoBehaviour
                 return;
             }
             m_targetPoint = other.GetComponent<MovementPoint>().GetNextPosition();
-            Tweener tweener = transform.DOLookAt(m_targetPoint, 2);
+            Tweener tweener = transform.DOLookAt(m_targetPoint, 3);
             StartMovement();
         }
             
