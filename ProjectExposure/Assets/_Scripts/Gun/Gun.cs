@@ -26,13 +26,6 @@ public class Gun : MonoBehaviour
     private float m_aoeRange = 5;
     
     [SerializeField]
-    private KeyCode m_keyCode;
-
-    private Renderer m_renderer;
-
-    private float m_hue = 0;
-    
-    [SerializeField]
     private float m_baseDamage = 10;
 
     [SerializeField] 
@@ -40,6 +33,16 @@ public class Gun : MonoBehaviour
 
     [SerializeField] 
     private float m_aoeDamage = 5;
+    
+    [SerializeField]
+    private KeyCode m_increaseKeyCode;
+    [SerializeField]
+    private KeyCode m_decreseKeycode;
+    
+    private Renderer m_renderer;
+
+    private float m_hue = 0;
+
 
     private bool m_isAoe = false;
     // Use this for initialization
@@ -60,6 +63,15 @@ public class Gun : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             Shoot();
+        }
+
+        if (Input.GetKey(m_decreseKeycode))
+        {
+            IncreaseCharge();
+        }
+        else if (Input.GetKey(m_increaseKeyCode))
+        {
+            DecreaseCharge();
         }
     }
 
@@ -166,6 +178,14 @@ public class Gun : MonoBehaviour
     public void SetAoe(bool b)
     {
         m_isAoe = b;
+    }
+
+    public void SetHue(float hue)
+    {
+        m_hue = hue * 300;
+        Color color = ChangeHue(m_gunColor, m_hue);
+        if(m_renderer != null)
+        m_renderer.material.SetColor("_Color",color);
     }
     
 }
