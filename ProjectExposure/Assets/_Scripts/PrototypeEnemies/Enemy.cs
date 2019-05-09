@@ -21,7 +21,7 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-       
+        if (Input.GetKeyDown(KeyCode.P)) m_health.InflictDamage(2000000000);
     }
 
     public void GetDamagedByHue(float damage)

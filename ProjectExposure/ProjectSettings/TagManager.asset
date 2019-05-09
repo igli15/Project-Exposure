@@ -7,6 +7,7 @@ TagManager:
   - EnemyZone
   - Enemy
   - Projectile
+  - MovementPoint
   layers:
   - Default
   - TransparentFX

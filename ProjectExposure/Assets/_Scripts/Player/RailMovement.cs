@@ -2,17 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+
 public class RailMovement : MonoBehaviour
 {
     public Slider slider;
     public float speed = 0.5f;
+    public Transform firstMovementPoint;
 
-    private Vector3 m_direction;
+    private Vector3 m_targetPoint;
     private Rigidbody m_rb;
 
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
+
+        m_targetPoint = firstMovementPoint.transform.position;
         StartMovement();
 
         //Health part
@@ -36,7 +41,8 @@ public class RailMovement : MonoBehaviour
 
     public void SetDirecton(Vector3 dir)
     {
-        m_direction = dir;
+        //m_direction = dir.normalized;
+        //tweener.OnComplete(() => { StartMovement(); });
     }
 
     public void StopMovement()
@@ -46,7 +52,8 @@ public class RailMovement : MonoBehaviour
 
     public void StartMovement()
     {
-        m_rb.velocity = new Vector3(0, 0, speed);
+        Vector3 direction = m_targetPoint-transform.position;
+        m_rb.velocity = direction.normalized*speed;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -56,6 +63,18 @@ public class RailMovement : MonoBehaviour
             other.GetComponent<EnemySpawner>().SpawnEnemies();
             other.GetComponent<EnemySpawner>().railMovement = this;
             StopMovement();
+        }
+        if (other.CompareTag("MovementPoint"))
+        {
+            Debug.Log("NewPoint Reached");
+            if (other.GetComponent<MovementPoint>().isEndPoint)
+            {
+                StopMovement();
+                return;
+            }
+            m_targetPoint = other.GetComponent<MovementPoint>().GetNextPosition();
+            Tweener tweener = transform.DOLookAt(m_targetPoint, 2);
+            StartMovement();
         }
             
     }
