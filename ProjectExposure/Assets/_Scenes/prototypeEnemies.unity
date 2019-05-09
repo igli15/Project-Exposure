@@ -2346,7 +2346,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  prefab: {fileID: 143685798}
+  prefab: {fileID: 1378509260144752, guid: 10f907db940d8f242923dfa0e41373e5, type: 2}
   waitingTime: 5
 --- !u!114 &585498949
 MonoBehaviour:
@@ -3447,7 +3447,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  prefab: {fileID: 143685798}
+  prefab: {fileID: 1378509260144752, guid: 10f907db940d8f242923dfa0e41373e5, type: 2}
   waitingTime: 5
 --- !u!114 &884147785
 MonoBehaviour:
@@ -4454,7 +4454,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  prefab: {fileID: 143685798}
+  prefab: {fileID: 1378509260144752, guid: 10f907db940d8f242923dfa0e41373e5, type: 2}
   waitingTime: 5
 --- !u!114 &1101769828
 MonoBehaviour:
@@ -4909,7 +4909,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  prefab: {fileID: 143685798}
+  prefab: {fileID: 1378509260144752, guid: 10f907db940d8f242923dfa0e41373e5, type: 2}
   waitingTime: 5
 --- !u!114 &1236515171
 MonoBehaviour:
@@ -5578,7 +5578,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  prefab: {fileID: 143685798}
+  prefab: {fileID: 1378509260144752, guid: 10f907db940d8f242923dfa0e41373e5, type: 2}
   waitingTime: 5
 --- !u!114 &1402607583
 MonoBehaviour:
