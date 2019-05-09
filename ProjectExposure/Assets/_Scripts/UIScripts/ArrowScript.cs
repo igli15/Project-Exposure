@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ArrowScript : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
 {
@@ -13,10 +15,14 @@ public class ArrowScript : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
 	}
 	
 	[SerializeField] 
-	private Gun m_gun;
+	private float m_vlaueIncreaseSpeed = 1.0f;
 
 	[SerializeField] 
+	private Slider m_slider;
+	
+	[SerializeField] 
 	private ArrowType m_arrowType;
+	
 
 	private bool m_mouseEntered = false;
 
@@ -29,35 +35,22 @@ public class ArrowScript : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
 	// Update is called once per frame
 	void Update () 
 	{
-		/*
-		if (Input.GetMouseButton(0) && IsMouseOver())
-		{
-			if (m_arrowType == ArrowType.RIGHT)
-			{
-				m_gun.DecreaseCharge();
-			}
-			else
-			{
-				m_gun.IncreaseCharge();
-			}
-		}
-		*/
 
 		if (m_mouseEntered)
 		{
 			if (m_arrowType == ArrowType.RIGHT)
 			{
-				m_gun.DecreaseCharge();
+				m_slider.value -= m_vlaueIncreaseSpeed * Time.deltaTime;
 			}
 			else
 			{
-				m_gun.IncreaseCharge();
+				m_slider.value += m_vlaueIncreaseSpeed * Time.deltaTime;
 			}
 		}
 	}
 
 	
-	
+	/*
 	bool IsMouseOver()
 	{
 		PointerEventData pointerEventData = new PointerEventData(EventSystem.current);
@@ -80,7 +73,7 @@ public class ArrowScript : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
 		}
 		else return false;
 	}
-
+*/
 
 
 	public void OnPointerDown(PointerEventData eventData)
