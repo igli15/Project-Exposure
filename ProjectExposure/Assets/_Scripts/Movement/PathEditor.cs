@@ -13,6 +13,9 @@ public class PathEditor : Editor {
         DrawDefaultInspector();
 
         Path myScript = (Path)target;
+
+        var style = new GUIStyle(GUI.skin.button);
+        style.normal.textColor = Color.red;
         if (GUILayout.Button("Generate Points"))
         {
             myScript.GeneratePoints();
@@ -21,9 +24,14 @@ public class PathEditor : Editor {
         {
             myScript.AddPoint();
         }
+        GUILayout.Space(30);
+        GUI.backgroundColor = Color.red;
         if (GUILayout.Button("Clear Points"))
         {
-            myScript.DestroyPoints();
+            if ( EditorUtility.DisplayDialog("","Are you sure you want to clear points???", "yes", "Hell NO"))
+            {
+                myScript.DestroyPoints();
+            }
         }
 
         //UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(myScript.gameObject.scene);
