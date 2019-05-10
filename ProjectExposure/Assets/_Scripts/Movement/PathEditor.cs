@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 using UnityEditor;
+using UnityEditor.SceneManagement;
 
 [CustomEditor(typeof(Path))]
 public class PathEditor : Editor {
@@ -16,10 +17,16 @@ public class PathEditor : Editor {
         {
             myScript.GeneratePoints();
         }
+        if (GUILayout.Button("Add Point"))
+        {
+            myScript.AddPoint();
+        }
         if (GUILayout.Button("Clear Points"))
         {
             myScript.DestroyPoints();
         }
+
+        //UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(myScript.gameObject.scene);
     }
 
     public static T SafeDestroy<T>(T obj) where T : Object

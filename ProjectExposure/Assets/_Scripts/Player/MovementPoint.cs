@@ -4,22 +4,17 @@ using UnityEngine;
 
 public class MovementPoint : MonoBehaviour {
 
-    public int id = 0;
-    public bool isEndPoint = false;
-
+    [SerializeField]
     private MovementPoint m_nextPoint;
-	void Start () {
-
-	}
 
     public void SetNextPoint(MovementPoint nextPoint)
     {
         m_nextPoint = nextPoint;
     }
 
-    public Vector3 GetNextPosition()
+    public MovementPoint GetNextPoint()
     {
-        return m_nextPoint.transform.position;
+        return m_nextPoint;
     }
 
     private void OnDrawGizmos()

@@ -6,44 +6,66 @@ public class Path : MonoBehaviour {
 
     [SerializeField]
     private int m_pointCount = 0;
-    private MovementPoint[] m_points;
-    
-
-    void Start () {
-        //m_points = new MovementPoint[m_pointCount];
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private int m_currentCount = 0;
+    private MovementPoint m_bufferPoint = null;
+    [SerializeField]
+    private MovementPoint m_firstPoint;
 
     public void GeneratePoints()
     {
         if (m_pointCount < 0) m_pointCount = 0;
         if (m_pointCount > 40) m_pointCount = 40;
-        DestroyPoints();
-        GameObject empty = new GameObject();
-        m_points = new MovementPoint[m_pointCount];
+        m_currentCount = m_pointCount;
 
-        MovementPoint bufferPoint = null;
+        DestroyPoints();
+
+        GameObject empty = new GameObject();
 
         for (int i = 0; i < m_pointCount; i++)
         {
-            GameObject newPoint = GameObject.Instantiate(empty, transform.position + new Vector3(0, 0, 2 * i), transform.rotation,transform);
+            GameObject newPoint = GameObject.Instantiate(empty, transform.position + new Vector3(0, 0, 8 * i), transform.rotation,transform);
             newPoint.name = "point_" + i;
+            newPoint.tag = "MovementPoint";
+            SphereCollider collider = newPoint.AddComponent<SphereCollider>();
+            collider.radius = 1;
 
             MovementPoint mp=newPoint.AddComponent<MovementPoint>();
-            
-            if (i > 0)
-            {
-                bufferPoint.SetNextPoint(mp);
-            }
-            bufferPoint = mp;
-            if (i == m_pointCount - 1) mp.isEndPoint = true;
+
+            if (i > 0) m_bufferPoint.SetNextPoint(mp);
+            if (i == 0) { m_firstPoint = mp; Debug.Log("first point " + m_firstPoint);  }
+
+            m_bufferPoint = mp;
         }
+
         PathEditor.SafeDestroyGameObject<Transform>(empty.transform);
     }
+
+    public void AddPoint()
+    {
+        if (transform.childCount == 0)
+        {
+            Debug.Log("First generate path!");
+            return;
+        }
+        GameObject empty = new GameObject();
+
+        GameObject newPoint = GameObject.Instantiate(empty, m_bufferPoint.transform.position+new Vector3(0,0,2), transform.rotation, transform);
+        newPoint.name = "point_" + m_currentCount;
+        newPoint.tag = "MovementPoint";
+        SphereCollider collider = newPoint.AddComponent<SphereCollider>();
+        collider.radius = 1;
+
+        m_currentCount++;
+        m_pointCount = m_currentCount;
+        MovementPoint mp = newPoint.AddComponent<MovementPoint>();
+
+        m_bufferPoint.SetNextPoint(mp);
+
+        m_bufferPoint = mp;
+
+        PathEditor.SafeDestroyGameObject<Transform>(empty.transform);
+    }
+
     public void DestroyPoints()
     {
         
@@ -53,5 +75,8 @@ public class Path : MonoBehaviour {
         }
     }
 
-
+    public MovementPoint GetFirstPoint()
+    {
+        return m_firstPoint;
+    }
 }

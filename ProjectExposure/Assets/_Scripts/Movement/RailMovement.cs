@@ -8,16 +8,18 @@ public class RailMovement : MonoBehaviour
 {
     public Slider slider;
     public float speed = 0.5f;
-    public Transform firstMovementPoint;
+    public float rotationTime = 1;
+    public Path initialPath;
 
-    private Vector3 m_targetPoint;
+    private MovementPoint m_targetPoint;
     private Rigidbody m_rb;
 
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
 
-        m_targetPoint = firstMovementPoint.transform.position;
+        m_targetPoint = initialPath.GetFirstPoint();
+        Debug.Log("FIRST POINT" + m_targetPoint);
         StartMovement();
 
         //Health part
@@ -52,7 +54,7 @@ public class RailMovement : MonoBehaviour
 
     public void StartMovement()
     {
-        Vector3 direction = m_targetPoint-transform.position;
+        Vector3 direction = m_targetPoint.transform.position-transform.position;
         m_rb.velocity = direction.normalized*speed;
     }
 
@@ -66,14 +68,15 @@ public class RailMovement : MonoBehaviour
         }
         if (other.CompareTag("MovementPoint"))
         {
-            Debug.Log("NewPoint Reached");
-            if (other.GetComponent<MovementPoint>().isEndPoint)
+            
+            if (other.GetComponent<MovementPoint>().GetNextPoint()==null)
             {
+                Debug.Log("STOP");
                 StopMovement();
                 return;
             }
-            m_targetPoint = other.GetComponent<MovementPoint>().GetNextPosition();
-            Tweener tweener = transform.DOLookAt(m_targetPoint, 3);
+            m_targetPoint = other.GetComponent<MovementPoint>().GetNextPoint();
+            Tweener tweener = transform.DOLookAt(m_targetPoint.transform.position, rotationTime);
             StartMovement();
         }
             
