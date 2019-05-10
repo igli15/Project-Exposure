@@ -38,7 +38,6 @@ public class Enemy : Hittable
 
         if (gun.IsAoe())
         {
-            Debug.Log("AOE");
             Collider[] aoeColliders = Physics.OverlapSphere(transform.position, gun.AoeRange());
             foreach (Collider coll in aoeColliders)
             {
