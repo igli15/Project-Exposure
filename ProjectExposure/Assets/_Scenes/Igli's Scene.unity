@@ -3441,7 +3441,7 @@ GameObject:
   m_Component:
   - component: {fileID: 876226493}
   m_Layer: 5
-  m_Name: Sliders
+  m_Name: RainBow Sliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4468,6 +4468,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider: {fileID: 1063519132}
   speed: 3
+  firstMovementPoint: {fileID: 0}
 --- !u!135 &1018826995
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4553,7 +4554,7 @@ GameObject:
   - component: {fileID: 1063519133}
   - component: {fileID: 1063519132}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: Health Slider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
