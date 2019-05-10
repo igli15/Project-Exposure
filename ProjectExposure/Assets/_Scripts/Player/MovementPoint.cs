@@ -7,32 +7,26 @@ public class MovementPoint : MonoBehaviour {
     public int id = 0;
     public bool isEndPoint = false;
 
-    public static List<MovementPoint> m_movementPoints=new List<MovementPoint>();
-
+    private MovementPoint m_nextPoint;
 	void Start () {
-        Debug.Log("THIS: " +id+" | "+ this);
-        Debug.Log("m_movementPoints " + m_movementPoints);
 
-        if (!m_movementPoints.Contains(this))
-        {
-            Debug.Log("Adding new Movementpoint with id " + id);
-            m_movementPoints.Add(this);
-        }
 	}
 
+    public void SetNextPoint(MovementPoint nextPoint)
+    {
+        m_nextPoint = nextPoint;
+    }
 
     public Vector3 GetNextPosition()
     {
-        if (isEndPoint) return transform.position;
+        return m_nextPoint.transform.position;
+    }
 
-        foreach (MovementPoint mp in m_movementPoints)
-        {
-            if (mp.id == id + 1)
-            {
-                return mp.transform.position;
-            }
-        }
-        Debug.Assert(true,"Cant find MovementPoint with id "+id);
-        return new Vector3(0, 0, 0);
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawSphere(transform.position, 1);
+        if(m_nextPoint!=null)
+            Gizmos.DrawLine(transform.position, m_nextPoint.transform.position);
     }
 }
