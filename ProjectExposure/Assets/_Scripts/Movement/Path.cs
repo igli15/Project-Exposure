@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Path : MonoBehaviour {
 
+    [Header("Next Paths")]
+    [SerializeField]
+    private List<Path> m_paths;
+
+    [Header("Settings")]
     [SerializeField]
     private int m_pointCount = 0;
     private int m_currentCount = 0;
@@ -78,5 +83,10 @@ public class Path : MonoBehaviour {
     public MovementPoint GetFirstPoint()
     {
         return m_firstPoint;
+    }
+
+    public void ShowHudOptions()
+    {
+
     }
 }

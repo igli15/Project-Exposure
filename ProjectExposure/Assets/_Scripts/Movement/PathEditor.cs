@@ -16,6 +16,7 @@ public class PathEditor : Editor {
 
         var style = new GUIStyle(GUI.skin.button);
         style.normal.textColor = Color.red;
+        
         if (GUILayout.Button("Generate Points"))
         {
             myScript.GeneratePoints();
