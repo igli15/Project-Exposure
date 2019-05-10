@@ -85,33 +85,16 @@ public class Gun : MonoBehaviour
         for (int i = 0; i < hits.Length; i++)
         {
             RaycastHit hit = hits[i];
-            if (hit.transform.gameObject.CompareTag("Enemy"))
+            Hittable hittable = hit.transform.gameObject.GetComponent<Hittable>();
+            
+            if(hittable != null)
             {
-                Enemy enemy = hit.transform.gameObject.GetComponent<Enemy>();
-                enemy.GetDamagedByHue(CalculateDamage(enemy));
-                
-                if (m_isAoe)
-                {
-                    Debug.Log("AOE");
-                    Collider[] aoeColliders = Physics.OverlapSphere(hit.point, m_aoeRange);
-                    foreach (Collider coll in aoeColliders)
-                    {
-                        if(hit.collider!=coll && coll.CompareTag("Enemy"))
-                        coll.gameObject.GetComponent<Enemy>().GetDamagedByHue(m_aoeDamage);
-                    }
-                }
-            }
-            if (hit.transform.gameObject.CompareTag("Projectile"))
-            {
-                Projectile projectile = hit.collider.GetComponent<Projectile>();
-                float enemyHue = GetColorHue(projectile.color) * 360;
-                float hueDiff = Mathf.Abs(enemyHue - m_hue);
-                if (hueDiff <= m_hueDamageRange) Destroy(hit.collider.gameObject);
+                hittable.HitByGun(CalculateDamage(hittable),this);
             }
         }
     }
 
-    float GetColorHue(Color color)
+    public float GetColorHue(Color color)
     {
         float hue = 1;
         float saturation = 0;
@@ -153,14 +136,14 @@ public class Gun : MonoBehaviour
         return Color.HSVToRGB(newHue / 360, saturation, value);
     }
 
-    float CalculateDamage(Enemy enemy)
+    float CalculateDamage(Hittable enemy)
     {
         float damage = 0;
         float enemyHue = GetColorHue(enemy.color)*360;
         float hueDiff = Mathf.Abs(enemyHue - m_hue);
-        Debug.Log("GUN_HUE: " + m_hue);
-        Debug.Log("ENEMY_HUE: " + enemyHue);
-        Debug.Log("DIFF " + hueDiff);
+        //Debug.Log("GUN_HUE: " + m_hue);
+        //Debug.Log("ENEMY_HUE: " + enemyHue);
+        //Debug.Log("DIFF " + hueDiff);
         if (hueDiff <= m_hueDamageRange)
         {
             float precisionLevel= ((m_hueDamageRange - hueDiff) / m_hueDamageRange);
@@ -180,10 +163,31 @@ public class Gun : MonoBehaviour
         m_isAoe = b;
     }
 
+    public bool IsAoe()
+    {
+        return m_isAoe;
+    }
+
+    public float AoeRange()
+    {
+        return m_aoeRange;
+    }
+
+    public float AoeDamage()
+    {
+        return m_aoeDamage;
+    }
+
+    public float HueDamageRange
+    {
+        get { return m_hueDamageRange; }
+    }
+
     public void SetHue(float hue)
     {
         m_hue = hue * 300;
         Color color = ChangeHue(m_gunColor, m_hue);
+        
         if(m_renderer != null)
         m_renderer.material.SetColor("_Color",color);
     }
