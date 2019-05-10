@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour {
-    public Color color;
+public class Projectile : Hittable {
+    
     public float lifeTime = 10;
     private float m_creationTime;
 
@@ -29,5 +29,14 @@ public class Projectile : MonoBehaviour {
             Debug.Log("DAMAGE");
         }
         
+    }
+
+    public override void HitByGun(float damage, Gun gun)
+    {
+        base.HitByGun(damage, gun);
+        
+        float enemyHue = gun.GetColorHue(color) * 360;
+        float hueDiff = Mathf.Abs(enemyHue - gun.Hue());
+        if (hueDiff <= gun.HueDamageRange) Destroy(this.gameObject);
     }
 }
