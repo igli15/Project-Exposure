@@ -9,6 +9,7 @@ public class Gun : MonoBehaviour
 {
 
     public Action<Gun> OnChargeChanged;
+    public Action<Gun> OnHueChanged;
 
     [SerializeField]
     private Vector2 m_gunColorRange = Vector2.zero;
@@ -33,6 +34,9 @@ public class Gun : MonoBehaviour
 
     [SerializeField] 
     private float m_aoeDamage = 5;
+
+    [SerializeField] 
+    private GameObject mergeBeam;
     
     [SerializeField]
     private KeyCode m_increaseKeyCode;
@@ -54,7 +58,15 @@ public class Gun : MonoBehaviour
         m_renderer.material.SetColor("_Color",m_gunColor);
         
         m_hue = GetColorHue(m_renderer.material.color) * 360;
+        OnHueChanged += delegate(Gun gun)
+        {
+            mergeBeam.GetComponent<Renderer>().material.color = m_renderer.material.GetColor("_Color");
+            
+            
+            mergeBeam.GetComponent<Renderer>().material.SetFloat("_Wavelength",m_hue/300 + 1);
+        };
         if (OnChargeChanged != null) OnChargeChanged(this);
+        if (OnChargeChanged != null) OnHueChanged(this);
     }
 
     // Update is called once per frame
@@ -132,7 +144,7 @@ public class Gun : MonoBehaviour
 
         Color.RGBToHSV(color, out hue, out saturation, out value);
 
-
+        if (OnHueChanged != null) OnHueChanged(this);
         return Color.HSVToRGB(newHue / 360, saturation, value);
     }
 
