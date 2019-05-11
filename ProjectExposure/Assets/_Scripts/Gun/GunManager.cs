@@ -11,6 +11,9 @@ public class GunManager : MonoBehaviour
 
 	[SerializeField] 
 	private float m_aoeRange = 20;
+
+	[SerializeField]
+	private GameObject mergeSphere;
 	
 	// Use this for initialization
 	void Start () 
@@ -18,6 +21,7 @@ public class GunManager : MonoBehaviour
 		for (int i = 0; i < m_guns.Length; i++)
 		{
 			m_guns[i].OnChargeChanged += CheckForAOE;
+			m_guns[i].OnHueChanged += MixColorOfGuns;
 		}
 	}
 
@@ -34,6 +38,27 @@ public class GunManager : MonoBehaviour
 				}
 			}
 		}
+	}
+
+
+	public void MixColorOfGuns(Gun gun)
+	{
+
+		Color mixedColor = MixColors(m_guns[0].GetComponent<Renderer>().material.GetColor("_Color"),
+			m_guns[1].GetComponent<Renderer>().material.GetColor("_Color"));
+		
+		mergeSphere.GetComponent<Renderer>().material.SetColor("_Color",mixedColor);
+		//Debug.Log(mixedColor);
+	}
+	Color MixColors(Color c1, Color c2)
+	{
+		Color mixture = Color.black;
+		
+		mixture.r = (c1.r + c2.r) / 2;
+		mixture.g = (c1.g + c2.g) / 2;
+		mixture.b = (c1.b + c2.b) / 2;
+		
+		return mixture;
 	}
 	
 }

@@ -661,6 +661,7 @@ MonoBehaviour:
   m_baseDamage: 10
   m_extraDamage: 20
   m_aoeDamage: 5
+  mergeBeam: {fileID: 689556013}
   m_increaseKeyCode: 273
   m_decreseKeycode: 274
 --- !u!23 &144620558
@@ -3114,6 +3115,10 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!1 &689556013 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 2445fd206b33442a58bda534df1b865e, type: 3}
+  m_PrefabInternal: {fileID: 107577807}
 --- !u!1 &689598484
 GameObject:
   m_ObjectHideFlags: 0
@@ -7711,6 +7716,10 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1696579887}
+--- !u!1 &1720198393 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 2445fd206b33442a58bda534df1b865e, type: 3}
+  m_PrefabInternal: {fileID: 1685606247}
 --- !u!1 &1728407002
 GameObject:
   m_ObjectHideFlags: 0
@@ -8652,6 +8661,7 @@ MonoBehaviour:
   m_baseDamage: 10
   m_extraDamage: 20
   m_aoeDamage: 5
+  mergeBeam: {fileID: 1720198393}
   m_increaseKeyCode: 119
   m_decreseKeycode: 115
 --- !u!23 &2032118553
