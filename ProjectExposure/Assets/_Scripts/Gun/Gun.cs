@@ -11,37 +11,26 @@ public class Gun : MonoBehaviour,IAgent
     public Action<Gun> OnChargeChanged;
     public Action<Gun> OnHueChanged;
 
-    [SerializeField]
-    private Vector2 m_gunColorRange = Vector2.zero;
+    [SerializeField] private Vector2 m_gunColorRange = Vector2.zero;
 
-    [SerializeField]
-    private Color m_gunColor;
+    [SerializeField] private Color m_gunColor;
 
-    [SerializeField]
-    private float m_gunChargeSpeed = 10;
+    [SerializeField] private float m_gunChargeSpeed = 10;
     
-    [SerializeField]
-    private float m_hueDamageRange = 40;
+    [SerializeField] private float m_hueDamageRange = 40;
 
-    [SerializeField]
-    private float m_aoeRange = 5;
+    [SerializeField] private float m_aoeRange = 5;
     
-    [SerializeField]
-    private float m_baseDamage = 10;
+    [SerializeField] private float m_baseDamage = 10;
 
-    [SerializeField] 
-    private float m_extraDamage = 20;
+    [SerializeField] private float m_extraDamage = 20;
 
-    [SerializeField] 
-    private float m_aoeDamage = 5;
+    [SerializeField] private float m_aoeDamage = 5;
 
-    [SerializeField] 
-    private GameObject m_mergeBeam;
+    [SerializeField] private GameObject m_mergeBeam;
     
-    [SerializeField]
-    private KeyCode m_increaseKeyCode;
-    [SerializeField]
-    private KeyCode m_decreseKeycode;
+    [SerializeField] private KeyCode m_increaseKeyCode;
+    [SerializeField] private KeyCode m_decreseKeycode;
     
     private Renderer m_renderer;
 
@@ -55,7 +44,7 @@ public class Gun : MonoBehaviour,IAgent
     // Use this for initialization
     void Start()
     {
-
+    
         if (m_fsm == null)
         {
             m_fsm = new Fsm<Gun>(this);
@@ -69,9 +58,10 @@ public class Gun : MonoBehaviour,IAgent
         m_renderer.material.SetColor("_Color",m_gunColor);
         
         m_hue = GetColorHue(m_renderer.material.color) * 360;
+        
         OnHueChanged += SetBeamColor;
-        if (OnChargeChanged != null) OnChargeChanged(this);
-        if (OnChargeChanged != null) OnHueChanged(this);
+
+        if(OnHueChanged!= null) OnHueChanged(this);
     }
 
     // Update is called once per frame
@@ -84,11 +74,11 @@ public class Gun : MonoBehaviour,IAgent
 
         if (Input.GetKey(m_decreseKeycode))
         {
-            IncreaseCharge();
+            IncreaseHue();
         }
         else if (Input.GetKey(m_increaseKeyCode))
         {
-            DecreaseCharge();
+            DecreaseHue();
         }
     }
 
@@ -121,23 +111,21 @@ public class Gun : MonoBehaviour,IAgent
         return hue;
     }
 
-    public void IncreaseCharge()
+    public void IncreaseHue()
     {
         if (m_hue < m_gunColorRange.y)
         {
             m_hue += m_gunChargeSpeed * Time.deltaTime;
             m_renderer.material.color = ChangeHue(m_gunColor, m_hue);
-            if (OnChargeChanged != null) OnChargeChanged(this);
         }
     }
 
-    public void DecreaseCharge()
+    public void DecreaseHue()
     {
         if (m_hue > m_gunColorRange.x)
         {
             m_hue -= m_gunChargeSpeed * Time.deltaTime;
             m_renderer.material.color = ChangeHue(m_gunColor, m_hue);
-            if (OnChargeChanged != null) OnChargeChanged(this);
         }
     }
 
@@ -158,9 +146,7 @@ public class Gun : MonoBehaviour,IAgent
         float damage = 0;
         float enemyHue = GetColorHue(enemy.color)*360;
         float hueDiff = Mathf.Abs(enemyHue - m_hue);
-        //Debug.Log("GUN_HUE: " + m_hue);
-        //Debug.Log("ENEMY_HUE: " + enemyHue);
-        //Debug.Log("DIFF " + hueDiff);
+
         if (hueDiff <= m_hueDamageRange)
         {
             float precisionLevel= ((m_hueDamageRange - hueDiff) / m_hueDamageRange);

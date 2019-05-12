@@ -18,6 +18,8 @@ public class MergedGunState : AbstractState<Gun>
 	{
 		base.Enter(pAgent);
 		
+		target.SetAoe(true);
+		
 		m_mergeSphere = transform.parent.GetComponent<GunManager>().mergeSpehre.transform;
 		Vector3 pos = m_mergeSphere.position;
 		
@@ -33,6 +35,9 @@ public class MergedGunState : AbstractState<Gun>
 	public override void Exit(IAgent pAgent)
 	{
 		base.Exit(pAgent);
+		
+		target.SetAoe(false);
+		
 		target.transform.DOLookAt(m_oldPos, 0.5f);
 	}
 }

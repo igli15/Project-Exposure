@@ -5,50 +5,34 @@ using UnityEngine;
 public class GunManager : MonoBehaviour
 {
 
+	[SerializeField] private Gun m_leftGun;
+	[SerializeField] private Gun m_rightGun;
 
-	[SerializeField] 
-	private Gun[] m_guns;
+	[SerializeField] private GameObject m_mergeSphere;
 
-	[SerializeField] 
-	private float m_aoeRange = 20;
+	private Renderer m_leftGunRenderer;
+	private Renderer m_rightGunRenderer;
 
-	[SerializeField]
-	private GameObject mergeSphere;
+	private Renderer m_mergeSphereRenderer;
 	
 	// Use this for initialization
 	void Start () 
 	{
-		for (int i = 0; i < m_guns.Length; i++)
-		{
-			m_guns[i].OnChargeChanged += CheckForAOE;
-			m_guns[i].OnHueChanged += MixColorOfGuns;
-		}
-	}
+		m_rightGun.OnHueChanged += MixColorOfGuns;
 
-	void CheckForAOE(Gun gun)
-	{
-		for (int i = 0; i < m_guns.Length; i++)
-		{
-			if (m_guns[i].GetInstanceID() !=gun.gameObject.GetInstanceID())
-			{
-				if (Mathf.Abs(gun.Hue()  - m_guns[i].Hue()) <= m_aoeRange)
-				{
-					gun.SetAoe(true);
-					m_guns[i].SetAoe(true);
-				}
-			}
-		}
-	}
 
+		m_leftGunRenderer = m_leftGun.GetComponent<Renderer>();
+		m_rightGunRenderer = m_rightGun.GetComponent<Renderer>();
+		m_mergeSphereRenderer = m_mergeSphere.GetComponent<Renderer>();
+	}
 
 	public void MixColorOfGuns(Gun gun)
 	{
 
-		Color mixedColor = MixColors(m_guns[0].GetComponent<Renderer>().material.GetColor("_Color"),
-			m_guns[1].GetComponent<Renderer>().material.GetColor("_Color"));
+		Color mixedColor = MixColors(m_leftGunRenderer.material.GetColor("_Color"),
+			m_rightGunRenderer.material.GetColor("_Color"));
 		
-		mergeSphere.GetComponent<Renderer>().material.SetColor("_Color",mixedColor);
-		//Debug.Log(mixedColor);
+		m_mergeSphereRenderer.material.SetColor("_Color",mixedColor);
 	}
 	Color MixColors(Color c1, Color c2)
 	{
@@ -63,6 +47,6 @@ public class GunManager : MonoBehaviour
 
 	public GameObject mergeSpehre
 	{
-		get { return mergeSphere; }
+		get { return m_mergeSphere; }
 	}
 }

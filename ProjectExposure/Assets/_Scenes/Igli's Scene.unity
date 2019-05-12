@@ -4810,11 +4810,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9c2224c7f6140f3b22b526c1e71ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_guns:
-  - {fileID: 2032118551}
-  - {fileID: 144620556}
+  m_leftGun: {fileID: 2032118551}
+  m_rightGun: {fileID: 144620556}
   m_aoeRange: 20
-  mergeSphere: {fileID: 1389942519}
+  m_mergeSphere: {fileID: 1389942519}
 --- !u!1 &1019779148
 GameObject:
   m_ObjectHideFlags: 0
