@@ -2,6 +2,7 @@
 	Properties {
 		_Color ("Color", Color) = (1,1,1,1)
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
+		_Emission ("Emission (RGB)", 2D) = "white" {}
 		_Glossiness ("Smoothness", Range(0,1)) = 0.5
 		_Metallic ("Metallic", Range(0,1)) = 0.0
 		_Amplitude ("Amplitude", Float) = 1
@@ -9,11 +10,11 @@
 		_Speed ("Speed", Float) = 1
 	}
 	SubShader {
-		Tags { "RenderType"="Opaque" }
+		Tags {  "RenderType"="Transparent" "Queue"="Transparent"  }
 		LOD 200
 
 		CGPROGRAM
-		#pragma surface surf Standard fullforwardshadows vertex:vert addshadow
+		#pragma surface surf Standard alpha fullforwardshadows vertex:vert addshadow
 		#pragma target 3.0
 
 		sampler2D _MainTex;
@@ -24,6 +25,7 @@
 
 		half _Glossiness;
 		half _Metallic;
+		half _Emission;
 		fixed4 _Color;
 		float _Amplitude;
 		float _Wavelength;
@@ -50,6 +52,7 @@
 			o.Albedo = c.rgb;
 			o.Metallic = _Metallic;
 			o.Smoothness = _Glossiness;
+			o.Emission = _Emission;
 			o.Alpha = c.a;
 		}
 		ENDCG

@@ -58,13 +58,7 @@ public class Gun : MonoBehaviour
         m_renderer.material.SetColor("_Color",m_gunColor);
         
         m_hue = GetColorHue(m_renderer.material.color) * 360;
-        OnHueChanged += delegate(Gun gun)
-        {
-            mergeBeam.GetComponent<Renderer>().material.color = m_renderer.material.GetColor("_Color");
-            
-            
-            mergeBeam.GetComponent<Renderer>().material.SetFloat("_Wavelength",((m_hue/300 - 2 ) * -1) * 2);
-        };
+        OnHueChanged += SetBeamColor;
         if (OnChargeChanged != null) OnChargeChanged(this);
         if (OnChargeChanged != null) OnHueChanged(this);
     }
@@ -207,5 +201,15 @@ public class Gun : MonoBehaviour
     public Color gunColor
     {
         get { return m_gunColor; }
+    }
+
+    public void SetBeamColor(Gun gun)
+    {
+        Color c = m_renderer.material.GetColor("_Color");
+        c.a = 0.5f;
+
+        Renderer beamRender = mergeBeam.GetComponent<Renderer>();
+       beamRender.material.color = c;
+       beamRender.material.SetFloat("_Wavelength",((m_hue/300 - 2 ) * -1) * 2);
     }
 }
