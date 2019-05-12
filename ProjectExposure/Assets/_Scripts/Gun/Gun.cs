@@ -194,6 +194,11 @@ public class Gun : MonoBehaviour,IAgent
         m_fsm.ChangeState<MergedGunState>();
     }
     
+    public void ChangeToSeperatedState()
+    {
+        m_fsm.ChangeState<SeperatedGunState>();
+    }
+    
     public float Hue()
     {
         return m_hue;
