@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
@@ -84,7 +85,11 @@ public class Gun : MonoBehaviour,IAgent
 
     void Shoot()
     {
+        if(EventSystem.current.IsPointerOverGameObject()) return;
+        
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        
+        LookInRayDirection(ray);
         
         RaycastHit[] hits;
         hits = Physics.RaycastAll(ray);
@@ -101,6 +106,13 @@ public class Gun : MonoBehaviour,IAgent
         }
     }
 
+    void LookInRayDirection(Ray ray)
+    {
+        Ray r = ray;
+        r.origin = transform.position;
+        Quaternion rot = Quaternion.LookRotation(r.direction.normalized,Vector3.up);
+        transform.DORotate(rot.eulerAngles, 0.5f);
+    }
     public float GetColorHue(Color color)
     {
         float hue = 1;
