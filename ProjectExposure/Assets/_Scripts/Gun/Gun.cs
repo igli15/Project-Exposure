@@ -8,8 +8,6 @@ using UnityEngine.Serialization;
 
 public class Gun : MonoBehaviour,IAgent
 {
-
-    public Action<Gun> OnChargeChanged;
     public Action<Gun> OnHueChanged;
 
     [SerializeField] private Vector2 m_gunColorRange = Vector2.zero;
@@ -31,7 +29,7 @@ public class Gun : MonoBehaviour,IAgent
     [SerializeField] private GameObject m_mergeBeam;
     
     [SerializeField] private KeyCode m_increaseKeyCode;
-    [SerializeField] private KeyCode m_decreseKeycode;
+    [SerializeField] private KeyCode m_decreaseKeycode;
     
     private Renderer m_renderer;
 
@@ -73,7 +71,7 @@ public class Gun : MonoBehaviour,IAgent
             Shoot();
         }
 
-        if (Input.GetKey(m_decreseKeycode))
+        if (Input.GetKey(m_decreaseKeycode))
         {
             IncreaseHue();
         }
@@ -90,7 +88,7 @@ public class Gun : MonoBehaviour,IAgent
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         
         LookInRayDirection(ray);
-        
+      
         RaycastHit[] hits;
         hits = Physics.RaycastAll(ray);
 
@@ -111,7 +109,8 @@ public class Gun : MonoBehaviour,IAgent
         Ray r = ray;
         r.origin = transform.position;
         Quaternion rot = Quaternion.LookRotation(r.direction.normalized,Vector3.up);
-        transform.DORotate(rot.eulerAngles, 0.5f);
+        Sequence s = DOTween.Sequence();
+        Tween t = transform.DORotate(rot.eulerAngles, 0.5f);
     }
     public float GetColorHue(Color color)
     {

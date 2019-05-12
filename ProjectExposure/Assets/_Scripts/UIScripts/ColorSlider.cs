@@ -18,7 +18,7 @@ public class ColorSlider : MonoBehaviour
 		
 		m_slider.onValueChanged.Invoke(m_slider.value);
 		
-		targetGun.OnChargeChanged += delegate(Gun gun) { m_slider.value = gun.Hue() / 300;  };
+		targetGun.OnHueChanged += delegate(Gun gun) { m_slider.value = gun.Hue() / 300;  };
 	}
 
 	void UpdateGunHue()
