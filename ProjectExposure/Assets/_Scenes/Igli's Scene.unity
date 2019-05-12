@@ -491,7 +491,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2445fd206b33442a58bda534df1b865e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2445fd206b33442a58bda534df1b865e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -635,7 +635,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_vlaueIncreaseSpeed: 1
+  m_valueIncreaseSpeed: 1
   m_slider: {fileID: 474817732}
   m_arrowType: 1
 --- !u!1 &132765966
@@ -863,21 +863,21 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 144620555}
-  m_Mesh: {fileID: 4300000, guid: 495d99af241374af48185d85f65049c4, type: 3}
+  m_Mesh: {fileID: 4300000, guid: f6350aab186424da1b98c21c362215af, type: 3}
 --- !u!4 &144620560
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 144620555}
-  m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.417, y: -0.607, z: 2.563}
   m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_Children:
   - {fileID: 973664386}
   m_Father: {fileID: 1018826993}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &171165234
 GameObject:
   m_ObjectHideFlags: 0
@@ -1508,7 +1508,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_vlaueIncreaseSpeed: 1
+  m_valueIncreaseSpeed: 1
   m_slider: {fileID: 2019405751}
   m_arrowType: 0
 --- !u!114 &298197323
@@ -2473,7 +2473,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_vlaueIncreaseSpeed: 1
+  m_valueIncreaseSpeed: 1
   m_slider: {fileID: 2019405751}
   m_arrowType: 1
 --- !u!114 &505511383
@@ -4812,7 +4812,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_leftGun: {fileID: 2032118551}
   m_rightGun: {fileID: 144620556}
-  m_aoeRange: 20
   m_mergeSphere: {fileID: 1389942519}
 --- !u!1 &1019779148
 GameObject:
@@ -5697,7 +5696,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  m_vlaueIncreaseSpeed: 1
+  m_valueIncreaseSpeed: 1
   m_slider: {fileID: 474817732}
   m_arrowType: 0
 --- !u!1 &1217007312
@@ -7666,7 +7665,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2445fd206b33442a58bda534df1b865e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 2445fd206b33442a58bda534df1b865e, type: 3}
       propertyPath: m_LocalRotation.x
@@ -8692,14 +8691,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2032118549}
-  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -0.7, y: -0.6, z: 2.6}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.7, y: -0.6, z: 2.797}
   m_LocalScale: {x: -0.15, y: 0.15, z: 0.15}
   m_Children:
   - {fileID: 1834538514}
   m_Father: {fileID: 1018826993}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2032118551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8763,7 +8762,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2032118549}
-  m_Mesh: {fileID: 4300000, guid: 495d99af241374af48185d85f65049c4, type: 3}
+  m_Mesh: {fileID: 4300000, guid: f6350aab186424da1b98c21c362215af, type: 3}
 --- !u!1 &2047188864
 GameObject:
   m_ObjectHideFlags: 0

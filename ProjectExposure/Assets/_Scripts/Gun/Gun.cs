@@ -85,7 +85,7 @@ public class Gun : MonoBehaviour,IAgent
     void Shoot()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+        
         RaycastHit[] hits;
         hits = Physics.RaycastAll(ray);
 

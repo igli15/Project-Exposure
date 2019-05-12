@@ -11,7 +11,8 @@ public class MergedGunState : AbstractState<Gun>
 	// Use this for initialization
 	void Start ()
 	{
-		m_oldPos = transform.position;
+		
+		
 	}
 
 	public override void Enter(IAgent pAgent)
@@ -20,10 +21,12 @@ public class MergedGunState : AbstractState<Gun>
 		
 		target.SetAoe(true);
 		
+		
 		m_mergeSphere = transform.parent.GetComponent<GunManager>().mergeSpehre.transform;
+		
 		Vector3 pos = m_mergeSphere.position;
 		
-		target.transform.DOLookAt(2 * transform.position - pos, 0.5f);
+		target.transform.DOLookAt(pos , 0.5f);
 	}
 
 	// Update is called once per frame
@@ -38,6 +41,7 @@ public class MergedGunState : AbstractState<Gun>
 		
 		target.SetAoe(false);
 		
-		target.transform.DOLookAt(m_oldPos, 0.5f);
+		target.transform.DORotate(new Vector3(0,0,0), 0.5f);
+
 	}
 }
