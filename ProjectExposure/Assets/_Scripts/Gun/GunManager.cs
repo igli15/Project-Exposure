@@ -60,5 +60,9 @@ public class GunManager : MonoBehaviour
 		
 		return mixture;
 	}
-	
+
+	public GameObject mergeSpehre
+	{
+		get { return mergeSphere; }
+	}
 }

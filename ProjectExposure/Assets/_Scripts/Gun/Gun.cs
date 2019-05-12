@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Serialization;
 
-public class Gun : MonoBehaviour
+public class Gun : MonoBehaviour,IAgent
 {
 
     public Action<Gun> OnChargeChanged;
@@ -36,7 +36,7 @@ public class Gun : MonoBehaviour
     private float m_aoeDamage = 5;
 
     [SerializeField] 
-    private GameObject mergeBeam;
+    private GameObject m_mergeBeam;
     
     [SerializeField]
     private KeyCode m_increaseKeyCode;
@@ -49,9 +49,20 @@ public class Gun : MonoBehaviour
 
 
     private bool m_isAoe = false;
+
+    private Fsm<Gun> m_fsm;
+    
     // Use this for initialization
     void Start()
     {
+
+        if (m_fsm == null)
+        {
+            m_fsm = new Fsm<Gun>(this);
+        }
+        
+        m_fsm.ChangeState<SeperatedGunState>();
+        
         m_renderer = GetComponent<Renderer>();
 
         //m_renderer.material.color = m_gunColor;
@@ -158,7 +169,31 @@ public class Gun : MonoBehaviour
 
         return damage;
     }
+    
+    public void SetBeamColor(Gun gun)
+    {
+        Color c = m_renderer.material.GetColor("_Color");
+        c.a = 0.5f;
 
+        Renderer beamRender = m_mergeBeam.GetComponent<Renderer>();
+        beamRender.material.color = c;
+        beamRender.material.SetFloat("_Wavelength",((m_hue/300 - 2 ) * -1) * 2);
+    }
+
+    public void SetHue(float hue)
+    {
+        m_hue = hue * 300;
+        Color color = ChangeHue(m_gunColor, m_hue);
+        
+        if(m_renderer != null)
+            m_renderer.material.SetColor("_Color",color);
+    }
+
+    public void ChangeToMergeState()
+    {
+        m_fsm.ChangeState<MergedGunState>();
+    }
+    
     public float Hue()
     {
         return m_hue;
@@ -189,27 +224,13 @@ public class Gun : MonoBehaviour
         get { return m_hueDamageRange; }
     }
 
-    public void SetHue(float hue)
-    {
-        m_hue = hue * 300;
-        Color color = ChangeHue(m_gunColor, m_hue);
-        
-        if(m_renderer != null)
-        m_renderer.material.SetColor("_Color",color);
-    }
-
     public Color gunColor
     {
         get { return m_gunColor; }
     }
 
-    public void SetBeamColor(Gun gun)
+    public Fsm<Gun> fsm
     {
-        Color c = m_renderer.material.GetColor("_Color");
-        c.a = 0.5f;
-
-        Renderer beamRender = mergeBeam.GetComponent<Renderer>();
-       beamRender.material.color = c;
-       beamRender.material.SetFloat("_Wavelength",((m_hue/300 - 2 ) * -1) * 2);
+        get { return m_fsm; }
     }
 }

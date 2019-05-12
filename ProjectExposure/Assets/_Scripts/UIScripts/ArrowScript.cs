@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ArrowScript : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
+public class ArrowScript : TouchButton
 {
 
 	enum ArrowType
@@ -24,28 +24,27 @@ public class ArrowScript : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
 	private ArrowType m_arrowType;
 	
 
-	private bool m_mouseEntered = false;
-
 	// Use this for initialization
 	void Start () 
 	{
-		
+		OnTouch.AddListener(UpdateSliders);
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	protected override void Update()
 	{
+		base.Update();
+	}
 
-		if (m_mouseEntered)
+	void UpdateSliders()
+	{
+		if (m_arrowType == ArrowType.RIGHT)
 		{
-			if (m_arrowType == ArrowType.RIGHT)
-			{
-				m_slider.value -= m_vlaueIncreaseSpeed * Time.deltaTime;
-			}
-			else
-			{
-				m_slider.value += m_vlaueIncreaseSpeed * Time.deltaTime;
-			}
+			m_slider.value -= m_vlaueIncreaseSpeed * Time.deltaTime;
+		}
+		else
+		{
+			m_slider.value += m_vlaueIncreaseSpeed * Time.deltaTime;
 		}
 	}
 
@@ -76,13 +75,5 @@ public class ArrowScript : MonoBehaviour,IPointerDownHandler,IPointerUpHandler
 */
 
 
-	public void OnPointerDown(PointerEventData eventData)
-	{
-		m_mouseEntered = true;
-	}
 
-	public void OnPointerUp(PointerEventData eventData)
-	{
-		m_mouseEntered = false;
-	}
 }
