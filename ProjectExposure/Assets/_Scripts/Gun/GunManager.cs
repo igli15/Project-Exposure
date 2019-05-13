@@ -40,17 +40,32 @@ public class GunManager : MonoBehaviour
 	Color MixColors(Color c1, Color c2)
 	{
 		Color mixture = Color.black;
+
+		//mixture = Color.cyan + Color.magenta;
+
+		//mixture = c1 + c2;
+		//return mixture;
 		
+		Color color1 = Color.magenta;
+		Color color2 = Color.blue;
+
+		float d1 = 0;
+		if (color1.r > 0) d1 += 1;
+		if (color1.g > 0) d1 += 1;
+		if (color1.b > 0) d1 += 1;
+
+		color1 /= d1;
 		
-		
-			
-		mixture.r = (c1.r + c2.r) / 2;
-		mixture.g = (c1.g + c2.g) / 2;
-		mixture.b = (c1.b + c2.b) / 2;
-		
-			
-			mixture = Color.Lerp(c1,c2,0.5f);
+		float d2 = 0;
+		if (color2.r > 0) d2 += 1;
+		if (color2.g > 0) d2 += 1;
+		if (color2.b > 0) d2 += 1;
+
+		color2 /= d2;
+		mixture = color1 + color2;
 		return mixture;
+		
+
 	}
 
 	public GameObject mergeSphere
