@@ -21,7 +21,6 @@ public class RailMovement : MonoBehaviour
         instance = this;
 
         m_targetPoint = initialPath.GetFirstPoint();
-        Debug.Log("FIRST POINT" + m_targetPoint);
         StartMovement();
 
         //Health part
