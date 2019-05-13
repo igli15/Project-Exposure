@@ -8,16 +8,19 @@ public class RailMovement : MonoBehaviour
 {
     public Slider slider;
     public float speed = 0.5f;
-    public Transform firstMovementPoint;
+    public float rotationTime = 1;
+    public Path initialPath;
 
-    private Vector3 m_targetPoint;
+    private MovementPoint m_targetPoint;
     private Rigidbody m_rb;
+    public static RailMovement instance;
 
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
+        instance = this;
 
-        m_targetPoint = firstMovementPoint.transform.position;
+        m_targetPoint = initialPath.GetFirstPoint();
         StartMovement();
 
         //Health part
@@ -52,8 +55,15 @@ public class RailMovement : MonoBehaviour
 
     public void StartMovement()
     {
-        Vector3 direction = m_targetPoint-transform.position;
+        Vector3 direction = m_targetPoint.transform.position-transform.position;
         m_rb.velocity = direction.normalized*speed;
+        Tweener tweener = transform.DOLookAt(m_targetPoint.transform.position, rotationTime);
+    }
+
+    public void SetPoint(MovementPoint point)
+    {
+        m_targetPoint = point;
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -66,15 +76,22 @@ public class RailMovement : MonoBehaviour
         }
         if (other.CompareTag("MovementPoint"))
         {
-            Debug.Log("NewPoint Reached");
-            if (other.GetComponent<MovementPoint>().isEndPoint)
+            if (other.GetComponent<MovementPoint>().GetNextPoint()==null)
             {
+                //Stop movement on the end of path
                 StopMovement();
                 return;
             }
-            m_targetPoint = other.GetComponent<MovementPoint>().GetNextPosition();
-            Tweener tweener = transform.DOLookAt(m_targetPoint, 3);
+            MovementPoint bufferPoint = m_targetPoint;
+
+            //Move forward
+            m_targetPoint = other.GetComponent<MovementPoint>().GetNextPoint();
             StartMovement();
+
+            //Activate all events binded to Point
+            bufferPoint.ActivatePoint();
+
+            
         }
             
     }

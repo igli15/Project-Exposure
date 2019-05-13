@@ -1,38 +1,58 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+[Serializable]
+public class PathEvent : UnityEvent<MovementPoint> { }
 
 public class MovementPoint : MonoBehaviour {
+    [SerializeField]
+    private MovementPoint m_nextPoint;
+    [SerializeField]
+    private Path m_path;
+    public PathEvent onPointActivated;
 
-    public int id = 0;
-    public bool isEndPoint = false;
-
-    public static List<MovementPoint> m_movementPoints=new List<MovementPoint>();
-
-	void Start () {
-        Debug.Log("THIS: " +id+" | "+ this);
-        Debug.Log("m_movementPoints " + m_movementPoints);
-
-        if (!m_movementPoints.Contains(this))
-        {
-            Debug.Log("Adding new Movementpoint with id " + id);
-            m_movementPoints.Add(this);
-        }
-	}
-
-
-    public Vector3 GetNextPosition()
+    public void SetNextPoint(MovementPoint nextPoint)
     {
-        if (isEndPoint) return transform.position;
+        m_nextPoint = nextPoint;
+    }
 
-        foreach (MovementPoint mp in m_movementPoints)
+    public void ActivatePoint()
+    {
+        onPointActivated.Invoke(this);
+    }
+
+    public void SetPath(Path path)
+    {
+        m_path = path;
+    }
+
+    public MovementPoint GetNextPoint()
+    {
+        if (m_nextPoint == null)
         {
-            if (mp.id == id + 1)
-            {
-                return mp.transform.position;
-            }
+            m_path.ActivateChoicePhase();
         }
-        Debug.Assert(true,"Cant find MovementPoint with id "+id);
-        return new Vector3(0, 0, 0);
+        return m_nextPoint;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        m_path.color.a = 1;
+        if (m_path != null) Gizmos.color = m_path.color;
+
+        Gizmos.DrawWireSphere(transform.position, 1);
+        if(m_nextPoint!=null)
+            Gizmos.DrawLine(transform.position, m_nextPoint.transform.position);
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(transform.position, 1);
+        if (m_nextPoint != null)
+            Gizmos.DrawLine(transform.position, m_nextPoint.transform.position);
     }
 }
