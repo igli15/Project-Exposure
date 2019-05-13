@@ -13,10 +13,12 @@ public class RailMovement : MonoBehaviour
 
     private MovementPoint m_targetPoint;
     private Rigidbody m_rb;
+    public static RailMovement instance;
 
     void Start()
     {
         m_rb = GetComponent<Rigidbody>();
+        instance = this;
 
         m_targetPoint = initialPath.GetFirstPoint();
         Debug.Log("FIRST POINT" + m_targetPoint);
@@ -58,6 +60,11 @@ public class RailMovement : MonoBehaviour
         m_rb.velocity = direction.normalized*speed;
     }
 
+    public void SetPoint(MovementPoint point)
+    {
+        m_targetPoint = point;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("EnemyZone"))
@@ -71,7 +78,7 @@ public class RailMovement : MonoBehaviour
             
             if (other.GetComponent<MovementPoint>().GetNextPoint()==null)
             {
-                Debug.Log("STOP");
+                Debug.Log("PATH ENDS");
                 StopMovement();
                 return;
             }

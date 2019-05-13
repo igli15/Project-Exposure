@@ -6,14 +6,24 @@ public class MovementPoint : MonoBehaviour {
 
     [SerializeField]
     private MovementPoint m_nextPoint;
-
+    [SerializeField]
+    private Path m_path;
     public void SetNextPoint(MovementPoint nextPoint)
     {
         m_nextPoint = nextPoint;
     }
 
+    public void SetPath(Path path)
+    {
+        m_path = path;
+    }
+
     public MovementPoint GetNextPoint()
     {
+        if (m_nextPoint == null)
+        {
+            m_path.ShowHudOptions();
+        }
         return m_nextPoint;
     }
 

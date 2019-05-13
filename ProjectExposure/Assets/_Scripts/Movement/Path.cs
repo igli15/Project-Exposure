@@ -35,7 +35,7 @@ public class Path : MonoBehaviour {
             collider.radius = 1;
 
             MovementPoint mp=newPoint.AddComponent<MovementPoint>();
-
+            mp.SetPath(this);
             if (i > 0) m_bufferPoint.SetNextPoint(mp);
             if (i == 0) { m_firstPoint = mp; Debug.Log("first point " + m_firstPoint);  }
 
@@ -63,7 +63,7 @@ public class Path : MonoBehaviour {
         m_currentCount++;
         m_pointCount = m_currentCount;
         MovementPoint mp = newPoint.AddComponent<MovementPoint>();
-
+        mp.SetPath(this);
         m_bufferPoint.SetNextPoint(mp);
 
         m_bufferPoint = mp;
@@ -87,6 +87,6 @@ public class Path : MonoBehaviour {
 
     public void ShowHudOptions()
     {
-
+        PathChoiceManager.instance.GetComponent<PathChoiceManager>().GenerateButtons(m_paths);
     }
 }
