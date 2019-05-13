@@ -9,6 +9,7 @@ using UnityEngine.Serialization;
 public class Gun : MonoBehaviour,IAgent
 {
     public Action<Gun> OnHueChanged;
+    public Action<Gun> OnColorChanged;
 
     [SerializeField] private Vector2 m_gunColorRange = Vector2.zero;
 
@@ -63,6 +64,8 @@ public class Gun : MonoBehaviour,IAgent
         OnHueChanged += SetBeamColor;
 
         if(OnHueChanged!= null) OnHueChanged(this);
+        
+        ChangeColor(m_renderer.material.GetColor("_Color"));
     }
 
     // Update is called once per frame
@@ -186,7 +189,10 @@ public class Gun : MonoBehaviour,IAgent
 
         Renderer beamRender = m_mergeBeam.GetComponent<Renderer>();
         beamRender.material.color = c;
-        beamRender.material.SetFloat("_Wavelength",((m_hue/300 - 2 ) * -1) * 2);
+        
+        
+        //beamRender.material.SetFloat("_Wavelength",((m_hue/300 - 2 ) * -1) * 2);
+        beamRender.material.SetFloat("_Wavelength",((GetColorHue(c) + 1) * 2));
     }
 
     public void SetHue(float hue)
@@ -206,6 +212,13 @@ public class Gun : MonoBehaviour,IAgent
     public void ChangeToSeperatedState()
     {
         m_fsm.ChangeState<SeperatedGunState>();
+    }
+
+    public void ChangeColor(Color newColor)
+    {
+        m_renderer.material.SetColor("_Color", newColor);
+        if (OnColorChanged != null) OnColorChanged(this);
+        SetBeamColor(this);
     }
     
     public float Hue()

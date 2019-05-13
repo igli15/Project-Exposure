@@ -21,8 +21,12 @@ public class GunManager : MonoBehaviour
 		m_leftGun.manager = this;
 		m_rightGun.manager = this;
 		
-		m_rightGun.OnHueChanged += MixColorOfGuns;
-		m_leftGun.OnHueChanged += MixColorOfGuns;
+		//m_rightGun.OnHueChanged += MixColorOfGuns;
+		//m_leftGun.OnHueChanged += MixColorOfGuns;
+		
+		m_rightGun.OnColorChanged += MixColorOfGuns;
+		m_leftGun.OnColorChanged += MixColorOfGuns;
+
 
 		m_leftGunRenderer = m_leftGun.GetComponent<Renderer>();
 		m_rightGunRenderer = m_rightGun.GetComponent<Renderer>();
@@ -43,11 +47,12 @@ public class GunManager : MonoBehaviour
 
 		//mixture = Color.cyan + Color.magenta;
 
-		//mixture = c1 + c2;
-		//return mixture;
-		
-		Color color1 = Color.magenta;
-		Color color2 = Color.blue;
+		mixture = c1 + c2;
+		return mixture;
+
+		/*
+		Color color1 = c1;
+		Color color2 = c2;
 
 		float d1 = 0;
 		if (color1.r > 0) d1 += 1;
@@ -64,7 +69,7 @@ public class GunManager : MonoBehaviour
 		color2 /= d2;
 		mixture = color1 + color2;
 		return mixture;
-		
+		*/
 
 	}
 
