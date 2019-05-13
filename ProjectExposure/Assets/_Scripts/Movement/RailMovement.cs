@@ -77,15 +77,22 @@ public class RailMovement : MonoBehaviour
         }
         if (other.CompareTag("MovementPoint"))
         {
-            
             if (other.GetComponent<MovementPoint>().GetNextPoint()==null)
             {
+                //Stop movement on the end of path
                 StopMovement();
                 return;
             }
+            MovementPoint bufferPoint = m_targetPoint;
+
+            //Move forward
             m_targetPoint = other.GetComponent<MovementPoint>().GetNextPoint();
-            //Tweener tweener = transform.DOLookAt(m_targetPoint.transform.position, rotationTime);
             StartMovement();
+
+            //Activate all events binded to Point
+            bufferPoint.ActivatePoint();
+
+            
         }
             
     }

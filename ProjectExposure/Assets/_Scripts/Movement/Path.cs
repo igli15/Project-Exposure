@@ -17,7 +17,8 @@ public class Path : MonoBehaviour {
 
     private int m_currentCount = 0;
     [SerializeField]
-    private MovementPoint m_bufferPoint = null;
+    private MovementPoint m_lastPoint = null;
+
 
     public void GeneratePoints()
     {
@@ -28,7 +29,6 @@ public class Path : MonoBehaviour {
         DestroyPoints();
 
         GameObject empty = new GameObject();
-
         for (int i = 0; i < m_pointCount; i++)
         {
             GameObject newPoint = GameObject.Instantiate(empty, transform.position + new Vector3(0, 0, 8 * i), transform.rotation,transform);
@@ -39,10 +39,10 @@ public class Path : MonoBehaviour {
 
             MovementPoint mp=newPoint.AddComponent<MovementPoint>();
             mp.SetPath(this);
-            if (i > 0) m_bufferPoint.SetNextPoint(mp);
+            if (i > 0) m_lastPoint.SetNextPoint(mp);
             if (i == 0) { m_firstPoint = mp; Debug.Log("first point " + m_firstPoint);  }
 
-            m_bufferPoint = mp;
+            m_lastPoint = mp;
         }
 
         PathEditor.SafeDestroyGameObject<Transform>(empty.transform);
@@ -57,7 +57,7 @@ public class Path : MonoBehaviour {
         }
         GameObject empty = new GameObject();
 
-        GameObject newPoint = GameObject.Instantiate(empty, m_bufferPoint.transform.position+new Vector3(0,0,2), transform.rotation, transform);
+        GameObject newPoint = GameObject.Instantiate(empty, m_lastPoint.transform.position+new Vector3(0,0,2), transform.rotation, transform);
         newPoint.name = "point_" + m_currentCount;
         newPoint.tag = "MovementPoint";
         SphereCollider collider = newPoint.AddComponent<SphereCollider>();
@@ -67,9 +67,9 @@ public class Path : MonoBehaviour {
         m_pointCount = m_currentCount;
         MovementPoint mp = newPoint.AddComponent<MovementPoint>();
         mp.SetPath(this);
-        m_bufferPoint.SetNextPoint(mp);
+        m_lastPoint.SetNextPoint(mp);
 
-        m_bufferPoint = mp;
+        m_lastPoint = mp;
 
         PathEditor.SafeDestroyGameObject<Transform>(empty.transform);
     }
