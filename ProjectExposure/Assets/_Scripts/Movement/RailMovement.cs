@@ -58,11 +58,13 @@ public class RailMovement : MonoBehaviour
     {
         Vector3 direction = m_targetPoint.transform.position-transform.position;
         m_rb.velocity = direction.normalized*speed;
+        Tweener tweener = transform.DOLookAt(m_targetPoint.transform.position, rotationTime);
     }
 
     public void SetPoint(MovementPoint point)
     {
         m_targetPoint = point;
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -78,12 +80,11 @@ public class RailMovement : MonoBehaviour
             
             if (other.GetComponent<MovementPoint>().GetNextPoint()==null)
             {
-                Debug.Log("PATH ENDS");
                 StopMovement();
                 return;
             }
             m_targetPoint = other.GetComponent<MovementPoint>().GetNextPoint();
-            Tweener tweener = transform.DOLookAt(m_targetPoint.transform.position, rotationTime);
+            //Tweener tweener = transform.DOLookAt(m_targetPoint.transform.position, rotationTime);
             StartMovement();
         }
             

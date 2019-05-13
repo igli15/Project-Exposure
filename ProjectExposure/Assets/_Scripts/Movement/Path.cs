@@ -3,18 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Path : MonoBehaviour {
-
     [Header("Next Paths")]
     [SerializeField]
     private List<Path> m_paths;
 
     [Header("Settings")]
     [SerializeField]
+    public Color color;
+    [SerializeField]
     private int m_pointCount = 0;
-    private int m_currentCount = 0;
-    private MovementPoint m_bufferPoint = null;
     [SerializeField]
     private MovementPoint m_firstPoint;
+
+    private int m_currentCount = 0;
+    [SerializeField]
+    private MovementPoint m_bufferPoint = null;
 
     public void GeneratePoints()
     {

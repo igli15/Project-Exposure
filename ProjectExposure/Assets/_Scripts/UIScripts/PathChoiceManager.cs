@@ -19,6 +19,7 @@ public class PathChoiceManager : MonoBehaviour {
         foreach (Path path in paths)
         {
             GameObject newButton = GameObject.Instantiate(button, transform.position, transform.rotation, transform);
+            newButton.transform.GetChild(0).GetComponent<Text>().text = path.name;
             newButton.transform.position += new Vector3(150*i,0, 0);
             newButton.GetComponent<Button>().onClick.AddListener(delegate { OnClick(path); });
             i++;
@@ -27,7 +28,6 @@ public class PathChoiceManager : MonoBehaviour {
     }
 
     void OnClick(Path path) {
-        Debug.Log("NEW PATH IS " + path);
         for (int i = 0; i < transform.childCount; i++)
         {
             Destroy(transform.GetChild(i).gameObject);
