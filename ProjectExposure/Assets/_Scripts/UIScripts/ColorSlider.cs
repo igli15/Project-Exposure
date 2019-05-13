@@ -6,8 +6,7 @@ using UnityEngine.UI;
 public class ColorSlider : MonoBehaviour 
 {
 
-	[SerializeField] 
-	private Gun targetGun;
+	[SerializeField] private Gun targetGun;
 
 	private Slider m_slider;
 	
@@ -19,7 +18,7 @@ public class ColorSlider : MonoBehaviour
 		
 		m_slider.onValueChanged.Invoke(m_slider.value);
 		
-		targetGun.OnChargeChanged += delegate(Gun gun) { m_slider.value = gun.Hue() / 300;  };
+		targetGun.OnHueChanged += delegate(Gun gun) { m_slider.value = gun.Hue() / 300;  };
 	}
 
 	void UpdateGunHue()

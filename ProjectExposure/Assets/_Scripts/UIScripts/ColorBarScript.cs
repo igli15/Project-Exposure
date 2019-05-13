@@ -5,8 +5,7 @@ using UnityEngine;
 
 public class ColorBarScript : MonoBehaviour
 {
-	[SerializeField] 
-	private float m_pointerRange = 20;
+	[SerializeField] private float m_pointerRange = 20;
 	
 	private PointerScript[] m_pointers;
 	
@@ -17,7 +16,7 @@ public class ColorBarScript : MonoBehaviour
 
 		for (int i = 0; i < m_pointers.Length; i++)
 		{
-			m_pointers[i].OnPointerUpdated += IncreaseGunDamage;
+			//m_pointers[i].OnPointerUpdated += IncreaseGunDamage;
 		}
 	}
 	
