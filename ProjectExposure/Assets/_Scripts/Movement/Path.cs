@@ -1,11 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Path : MonoBehaviour {
     [Header("Next Paths")]
     [SerializeField]
     private List<Path> m_paths;
+    [SerializeField]
+    public Button button;
 
     [Header("Settings")]
     [SerializeField]
@@ -19,7 +22,10 @@ public class Path : MonoBehaviour {
     [SerializeField]
     private MovementPoint m_lastPoint = null;
 
-
+    public void Start()
+    {
+        button.gameObject.SetActive(false);
+    }
     public void GeneratePoints()
     {
         if (m_pointCount < 0) m_pointCount = 0;
@@ -77,7 +83,7 @@ public class Path : MonoBehaviour {
     public void DestroyPoints()
     {
         
-        while(transform.childCount>0)
+        while(transform.childCount>1)
         {
             PathEditor.SafeDestroyGameObject<Transform>(transform.GetChild(0));
         }
@@ -88,8 +94,27 @@ public class Path : MonoBehaviour {
         return m_firstPoint;
     }
 
+    public void ActivateChoicePhase()
+    {
+        foreach (Path path in m_paths)
+        {
+            path.button.gameObject.SetActive(true);
+            path.button.onClick.AddListener(() =>
+            {
+                RailMovement.instance.SetPoint(path.GetFirstPoint());
+                RailMovement.instance.StartMovement();
+                foreach (Path cpath in m_paths)
+                {
+                    cpath.button.gameObject.SetActive(false);
+                }
+            });
+        }
+    }
+
     public void ShowHudOptions()
     {
-        PathChoiceManager.instance.GetComponent<PathChoiceManager>().GenerateButtons(m_paths);
+
+        //Legacy
+        //PathChoiceManager.instance.GetComponent<PathChoiceManager>().GenerateButtons(m_paths);
     }
 }

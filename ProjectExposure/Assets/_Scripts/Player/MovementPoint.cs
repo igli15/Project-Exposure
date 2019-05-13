@@ -33,7 +33,7 @@ public class MovementPoint : MonoBehaviour {
     {
         if (m_nextPoint == null)
         {
-            m_path.ShowHudOptions();
+            m_path.ActivateChoicePhase();
         }
         return m_nextPoint;
     }
