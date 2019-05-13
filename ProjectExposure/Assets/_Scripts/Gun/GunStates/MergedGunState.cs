@@ -22,7 +22,7 @@ public class MergedGunState : AbstractState<Gun>
 		target.SetAoe(true);
 		
 		
-		m_mergeSphere = transform.parent.GetComponent<GunManager>().mergeSpehre.transform;
+		m_mergeSphere = transform.parent.GetComponent<GunManager>().mergeSphere.transform;
 		
 		Vector3 pos = m_mergeSphere.position;
 		

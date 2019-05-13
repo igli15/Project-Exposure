@@ -16,10 +16,13 @@ public class GunManager : MonoBehaviour
 	private Renderer m_mergeSphereRenderer;
 	
 	// Use this for initialization
-	void Start () 
+	void Start ()
 	{
+		m_leftGun.manager = this;
+		m_rightGun.manager = this;
+		
 		m_rightGun.OnHueChanged += MixColorOfGuns;
-
+		m_leftGun.OnHueChanged += MixColorOfGuns;
 
 		m_leftGunRenderer = m_leftGun.GetComponent<Renderer>();
 		m_rightGunRenderer = m_rightGun.GetComponent<Renderer>();
@@ -38,14 +41,19 @@ public class GunManager : MonoBehaviour
 	{
 		Color mixture = Color.black;
 		
+		
+		
+			
 		mixture.r = (c1.r + c2.r) / 2;
 		mixture.g = (c1.g + c2.g) / 2;
 		mixture.b = (c1.b + c2.b) / 2;
 		
+			
+			mixture = Color.Lerp(c1,c2,0.5f);
 		return mixture;
 	}
 
-	public GameObject mergeSpehre
+	public GameObject mergeSphere
 	{
 		get { return m_mergeSphere; }
 	}

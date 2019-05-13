@@ -27,7 +27,7 @@ public class PointerScript : MonoBehaviour
 		m_transform = GetComponent<RectTransform>();
 		m_parentHalfWidth = m_barRectTransform.rect.width/2;
 
-		targetGun.OnChargeChanged += SetPositionBasedOnHue;
+		//targetGun.OnChargeChanged += SetPositionBasedOnHue;
 		
 	}
 

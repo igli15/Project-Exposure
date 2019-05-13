@@ -30,6 +30,8 @@ public class Gun : MonoBehaviour,IAgent
     
     [SerializeField] private KeyCode m_increaseKeyCode;
     [SerializeField] private KeyCode m_decreaseKeycode;
+
+    private GunManager m_manager;
     
     private Renderer m_renderer;
 
@@ -87,6 +89,7 @@ public class Gun : MonoBehaviour,IAgent
         
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         
+        if(fsm.GetCurrentState() is SeperatedGunState)
         LookInRayDirection(ray);
       
         RaycastHit[] hits;
@@ -99,7 +102,7 @@ public class Gun : MonoBehaviour,IAgent
             
             if(hittable != null)
             {
-                hittable.HitByGun(CalculateDamage(hittable),this);
+                hittable.HitByGun(CalculateDamage(hittable.color),this);
             }
         }
     }
@@ -152,18 +155,27 @@ public class Gun : MonoBehaviour,IAgent
         return Color.HSVToRGB(newHue / 360, saturation, value);
     }
 
-    float CalculateDamage(Hittable enemy)
+    float CalculateDamage(Color color)
     {
         float damage = 0;
-        float enemyHue = GetColorHue(enemy.color)*360;
-        float hueDiff = Mathf.Abs(enemyHue - m_hue);
+        float enemyHue = GetColorHue(color)*360;
+
+        float hue = m_hue;
+
+        if (m_isAoe)
+        {
+            hue = GetColorHue(manager.mergeSphere.GetComponent<Renderer>().material.color) * 360;
+        }
+        
+        
+        float hueDiff = Mathf.Abs(enemyHue - hue);
 
         if (hueDiff <= m_hueDamageRange)
         {
             float precisionLevel= ((m_hueDamageRange - hueDiff) / m_hueDamageRange);
             damage =  m_baseDamage + precisionLevel * m_extraDamage;
         }
-
+        Debug.Log(damage);
         return damage;
     }
     
@@ -234,5 +246,12 @@ public class Gun : MonoBehaviour,IAgent
     public Fsm<Gun> fsm
     {
         get { return m_fsm; }
+    }
+    
+
+    public GunManager manager
+    {
+        get { return m_manager; }
+        set { m_manager = value; }
     }
 }

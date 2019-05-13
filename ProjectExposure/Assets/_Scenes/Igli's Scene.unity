@@ -715,34 +715,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 132765966}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9d4cd8b3d9b44f51bdd60da570a0ee8, type: 3}
+  m_Script: {fileID: 11500000, guid: 0c90c5a96579748cbb770f5b555d679b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   OnTouchEnter:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2032118551}
-        m_MethodName: ChangeToMergeState
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 144620556}
-        m_MethodName: ChangeToMergeState
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   OnTouch:
@@ -752,31 +730,11 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   OnTouchExit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2032118551}
-        m_MethodName: ChangeToSeperatedState
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 144620556}
-        m_MethodName: ChangeToSeperatedState
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  leftGun: {fileID: 2032118551}
+  rightGun: {fileID: 144620556}
 --- !u!1 &143685798 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1378509260144752, guid: 10f907db940d8f242923dfa0e41373e5,
@@ -821,7 +779,7 @@ MonoBehaviour:
   m_aoeDamage: 5
   m_mergeBeam: {fileID: 689556013}
   m_increaseKeyCode: 273
-  m_decreseKeycode: 274
+  m_decreaseKeycode: 274
 --- !u!23 &144620558
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8720,7 +8678,7 @@ MonoBehaviour:
   m_aoeDamage: 5
   m_mergeBeam: {fileID: 1720198393}
   m_increaseKeyCode: 119
-  m_decreseKeycode: 115
+  m_decreaseKeycode: 115
 --- !u!23 &2032118553
 MeshRenderer:
   m_ObjectHideFlags: 0
