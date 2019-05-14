@@ -44,6 +44,7 @@ public class ColorGun : Gun
 	{
 		base.SetColor(newColor);
 
+		m_material.SetColor("_Color", newColor);
 		m_beamRenderer.material.color = newColor;
 		m_color = newColor;
 		m_beamRenderer.material.SetFloat("_Wavelength",((GetHueOfColor(newColor) -2)  * -2));

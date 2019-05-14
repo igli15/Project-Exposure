@@ -57,4 +57,10 @@ public class GunManager : MonoBehaviour {
 			}
 		}
 	}
+
+	public void SetGunColors(Color newColor)
+	{
+		m_magnetGun.SetColor(newColor);
+		m_colorGun.SetColor(newColor);
+	}
 }

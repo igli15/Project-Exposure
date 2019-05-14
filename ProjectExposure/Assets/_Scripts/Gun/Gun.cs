@@ -80,7 +80,7 @@ public abstract class Gun : MonoBehaviour,IAgent
 	public virtual void SetColor(Color newColor)
 	{
 		m_color = newColor;
-		m_material.SetColor("_Color", newColor);
+		
 		if (OnColorChanged != null) OnColorChanged(this);
 	}
 }
