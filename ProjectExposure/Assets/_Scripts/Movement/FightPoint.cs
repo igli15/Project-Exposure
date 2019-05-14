@@ -16,8 +16,30 @@ public class FightPoint : MonoBehaviour
     {
         m_isActivated = true;
 
+        //Rotate cmaera towards fighting zone
         RailMovement.instance.StopMovement();
         RailMovement.instance.transform.DORotateQuaternion(transform.rotation, m_timeOfRotation);
+
+        //Activateing Initial spawn for each enemyPath
+        foreach (EnemyPath enemyPath in GetComponentsInChildren<EnemyPath>())
+        {
+            enemyPath.InitialSpawn();
+        }
+
+    }
+
+    public EnemyPath GetEnemyPathByName(string pathName)
+    {
+        foreach (EnemyPath enemyPath in GetComponentsInChildren<EnemyPath>())
+        {
+            if (enemyPath.name == pathName) return enemyPath;
+        }
+        return null;
+    }
+
+    public EnemyPath[] GetAllEnemyPaths()
+    {
+        return GetComponentsInChildren<EnemyPath>();
     }
 
     public void GenerateEnemyPaths()
@@ -27,12 +49,12 @@ public class FightPoint : MonoBehaviour
         {
             GameObject empty = new GameObject();
             GameObject newEnemyPath = GameObject.Instantiate(empty, transform.position + new Vector3(5*i, 0, 5), transform.rotation, transform);
-            newEnemyPath.name = "EnemyPath";
+            newEnemyPath.name = "EnemyPath_"+i;
 
             Path path=newEnemyPath.AddComponent<Path>();
             path.SetPointCount(3);
             path.GeneratePoints();
-
+            newEnemyPath.AddComponent<EnemyPath>();
             EditorTools.SafeDestroyGameObject<Transform>(empty.transform);
         }
     }
