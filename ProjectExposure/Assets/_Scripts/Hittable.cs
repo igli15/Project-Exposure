@@ -6,18 +6,22 @@ using UnityEngine;
 public abstract class Hittable : MonoBehaviour
 {
 	public Action<Hittable> OnHit;
-	
-	public Action<Hittable> OnAimed;
 
-	public Color color;
+	[SerializeField] protected Color color;
 
-	public virtual void HitByGun(float damage,AbstractGun gun)
+	public virtual void HitByGun(AbstractGun gun)
 	{
 		if (OnHit != null) OnHit(this);
 	}
 
-	public virtual void Aimed(AbstractGun gun)
+
+	public virtual void SetColor(Color newColor)
 	{
-		if (OnAimed != null) OnAimed(this);
+		GetComponent<Renderer>().material.color = newColor;
+	}
+
+	public Color GetColor()
+	{
+		return color;
 	}
 }

@@ -344,10 +344,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0, g: 1, b: 0.07011509, a: 0}
-  baseDamage: 10
-  extraDamage: 20
-  aoeDamage: 5
-  range: 30
 --- !u!135 &36749772
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -750,6 +746,7 @@ GameObject:
   - component: {fileID: 144620560}
   - component: {fileID: 144620559}
   - component: {fileID: 144620558}
+  - component: {fileID: 144620556}
   m_Layer: 0
   m_Name: GunRight
   m_TagString: Untagged
@@ -757,6 +754,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &144620556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 144620555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0af4f9be669024067bc45b60a96b8bfc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_beamRenderer: {fileID: 689556014}
 --- !u!23 &144620558
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1822,10 +1831,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 1, g: 0.017601715, b: 0, a: 0}
-  baseDamage: 10
-  extraDamage: 20
-  aoeDamage: 5
-  range: 30
 --- !u!135 &413835418
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2549,10 +2554,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0, g: 0.42802, b: 1, a: 0}
-  baseDamage: 10
-  extraDamage: 20
-  aoeDamage: 5
-  range: 30
 --- !u!135 &554635329
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2722,10 +2723,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0.021381378, g: 1, b: 0, a: 1}
-  baseDamage: 10
-  extraDamage: 20
-  aoeDamage: 5
-  range: 30
 --- !u!135 &585498952
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -3242,6 +3239,11 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!23 &689556014 stripped
+MeshRenderer:
+  m_PrefabParentObject: {fileID: 2300000, guid: 2445fd206b33442a58bda534df1b865e,
+    type: 3}
+  m_PrefabInternal: {fileID: 107577807}
 --- !u!1 &689598484
 GameObject:
   m_ObjectHideFlags: 0
@@ -3820,10 +3822,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0.021381378, g: 1, b: 0, a: 1}
-  baseDamage: 10
-  extraDamage: 20
-  aoeDamage: 5
-  range: 30
 --- !u!135 &884147788
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4691,7 +4689,7 @@ MonoBehaviour:
   slider: {fileID: 1063519132}
   speed: 3
   rotationTime: 1
-  initialPath: {fileID: 0}
+  initialPath: {fileID: 1089454669}
 --- !u!135 &1018826995
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -4945,6 +4943,54 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1089454668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1089454670}
+  - component: {fileID: 1089454669}
+  m_Layer: 0
+  m_Name: Path
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1089454669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1089454668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8ae2677ac7a6b74abbeeced51cdb12a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_paths: []
+  button: {fileID: 0}
+  color: {r: 0, g: 0, b: 0, a: 1}
+  m_pointCount: 2
+  m_firstPoint: {fileID: 1472100134}
+  m_lastPoint: {fileID: 2132706576}
+--- !u!4 &1089454670
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1089454668}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.930506, y: 0.1, z: 23.848583}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1472100136}
+  - {fileID: 2132706578}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1101769824
 GameObject:
   m_ObjectHideFlags: 0
@@ -5046,10 +5092,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0.021381378, g: 1, b: 0, a: 1}
-  baseDamage: 10
-  extraDamage: 20
-  aoeDamage: 5
-  range: 30
 --- !u!135 &1101769831
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5796,10 +5838,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0.021381378, g: 1, b: 0, a: 1}
-  baseDamage: 10
-  extraDamage: 20
-  aoeDamage: 5
-  range: 30
 --- !u!135 &1236515174
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6190,10 +6228,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0, g: 0.42802, b: 1, a: 0}
-  baseDamage: 10
-  extraDamage: 20
-  aoeDamage: 5
-  range: 60
 --- !u!135 &1284938120
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6534,10 +6568,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 0.021381378, g: 1, b: 0, a: 1}
-  baseDamage: 10
-  extraDamage: 20
-  aoeDamage: 5
-  range: 60
 --- !u!1 &1423863943
 GameObject:
   m_ObjectHideFlags: 0
@@ -6638,6 +6668,65 @@ Transform:
   - {fileID: 36749775}
   m_Father: {fileID: 0}
   m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1472100133
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1472100136}
+  - component: {fileID: 1472100135}
+  - component: {fileID: 1472100134}
+  m_Layer: 0
+  m_Name: point_0
+  m_TagString: MovementPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1472100134
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1472100133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80b57eebb0306c848b3b730f93b07839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_nextPoint: {fileID: 2132706576}
+  m_path: {fileID: 1089454669}
+  onPointActivated:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: PathEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!135 &1472100135
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1472100133}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1472100136
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1472100133}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.09, z: -28}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1089454670}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1482278013
 GameObject:
@@ -7427,10 +7516,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   color: {r: 1, g: 0, b: 0.86353207, a: 0}
-  baseDamage: 10
-  extraDamage: 20
-  aoeDamage: 5
-  range: 30
 --- !u!135 &1668460980
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -8769,3 +8854,62 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &2132706575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2132706578}
+  - component: {fileID: 2132706577}
+  - component: {fileID: 2132706576}
+  m_Layer: 0
+  m_Name: point_1
+  m_TagString: MovementPoint
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2132706576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2132706575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80b57eebb0306c848b3b730f93b07839, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_nextPoint: {fileID: 0}
+  m_path: {fileID: 1089454669}
+  onPointActivated:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: PathEvent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+--- !u!135 &2132706577
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2132706575}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &2132706578
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2132706575}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 28.3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1089454670}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

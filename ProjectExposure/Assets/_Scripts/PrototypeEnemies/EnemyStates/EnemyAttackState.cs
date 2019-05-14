@@ -14,7 +14,7 @@ public class EnemyAttackState : AbstractState<EnemyFSM> {
     {
         base.Enter(pAgent);
         //Debug.Log("Attack ENTER");
-        m_color = GetComponent<Enemy>().color;
+        m_color = GetComponent<Enemy>().GetColor();
         m_lastShotTime = Time.time;
     }
 
@@ -38,7 +38,7 @@ public class EnemyAttackState : AbstractState<EnemyFSM> {
         GameObject projectile = GameObject.Instantiate(prefab,transform.position,transform.rotation,null);
         projectile.SetActive(true);
         projectile.GetComponent<MeshRenderer>().material.color = m_color;
-        projectile.GetComponent<Projectile>().color = m_color;
+        projectile.GetComponent<Projectile>().SetColor(m_color);
         projectile.GetComponent<Rigidbody>().velocity =(  Camera.main.transform.position- transform.position ).normalized*2;
         projectile.GetComponent<Rigidbody>().useGravity = false;
     }
