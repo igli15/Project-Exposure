@@ -22,19 +22,6 @@ public class RailMovement : MonoBehaviour
 
         m_targetPoint = initialPath.GetFirstPoint();
         StartMovement();
-
-        //Health part
-        //TODO: move to separate script
-        Health health = GetComponent<Health>();
-        slider.maxValue = health.MaxHealth;
-        health.OnHealthDecreased += OnHealthChanged;
-        health.OnHealthIncreased += OnHealthChanged;
-        OnHealthChanged(health);
-    }
-
-    void OnHealthChanged(Health health)
-    {
-        slider.value = health.HP;
     }
 
     void Update()
