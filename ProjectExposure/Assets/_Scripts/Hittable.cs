@@ -11,12 +11,12 @@ public abstract class Hittable : MonoBehaviour
 
 	public Color color;
 
-	public virtual void HitByGun(float damage,Gun gun)
+	public virtual void HitByGun(float damage,AbstractGun gun)
 	{
 		if (OnHit != null) OnHit(this);
 	}
 
-	public virtual void Aimed(Gun gun)
+	public virtual void Aimed(AbstractGun gun)
 	{
 		if (OnAimed != null) OnAimed(this);
 	}

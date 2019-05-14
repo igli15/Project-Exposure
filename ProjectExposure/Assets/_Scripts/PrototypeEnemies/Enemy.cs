@@ -30,12 +30,13 @@ public class Enemy : Hittable
     }
 
 
-    public override void HitByGun(float damage, Gun gun)
+    public override void HitByGun(float damage, AbstractGun gun)
     {
         base.HitByGun(damage, gun);
 
         GetDamagedByHue(damage);
 
+        /*
         if (gun.IsAoe())
         {
             Collider[] aoeColliders = Physics.OverlapSphere(transform.position, gun.AoeRange());
@@ -45,5 +46,6 @@ public class Enemy : Hittable
                     coll.gameObject.GetComponent<Enemy>().GetDamagedByHue(gun.AoeDamage());
             }
         }
+        */
     }
 }

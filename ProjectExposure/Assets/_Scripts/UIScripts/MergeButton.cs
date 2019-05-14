@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MergeButton : TouchButton
 {
-	[SerializeField] private Gun leftGun;
-	[SerializeField] private Gun rightGun;
+	[SerializeField] private AbstractGun leftGun;
+	[SerializeField] private AbstractGun rightGun;
 
 
 	private bool merged = false;
@@ -17,14 +17,14 @@ public class MergeButton : TouchButton
 			if (merged)
 			{
 				merged = false;
-				leftGun.fsm.ChangeState<SeperatedGunState>();
-				rightGun.fsm.ChangeState<SeperatedGunState>();
+				//leftGun.fsm.ChangeState<SeperatedGunState>();
+				//rightGun.fsm.ChangeState<SeperatedGunState>();
 			}
 			else
 			{
 				merged = true;
-				leftGun.fsm.ChangeState<MergedGunState>();
-				rightGun.fsm.ChangeState<MergedGunState>();
+				//leftGun.fsm.ChangeState<MergedGunState>();
+				//rightGun.fsm.ChangeState<MergedGunState>();
 			}
 		});
 	}
