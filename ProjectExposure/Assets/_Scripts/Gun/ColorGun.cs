@@ -12,7 +12,6 @@ public class ColorGun : Gun
 	{
 		base.Start();
 
-		SetColor(Color.red);
 	}
 
 	protected override void HitAnHittable(Hittable hittable)
@@ -32,7 +31,7 @@ public class ColorGun : Gun
 
 	public float GetHueOfColor(Color color)
 	{
-		float hue = 1;
+		float hue = 0;
 		float saturation = 0;
 		float value = 0;
 
@@ -47,6 +46,10 @@ public class ColorGun : Gun
 		m_material.SetColor("_Color", newColor);
 		m_beamRenderer.material.color = newColor;
 		m_color = newColor;
-		m_beamRenderer.material.SetFloat("_Wavelength",((GetHueOfColor(newColor) -2)  * -2));
+
+		float hue = GetHueOfColor(newColor);
+
+		if (hue >= 0.95f) hue = 0; //just reset the red hue range.
+		m_beamRenderer.material.SetFloat("_Wavelength",(hue -2)  * -2);
 	}
 }

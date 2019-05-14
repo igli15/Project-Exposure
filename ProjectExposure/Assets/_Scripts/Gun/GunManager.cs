@@ -14,6 +14,8 @@ public class GunManager : MonoBehaviour {
 	
 	void Start () 
 	{
+		SetGunColors(Color.red);
+		
 		
 	}
 	

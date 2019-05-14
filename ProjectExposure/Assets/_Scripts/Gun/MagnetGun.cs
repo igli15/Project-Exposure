@@ -7,13 +7,27 @@ using UnityEngine.EventSystems;
 public class MagnetGun : Gun
 {	
 	[SerializeField] private GameObject m_rays;
-	
+
+	private List<Material> m_rayMats;
+
+
+	private void Awake()
+	{
+		m_rayMats = new List<Material>();
+			
+		for (int i = 0; i < 3; i++)
+		{
+			m_rayMats.Add(m_rays.transform.GetChild(i).GetComponent<Renderer>().material);
+		}
+	}
+
 	// Use this for initialization
 	protected override void Start()
 	{
 		base.Start();
 		
-		InvokeRepeating("ShakeRays",0.5f,0.6f);
+		InvokeRepeating("ShakeRays",0.5f,0.6f);		
+		
 	}
 
 	protected override void HitAnHittable(Hittable hittable)
@@ -39,5 +53,14 @@ public class MagnetGun : Gun
 		base.Update();
 	}
 
-	
+
+	public override void SetColor(Color newColor)
+	{
+		base.SetColor(newColor);
+
+		for (int i = 0; i < m_rayMats.Count; i++)
+		{
+			m_rayMats[i].color = newColor;
+		}
+	}
 }
