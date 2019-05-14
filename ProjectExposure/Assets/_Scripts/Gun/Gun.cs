@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public abstract class Gun : MonoBehaviour,IAgent
+public class Gun : MonoBehaviour,IAgent
 {
 	public Action<Gun> OnShoot;
 

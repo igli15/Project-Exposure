@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class Enemy : Hittable
@@ -20,7 +21,7 @@ public class Enemy : Hittable
     }
 
 
-    public override void HitByGun(AbstractGun gun)
+    public override void HitByGun(Gun gun)
     {
         base.HitByGun(gun);
 
@@ -29,6 +30,13 @@ public class Enemy : Hittable
             if (color == Color.white)
             {
                 SetColor(gun.GetColor());
+            }
+        }
+        else if (gun is MagnetGun)
+        {
+            if (color == Color.red)
+            {
+                transform.DOMove(gun.transform.position,2.0f);
             }
         }
     }

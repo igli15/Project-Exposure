@@ -9,7 +9,7 @@ public abstract class Hittable : MonoBehaviour
 
 	[SerializeField] protected Color color;
 
-	public virtual void HitByGun(AbstractGun gun)
+	public virtual void HitByGun(Gun gun)
 	{
 		if (OnHit != null) OnHit(this);
 	}
@@ -17,6 +17,7 @@ public abstract class Hittable : MonoBehaviour
 
 	public virtual void SetColor(Color newColor)
 	{
+		color = newColor;
 		GetComponent<Renderer>().material.color = newColor;
 	}
 

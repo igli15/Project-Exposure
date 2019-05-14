@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ColorSlider : MonoBehaviour 
 {
 
-	[SerializeField] private AbstractGun targetGun;
+	[SerializeField] private Gun targetGun;
 
 	private Slider m_slider;
 	

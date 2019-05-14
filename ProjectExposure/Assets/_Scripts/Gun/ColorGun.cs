@@ -1,13 +1,14 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ColorGun : AbstractGun
+public class ColorGun : Gun
 {
 	[SerializeField] private Renderer m_beamRenderer;
 	
-	public override void Start()
+	protected override void Start()
 	{
 		base.Start();
 
@@ -15,33 +16,9 @@ public class ColorGun : AbstractGun
 	}
 
 	// Update is called once per frame
-	protected override void Update () 
+	protected override void Update()
 	{
 		base.Update();
-	}
-
-	protected override void Shoot()
-	{
-		if(EventSystem.current.IsPointerOverGameObject()) return;
-        
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        
-		//if(m_fsm.GetCurrentState() is SeperatedGunState)
-		//	LookInRayDirection(ray);
-      
-		RaycastHit[] hits;
-		hits = Physics.RaycastAll(ray);
-
-		for (int i = 0; i < hits.Length; i++)
-		{
-			RaycastHit hit = hits[i];
-			Hittable hittable = hit.transform.gameObject.GetComponent<Hittable>();
-            
-			if(hittable != null)
-			{
-				hittable.HitByGun(this);
-			}
-		}
 	}
 
 	public float GetHueOfColor(Color color)

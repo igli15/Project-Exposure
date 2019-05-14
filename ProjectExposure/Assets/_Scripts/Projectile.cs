@@ -31,7 +31,7 @@ public class Projectile : Hittable {
         
     }
 
-    public override void HitByGun(AbstractGun gun)
+    public override void HitByGun(Gun gun)
     {
         base.HitByGun(gun);
         

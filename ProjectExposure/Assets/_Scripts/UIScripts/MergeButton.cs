@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MergeButton : TouchButton
 {
-	[SerializeField] private AbstractGun leftGun;
-	[SerializeField] private AbstractGun rightGun;
+	[SerializeField] private Gun leftGun;
+	[SerializeField] private Gun rightGun;
 
 
 	private bool merged = false;
