@@ -42,12 +42,6 @@ public class RailMovement : MonoBehaviour
 
     }
 
-    public void SetDirecton(Vector3 dir)
-    {
-        //m_direction = dir.normalized;
-        //tweener.OnComplete(() => { StartMovement(); });
-    }
-
     public void StopMovement()
     {
         m_rb.velocity = Vector3.zero;
@@ -63,17 +57,10 @@ public class RailMovement : MonoBehaviour
     public void SetPoint(MovementPoint point)
     {
         m_targetPoint = point;
-        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("EnemyZone"))
-        {
-            other.GetComponent<EnemySpawner>().SpawnEnemies();
-            other.GetComponent<EnemySpawner>().railMovement = this;
-            StopMovement();
-        }
         if (other.CompareTag("MovementPoint"))
         {
             if (other.GetComponent<MovementPoint>().GetNextPoint()==null)
@@ -90,9 +77,6 @@ public class RailMovement : MonoBehaviour
 
             //Activate all events binded to Point
             bufferPoint.ActivatePoint();
-
-            
         }
-            
     }
 }

@@ -82,7 +82,6 @@ public class Path : MonoBehaviour {
 
     public void DestroyPoints()
     {
-        
         while(transform.childCount>1)
         {
             PathEditor.SafeDestroyGameObject<Transform>(transform.GetChild(0));
@@ -94,7 +93,7 @@ public class Path : MonoBehaviour {
         return m_firstPoint;
     }
 
-    public void ActivateChoicePhase()
+    public void ShowPathChoiceButton()
     {
         foreach (Path path in m_paths)
         {
@@ -109,12 +108,5 @@ public class Path : MonoBehaviour {
                 }
             });
         }
-    }
-
-    public void ShowHudOptions()
-    {
-
-        //Legacy
-        //PathChoiceManager.instance.GetComponent<PathChoiceManager>().GenerateButtons(m_paths);
     }
 }
