@@ -4652,6 +4652,7 @@ GameObject:
   - component: {fileID: 1018826995}
   - component: {fileID: 1018826994}
   - component: {fileID: 1018826997}
+  - component: {fileID: 1018826998}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4731,6 +4732,19 @@ MonoBehaviour:
   m_health: 100
   m_maxHealth: 100
   m_shouldBeDestroyed: 0
+--- !u!114 &1018826998
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1018826992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c9c2224c7f6140f3b22b526c1e71ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_magnetGun: {fileID: 2032118551}
+  m_colorGun: {fileID: 144620556}
 --- !u!1 &1019779148
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Gun : MonoBehaviour,IAgent
+public abstract class Gun : MonoBehaviour,IAgent
 {
 	public Action<Gun> OnShoot;
 
@@ -27,17 +27,19 @@ public class Gun : MonoBehaviour,IAgent
 			m_fsm = new Fsm<Gun>(this);
 		}
 	}
+
+	protected virtual void HitAnHittable(Hittable hittable)
+	{
+		if (hittable.OnHit != null) hittable.OnHit(hittable);
+	}
 	
 	// Update is called once per frame
 	protected virtual void Update () 
 	{
-		if (Input.GetMouseButton(0))
-		{
-			Shoot();
-		}
+		
 	}
 
-	protected void Shoot()
+	public void Shoot()
 	{
 		if(EventSystem.current.IsPointerOverGameObject()) return;
         
@@ -56,12 +58,12 @@ public class Gun : MonoBehaviour,IAgent
             
 			if(hittable != null)
 			{
-				hittable.HitByGun(this);
+				HitAnHittable(hittable);
 			}
 		}
 	}
 
-	private void LookInRayDirection(Ray ray)
+	public void LookInRayDirection(Ray ray)
 	{
 		Ray r = ray;
 		r.origin = transform.position;

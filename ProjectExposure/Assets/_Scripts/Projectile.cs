@@ -31,12 +31,4 @@ public class Projectile : Hittable {
         
     }
 
-    public override void HitByGun(Gun gun)
-    {
-        base.HitByGun(gun);
-        
-        //float enemyHue = gun.GetColorHue(color) * 360;
-        //float hueDiff = Mathf.Abs(enemyHue - gun.Hue());
-        //if (hueDiff <= gun.HueDamageRange) Destroy(this.gameObject);
-    }
 }

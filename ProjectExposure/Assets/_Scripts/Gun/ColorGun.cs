@@ -15,6 +15,15 @@ public class ColorGun : Gun
 		SetColor(Color.red);
 	}
 
+	protected override void HitAnHittable(Hittable hittable)
+	{
+		base.HitAnHittable(hittable);
+		
+
+		hittable.SetColor(m_color);
+
+	}
+
 	// Update is called once per frame
 	protected override void Update()
 	{

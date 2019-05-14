@@ -20,24 +20,4 @@ public class Enemy : Hittable
         if (Input.GetKeyDown(KeyCode.P)) m_health.InflictDamage(2000000000);
     }
 
-
-    public override void HitByGun(Gun gun)
-    {
-        base.HitByGun(gun);
-
-        if (gun is ColorGun)
-        {
-            if (color == Color.white)
-            {
-                SetColor(gun.GetColor());
-            }
-        }
-        else if (gun is MagnetGun)
-        {
-            if (color == Color.red)
-            {
-                transform.DOMove(gun.transform.position,2.0f);
-            }
-        }
-    }
 }
