@@ -43,8 +43,10 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("MovementPoint"))
+        if (other.CompareTag("MovementPoint")&&
+            other.GetComponent<MovementPoint>().GetPath()==m_currentTargetPoint.GetPath())
         {
+            
             if (other.GetComponent<MovementPoint>().GetNextPoint() == null)
             {
                 //Stop movement on the end of path

@@ -29,6 +29,11 @@ public class MovementPoint : MonoBehaviour {
         m_path = path;
     }
 
+    public Path GetPath()
+    {
+        return m_path;
+    }
+
     public MovementPoint GetNextPoint()
     {
         if (m_nextPoint == null)
