@@ -30,7 +30,7 @@ public class Enemy : Hittable
         }
         else if (gunManager.currentMode == GunManager.GunMode.MAGNET && gunManager.magnetGun.pulledTransform == null)
         {
-            transform.DOMove(gunManager.magnetGun.transform.position, 2.0f);
+            transform.DOMove(gunManager.magnetGun.pullTargetLocation.position, 2.0f);
             gunManager.magnetGun.pulledTransform = transform;
         }
         else

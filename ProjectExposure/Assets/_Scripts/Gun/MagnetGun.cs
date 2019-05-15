@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -7,6 +8,8 @@ using UnityEngine.EventSystems;
 public class MagnetGun : Gun
 {	
 	[SerializeField] private GameObject m_rays;
+
+	[SerializeField] private Transform m_pullTargetLocation;
 
 	private List<Material> m_rayMats;
 
@@ -16,6 +19,11 @@ public class MagnetGun : Gun
 	{
 		get { return m_pulledTransform; }
 		set { m_pulledTransform = value; }
+	}
+
+	public Transform pullTargetLocation
+	{
+		get { return m_pullTargetLocation; }
 	}
 
 	private void Awake()

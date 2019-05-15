@@ -93,7 +93,7 @@ public class GunManager : MonoBehaviour,IAgent
             
 			if(hittable != null)
 			{
-				if (hittable.GetColor() == Color.white)
+				if (hittable.GetColor() == Color.white && m_magnetGun.pulledTransform == null)
 				{
 					m_currentMode = GunMode.COLOR;
 				}
