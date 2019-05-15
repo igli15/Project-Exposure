@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class ColorSlider : MonoBehaviour 
 {
 
-	[SerializeField] private Gun targetGun;
+	[SerializeField] private GunManager m_gunManager;
 
 	private Slider m_slider;
 	
@@ -18,12 +18,15 @@ public class ColorSlider : MonoBehaviour
 		
 		m_slider.onValueChanged.Invoke(m_slider.value);
 		
-		//targetGun.OnHueChanged += delegate(Gun gun) { m_slider.value = gun.Hue() / 300;  };
+
 	}
 
 	void UpdateGunHue()
 	{
-		//targetGun.SetHue(m_slider.value);
+		float h = m_slider.value * 265.0f / 360.0f;
+		
+	
+		m_gunManager.SetGunColors(Color.HSVToRGB(h ,1,1));
 	}
 	
 }

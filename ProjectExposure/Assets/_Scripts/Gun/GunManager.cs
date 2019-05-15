@@ -4,37 +4,56 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class GunManager : MonoBehaviour {
+public class GunManager : MonoBehaviour,IAgent
+{
 
-	// Use this for initialization
+	public Action<GunManager> OnMerge;
+	public Action<GunManager> OnSplit;
 
 	[SerializeField] private MagnetGun m_magnetGun;
 	[SerializeField] private ColorGun m_colorGun;
-	
-	
+
+	[SerializeField] private GameObject m_mergeSphere;
+
+	private Fsm<GunManager> m_fsm;
+
+	public MagnetGun magnetGun
+	{
+		get { return m_magnetGun; }
+	}
+	public ColorGun colorGun
+	{
+		get { return m_colorGun; }
+	}
+
+	public GameObject mergeSphere
+	{
+		get { return m_mergeSphere; }
+	}
+
 	void Start () 
 	{
+		if (m_fsm == null)
+		{
+			m_fsm = new Fsm<GunManager>(this);
+		}
+		
+		m_fsm.ChangeState<SplitGunsState>();
 		SetGunColors(Color.red);
-		
-		
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetMouseButtonDown(0))
-		{
-			ShootTheRightGun();
-		}
+		
 	}
 
-	private void ShootTheRightGun()
+	public void ShootTheRightGun()
 	{
 		if(EventSystem.current.IsPointerOverGameObject()) return;
         
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         
-		//if(m_fsm.GetCurrentState() is SeperatedGunState)
 		m_colorGun.LookInRayDirection(ray);
 		m_magnetGun.LookInRayDirection(ray);
 		
@@ -52,7 +71,7 @@ public class GunManager : MonoBehaviour {
 				{
 					m_colorGun.Shoot();
 				}
-				else if((hittable.GetColor() == m_colorGun.GetColor()))
+				else if((hittable.GetColor() == m_magnetGun.GetColor()))
 				{
 					m_magnetGun.Shoot();
 				}
@@ -64,5 +83,17 @@ public class GunManager : MonoBehaviour {
 	{
 		m_magnetGun.SetColor(newColor);
 		m_colorGun.SetColor(newColor);
+	}
+
+	public void MergeGuns()
+	{
+		m_fsm.ChangeState<MergedGunsState>();
+		if(OnMerge != null) OnMerge(this);
+	}
+
+	public void SplitGuns()
+	{
+		m_fsm.ChangeState<SplitGunsState>();
+		if(OnSplit != null) OnSplit(this);
 	}
 }
