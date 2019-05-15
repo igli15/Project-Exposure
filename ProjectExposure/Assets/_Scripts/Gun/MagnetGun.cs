@@ -87,6 +87,8 @@ public class MagnetGun : Gun
 		m_pullTween.Kill();
 		
 		if(pulledHittable.OnReleased != null) pulledHittable.OnReleased(pulledHittable);
+		m_pulledHittable = null;
+		m_targetIsInPlace = false;
 	}
 
 	public void PullTarget(Hittable t)
