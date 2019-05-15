@@ -16,7 +16,7 @@ public class Projectile : Hittable {
     {
         if (Time.time > m_creationTime + lifeTime)
         {
-            Destroy(this.gameObject);
+            ObjectPooler.instance.DestroyFromPool("Projectile",this.gameObject);
         }
     }
 
@@ -25,8 +25,7 @@ public class Projectile : Hittable {
         if (other.CompareTag("Player"))
         {
             other.GetComponent<Health>().InflictDamage(5);
-            Destroy(this.gameObject);
-            Debug.Log("DAMAGE");
+            ObjectPooler.instance.DestroyFromPool("Projectile", this.gameObject);
         }
         
     }
