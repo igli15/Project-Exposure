@@ -35,7 +35,7 @@ public class Enemy : Hittable
         }
         else
         {
-            m_health.InflictDamage(gunManager.damages);
+            m_health.InflictDamage(gunManager.damage);
         }
     }
 }
