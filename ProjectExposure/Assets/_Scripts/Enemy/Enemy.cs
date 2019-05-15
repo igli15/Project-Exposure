@@ -14,7 +14,7 @@ public class Enemy : Hittable
         SetColor(color);
         m_health = GetComponent<Health>();
         
-        OnReleased += delegate(Hittable hittable) { GetComponent<Rigidbody>().useGravity = true; };
+        //OnReleased += delegate(Hittable hittable) { };
     }
 
     private void Update()

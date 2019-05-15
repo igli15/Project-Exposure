@@ -12,6 +12,7 @@ public class ArcherMovementState : EnemyMovementState
     public override void Exit(IAgent pAgent)
     {
         base.Exit(pAgent);
+
     }
 
     public override void OnLastPointActivated()

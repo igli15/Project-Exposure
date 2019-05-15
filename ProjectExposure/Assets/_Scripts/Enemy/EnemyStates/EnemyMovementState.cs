@@ -14,13 +14,23 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
     {
         base.Enter(pAgent);
         if (!m_rb) m_rb = GetComponent<Rigidbody>();
+        m_rb.useGravity = false;
         m_currentTargetPoint = path.GetFirstPoint();
+        Debug.Log("Going to the Point: " + m_currentTargetPoint);
         StartMovement();
     }
 
     public override void Exit(IAgent pAgent)
     {
         base.Exit(pAgent);
+        m_rb.velocity = Vector3.zero;
+        m_rb.useGravity = false;
+    }
+
+    public void GoToLastPoint()
+    {
+        m_currentTargetPoint = path.GetLastPoint();
+        StartMovement();
     }
 
     public void StartMovement()

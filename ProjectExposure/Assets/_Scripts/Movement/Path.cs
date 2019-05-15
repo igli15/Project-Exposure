@@ -95,6 +95,11 @@ public class Path : MonoBehaviour {
         }
     }
 
+    public MovementPoint GetLastPoint()
+    {
+        return m_lastPoint;
+    }
+
     public MovementPoint GetFirstPoint()
     {
         return m_firstPoint;
