@@ -1,7 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Collections;
 using UnityEditor;
 using UnityEditor.SceneManagement;
 
@@ -29,29 +28,10 @@ public class PathEditor : Editor {
         GUI.backgroundColor = Color.red;
         if (GUILayout.Button("Clear Points"))
         {
-            if ( EditorUtility.DisplayDialog("","Are you sure you want to clear points???", "yes", "Hell NO"))
+            if ( EditorUtility.DisplayDialog("","Are you sure you want to clear path points???", "yes", "NO"))
             {
                 myScript.DestroyPoints();
             }
         }
-
-        //UnityEditor.SceneManagement.EditorSceneManager.MarkSceneDirty(myScript.gameObject.scene);
     }
-
-    public static T SafeDestroy<T>(T obj) where T : Object
-    {
-        if (Application.isEditor)
-            Object.DestroyImmediate(obj);
-        else
-            Object.Destroy(obj);
-
-        return null;
-    }
-    public static T SafeDestroyGameObject<T>(T component) where T : Component
-    {
-        if (component != null)
-            SafeDestroy(component.gameObject);
-        return null;
-    }
-
 }

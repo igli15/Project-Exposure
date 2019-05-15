@@ -4,34 +4,61 @@ using UnityEngine;
 
 public class EnemyMovementState : AbstractState<EnemyFSM>
 {
-    public Transform targetTransform;
-    public float speed = 0.1f;
+    public Path path;
+    public float speed = 2;
 
-    private Vector3 m_direction;
+    private Rigidbody m_rb;
+    private MovementPoint m_currentTargetPoint;
 
     public override void Enter(IAgent pAgent)
     {
         base.Enter(pAgent);
-
-        m_direction = targetTransform .position- transform.position;
-        m_direction = m_direction.normalized;
-
-        //Debug.Log("Movement Enter");
-    }
-
-    private void Update()
-    {
-        transform.position += m_direction*speed;
-
-        if ( (transform.position - targetTransform.position).magnitude <= speed)
-        {
-            target.fsm.ChangeState<EnemyAttackState>();
-        }
+        if (!m_rb) m_rb = GetComponent<Rigidbody>();
+        m_currentTargetPoint = path.GetFirstPoint();
+        StartMovement();
     }
 
     public override void Exit(IAgent pAgent)
     {
-        //Debug.Log("Movement Exit");
         base.Exit(pAgent);
+    }
+
+    public void StartMovement()
+    {
+        Vector3 direction = m_currentTargetPoint.transform.position - transform.position;
+        m_rb.velocity = direction.normalized * speed;
+    }
+
+    public void StopMovement()
+    {
+        m_rb.velocity = Vector3.zero;
+    }
+
+    public virtual void OnLastPointActivated()
+    {
+        //Stop movement on the end of path
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("MovementPoint")&&
+            other.GetComponent<MovementPoint>().GetPath()==m_currentTargetPoint.GetPath())
+        {
+            
+            if (other.GetComponent<MovementPoint>().GetNextPoint() == null)
+            {
+                OnLastPointActivated();
+                return;
+            }
+            MovementPoint bufferPoint = m_currentTargetPoint;
+
+            //Move forward
+            m_currentTargetPoint = other.GetComponent<MovementPoint>().GetNextPoint();
+            StartMovement();
+
+            //Activate all events binded to Point
+            bufferPoint.ActivatePoint();
+        }
     }
 }

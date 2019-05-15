@@ -24,8 +24,15 @@ public class Path : MonoBehaviour {
 
     public void Start()
     {
-        button.gameObject.SetActive(false);
+        if(button!=null)
+            button.gameObject.SetActive(false);
     }
+
+    public void SetPointCount(int pointCount)
+    {
+        m_pointCount = pointCount;
+    }
+
     public void GeneratePoints()
     {
         if (m_pointCount < 0) m_pointCount = 0;
@@ -46,12 +53,12 @@ public class Path : MonoBehaviour {
             MovementPoint mp=newPoint.AddComponent<MovementPoint>();
             mp.SetPath(this);
             if (i > 0) m_lastPoint.SetNextPoint(mp);
-            if (i == 0) { m_firstPoint = mp; Debug.Log("first point " + m_firstPoint);  }
+            if (i == 0) { m_firstPoint = mp;}
 
             m_lastPoint = mp;
         }
 
-        PathEditor.SafeDestroyGameObject<Transform>(empty.transform);
+        EditorTools.SafeDestroyGameObject<Transform>(empty.transform);
     }
 
     public void AddPoint()
@@ -77,15 +84,14 @@ public class Path : MonoBehaviour {
 
         m_lastPoint = mp;
 
-        PathEditor.SafeDestroyGameObject<Transform>(empty.transform);
+        EditorTools.SafeDestroyGameObject<Transform>(empty.transform);
     }
 
     public void DestroyPoints()
     {
-        
-        while(transform.childCount>1)
+        while(transform.childCount>0)
         {
-            PathEditor.SafeDestroyGameObject<Transform>(transform.GetChild(0));
+            EditorTools.SafeDestroyGameObject<Transform>(transform.GetChild(0));
         }
     }
 
@@ -94,27 +100,23 @@ public class Path : MonoBehaviour {
         return m_firstPoint;
     }
 
-    public void ActivateChoicePhase()
+    public void ShowPathChoiceButton()
     {
         foreach (Path path in m_paths)
         {
-            path.button.gameObject.SetActive(true);
-            path.button.onClick.AddListener(() =>
+            if (path.button != null)
             {
-                RailMovement.instance.SetPoint(path.GetFirstPoint());
-                RailMovement.instance.StartMovement();
-                foreach (Path cpath in m_paths)
+                path.button.gameObject.SetActive(true);
+                path.button.onClick.AddListener(() =>
                 {
-                    cpath.button.gameObject.SetActive(false);
-                }
-            });
+                    RailMovement.instance.SetPoint(path.GetFirstPoint());
+                    RailMovement.instance.StartMovement();
+                    foreach (Path cpath in m_paths)
+                    {
+                        cpath.button.gameObject.SetActive(false);
+                    }
+                });
+            }
         }
-    }
-
-    public void ShowHudOptions()
-    {
-
-        //Legacy
-        //PathChoiceManager.instance.GetComponent<PathChoiceManager>().GenerateButtons(m_paths);
     }
 }
