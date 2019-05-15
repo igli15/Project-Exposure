@@ -1,23 +1,30 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
+using DG.Tweening;
+using UnityEditor.MemoryProfiler;
 using UnityEngine;
 
 public abstract class Hittable : MonoBehaviour
 {
 	public Action<Hittable> OnHit;
-	
-	public Action<Hittable> OnAimed;
 
-	public Color color;
+	[SerializeField] protected Color color;
 
-	public virtual void HitByGun(float damage,Gun gun)
+	public virtual void SetColor(Color newColor)
+	{
+		color = newColor;
+		GetComponent<Renderer>().material.color = newColor;
+	}
+
+	public virtual void Hit(GunManager gunManager)
 	{
 		if (OnHit != null) OnHit(this);
 	}
 
-	public virtual void Aimed(Gun gun)
+	public Color GetColor()
 	{
-		if (OnAimed != null) OnAimed(this);
+		return color;
 	}
 }

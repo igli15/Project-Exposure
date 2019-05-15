@@ -7,20 +7,15 @@ public class ColorButton : TouchButton
 {
 
 	[SerializeField] private Color m_color;
+
+	[SerializeField] private GunManager m_gunManager;
 	
 	private Image m_image;
 
-	private ColorButtonManager m_manager;
-	
 	// Use this for initialization
 	void Start()
 	{
-		m_image = GetComponent<Image>();
-		m_image.color = m_color;
-		m_manager = GetComponentInParent<ColorButtonManager>();
-
-		Gun gun = m_manager.gun;
-		OnTouchEnter.AddListener(delegate { gun.ChangeColor(m_color); });
+		OnTouchEnter.AddListener(delegate { m_gunManager.SetGunColors(m_color); });
 	}
 
 	// Update is called once per frame
