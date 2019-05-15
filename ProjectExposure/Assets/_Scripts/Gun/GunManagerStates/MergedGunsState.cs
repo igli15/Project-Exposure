@@ -18,7 +18,10 @@ public class MergedGunsState : AbstractState<GunManager>
 	// Update is called once per frame
 	void Update () 
 	{
-		
+		if (Input.GetMouseButtonDown(0))
+		{
+			target.ShootMergedGun();
+		}
 	}
 
 	public override void Exit(IAgent pAgent)

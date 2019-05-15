@@ -7,27 +7,6 @@ using UnityEngine.EventSystems;
 public class ColorGun : Gun
 {
 	[SerializeField] private Renderer m_beamRenderer;
-	
-	protected override void Start()
-	{
-		base.Start();
-
-	}
-
-	protected override void HitAnHittable(Hittable hittable)
-	{
-		base.HitAnHittable(hittable);
-		
-
-		hittable.SetColor(m_color);
-
-	}
-
-	// Update is called once per frame
-	protected override void Update()
-	{
-		base.Update();
-	}
 
 	public float GetHueOfColor(Color color)
 	{

@@ -27,42 +27,6 @@ public abstract class Gun : MonoBehaviour,IAgent
 			m_fsm = new Fsm<Gun>(this);
 		}
 	}
-
-	protected virtual void HitAnHittable(Hittable hittable)
-	{
-		if (hittable.OnHit != null) hittable.OnHit(hittable);
-	}
-	
-	// Update is called once per frame
-	protected virtual void Update () 
-	{
-		
-	}
-
-	public void Shoot()
-	{
-		if(EventSystem.current.IsPointerOverGameObject()) return;
-        
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        
-		//if(m_fsm.GetCurrentState() is SeperatedGunState)
-		LookInRayDirection(ray);
-      
-		RaycastHit[] hits;
-		hits = Physics.RaycastAll(ray);
-
-		for (int i = 0; i < hits.Length; i++)
-		{
-			RaycastHit hit = hits[i];
-			Hittable hittable = hit.transform.gameObject.GetComponent<Hittable>();
-            
-			if(hittable != null)
-			{
-				HitAnHittable(hittable);
-			}
-		}
-	}
-
 	public void LookInRayDirection(Ray ray)
 	{
 		Ray r = ray;

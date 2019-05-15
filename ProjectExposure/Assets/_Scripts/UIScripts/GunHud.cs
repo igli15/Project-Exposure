@@ -19,12 +19,10 @@ public class GunHud : MonoBehaviour
 			m_rgbButtons.SetActive(false);
 			m_colorSlider.SetActive(true);
 
-
-
 			float hue = manager.colorGun.GetHueOfColor(manager.colorGun.GetColor());
 
 			if (hue > 0.9f) hue = 0;
-			float rangedHue = hue* 360.0f/270.0f;
+			float rangedHue = hue * 360.0f / 270.0f;
 			
 			m_colorSlider.GetComponentInChildren<Slider>().value = rangedHue;
 		};
@@ -36,9 +34,11 @@ public class GunHud : MonoBehaviour
 		};
 		
 	}
+
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		
 	}
 }

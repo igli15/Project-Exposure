@@ -17,7 +17,25 @@ public class Enemy : Hittable
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P)) m_health.InflictDamage(2000000000);
+     
     }
 
+    public override void Hit(GunManager gunManager)
+    {
+        base.Hit(gunManager);
+
+        if (gunManager.currentMode == GunManager.GunMode.COLOR)
+        {
+            SetColor(gunManager.colorGun.GetColor());
+        }
+        else if (gunManager.currentMode == GunManager.GunMode.MAGNET && gunManager.magnetGun.pulledTransform == null)
+        {
+            transform.DOMove(gunManager.magnetGun.transform.position, 2.0f);
+            gunManager.magnetGun.pulledTransform = transform;
+        }
+        else
+        {
+            m_health.InflictDamage(gunManager.damages);
+        }
+    }
 }
