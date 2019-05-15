@@ -1342,7 +1342,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pools:
   - tag: Archer
-    prefab: {fileID: 1858015830935834, guid: da5975d492784cc48813ee086f6f9e80, type: 2}
+    prefab: {fileID: 1764640218195022, guid: f03f18eb0a1deee49b198cd52ed1b4e5, type: 2}
     size: 20
   - tag: Projectile
     prefab: {fileID: 1378509260144752, guid: 10f907db940d8f242923dfa0e41373e5, type: 2}
