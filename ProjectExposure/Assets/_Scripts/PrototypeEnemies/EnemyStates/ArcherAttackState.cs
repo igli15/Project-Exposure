@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyAttackState : AbstractState<EnemyFSM> {
-
-    public GameObject prefab;
+public class ArcherAttackState : AbstractState<EnemyFSM>
+{
     public float waitingTime = 1;
 
     private float m_lastShotTime = 0;
@@ -19,8 +18,12 @@ public class EnemyAttackState : AbstractState<EnemyFSM> {
     {
         if (Time.time - waitingTime > m_lastShotTime)
         {
-            Attack();
+            Shoot();
             m_lastShotTime = Time.time;
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            GetComponent<ArcherFSM>().DestroyEnemy();
         }
     }
 
@@ -30,12 +33,11 @@ public class EnemyAttackState : AbstractState<EnemyFSM> {
         Debug.Log("Attack EXIT");
     }
 
-    void Attack()
+    void Shoot()
     {
-        return;
-        GameObject projectile = GameObject.Instantiate(prefab,transform.position,transform.rotation,null);
+        GameObject projectile = ObjectPooler.instance.SpawnFromPool("Projectile", transform.position, transform.rotation);
         projectile.SetActive(true);
-        projectile.GetComponent<Rigidbody>().velocity =(  Camera.main.transform.position- transform.position ).normalized*2;
+        projectile.GetComponent<Rigidbody>().velocity = (Camera.main.transform.position - transform.position).normalized * 10;
         projectile.GetComponent<Rigidbody>().useGravity = false;
     }
 }

@@ -22,30 +22,11 @@ public class RailMovement : MonoBehaviour
 
         m_targetPoint = initialPath.GetFirstPoint();
         StartMovement();
-
-        //Health part
-        //TODO: move to separate script
-        Health health = GetComponent<Health>();
-        slider.maxValue = health.MaxHealth;
-        health.OnHealthDecreased += OnHealthChanged;
-        health.OnHealthIncreased += OnHealthChanged;
-        OnHealthChanged(health);
-    }
-
-    void OnHealthChanged(Health health)
-    {
-        slider.value = health.HP;
     }
 
     void Update()
     {
 
-    }
-
-    public void SetDirecton(Vector3 dir)
-    {
-        //m_direction = dir.normalized;
-        //tweener.OnComplete(() => { StartMovement(); });
     }
 
     public void StopMovement()
@@ -63,17 +44,10 @@ public class RailMovement : MonoBehaviour
     public void SetPoint(MovementPoint point)
     {
         m_targetPoint = point;
-        
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("EnemyZone"))
-        {
-            other.GetComponent<EnemySpawner>().SpawnEnemies();
-            other.GetComponent<EnemySpawner>().railMovement = this;
-            StopMovement();
-        }
         if (other.CompareTag("MovementPoint"))
         {
             if (other.GetComponent<MovementPoint>().GetNextPoint()==null)
@@ -90,9 +64,6 @@ public class RailMovement : MonoBehaviour
 
             //Activate all events binded to Point
             bufferPoint.ActivatePoint();
-
-            
         }
-            
     }
 }
