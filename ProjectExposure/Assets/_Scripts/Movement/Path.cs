@@ -12,6 +12,8 @@ public class Path : MonoBehaviour {
 
     [Header("Settings")]
     [SerializeField]
+    float radiusOfPoint=0.5f;
+    [SerializeField]
     public Color color;
     [SerializeField]
     private int m_pointCount = 0;
@@ -48,7 +50,7 @@ public class Path : MonoBehaviour {
             newPoint.name = "point_" + i;
             newPoint.tag = "MovementPoint";
             SphereCollider collider = newPoint.AddComponent<SphereCollider>();
-            collider.radius = 1;
+            collider.radius = radiusOfPoint;
 
             MovementPoint mp=newPoint.AddComponent<MovementPoint>();
             mp.SetPath(this);
@@ -74,7 +76,7 @@ public class Path : MonoBehaviour {
         newPoint.name = "point_" + m_currentCount;
         newPoint.tag = "MovementPoint";
         SphereCollider collider = newPoint.AddComponent<SphereCollider>();
-        collider.radius = 1;
+        collider.radius = radiusOfPoint;
 
         m_currentCount++;
         m_pointCount = m_currentCount;
