@@ -1341,9 +1341,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: SimpleEnemy
-    prefab: {fileID: 1674326601227428, guid: 883967c0373b51d419c51323733dfb09, type: 2}
-    size: 10
+  - tag: Archer
+    prefab: {fileID: 1858015830935834, guid: da5975d492784cc48813ee086f6f9e80, type: 2}
+    size: 20
+  - tag: Projectile
+    prefab: {fileID: 1378509260144752, guid: 10f907db940d8f242923dfa0e41373e5, type: 2}
+    size: 100
 --- !u!4 &317331966
 Transform:
   m_ObjectHideFlags: 0

@@ -13,16 +13,9 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
     public override void Enter(IAgent pAgent)
     {
         base.Enter(pAgent);
-
         if (!m_rb) m_rb = GetComponent<Rigidbody>();
         m_currentTargetPoint = path.GetFirstPoint();
-
         StartMovement();
-    }
-
-    private void Update()
-    {
-
     }
 
     public override void Exit(IAgent pAgent)
@@ -41,6 +34,12 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
         m_rb.velocity = Vector3.zero;
     }
 
+    public virtual void OnLastPointActivated()
+    {
+        //Stop movement on the end of path
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("MovementPoint")&&
@@ -49,9 +48,7 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
             
             if (other.GetComponent<MovementPoint>().GetNextPoint() == null)
             {
-                //Stop movement on the end of path
-                StopMovement();
-                target.fsm.ChangeState<EnemyAttackState>();
+                OnLastPointActivated();
                 return;
             }
             MovementPoint bufferPoint = m_currentTargetPoint;

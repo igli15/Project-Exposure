@@ -20,8 +20,8 @@ public class PointBehaviour1 : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            m_fightPoint.GetEnemyPathByName("EnemyPath_1").CreateSimpleEnemy();
-            m_fightPoint.GetEnemyPathByName("EnemyPath_2").CreateSimpleEnemy();
+            m_fightPoint.GetEnemyPathByName("EnemyPath_1").CreateArcher();
+            m_fightPoint.GetEnemyPathByName("EnemyPath_3").CreateArcher();
         }
 	}
 }
