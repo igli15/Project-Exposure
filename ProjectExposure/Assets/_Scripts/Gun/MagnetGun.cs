@@ -10,6 +10,7 @@ public class MagnetGun : Gun
 
 	private List<Material> m_rayMats;
 
+	private Transform m_pulledTransform = null;
 
 	private void Awake()
 	{
@@ -33,9 +34,12 @@ public class MagnetGun : Gun
 	protected override void HitAnHittable(Hittable hittable)
 	{
 		base.HitAnHittable(hittable);
-		
-		hittable.transform.DOMove(transform.position,2.0f);
 
+		if (m_pulledTransform == null)
+		{
+			hittable.transform.DOMove(transform.position, 2.0f);
+			m_pulledTransform = hittable.transform;
+		}
 	}
 
 	private void ShakeRays()

@@ -18,12 +18,11 @@ public class ColorSlider : MonoBehaviour
 		
 		m_slider.onValueChanged.Invoke(m_slider.value);
 		
-
 	}
 
 	void UpdateGunHue()
 	{
-		float h = m_slider.value * 265.0f / 360.0f;
+		float h = m_slider.value * 270.0f / 360.0f;
 		
 	
 		m_gunManager.SetGunColors(Color.HSVToRGB(h ,1,1));

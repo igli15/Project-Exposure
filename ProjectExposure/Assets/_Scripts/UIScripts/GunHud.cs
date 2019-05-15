@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GunHud : MonoBehaviour
 {
@@ -17,6 +18,15 @@ public class GunHud : MonoBehaviour
 		{
 			m_rgbButtons.SetActive(false);
 			m_colorSlider.SetActive(true);
+
+
+
+			float hue = manager.colorGun.GetHueOfColor(manager.colorGun.GetColor());
+
+			if (hue > 0.9f) hue = 0;
+			float rangedHue = hue* 360.0f/270.0f;
+			
+			m_colorSlider.GetComponentInChildren<Slider>().value = rangedHue;
 		};
 		
 		m_gunManager.OnSplit += delegate(GunManager manager)
