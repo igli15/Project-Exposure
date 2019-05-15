@@ -13,12 +13,15 @@ public class MagnetGun : Gun
 
 	private List<Material> m_rayMats;
 
-	private Transform m_pulledTransform = null;
+	private Hittable m_pulledHittable = null;
 
-	public Transform pulledTransform
+	private bool m_targetIsInPlace = false;
+
+	private Tweener m_pullTween;
+	public Hittable pulledHittable
 	{
-		get { return m_pulledTransform; }
-		set { m_pulledTransform = value; }
+		get { return m_pulledHittable; }
+		set { m_pulledHittable = value; }
 	}
 
 	public Transform pullTargetLocation
@@ -63,5 +66,34 @@ public class MagnetGun : Gun
 		{
 			m_rayMats[i].color = newColor;
 		}
+	}
+
+	public void PushTarget(Vector3 dir)
+	{
+		if (m_targetIsInPlace)
+		{
+			m_pulledHittable.GetComponent<Rigidbody>().AddForce(dir * 5, ForceMode.Impulse);
+			
+			if (m_pulledHittable.OnPushed != null) m_pulledHittable.OnPushed(m_pulledHittable);
+			
+			m_pulledHittable = null;
+			m_targetIsInPlace = false;
+			
+		}
+	}
+
+	public void ReleaseTarget()
+	{
+		m_pullTween.Kill();
+		
+		if(pulledHittable.OnReleased != null) pulledHittable.OnReleased(pulledHittable);
+	}
+
+	public void PullTarget(Hittable t)
+	{
+		m_pullTween =  t.transform.DOMove(m_pullTargetLocation.position, 2.0f);
+		m_pulledHittable = t;
+		m_pullTween.onComplete += delegate { m_targetIsInPlace = true; };
+		if (t.OnPulled != null) t.OnPulled(t);
 	}
 }

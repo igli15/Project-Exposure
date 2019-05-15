@@ -13,6 +13,8 @@ public class Enemy : Hittable
     {
         SetColor(color);
         m_health = GetComponent<Health>();
+        
+        OnReleased += delegate(Hittable hittable) { GetComponent<Rigidbody>().useGravity = true; };
     }
 
     private void Update()
@@ -23,19 +25,5 @@ public class Enemy : Hittable
     public override void Hit(GunManager gunManager)
     {
         base.Hit(gunManager);
-
-        if (gunManager.currentMode == GunManager.GunMode.COLOR)
-        {
-            SetColor(gunManager.colorGun.GetColor());
-        }
-        else if (gunManager.currentMode == GunManager.GunMode.MAGNET && gunManager.magnetGun.pulledTransform == null)
-        {
-            transform.DOMove(gunManager.magnetGun.pullTargetLocation.position, 2.0f);
-            gunManager.magnetGun.pulledTransform = transform;
-        }
-        else
-        {
-            m_health.InflictDamage(gunManager.damage);
-        }
     }
 }

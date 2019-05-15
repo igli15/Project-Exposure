@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -75,11 +76,18 @@ public class GunManager : MonoBehaviour,IAgent
 	}
 
 	public void ShootTheRightGun()
-	{
+	{	
 		if(EventSystem.current.IsPointerOverGameObject()) return;
         
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         
+		
+		if (magnetGun.pulledHittable != null)
+		{
+			magnetGun.PushTarget(m_magnetGun.LookInRayDirection(ray));
+			return;
+		}
+		
 		m_colorGun.LookInRayDirection(ray);
 		m_magnetGun.LookInRayDirection(ray);
 		
@@ -93,16 +101,19 @@ public class GunManager : MonoBehaviour,IAgent
             
 			if(hittable != null)
 			{
-				if (hittable.GetColor() == Color.white && m_magnetGun.pulledTransform == null)
+				if (hittable.GetColor() == Color.white && m_magnetGun.pulledHittable == null)
 				{
 					m_currentMode = GunMode.COLOR;
+					hittable.Hit(this);
+					continue;
+					
 				}
 				else if((hittable.GetColor() == m_magnetGun.GetColor()))
 				{
 					m_currentMode = GunMode.MAGNET;
+					hittable.Hit(this);
 				}
 				
-				hittable.Hit(this);
 			}
 		}
 	}
@@ -146,6 +157,12 @@ public class GunManager : MonoBehaviour,IAgent
 	public void MergeGuns()
 	{
 		m_fsm.ChangeState<MergedGunsState>();
+
+		if (m_magnetGun.pulledHittable != null)
+		{
+			m_magnetGun.ReleaseTarget();
+		}
+		
 		if(OnMerge != null) OnMerge(this);
 	}
 
