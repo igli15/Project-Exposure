@@ -16,7 +16,7 @@ public abstract class Gun : MonoBehaviour,IAgent
 	protected Material m_material;
 
 	protected Fsm<Gun> m_fsm;
-	
+
 	// Use this for initialization
 	protected virtual void Start ()
 	{
