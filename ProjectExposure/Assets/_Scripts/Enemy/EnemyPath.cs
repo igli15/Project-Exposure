@@ -28,12 +28,12 @@ public class EnemyPath : MonoBehaviour {
         newEnemy.GetComponent<ArcherMovementState>().path = GetComponent<Path>();
         newEnemy.transform.position=newEnemy.GetComponent<ArcherMovementState>().path.GetFirstPoint().transform.position;
         newEnemy.GetComponent<Enemy>().SetColor(color);
-        newEnemy.GetComponent<ArcherFSM>().onDeath += EnmyDied;
+        newEnemy.GetComponent<ArcherFSM>().onDeath += EnemyDied;
         newEnemy.GetComponent<ArcherFSM>().InitializeEnemy();
         return newEnemy;
     }
 
-    public void EnmyDied(EnemyFSM fsm)
+    public void EnemyDied(EnemyFSM fsm)
     {
         m_deathCount++;
         Debug.Log(fsm.gameObject.name + " died");
