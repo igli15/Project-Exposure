@@ -64,7 +64,7 @@ public class GunManager : MonoBehaviour,IAgent
 			m_fsm = new Fsm<GunManager>(this);
 		}
 		
-		m_fsm.ChangeState<SplitGunsState>();
+		m_fsm.ChangeState<MergedGunsState>();
 		m_mergeSphereRenderer = m_mergeSphere.GetComponent<Renderer>();
 		SetGunColors(Color.red);
 	}
