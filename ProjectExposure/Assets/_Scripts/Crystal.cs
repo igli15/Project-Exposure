@@ -34,7 +34,7 @@ public class Crystal : Hittable
 		{
 			gunManager.magnetGun.PullTarget(this);
 		}
-		else if (gunManager.currentMode == GunManager.GunMode.MERGED && gunManager.colorGun.GetColor() == color)
+		else if (gunManager.currentMode == GunManager.GunMode.MERGED && gunManager.CheckIfColorAreSimilar(gunManager.colorGun.GetColor() ,color,20))
 		{
 			Explode(gunManager);
 			Destroy(transform.gameObject);

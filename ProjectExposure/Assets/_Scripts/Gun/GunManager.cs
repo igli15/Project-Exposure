@@ -64,9 +64,10 @@ public class GunManager : MonoBehaviour,IAgent
 			m_fsm = new Fsm<GunManager>(this);
 		}
 		
-		m_fsm.ChangeState<MergedGunsState>();
 		m_mergeSphereRenderer = m_mergeSphere.GetComponent<Renderer>();
 		SetGunColors(Color.red);
+		
+		m_fsm.ChangeState<MergedGunsState>();
 	}
 	
 	// Update is called once per frame
@@ -178,7 +179,7 @@ public class GunManager : MonoBehaviour,IAgent
 		float damage = 0;
 		float enemyHue = colorGun.GetHueOfColor(enemyColor) * 360;
 
-		float hue = colorGun.GetHueOfColor(myColor);
+		float hue = colorGun.GetHueOfColor(myColor) * 360;
         
 		float hueDiff = Mathf.Abs(enemyHue - hue);
 
@@ -189,6 +190,22 @@ public class GunManager : MonoBehaviour,IAgent
 		}
 		Debug.Log(damage);
 		return damage;
+	}
+
+	public bool CheckIfColorAreSimilar(Color c1, Color c2,float range)
+	{
+		float c1Hue = colorGun.GetHueOfColor(c1) * 360;
+
+		float c2Hue = colorGun.GetHueOfColor(c2) * 360;
+        
+		float hueDiff = Mathf.Abs(c1Hue - c2Hue);
+
+		if (hueDiff <= range)
+		{
+			return true;
+		}
+
+		return false;
 	}
 
 }
