@@ -10,7 +10,7 @@ public class FightPointManager : MonoBehaviour {
 	void Start () {
 		m_fightPoint = GetComponent<FightPoint>();
 		 m_enemyPath =  m_fightPoint.GetEnemyPathByName("EnemyPath_0");
-		m_enemyPath.CreateArcher();
+		m_enemyPath.CreateArcher(Color.red);
 		m_enemyPath.onEnemyDeath += OnEnemyDeath;
 	}
 	void Update () {
@@ -21,7 +21,7 @@ public class FightPointManager : MonoBehaviour {
 	{
 		if(m_enemyPath.deathCount == 1)
 		{
-		m_enemyPath.CreateArcher();
+		m_enemyPath.CreateArcher(Color.green);
 		}
 		if(m_enemyPath.deathCount >=2)
 		{
