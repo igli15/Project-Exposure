@@ -105,9 +105,8 @@ public class GunManager : MonoBehaviour,IAgent
 				{
 					m_currentMode = GunMode.COLOR;
 					hittable.Hit(this);
-					continue;
-					
 				}
+				
 				else if((hittable.GetColor() == m_magnetGun.GetColor()))
 				{
 					m_currentMode = GunMode.MAGNET;
@@ -138,7 +137,7 @@ public class GunManager : MonoBehaviour,IAgent
 			if(hittable != null)
 			{
 				m_currentMode = GunMode.MERGED;
-				m_damage = CalculateDamage(hittable.GetColor());
+				m_damage = CalculateDamage(m_colorGun.GetColor(),hittable.GetColor());
 				hittable.Hit(this);
 			}
 		}
@@ -175,12 +174,12 @@ public class GunManager : MonoBehaviour,IAgent
 		if(OnSplit != null) OnSplit(this);
 	}
 	
-	float CalculateDamage(Color enemyColor)
+	public float CalculateDamage(Color myColor,Color enemyColor)
 	{
 		float damage = 0;
 		float enemyHue = colorGun.GetHueOfColor(enemyColor) * 360;
 
-		float hue = colorGun.GetHueOfColor(m_colorGun.GetColor());
+		float hue = colorGun.GetHueOfColor(myColor);
         
 		float hueDiff = Mathf.Abs(enemyHue - hue);
 

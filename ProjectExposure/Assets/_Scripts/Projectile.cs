@@ -26,7 +26,6 @@ public class Projectile : Hittable {
         {
             other.GetComponent<Health>().InflictDamage(5);
             Destroy(this.gameObject);
-            Debug.Log("DAMAGE");
         }
         
     }
