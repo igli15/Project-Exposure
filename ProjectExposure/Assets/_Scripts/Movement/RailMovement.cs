@@ -36,6 +36,7 @@ public class RailMovement : MonoBehaviour
 
     public void StartMovement()
     {
+        Debug.Log("START");
         Vector3 direction = m_targetPoint.transform.position-transform.position;
         m_rb.velocity = direction.normalized*speed;
         Tweener tweener = transform.DOLookAt(m_targetPoint.transform.position, rotationTime);

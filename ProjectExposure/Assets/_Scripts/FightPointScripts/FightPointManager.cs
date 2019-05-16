@@ -4,28 +4,53 @@ using UnityEngine;
 
 public class FightPointManager : MonoBehaviour {
 
-
+	public int pointNumber=0;
 	private FightPoint m_fightPoint;
 	private EnemyPath m_enemyPath;
 	void Start () {
-		m_fightPoint = GetComponent<FightPoint>();
-		 m_enemyPath =  m_fightPoint.GetEnemyPathByName("EnemyPath_0");
-		m_enemyPath.CreateArcher(Color.red);
-		m_enemyPath.onEnemyDeath += OnEnemyDeath;
+		if(pointNumber==0)
+		{
+			m_fightPoint = GetComponent<FightPoint>();
+			m_enemyPath =  m_fightPoint.GetEnemyPathByName("EnemyPath_0");
+			Debug.Log("EnemyPath "+m_enemyPath);
+			m_enemyPath.onEnemyDeath += OnEnemyDeath;
+			//m_enemyPath.onPointActivated+=OnPointActivated;
+		}
+		if(pointNumber==1)
+		{
+			m_fightPoint = GetComponent<FightPoint>();
+			m_enemyPath =  m_fightPoint.GetEnemyPathByName("EnemyPath_0");
+			Debug.Log("EnemyPath "+m_enemyPath);
+			m_enemyPath.onEnemyDeath += OnEnemyDeath;
+		}
 	}
 	void Update () {
-		
+		if(pointNumber==1)
+		{
+			int deathNumber=0;
+			foreach(EnemyPath ep in m_fightPoint.GetAllEnemyPaths())
+			{
+				if(ep.deathCount>0) deathNumber++;
+			}
+			if(deathNumber>=4) RailMovement.instance.StartMovement();
+		}
 	}
+
 
 	void OnEnemyDeath(EnemyFSM enemyFSM)
 	{
-		if(m_enemyPath.deathCount == 1)
+		if(pointNumber==0)
 		{
-		m_enemyPath.CreateArcher(Color.green);
+			Debug.Log("enemy died: "+m_enemyPath.deathCount);
+			if(m_enemyPath.deathCount == 1)
+			{
+			m_enemyPath.CreateArcher(Color.red);
+			}
+			if(m_enemyPath.deathCount >=2)
+			{
+				RailMovement.instance.StartMovement();
+			}
 		}
-		if(m_enemyPath.deathCount >=2)
-		{
-			RailMovement.instance.StartMovement();
-		}
+
 	}
 }

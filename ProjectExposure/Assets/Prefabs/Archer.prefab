@@ -27,6 +27,7 @@ GameObject:
   - component: {fileID: 23148883864334388}
   - component: {fileID: 33537231127477580}
   - component: {fileID: 114386624781955048}
+  - component: {fileID: 114442861311983090}
   m_Layer: 0
   m_Name: Archer
   m_TagString: Enemy
@@ -142,6 +143,19 @@ MonoBehaviour:
   m_health: 100
   m_maxHealth: 100
   m_shouldBeDestroyed: 0
+--- !u!114 &114442861311983090
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1764640218195022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b58533670643214484e79904e641710, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+  waitingTime: 2.5
 --- !u!114 &114474788534590546
 MonoBehaviour:
   m_ObjectHideFlags: 1

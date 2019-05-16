@@ -6,6 +6,8 @@ using UnityEngine;
 public class EnemyPath : MonoBehaviour {
 
     //Initial number of enemies spawn
+    [SerializeField]
+    private Color m_initColor;
     public int archerSpawnCount = 0;
     public int tankSpawnCount = 0;
     public int healerSpawnCount = 0;
@@ -18,7 +20,7 @@ public class EnemyPath : MonoBehaviour {
     {
         for (int i = 0; i < archerSpawnCount; i++)
         {
-            CreateArcher(Color.white);
+            CreateArcher(m_initColor);
         }
     }
 

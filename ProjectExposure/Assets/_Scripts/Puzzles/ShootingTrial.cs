@@ -7,6 +7,7 @@ public class ShootingTrial : MonoBehaviour {
 	// Use this for initialization
 	[SerializeField]
 	private List<GameObject> m_crystals;
+	private bool m_destroyed = false;
 	void Start ()
 	{
 		foreach (var c in m_crystals)
@@ -21,9 +22,11 @@ public class ShootingTrial : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(m_crystals.Count<=0)
+		if(m_crystals.Count<=0 & m_destroyed == false)
 		{
 			RailMovement.instance.StartMovement();
+			m_crystals.Clear();
+			m_destroyed = true;
 		}
 	}
 }

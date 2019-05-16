@@ -19,6 +19,7 @@ public class ArcherFSM : EnemyFSM
         m_enemy.OnPulled += OnPulled;
         m_enemy.OnPushed += OnPushed;
         m_enemy.OnReleased += OnReleased;
+        GetComponent<Health>().OnDeath+=delegate(Health health){ DestroyEnemy(); };
     }
 
     public void OnPulled(Hittable hittable)
