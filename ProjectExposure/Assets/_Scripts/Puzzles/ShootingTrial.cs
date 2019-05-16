@@ -7,12 +7,20 @@ public class ShootingTrial : MonoBehaviour {
 	// Use this for initialization
 	[SerializeField]
 	private List<GameObject> m_crystals;
-	void Start () {
-		
+	void Start ()
+	{
+		foreach (var c in m_crystals)
+		{
+			c.GetComponent<Crystal>().OnExplode += delegate(Crystal crystal)
+			{
+				m_crystals.Remove(c); 
+			};
+		}
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		if(m_crystals.Count<=0)
 		{
 			RailMovement.instance.StartMovement();

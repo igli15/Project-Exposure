@@ -1,10 +1,13 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public class Crystal : Hittable
 {
+
+	public Action<Crystal> OnExplode;
 
 	[SerializeField] private float m_explosionRadius = 5;
 	
@@ -35,9 +38,10 @@ public class Crystal : Hittable
 		{
 			gunManager.magnetGun.PullTarget(this);
 		}
-		else if (gunManager.currentMode == GunManager.GunMode.MERGED && gunManager.CheckIfColorAreSimilar(gunManager.colorGun.GetColor() ,color,20))
+		else if (gunManager.currentMode == GunManager.GunMode.MERGED && gunManager.CheckIfColorAreSimilar(gunManager.colorGun.GetColor() ,color,40))
 		{
 			Explode(gunManager);
+			if (OnExplode != null) OnExplode(this);
 			Destroy(transform.gameObject);
 		}
 		
