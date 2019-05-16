@@ -15,7 +15,10 @@ public class ColorButton : TouchButton
 	// Use this for initialization
 	void Start()
 	{
-		OnTouchEnter.AddListener(delegate { m_gunManager.SetGunColors(m_color); });
+		OnTouchEnter.AddListener(delegate
+		{
+			 m_gunManager.SetGunColors(m_color); 
+		});
 	}
 
 	// Update is called once per frame

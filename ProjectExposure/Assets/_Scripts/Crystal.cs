@@ -26,7 +26,6 @@ public class Crystal : Hittable
 	{
 		if (OnHit != null) OnHit(this);
 		
-		Debug.Log(gunManager.currentMode);
 		if (gunManager.currentMode == GunManager.GunMode.COLOR)
 		{
 			SetColor(gunManager.colorGun.GetColor());
