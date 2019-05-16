@@ -103,8 +103,9 @@ public class GunManager : MonoBehaviour,IAgent
 			if(hittable != null)
 			{
 				Debug.Log("crystal color: "+hittable.GetColor() + " " + "magnet color: " + m_magnetGun.GetColor() );
-				Debug.Log(hittable.GetColor() == m_magnetGun.GetColor());
-				if (CheckIfColorAreSimilar(magnetGun.GetColor(), hittable.GetColor(), 30)) 
+				Debug.Log(CheckIfColorAreSimilar(magnetGun.GetColor(), hittable.GetColor(), 30));
+				
+				if (CheckIfColorAreSimilar(magnetGun.GetColor(), hittable.GetColor(), 30) && m_colorGun.GetHSVOfAColor(hittable.GetColor()).y > 0.1f) 
 				{ 
 					m_currentMode = GunMode.MAGNET;
 					hittable.Hit(this);
@@ -167,10 +168,9 @@ public class GunManager : MonoBehaviour,IAgent
 
 	public void SplitGuns()
 	{
-		m_fsm.ChangeState<SplitGunsState>();
-		
 		SetGunColors(Color.red);
-		
+		m_fsm.ChangeState<SplitGunsState>();	
+		m_magnetGun.pulledHittable = null;
 		if(OnSplit != null) OnSplit(this);
 	}
 	

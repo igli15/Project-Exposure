@@ -13,9 +13,21 @@ public class ColorGun : Gun
 		float hue = 0;
 		float saturation = 0;
 		float value = 0;
-
+		
 		Color.RGBToHSV(color, out hue, out saturation, out value);
+
 		return hue;
+	}
+
+	public Vector3 GetHSVOfAColor(Color color)
+	{
+		float hue = 0;
+		float saturation = 0;
+		float value = 0;
+		
+		Color.RGBToHSV(color, out hue, out saturation, out value);
+
+		return new Vector3(hue,saturation,value);
 	}
 
 	public override void SetColor(Color newColor)
