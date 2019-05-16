@@ -44,7 +44,7 @@ public class FightPointManager : MonoBehaviour {
 			Debug.Log("enemy died: "+m_enemyPath.deathCount);
 			if(m_enemyPath.deathCount == 1)
 			{
-			m_enemyPath.CreateArcher(Color.red);
+			m_enemyPath.CreateArcher(Color.white);
 			}
 			if(m_enemyPath.deathCount >=2)
 			{
