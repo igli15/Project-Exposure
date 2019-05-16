@@ -104,7 +104,7 @@ public class GunManager : MonoBehaviour,IAgent
 			{
 				Debug.Log("crystal color: "+hittable.GetColor() + " " + "magnet color: " + m_magnetGun.GetColor() );
 				Debug.Log(hittable.GetColor() == m_magnetGun.GetColor());
-				if(hittable.GetColor().Equals(m_magnetGun.GetColor()) )
+				if (CheckIfColorAreSimilar(magnetGun.GetColor(), hittable.GetColor(), 30)) 
 				{ 
 					m_currentMode = GunMode.MAGNET;
 					hittable.Hit(this);
@@ -194,10 +194,14 @@ public class GunManager : MonoBehaviour,IAgent
 
 	public bool CheckIfColorAreSimilar(Color c1, Color c2,float range)
 	{
+		
 		float c1Hue = colorGun.GetHueOfColor(c1) * 360;
 
 		float c2Hue = colorGun.GetHueOfColor(c2) * 360;
-        
+
+		if (c1Hue > 340) c1Hue = 0;
+		if (c2Hue > 340) c1Hue = 0;  //Reset red.
+		
 		float hueDiff = Mathf.Abs(c1Hue - c2Hue);
 
 		if (hueDiff <= range)

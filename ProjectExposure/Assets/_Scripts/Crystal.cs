@@ -12,6 +12,7 @@ public class Crystal : Hittable
 	void Start () 
 	{
 		OnReleased += delegate(Hittable hittable) { GetComponent<Rigidbody>().useGravity = true; };
+		OnPulled += delegate(Hittable hittable) {   GetComponent<Rigidbody>().velocity = Vector3.zero;};
 		SetColor(color);
 	}
 	
