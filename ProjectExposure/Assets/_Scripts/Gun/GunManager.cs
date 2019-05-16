@@ -18,7 +18,7 @@ public class GunManager : MonoBehaviour,IAgent
 	[SerializeField] private float m_baseDamage = 10;
 	[SerializeField] private float m_extraDamage = 20;
 	[SerializeField] private float m_hueDamageRange = 40;
-
+	
 	private float m_damage = 0;
 
 	private Fsm<GunManager> m_fsm;
@@ -56,7 +56,7 @@ public class GunManager : MonoBehaviour,IAgent
 	{
 		get { return m_damage; }
 	}
-
+	
 	void Start () 
 	{
 		if (m_fsm == null)
@@ -101,17 +101,18 @@ public class GunManager : MonoBehaviour,IAgent
             
 			if(hittable != null)
 			{
-				if (hittable.GetColor() == Color.white && m_magnetGun.pulledHittable == null)
+				Debug.Log("crystal color: "+hittable.GetColor() + " " + "magnet color: " + m_magnetGun.GetColor() );
+				Debug.Log(hittable.GetColor() == m_magnetGun.GetColor());
+				if(hittable.GetColor().Equals(m_magnetGun.GetColor()) )
+				{ 
+					m_currentMode = GunMode.MAGNET;
+					hittable.Hit(this);
+				}
+				else if (hittable.GetColor() == Color.white && m_magnetGun.pulledHittable == null)
 				{
 					m_currentMode = GunMode.COLOR;
 					hittable.Hit(this);
-					continue;
 					
-				}
-				else if((hittable.GetColor() == m_magnetGun.GetColor()))
-				{
-					m_currentMode = GunMode.MAGNET;
-					hittable.Hit(this);
 				}
 				
 			}
@@ -123,9 +124,6 @@ public class GunManager : MonoBehaviour,IAgent
 		if(EventSystem.current.IsPointerOverGameObject()) return;
         
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        
-		m_colorGun.LookInRayDirection(ray);
-		m_magnetGun.LookInRayDirection(ray);
 		
 		RaycastHit[] hits;
 		hits = Physics.RaycastAll(ray);
@@ -138,7 +136,7 @@ public class GunManager : MonoBehaviour,IAgent
 			if(hittable != null)
 			{
 				m_currentMode = GunMode.MERGED;
-				m_damage = CalculateDamage(hittable.GetColor());
+				m_damage = CalculateDamage(m_colorGun.GetColor(),hittable.GetColor());
 				hittable.Hit(this);
 			}
 		}
@@ -175,12 +173,12 @@ public class GunManager : MonoBehaviour,IAgent
 		if(OnSplit != null) OnSplit(this);
 	}
 	
-	float CalculateDamage(Color enemyColor)
+	public float CalculateDamage(Color myColor,Color enemyColor)
 	{
 		float damage = 0;
 		float enemyHue = colorGun.GetHueOfColor(enemyColor) * 360;
 
-		float hue = colorGun.GetHueOfColor(m_colorGun.GetColor());
+		float hue = colorGun.GetHueOfColor(myColor);
         
 		float hueDiff = Mathf.Abs(enemyHue - hue);
 
@@ -192,4 +190,5 @@ public class GunManager : MonoBehaviour,IAgent
 		Debug.Log(damage);
 		return damage;
 	}
+
 }

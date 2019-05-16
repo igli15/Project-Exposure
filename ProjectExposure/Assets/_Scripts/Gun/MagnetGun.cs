@@ -10,6 +10,8 @@ public class MagnetGun : Gun
 	[SerializeField] private GameObject m_rays;
 
 	[SerializeField] private Transform m_pullTargetLocation;
+	
+	[SerializeField] private float m_pushForce = 10;
 
 	private List<Material> m_rayMats;
 
@@ -72,7 +74,7 @@ public class MagnetGun : Gun
 	{
 		if (m_targetIsInPlace)
 		{
-			m_pulledHittable.GetComponent<Rigidbody>().AddForce(dir * 5, ForceMode.Impulse);
+			m_pulledHittable.GetComponent<Rigidbody>().AddForce(dir * m_pushForce, ForceMode.Impulse);
 			
 			if (m_pulledHittable.OnPushed != null) m_pulledHittable.OnPushed(m_pulledHittable);
 			
