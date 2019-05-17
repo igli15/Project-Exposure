@@ -561,7 +561,7 @@ MonoBehaviour:
   m_paths: []
   button: {fileID: 0}
   radiusOfPoint: 0.5
-  color: {r: 0, g: 0, b: 0, a: 1}
+  color: {r: 0.12941177, g: 1, b: 0.023529412, a: 1}
   m_pointCount: 3
   m_firstPoint: {fileID: 830044838}
   m_lastPoint: {fileID: 230052760}
@@ -576,6 +576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4657a24fb35a640ae958e04438d2ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_initColor: {r: 1, g: 1, b: 1, a: 1}
   archerSpawnCount: 0
   tankSpawnCount: 0
   healerSpawnCount: 0
@@ -2401,6 +2402,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4657a24fb35a640ae958e04438d2ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_initColor: {r: 0.12941177, g: 1, b: 0.023529412, a: 1}
   archerSpawnCount: 0
   tankSpawnCount: 0
   healerSpawnCount: 0
@@ -2650,7 +2652,7 @@ MonoBehaviour:
   m_paths: []
   button: {fileID: 0}
   radiusOfPoint: 0.5
-  color: {r: 0, g: 0, b: 0, a: 1}
+  color: {r: 0.12941177, g: 1, b: 0.023529412, a: 1}
   m_pointCount: 3
   m_firstPoint: {fileID: 756554193}
   m_lastPoint: {fileID: 1728302273}
@@ -2665,6 +2667,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4657a24fb35a640ae958e04438d2ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_initColor: {r: 1, g: 1, b: 1, a: 1}
   archerSpawnCount: 0
   tankSpawnCount: 0
   healerSpawnCount: 0

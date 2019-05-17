@@ -7,20 +7,17 @@ public class MergeButton : TouchButton
 
 	[SerializeField] private GunManager m_gunManager;
 
-	private bool merged = false;
 	// Use this for initialization
 	void Start ()
 	{
 		OnTouchEnter.AddListener(delegate
 		{
-			if (merged)
+			if (m_gunManager.currentMode == GunManager.GunMode.MERGED)
 			{
-				merged = false;
 				m_gunManager.SplitGuns();
 			}
 			else
 			{
-				merged = true;
 				m_gunManager.MergeGuns();
 			}
 		});

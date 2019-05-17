@@ -62,6 +62,7 @@ public class GunManager : MonoBehaviour,IAgent
 		if (m_fsm == null)
 		{
 			m_fsm = new Fsm<GunManager>(this);
+			m_currentMode = GunMode.MERGED;
 		}
 		
 		m_mergeSphereRenderer = m_mergeSphere.GetComponent<Renderer>();
