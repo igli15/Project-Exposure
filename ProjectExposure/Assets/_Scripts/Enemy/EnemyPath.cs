@@ -35,6 +35,17 @@ public class EnemyPath : MonoBehaviour {
         return newEnemy;
     }
 
+    public GameObject CreateHealer()
+    {
+        GameObject newEnemy = ObjectPooler.instance.SpawnFromPool("Healer", transform.position, transform.rotation);
+        newEnemy.GetComponent<HealerMovementState>().path = GetComponent<Path>();
+        newEnemy.transform.position = newEnemy.GetComponent<HealerMovementState>().path.GetFirstPoint().transform.position;
+        //.GetComponent<Enemy>().SetColor(color);
+        newEnemy.GetComponent<HealerFSM>().onDeath += EnemyDied;
+        newEnemy.GetComponent<HealerFSM>().InitializeEnemy();
+        return newEnemy;
+    }
+
     public void EnemyDied(EnemyFSM fsm)
     {
         m_deathCount++;
