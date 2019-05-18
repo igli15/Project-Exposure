@@ -2966,7 +2966,7 @@ Light:
   serializedVersion: 8
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
-  m_Intensity: 0.2
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_CookieSize: 10
@@ -3370,6 +3370,14 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 2ddc8237852af40048caf8e15c43e5bc, type: 2}
+    - target: {fileID: 400000, guid: 3afc6d6bef99e4c9ba4fa60e506db13d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 3afc6d6bef99e4c9ba4fa60e506db13d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3afc6d6bef99e4c9ba4fa60e506db13d, type: 3}
   m_IsPrefabParent: 0

@@ -17,7 +17,7 @@ Shader "Handout/Grass" {
               
 
 		CGPROGRAM
-		#pragma surface surf Standard vertex:vert 
+		#pragma surface surf Standard vertex:vert addshadow
 		#pragma target 3.0
 		#include "UnityCG.cginc"
 
