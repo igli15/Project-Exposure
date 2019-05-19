@@ -1,4 +1,4 @@
-﻿Shader "Handout/NewToon"
+﻿Shader "Custom/NewToon"
 {
 	Properties
 	{
