@@ -13,6 +13,9 @@
 		Tags {  "RenderType"="Transparent" "Queue"="Transparent"  }
 		LOD 200
 
+        ZWrite Off
+        Blend SrcAlpha OneMinusSrcAlpha
+        
 		CGPROGRAM
 		#pragma surface surf Standard alpha fullforwardshadows vertex:vert addshadow
 		#pragma target 3.0
@@ -44,16 +47,19 @@
             
             
 			vertexData.vertex.xyz = p;
-			vertexData.normal = normal;
+			//vertexData.normal = normal;
 		}
 
-		void surf (Input IN, inout SurfaceOutputStandard o) {
+		void surf (Input IN, inout SurfaceOutputStandard o) 
+		{
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+			
+			
 			o.Albedo = c.rgb;
 			o.Metallic = _Metallic;
 			o.Smoothness = _Glossiness;
 			o.Emission = _Emission;
-			o.Alpha = c.a;
+			o.Alpha = 1;
 		}
 		ENDCG
 	}

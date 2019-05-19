@@ -54,6 +54,9 @@
 		    fresnel = pow(fresnel, _FresnelScale);
 		    
 			// Albedo comes from a texture tinted by color
+			IN.uv_MainTex.x += _Time.x;
+			IN.uv_MainTex.y += _Time.x;
+			
 			fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
 			o.Albedo = c.rgb * fresnel;
 			// Metallic and smoothness come from slider variables
