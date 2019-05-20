@@ -65,11 +65,11 @@ Material:
     - _DstBlend: 0
     - _Emission: 1
     - _EmissionScale: 0.7
-    - _FresnelScale: 2.21
+    - _FresnelScale: 1.88
     - _GlossMapScale: 1
-    - _Glossiness: 0.961
+    - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Metallic: 0.088
+    - _Metallic: 1
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -80,6 +80,6 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Emission: {r: 0, g: 0.047058824, b: 1.4980392, a: 1}
+    - _Emission: {r: 0.09960991, g: 0.09960991, b: 0.09960991, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _FresnelColor: {r: 1, g: 0.050980393, b: 0, a: 1}
+    - _FresnelColor: {r: 1, g: 0, b: 0.015686275, a: 1}

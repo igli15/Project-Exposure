@@ -6,7 +6,7 @@
 		_Glossiness ("Smoothness", Range(0,1)) = 0.5
 		_Metallic ("Metallic", Range(0,1)) = 0.0
 		
-		_FresnelScale ("Fresnale Scale",Range(0,3)) = 1
+		_FresnelScale ("Fresnale Scale",Range(0,3)) = 1.85
 		_FresnelColor ("Fresnel Color", color) = (1,1,1)
 		[HDR] _Emission ("Emission Color", color) = (1,1,1)
 		
