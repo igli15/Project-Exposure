@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ArcherAttackState : AbstractState<EnemyFSM>
 {
@@ -34,6 +35,8 @@ public class ArcherAttackState : AbstractState<EnemyFSM>
 
     void Shoot()
     {
+        transform.DOLookAt(Camera.main.transform.position, 0.5f);
+
         GameObject projectile = ObjectPooler.instance.SpawnFromPool("Projectile", transform.position, transform.rotation);
         projectile.SetActive(true);
         projectile.GetComponent<Rigidbody>().velocity = (Camera.main.transform.position - transform.position).normalized * 10;

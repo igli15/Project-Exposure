@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class EnemyMovementState : AbstractState<EnemyFSM>
 {
     public Path path;
@@ -16,7 +16,7 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
         if (!m_rb) m_rb = GetComponent<Rigidbody>();
         m_rb.useGravity = false;
         m_currentTargetPoint = path.GetFirstPoint();
-        //Debug.Log("Going to the Point: " + m_currentTargetPoint);
+        
         StartMovement();
     }
 
@@ -35,6 +35,7 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
 
     public void StartMovement()
     {
+        transform.DOLookAt(m_currentTargetPoint.transform.position, 0.5f);
         Vector3 direction = m_currentTargetPoint.transform.position - transform.position;
         m_rb.velocity = direction.normalized * speed;
     }

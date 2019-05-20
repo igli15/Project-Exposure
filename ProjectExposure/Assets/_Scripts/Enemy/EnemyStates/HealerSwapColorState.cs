@@ -41,6 +41,7 @@ public class HealerSwapColorState : AbstractState<EnemyFSM> {
         }
         else if (Time.time > m_lastTimeCharge + m_chargningTime)
         {
+            transform.DOLookAt(m_targetEnemy.transform.position, 0.5f);
             target.fsm.ChangeState<HealerRecoverState>();
             SwapColorsWith(m_targetEnemy.GetComponent<Enemy>());
         }
