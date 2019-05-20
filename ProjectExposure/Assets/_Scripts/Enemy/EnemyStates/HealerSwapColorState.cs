@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class HealerSwapColorState : AbstractState<EnemyFSM> {
 
     [SerializeField]
@@ -20,14 +20,26 @@ public class HealerSwapColorState : AbstractState<EnemyFSM> {
     public override void Enter(IAgent pAgent)
     {
         base.Enter(pAgent);
-        m_targetEnemy = GetRandomEnemyInRange(100);
+        m_targetEnemy = GetRandomEnemyInRange(10);
         m_lastTimeCharge = Time.time;
-        Debug.Log("ENEMY: " + m_targetEnemy.gameObject);
+
+        if (m_targetEnemy == null)
+        {
+            Debug.Log("Wandering around");
+            m_targetEnemy = GetRandomEnemyInRange(10);
+            target.fsm.ChangeState<HealerSwapColorState>();
+        }
+        
     }
 
     void Update()
     {
-        if (Time.time > m_lastTimeCharge + m_chargningTime)
+        if (m_targetEnemy == null)
+        {
+            m_targetEnemy = GetRandomEnemyInRange(100);
+            target.fsm.ChangeState<HealerSwapColorState>();
+        }
+        else if (Time.time > m_lastTimeCharge + m_chargningTime)
         {
             target.fsm.ChangeState<HealerRecoverState>();
             SwapColorsWith(m_targetEnemy.GetComponent<Enemy>());
@@ -36,6 +48,7 @@ public class HealerSwapColorState : AbstractState<EnemyFSM> {
 
     void SwapColorsWith(Enemy targetEnemy)
     {
+        Debug.Log("Swaping color with " + targetEnemy.name);
         m_enemy.SetColor(targetEnemy.GetColor());
         targetEnemy.SetColor(Color.white);
     }
@@ -56,13 +69,5 @@ public class HealerSwapColorState : AbstractState<EnemyFSM> {
         return null;
     }
 
-    private void OnDrawGizmos()
-    {
-        return; //for now
-        if (this.enabled)
-        {
-            Gizmos.color = Color.white;
-            Gizmos.DrawLine(transform.position, m_targetEnemy.transform.position);
-        }
-    }
+    
 }

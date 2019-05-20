@@ -30,7 +30,6 @@ public class ArcherAttackState : AbstractState<EnemyFSM>
     public override void Exit(IAgent pAgent)
     {
         base.Exit(pAgent);
-        Debug.Log("Attack EXIT");
     }
 
     void Shoot()

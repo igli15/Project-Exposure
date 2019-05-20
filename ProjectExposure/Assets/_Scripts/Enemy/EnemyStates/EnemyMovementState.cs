@@ -16,7 +16,7 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
         if (!m_rb) m_rb = GetComponent<Rigidbody>();
         m_rb.useGravity = false;
         m_currentTargetPoint = path.GetFirstPoint();
-        Debug.Log("Going to the Point: " + m_currentTargetPoint);
+        //Debug.Log("Going to the Point: " + m_currentTargetPoint);
         StartMovement();
     }
 
