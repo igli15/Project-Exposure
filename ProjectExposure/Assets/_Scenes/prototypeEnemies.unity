@@ -1236,25 +1236,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &294507415 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1256197054451566, guid: cb24ee6faf3590f4387dfa0126d19395,
-    type: 2}
-  m_PrefabInternal: {fileID: 1988873306}
---- !u!114 &294507416
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 294507415}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30fbcda5b89314e21b1caf23992cdd96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_health: 50
-  m_maxHealth: 50
-  m_shouldBeDestroyed: 0
 --- !u!1 &314396372
 GameObject:
   m_ObjectHideFlags: 0
@@ -3194,8 +3175,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4657a24fb35a640ae958e04438d2ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_initColor: {r: 0, g: 0, b: 0, a: 0}
-  archerSpawnCount: 0
+  m_initColor: {r: 0.07111299, g: 1, b: 0, a: 0}
+  archerSpawnCount: 1
   tankSpawnCount: 0
   healerSpawnCount: 0
 --- !u!1 &965661263
@@ -4452,10 +4433,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4657a24fb35a640ae958e04438d2ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_initColor: {r: 0, g: 0, b: 0, a: 0}
+  m_initColor: {r: 0, g: 0.13692236, b: 1, a: 0}
   archerSpawnCount: 0
   tankSpawnCount: 0
-  healerSpawnCount: 0
+  healerSpawnCount: 1
 --- !u!1 &1416889750
 GameObject:
   m_ObjectHideFlags: 0
@@ -5418,8 +5399,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4657a24fb35a640ae958e04438d2ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_initColor: {r: 0, g: 0, b: 0, a: 0}
-  archerSpawnCount: 0
+  m_initColor: {r: 1, g: 0, b: 0, a: 0}
+  archerSpawnCount: 1
   tankSpawnCount: 0
   healerSpawnCount: 0
 --- !u!1 &1569044452
@@ -7187,6 +7168,11 @@ Prefab:
     - target: {fileID: 4453869848116544, guid: cb24ee6faf3590f4387dfa0126d19395, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114038262611454514, guid: cb24ee6faf3590f4387dfa0126d19395,
+        type: 2}
+      propertyPath: speed
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cb24ee6faf3590f4387dfa0126d19395, type: 2}

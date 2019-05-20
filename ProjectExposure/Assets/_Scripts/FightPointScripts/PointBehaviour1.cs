@@ -12,7 +12,7 @@ public class PointBehaviour1 : MonoBehaviour {
         //So in the begining each enemyPath will spawn 1 Archer
         foreach (EnemyPath enemyPath in m_fightPoint.GetAllEnemyPaths())
         {
-            enemyPath.archerSpawnCount = 1;
+           // enemyPath.archerSpawnCount = 1;
         }
 	}
 	

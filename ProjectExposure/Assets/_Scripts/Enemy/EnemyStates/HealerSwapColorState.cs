@@ -10,6 +10,12 @@ public class HealerSwapColorState : AbstractState<EnemyFSM> {
     private float m_lastTimeCharge;
 
     EnemyFSM m_targetEnemy;
+    Enemy m_enemy;
+
+    private void Start()
+    {
+        m_enemy = GetComponent<Enemy>();
+    }
 
     public override void Enter(IAgent pAgent)
     {
@@ -24,7 +30,14 @@ public class HealerSwapColorState : AbstractState<EnemyFSM> {
         if (Time.time > m_lastTimeCharge + m_chargningTime)
         {
             target.fsm.ChangeState<HealerRecoverState>();
+            SwapColorsWith(m_targetEnemy.GetComponent<Enemy>());
         }
+    }
+
+    void SwapColorsWith(Enemy targetEnemy)
+    {
+        m_enemy.SetColor(targetEnemy.GetColor());
+        targetEnemy.SetColor(Color.white);
     }
 
     public override void Exit(IAgent pAgent)
@@ -41,5 +54,15 @@ public class HealerSwapColorState : AbstractState<EnemyFSM> {
             if (collider.GetComponent<EnemyFSM>()) return collider.GetComponent<EnemyFSM>();
         }
         return null;
+    }
+
+    private void OnDrawGizmos()
+    {
+        return; //for now
+        if (this.enabled)
+        {
+            Gizmos.color = Color.white;
+            Gizmos.DrawLine(transform.position, m_targetEnemy.transform.position);
+        }
     }
 }

@@ -22,6 +22,10 @@ public class EnemyPath : MonoBehaviour {
         {
             CreateArcher(m_initColor);
         }
+        for (int i = 0; i < healerSpawnCount; i++)
+        {
+            CreateHealer();
+        }
     }
 
     public GameObject CreateArcher(Color color)
