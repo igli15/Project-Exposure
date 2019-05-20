@@ -157,6 +157,7 @@ public class GunManager : MonoBehaviour,IAgent
 
 	public void MergeGuns()
 	{
+		m_currentMode = GunMode.MERGED;
 		m_fsm.ChangeState<MergedGunsState>();
 
 		if (m_magnetGun.pulledHittable != null)
@@ -169,6 +170,7 @@ public class GunManager : MonoBehaviour,IAgent
 
 	public void SplitGuns()
 	{
+		m_currentMode = GunMode.COLOR;
 		SetGunColors(Color.red);
 		m_fsm.ChangeState<SplitGunsState>();	
 		m_magnetGun.pulledHittable = null;
@@ -178,6 +180,13 @@ public class GunManager : MonoBehaviour,IAgent
 	public float CalculateDamage(Color myColor,Color enemyColor)
 	{
 		float damage = 0;
+
+		if (colorGun.GetHSVOfAColor(enemyColor).y < 0.2f)
+		{
+			Debug.Log(colorGun.GetHSVOfAColor(enemyColor).y);
+			return 0;
+		}
+		
 		float enemyHue = colorGun.GetHueOfColor(enemyColor) * 360;
 
 		float hue = colorGun.GetHueOfColor(myColor) * 360;

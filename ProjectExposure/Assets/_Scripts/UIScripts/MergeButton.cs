@@ -12,8 +12,10 @@ public class MergeButton : TouchButton
 	{
 		OnTouchEnter.AddListener(delegate
 		{
+			
 			if (m_gunManager.currentMode == GunManager.GunMode.MERGED)
 			{
+				Debug.Log("split");
 				m_gunManager.SplitGuns();
 			}
 			else
