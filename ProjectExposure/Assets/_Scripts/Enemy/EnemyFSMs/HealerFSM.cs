@@ -24,6 +24,7 @@ public class HealerFSM : EnemyFSM {
 
     public void OnPulled(Hittable hittable)
     {
+        Debug.Log("PULLED");
         fsm.ChangeState<EnemyDisableState>();
         m_isPushed = false;
     }

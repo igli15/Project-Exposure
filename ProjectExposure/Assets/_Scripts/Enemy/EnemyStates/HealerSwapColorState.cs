@@ -65,6 +65,8 @@ public class HealerSwapColorState : AbstractState<EnemyFSM> {
         foreach (Collider collider in colliders)
         {
             if (collider.gameObject == gameObject) continue;
+            if (!collider.CompareTag("Enemy")) continue;
+            if (collider.GetComponent<Enemy>().GetColor()==Color.white) continue;
             if (collider.GetComponent<EnemyFSM>()) return collider.GetComponent<EnemyFSM>();
         }
         return null;
