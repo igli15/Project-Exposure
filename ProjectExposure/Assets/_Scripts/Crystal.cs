@@ -10,6 +10,9 @@ public class Crystal : Hittable
 	public Action<Crystal> OnExplode;
 
 	[SerializeField] private float m_explosionRadius = 5;
+
+	[SerializeField] private AoeSphere m_aoeSphere;
+	
 	
 	// Use this for initialization
 	void Start () 
@@ -42,6 +45,7 @@ public class Crystal : Hittable
 		{
 			Explode(gunManager);
 			if (OnExplode != null) OnExplode(this);
+			Instantiate(m_aoeSphere.gameObject, transform.position, Quaternion.identity);
 			Destroy(transform.gameObject);
 		}
 		
