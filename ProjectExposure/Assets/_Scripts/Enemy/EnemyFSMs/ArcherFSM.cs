@@ -7,7 +7,7 @@ public class ArcherFSM : EnemyFSM
     private Rigidbody m_rigidBody;
     private ArcherMovementState m_archerMovementState;
     private Enemy m_enemy;
-
+    public bool isIndependentAgent=false;
     [SerializeField]
     private float m_recoverTime = 0.8f;
     private bool m_isPushed=false;
@@ -20,6 +20,8 @@ public class ArcherFSM : EnemyFSM
         m_enemy.OnPushed += OnPushed;
         m_enemy.OnReleased += OnReleased;
         GetComponent<Health>().OnDeath+=delegate(Health health){ DestroyEnemy(); };
+
+        if (isIndependentAgent) InitializeEnemy();
     }
 
     public void OnPulled(Hittable hittable)

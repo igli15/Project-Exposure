@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using DG.Tweening;
 public class ArcherMovementState : EnemyMovementState
 {
     public override void Enter(IAgent pAgent)
@@ -13,6 +13,12 @@ public class ArcherMovementState : EnemyMovementState
     {
         base.Exit(pAgent);
 
+    }
+
+    public override void OnPointEntered()
+    {
+        StopMovement();
+        target.fsm.ChangeState<ArcherAttackState>();
     }
 
     public override void OnLastPointActivated()

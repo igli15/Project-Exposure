@@ -45,7 +45,6 @@ public class MovementPoint : MonoBehaviour {
 
     private void OnDrawGizmos()
     {
-        return;
         Gizmos.color = Color.green;
         m_path.color.a = 1;
         if (m_path != null) Gizmos.color = m_path.color;
@@ -56,7 +55,6 @@ public class MovementPoint : MonoBehaviour {
     }
     private void OnDrawGizmosSelected()
     {
-        return;
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(transform.position, 0.2f);
         if (m_nextPoint != null)
