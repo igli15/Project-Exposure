@@ -16,18 +16,10 @@ public abstract class Gun : MonoBehaviour
 	protected Material m_material;
 
 	// Use this for initialization
-	protected virtual void Start ()
+	protected virtual void Start()
 	{
-		m_material = GetComponent<Renderer>().material;
+		//m_material = GetComponent<Renderer>().material;
 
-	}
-	public Vector3 LookInRayDirection(Ray ray)
-	{
-		Ray r = ray;
-		r.origin = transform.position;
-		Quaternion rot = Quaternion.LookRotation(r.direction.normalized,Vector3.up);
-		transform.DORotate(rot.eulerAngles, 0.5f);
-		return r.direction;
 	}
 
 	public virtual void Shoot()

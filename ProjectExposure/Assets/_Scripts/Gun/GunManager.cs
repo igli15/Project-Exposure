@@ -10,14 +10,19 @@ public class GunManager : MonoBehaviour,IAgent
 	[SerializeField] private Gun m_damageGun;
 	[SerializeField] private Gun m_colorGun;
 
+	[SerializeField] private Transform m_gunGroup;
+
 	[SerializeField] private float m_baseDamage = 10;
 	[SerializeField] private float m_extraDamage = 20;
 	[SerializeField] private float m_hueDamageRange = 40;
+
+	[SerializeField] private SliderBase m_sliderBase;
 	
 	private float m_damage = 0;
 
 	private Fsm<GunManager> m_fsm;
-	private Renderer m_mergeSphereRenderer;
+
+	private bool m_mouseDown = false;
 
 	public enum GunMode
 	{
@@ -40,6 +45,13 @@ public class GunManager : MonoBehaviour,IAgent
 	void Start () 
 	{
 		SetGunColors(Color.red);
+		
+		m_sliderBase.OnSliderValueChanged += delegate(float sliderValue)
+		{
+			float h = sliderValue * 270.0f / 360.0f;
+		
+			SetGunColors(Color.HSVToRGB(h ,1,1));
+		};
 	}
 	
 	// Update is called once per frame
@@ -115,9 +127,13 @@ public class GunManager : MonoBehaviour,IAgent
 		List<Hittable> hittables = new List<Hittable>();
 		
 		if(EventSystem.current.IsPointerOverGameObject()) return hittables;
+
+		//LookInRayDirection(m_colorGun.transform, ray);
+		//LookInRayDirection(m_damageGun.transform, ray);
 		
-		m_colorGun.LookInRayDirection(ray);
-		m_damageGun.LookInRayDirection(ray);
+		if(!m_mouseDown)
+		LookInRayDirection(m_gunGroup, ray);
+		
 		
 		hits = Physics.RaycastAll(ray);
 
@@ -133,5 +149,29 @@ public class GunManager : MonoBehaviour,IAgent
 		}
 
 		return hittables;
+	}
+	
+	public Vector3 LookInRayDirection(Transform t,Ray ray)
+	{
+		Ray r = ray;
+		r.origin = transform.position;
+		Quaternion rot = Quaternion.LookRotation(r.direction.normalized,Vector3.up);
+		t.DORotate(rot.eulerAngles, 0.5f);
+		return r.direction;
+	}
+
+	private void OnMouseDrag()
+	{
+		m_sliderBase.gameObject.BroadcastMessage("OnMouseDrag"); // umm yea... unity and stuff
+	}
+
+	private void OnMouseDown()
+	{
+		m_mouseDown = true;
+	}
+
+	private void OnMouseUp()
+	{
+		m_mouseDown = false;
 	}
 }
