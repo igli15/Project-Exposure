@@ -9,8 +9,8 @@ public class MergedGunsState : AbstractState<GunManager>
 	{
 		base.Enter(pAgent);
 
-		//target.colorGun.transform.DOLocalRotate(new Vector3(0,-90,0), 0.5f);
-		//target.magnetGun.transform.DOLocalRotate(new Vector3(0,90,0), 0.5f);
+		target.colorGun.transform.DOLocalRotate(new Vector3(0,-90,0), 0.5f);
+		target.magnetGun.transform.DOLocalRotate(new Vector3(0,90,0), 0.5f);
 	}
 
 	
@@ -27,8 +27,8 @@ public class MergedGunsState : AbstractState<GunManager>
 	{
 		base.Exit(pAgent);
 		
-		//target.colorGun.transform.DOLocalRotate(new Vector3(0,0,0), 0.5f);
-		//target.magnetGun.transform.DOLocalRotate(new Vector3(0,0,0), 0.5f);
+		target.colorGun.transform.DOLocalRotate(new Vector3(0,0,0), 0.5f);
+		target.magnetGun.transform.DOLocalRotate(new Vector3(0,0,0), 0.5f);
 		
 	}
 }

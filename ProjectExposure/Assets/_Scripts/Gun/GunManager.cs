@@ -138,10 +138,20 @@ public class GunManager : MonoBehaviour,IAgent
             
 			if(hittable != null)
 			{
-				m_currentMode = GunMode.MERGED;
-				m_damage = CalculateDamage(m_colorGun.GetColor(),hittable.GetColor());
-				hittable.Hit(this);
+				if (hittable.GetColor() == Color.white)
+				{
+					m_currentMode = GunMode.COLOR;
+					hittable.Hit(this);
+					
+				}
+				else
+				{
+					m_currentMode = GunMode.MERGED;
+					m_damage = CalculateDamage(m_colorGun.GetColor(), hittable.GetColor());
+					hittable.Hit(this);
+				}
 			}
+			
 		}
 	}
 
