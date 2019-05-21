@@ -12,7 +12,7 @@ public class PointBehaviour1 : MonoBehaviour {
         //So in the begining each enemyPath will spawn 1 Archer
         foreach (EnemyPath enemyPath in m_fightPoint.GetAllEnemyPaths())
         {
-            enemyPath.archerSpawnCount = 1;
+           // enemyPath.archerSpawnCount = 1;
         }
 	}
 	
@@ -21,7 +21,7 @@ public class PointBehaviour1 : MonoBehaviour {
         if (Input.GetKeyDown(KeyCode.F))
         {
             m_fightPoint.GetEnemyPathByName("EnemyPath_1").CreateArcher(Color.green);
-            m_fightPoint.GetEnemyPathByName("EnemyPath_3").CreateArcher(Color.red);
+            m_fightPoint.GetEnemyPathByName("EnemyPath_3").CreateHealer();
         }
 	}
 }

@@ -7,14 +7,11 @@ public class Enemy : Hittable
 {
     //public Color color;
 
-    private Health m_health;
 
     public void Start()
     {
         SetColor(color);
-        m_health = GetComponent<Health>();
-        
-        //OnReleased += delegate(Hittable hittable) { };
+
     }
 
     private void Update()

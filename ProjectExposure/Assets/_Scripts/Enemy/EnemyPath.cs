@@ -22,6 +22,10 @@ public class EnemyPath : MonoBehaviour {
         {
             CreateArcher(m_initColor);
         }
+        for (int i = 0; i < healerSpawnCount; i++)
+        {
+            CreateHealer();
+        }
     }
 
     public GameObject CreateArcher(Color color)
@@ -32,6 +36,17 @@ public class EnemyPath : MonoBehaviour {
         newEnemy.GetComponent<Enemy>().SetColor(color);
         newEnemy.GetComponent<ArcherFSM>().onDeath += EnemyDied;
         newEnemy.GetComponent<ArcherFSM>().InitializeEnemy();
+        return newEnemy;
+    }
+
+    public GameObject CreateHealer()
+    {
+        GameObject newEnemy = ObjectPooler.instance.SpawnFromPool("Healer", transform.position, transform.rotation);
+        newEnemy.GetComponent<HealerMovementState>().path = GetComponent<Path>();
+        newEnemy.transform.position = newEnemy.GetComponent<HealerMovementState>().path.GetFirstPoint().transform.position;
+        //.GetComponent<Enemy>().SetColor(color);
+        newEnemy.GetComponent<HealerFSM>().onDeath += EnemyDied;
+        newEnemy.GetComponent<HealerFSM>().InitializeEnemy();
         return newEnemy;
     }
 

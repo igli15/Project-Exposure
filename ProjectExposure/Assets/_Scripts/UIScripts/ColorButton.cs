@@ -20,10 +20,5 @@ public class ColorButton : TouchButton
 			 m_gunManager.SetGunColors(m_color); 
 		});
 	}
-
-	// Update is called once per frame
-	void Update () 
-	{
-		
-	}
+	
 }

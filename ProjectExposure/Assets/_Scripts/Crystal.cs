@@ -10,6 +10,9 @@ public class Crystal : Hittable
 	public Action<Crystal> OnExplode;
 
 	[SerializeField] private float m_explosionRadius = 5;
+
+	[SerializeField] private AoeSphere m_aoeSphere;
+	
 	
 	// Use this for initialization
 	void Start () 
@@ -40,9 +43,13 @@ public class Crystal : Hittable
 		}
 		else if (gunManager.currentMode == GunManager.GunMode.MERGED && gunManager.CheckIfColorAreSimilar(gunManager.colorGun.GetColor() ,color,40))
 		{
-			Explode(gunManager);
-			if (OnExplode != null) OnExplode(this);
-			Destroy(transform.gameObject);
+			if (gunManager.damage > 0.2f)
+			{
+				Explode(gunManager);
+				if (OnExplode != null) OnExplode(this);
+				Instantiate(m_aoeSphere.gameObject, transform.position, Quaternion.identity);
+				Destroy(transform.gameObject);
+			}
 		}
 		
 	}

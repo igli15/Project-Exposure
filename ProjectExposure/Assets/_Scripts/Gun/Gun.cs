@@ -32,8 +32,7 @@ public abstract class Gun : MonoBehaviour,IAgent
 		Ray r = ray;
 		r.origin = transform.position;
 		Quaternion rot = Quaternion.LookRotation(r.direction.normalized,Vector3.up);
-		Sequence s = DOTween.Sequence();
-		Tween t = transform.DORotate(rot.eulerAngles, 0.5f);
+		transform.DORotate(rot.eulerAngles, 0.5f);
 		return r.direction;
 	}
 
