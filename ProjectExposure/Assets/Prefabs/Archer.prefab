@@ -140,8 +140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbcda5b89314e21b1caf23992cdd96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_health: 100
-  m_maxHealth: 100
+  m_health: 20
+  m_maxHealth: 20
   m_shouldBeDestroyed: 0
 --- !u!114 &114442861311983090
 MonoBehaviour:
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   path: {fileID: 0}
-  speed: 10
+  speed: 8
 --- !u!135 &135748572680373092
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -9,6 +9,8 @@ public class FightPoint : MonoBehaviour
     private float m_timeOfRotation;
     [SerializeField]
     private int m_enemypathsCount=0;
+    [SerializeField]
+    private int m_pathPoints = 1;
 
     private bool m_isActivated=false;
 
@@ -17,7 +19,6 @@ public class FightPoint : MonoBehaviour
         m_isActivated = true;
 
         //Rotate cmaera towards fighting zone
-        RailMovement.instance.StopMovement();
         RailMovement.instance.transform.DORotateQuaternion(transform.rotation, m_timeOfRotation);
 
         //Activateing Initial spawn for each enemyPath
@@ -52,7 +53,7 @@ public class FightPoint : MonoBehaviour
             newEnemyPath.name = "EnemyPath_"+i;
 
             Path path=newEnemyPath.AddComponent<Path>();
-            path.SetPointCount(3);
+            path.SetPointCount(m_pathPoints);
             path.GeneratePoints();
             newEnemyPath.AddComponent<EnemyPath>();
             EditorTools.SafeDestroyGameObject<Transform>(empty.transform);
