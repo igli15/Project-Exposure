@@ -14,6 +14,7 @@ public class GunHud : MonoBehaviour
 	// Use this for initialization
 	void Awake ()
 	{
+		/*
 		m_gunManager.OnMerge += delegate(GunManager manager)
 		{
 			m_rgbButtons.SetActive(false);
@@ -32,6 +33,7 @@ public class GunHud : MonoBehaviour
 			m_rgbButtons.SetActive(true);
 			m_colorSlider.SetActive(false);
 		};
+		*/
 		
 	}
 

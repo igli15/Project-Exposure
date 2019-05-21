@@ -24,7 +24,6 @@ public class ColorSlider : MonoBehaviour
 	{
 		float h = m_slider.value * 270.0f / 360.0f;
 		
-	
 		m_gunManager.SetGunColors(Color.HSVToRGB(h ,1,1));
 	}
 	

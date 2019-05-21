@@ -5,11 +5,12 @@ using UnityEngine;
 public class MergeButton : TouchButton
 {
 
-	[SerializeField] private GunManager m_gunManager;
+	//[SerializeField] private GunManager m_gunManager;
 
 	// Use this for initialization
 	void Start ()
 	{
+		/*
 		OnTouchEnter.AddListener(delegate
 		{
 			
@@ -23,6 +24,7 @@ public class MergeButton : TouchButton
 				m_gunManager.MergeGuns();
 			}
 		});
+		*/
 	}
 	
 }
