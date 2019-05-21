@@ -43,10 +43,13 @@ public class Crystal : Hittable
 		}
 		else if (gunManager.currentMode == GunManager.GunMode.MERGED && gunManager.CheckIfColorAreSimilar(gunManager.colorGun.GetColor() ,color,40))
 		{
-			Explode(gunManager);
-			if (OnExplode != null) OnExplode(this);
-			Instantiate(m_aoeSphere.gameObject, transform.position, Quaternion.identity);
-			Destroy(transform.gameObject);
+			if (gunManager.damage > 0.2f)
+			{
+				Explode(gunManager);
+				if (OnExplode != null) OnExplode(this);
+				Instantiate(m_aoeSphere.gameObject, transform.position, Quaternion.identity);
+				Destroy(transform.gameObject);
+			}
 		}
 		
 	}
