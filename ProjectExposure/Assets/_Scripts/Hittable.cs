@@ -23,13 +23,13 @@ public abstract class Hittable : MonoBehaviour
 		GetComponent<Renderer>().material.color = newColor;
 	}
 
-	public virtual void Hit(GunManager gunManager, float damage)
+	public virtual void Hit(GunManager gunManager, float damage,Color gunColor)
 	{
 		if (OnHit != null) OnHit(this);
 		
 		if (gunManager.currentMode == GunManager.GunMode.COLOR)
 		{
-			SetColor(gunManager.colorGun.GetColor());
+			SetColor(gunColor);
 		}
 		else if (gunManager.currentMode == GunManager.GunMode.SHOOT)
 		{

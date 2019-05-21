@@ -7,13 +7,8 @@ using UnityEngine.EventSystems;
 
 public class GunManager : MonoBehaviour,IAgent
 {
-	public Action<GunManager> OnMerge;
-	public Action<GunManager> OnSplit;
-
-	[SerializeField] private MagnetGun m_magnetGun;
-	[SerializeField] private ColorGun m_colorGun;
-
-	[SerializeField] private GameObject m_mergeSphere;
+	[SerializeField] private Gun m_damageGun;
+	[SerializeField] private Gun m_colorGun;
 
 	[SerializeField] private float m_baseDamage = 10;
 	[SerializeField] private float m_extraDamage = 20;
@@ -31,20 +26,6 @@ public class GunManager : MonoBehaviour,IAgent
 	}
 
 	private GunMode m_currentMode;
-	
-	public MagnetGun magnetGun
-	{
-		get { return m_magnetGun; }
-	}
-	public ColorGun colorGun
-	{
-		get { return m_colorGun; }
-	}
-
-	public GameObject mergeSphere
-	{
-		get { return m_mergeSphere; }
-	}
 
 	public GunMode currentMode
 	{
@@ -58,9 +39,7 @@ public class GunManager : MonoBehaviour,IAgent
 	
 	void Start () 
 	{
-		m_mergeSphereRenderer = m_mergeSphere.GetComponent<Renderer>();
 		SetGunColors(Color.red);
-
 	}
 	
 	// Update is called once per frame
@@ -81,39 +60,39 @@ public class GunManager : MonoBehaviour,IAgent
 			if (h.GetColor() == Color.white)
 			{
 				m_currentMode = GunMode.COLOR;
-				h.Hit(this,0);
+				m_colorGun.Shoot();
+				h.Hit(this,0,m_colorGun.GetColor());
 					
 			}
 			else
 			{
 				m_currentMode = GunMode.SHOOT;
-				m_damage = CalculateDamage(m_colorGun.GetColor(), h.GetColor());
-				h.Hit(this,m_damage);
+				m_damageGun.Shoot();
+				m_damage = CalculateDamage(m_damageGun.GetColor(), h.GetColor());
+				h.Hit(this,m_damage,m_damageGun.GetColor());
 			}
 		}
 	}
 	
 	public void SetGunColors(Color newColor)
 	{
-		m_magnetGun.SetColor(newColor);
+		m_damageGun.SetColor(newColor);
 		m_colorGun.SetColor(newColor);
-	
-		m_mergeSphereRenderer.material.color = newColor;
 	}
 	
 	public float CalculateDamage(Color myColor,Color enemyColor)
 	{
 		float damage = 0;
 
-		if (colorGun.GetHSVOfAColor(enemyColor).y < 0.2f)
+		if (ColorUtils.GetHSVOfAColor(enemyColor).y < 0.2f)
 		{
-			Debug.Log(colorGun.GetHSVOfAColor(enemyColor).y);
+			Debug.Log(ColorUtils.GetHSVOfAColor(enemyColor).y);
 			return 0;
 		}
 		
-		float enemyHue = colorGun.GetHueOfColor(enemyColor) * 360;
+		float enemyHue = ColorUtils.GetHueOfColor(enemyColor) * 360;
 
-		float hue = colorGun.GetHueOfColor(myColor) * 360;
+		float hue = ColorUtils.GetHueOfColor(myColor) * 360;
         
 		float hueDiff = Mathf.Abs(enemyHue - hue);
 
@@ -126,33 +105,13 @@ public class GunManager : MonoBehaviour,IAgent
 		return damage;
 	}
 
-	public bool CheckIfColorAreSimilar(Color c1, Color c2,float range)
-	{
-		
-		float c1Hue = colorGun.GetHueOfColor(c1) * 360;
-
-		float c2Hue = colorGun.GetHueOfColor(c2) * 360;
-
-		if (c1Hue > 340) c1Hue = 0;
-		if (c2Hue > 340) c1Hue = 0;  //Reset red.
-		
-		float hueDiff = Mathf.Abs(c1Hue - c2Hue);
-
-		if (hueDiff <= range)
-		{
-			return true;
-		}
-
-		return false;
-	}
-
 	
 	protected List<Hittable> RaycastFromGuns()
 	{        
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         
 		m_colorGun.LookInRayDirection(ray);
-		m_magnetGun.LookInRayDirection(ray);
+		m_damageGun.LookInRayDirection(ray);
 		
 		RaycastHit[] hits;
 		

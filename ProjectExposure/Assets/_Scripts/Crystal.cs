@@ -29,15 +29,15 @@ public class Crystal : Hittable
 	}
 
 
-	public override void Hit(GunManager gunManager,float damage)
+	public override void Hit(GunManager gunManager,float damage,Color gunColor)
 	{
 		if (OnHit != null) OnHit(this);
 		
 		if (gunManager.currentMode == GunManager.GunMode.COLOR)
 		{
-			SetColor(gunManager.colorGun.GetColor());
+			SetColor(gunColor);
 		}
-		else if (gunManager.currentMode == GunManager.GunMode.SHOOT && gunManager.CheckIfColorAreSimilar(gunManager.colorGun.GetColor() ,color,40))
+		else if (gunManager.currentMode == GunManager.GunMode.SHOOT && ColorUtils.CheckIfColorAreSimilar(gunColor ,color,40))
 		{
 			if (damage > 0.2f)
 			{
