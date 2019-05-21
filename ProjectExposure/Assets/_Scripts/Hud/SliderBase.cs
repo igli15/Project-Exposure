@@ -11,9 +11,10 @@ public class SliderBase : MonoBehaviour
 	[SerializeField] private SliderHandle m_sliderHandle;
 
 	[Range(0,1)]
-	public float m_sliderValue = 0;
-	
-	
+	[SerializeField]
+	private float m_sliderValue = 0;
+
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -32,8 +33,11 @@ public class SliderBase : MonoBehaviour
 				m_sliderValue = (hitInfo[i].point.z - m_minTransform.position.z) /
 				          (m_maxTransform.position.z - m_minTransform.position.z);
 
-				m_sliderHandle.transform.position = Vector3.Lerp(m_minTransform.position, m_maxTransform.position, m_sliderValue);
-				
+				m_sliderValue = Mathf.Clamp(m_sliderValue, 0, 1);
+
+				m_sliderHandle.transform.position =
+					Vector3.Lerp(m_minTransform.position, m_maxTransform.position, m_sliderValue);
+
 			}
 		}
 	}
