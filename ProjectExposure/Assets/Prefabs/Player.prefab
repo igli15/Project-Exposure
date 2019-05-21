@@ -388,7 +388,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af4f9be669024067bc45b60a96b8bfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_beamRenderer: {fileID: 0}
+  m_beamRenderer: {fileID: 23331960786987288}
 --- !u!114 &114493879565655080
 MonoBehaviour:
   m_ObjectHideFlags: 1

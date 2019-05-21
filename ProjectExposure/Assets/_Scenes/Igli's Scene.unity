@@ -564,6 +564,7 @@ MonoBehaviour:
   m_pointCount: 3
   m_firstPoint: {fileID: 830044838}
   m_lastPoint: {fileID: 230052760}
+  points: []
 --- !u!114 &219211488
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1878,6 +1879,7 @@ MonoBehaviour:
   m_pointCount: 3
   m_firstPoint: {fileID: 839200267}
   m_lastPoint: {fileID: 929177915}
+  points: []
 --- !u!4 &1089454670
 Transform:
   m_ObjectHideFlags: 0
@@ -1962,11 +1964,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1162835056}
---- !u!23 &1163979717 stripped
-MeshRenderer:
-  m_PrefabParentObject: {fileID: 23331960786987288, guid: 93736e1ef0ca5d842919074e5b8d1f95,
-    type: 2}
-  m_PrefabInternal: {fileID: 1588146492}
 --- !u!1 &1201765897
 GameObject:
   m_ObjectHideFlags: 0
@@ -2396,11 +2393,6 @@ Prefab:
       propertyPath: initialPath
       value: 
       objectReference: {fileID: 1089454669}
-    - target: {fileID: 114315681199704672, guid: 93736e1ef0ca5d842919074e5b8d1f95,
-        type: 2}
-      propertyPath: m_beamRenderer
-      value: 
-      objectReference: {fileID: 1163979717}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
   m_IsPrefabParent: 0
@@ -2455,6 +2447,7 @@ MonoBehaviour:
   m_pointCount: 3
   m_firstPoint: {fileID: 1813750628}
   m_lastPoint: {fileID: 2079874641}
+  points: []
 --- !u!114 &1588652803
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2720,6 +2713,7 @@ MonoBehaviour:
   m_pointCount: 3
   m_firstPoint: {fileID: 756554193}
   m_lastPoint: {fileID: 1728302273}
+  points: []
 --- !u!114 &1948848027
 MonoBehaviour:
   m_ObjectHideFlags: 0
