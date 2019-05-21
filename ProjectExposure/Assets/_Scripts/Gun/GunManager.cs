@@ -109,15 +109,15 @@ public class GunManager : MonoBehaviour,IAgent
 	protected List<Hittable> RaycastFromGuns()
 	{        
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        
-		m_colorGun.LookInRayDirection(ray);
-		m_damageGun.LookInRayDirection(ray);
-		
+     		
 		RaycastHit[] hits;
 		
 		List<Hittable> hittables = new List<Hittable>();
 		
 		if(EventSystem.current.IsPointerOverGameObject()) return hittables;
+		
+		m_colorGun.LookInRayDirection(ray);
+		m_damageGun.LookInRayDirection(ray);
 		
 		hits = Physics.RaycastAll(ray);
 
