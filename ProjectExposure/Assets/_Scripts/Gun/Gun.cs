@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public abstract class Gun : MonoBehaviour,IAgent
+public abstract class Gun : MonoBehaviour
 {
 	public Action<Gun> OnShoot;
 
@@ -15,17 +15,11 @@ public abstract class Gun : MonoBehaviour,IAgent
 
 	protected Material m_material;
 
-	protected Fsm<Gun> m_fsm;
-
 	// Use this for initialization
 	protected virtual void Start ()
 	{
 		m_material = GetComponent<Renderer>().material;
 
-		if (m_fsm == null)
-		{
-			m_fsm = new Fsm<Gun>(this);
-		}
 	}
 	public Vector3 LookInRayDirection(Ray ray)
 	{
@@ -34,6 +28,11 @@ public abstract class Gun : MonoBehaviour,IAgent
 		Quaternion rot = Quaternion.LookRotation(r.direction.normalized,Vector3.up);
 		transform.DORotate(rot.eulerAngles, 0.5f);
 		return r.direction;
+	}
+
+	public virtual void Shoot()
+	{
+		if (OnShoot != null) OnShoot(this);
 	}
 
 	public Color GetColor()

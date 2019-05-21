@@ -19,8 +19,4 @@ public class Enemy : Hittable
      
     }
 
-    public override void Hit(GunManager gunManager)
-    {
-        base.Hit(gunManager);
-    }
 }

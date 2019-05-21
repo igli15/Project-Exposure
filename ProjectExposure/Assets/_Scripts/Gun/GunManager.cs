@@ -27,9 +27,8 @@ public class GunManager : MonoBehaviour,IAgent
 	public enum GunMode
 	{
 		COLOR,
-		MAGNET,
-		MERGED
-	};
+		SHOOT,
+	}
 
 	private GunMode m_currentMode;
 	
@@ -59,103 +58,40 @@ public class GunManager : MonoBehaviour,IAgent
 	
 	void Start () 
 	{
-		if (m_fsm == null)
-		{
-			m_fsm = new Fsm<GunManager>(this);
-			m_currentMode = GunMode.MERGED;
-		}
-		
 		m_mergeSphereRenderer = m_mergeSphere.GetComponent<Renderer>();
 		SetGunColors(Color.red);
-		
-		m_fsm.ChangeState<MergedGunsState>();
+
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		
+		if (Input.GetMouseButtonDown(0))
+		{
+			ShootTheRightGun();
+		}
 	}
 
 	public void ShootTheRightGun()
-	{	
-		if(EventSystem.current.IsPointerOverGameObject()) return;
-        
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        
-		
-		if (magnetGun.pulledHittable != null)
-		{
-			magnetGun.PushTarget(m_magnetGun.LookInRayDirection(ray));
-			return;
-		}
-		
-		m_colorGun.LookInRayDirection(ray);
-		m_magnetGun.LookInRayDirection(ray);
-		
-		RaycastHit[] hits;
-		hits = Physics.RaycastAll(ray);
-
-		for (int i = 0; i < hits.Length; i++)
-		{
-			RaycastHit hit = hits[i];
-			Hittable hittable = hit.transform.gameObject.GetComponent<Hittable>();
-            
-			if(hittable != null)
-			{
-				Debug.Log("crystal color: "+hittable.GetColor() + " " + "magnet color: " + m_magnetGun.GetColor() );
-				Debug.Log(CheckIfColorAreSimilar(magnetGun.GetColor(), hittable.GetColor(), 30));
-				
-				if (CheckIfColorAreSimilar(magnetGun.GetColor(), hittable.GetColor(), 30) && m_colorGun.GetHSVOfAColor(hittable.GetColor()).y > 0.1f) 
-				{ 
-					m_currentMode = GunMode.MAGNET;
-					hittable.Hit(this);
-				}
-				else if (hittable.GetColor() == Color.white && m_magnetGun.pulledHittable == null)
-				{
-					m_currentMode = GunMode.COLOR;
-					hittable.Hit(this);
-					
-				}
-				
-			}
-		}
-	}
-
-	public void ShootMergedGun()
 	{
-		if(EventSystem.current.IsPointerOverGameObject()) return;
-        
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		
-		RaycastHit[] hits;
-		hits = Physics.RaycastAll(ray);
+		List<Hittable> hittables = RaycastFromGuns();
 
-		for (int i = 0; i < hits.Length; i++)
+		foreach (Hittable h in hittables)
 		{
-			RaycastHit hit = hits[i];
-			Hittable hittable = hit.transform.gameObject.GetComponent<Hittable>();
-            
-			if(hittable != null)
+			if (h.GetColor() == Color.white)
 			{
-				if (hittable.GetColor() == Color.white)
-				{
-					m_currentMode = GunMode.COLOR;
-					hittable.Hit(this);
+				m_currentMode = GunMode.COLOR;
+				h.Hit(this,0);
 					
-				}
-				else
-				{
-					m_currentMode = GunMode.MERGED;
-					m_damage = CalculateDamage(m_colorGun.GetColor(), hittable.GetColor());
-					hittable.Hit(this);
-				}
 			}
-			
+			else
+			{
+				m_currentMode = GunMode.SHOOT;
+				m_damage = CalculateDamage(m_colorGun.GetColor(), h.GetColor());
+				h.Hit(this,m_damage);
+			}
 		}
 	}
-
-	
 	
 	public void SetGunColors(Color newColor)
 	{
@@ -163,28 +99,6 @@ public class GunManager : MonoBehaviour,IAgent
 		m_colorGun.SetColor(newColor);
 	
 		m_mergeSphereRenderer.material.color = newColor;
-	}
-
-	public void MergeGuns()
-	{
-		m_currentMode = GunMode.MERGED;
-		m_fsm.ChangeState<MergedGunsState>();
-
-		if (m_magnetGun.pulledHittable != null)
-		{
-			m_magnetGun.ReleaseTarget();
-		}
-		
-		if(OnMerge != null) OnMerge(this);
-	}
-
-	public void SplitGuns()
-	{
-		m_currentMode = GunMode.COLOR;
-		SetGunColors(Color.red);
-		m_fsm.ChangeState<SplitGunsState>();	
-		m_magnetGun.pulledHittable = null;
-		if(OnSplit != null) OnSplit(this);
 	}
 	
 	public float CalculateDamage(Color myColor,Color enemyColor)
@@ -232,4 +146,33 @@ public class GunManager : MonoBehaviour,IAgent
 		return false;
 	}
 
+	
+	protected List<Hittable> RaycastFromGuns()
+	{        
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        
+		m_colorGun.LookInRayDirection(ray);
+		m_magnetGun.LookInRayDirection(ray);
+		
+		RaycastHit[] hits;
+		
+		List<Hittable> hittables = new List<Hittable>();
+		
+		if(EventSystem.current.IsPointerOverGameObject()) return hittables;
+		
+		hits = Physics.RaycastAll(ray);
+
+		for (int i = 0; i < hits.Length; i++)
+		{
+			RaycastHit hit = hits[i];
+			Hittable hittable = hit.transform.gameObject.GetComponent<Hittable>();
+            
+			if(hittable != null)
+			{
+				hittables.Add(hittable);
+			}
+		}
+
+		return hittables;
+	}
 }

@@ -23,7 +23,7 @@ public abstract class Hittable : MonoBehaviour
 		GetComponent<Renderer>().material.color = newColor;
 	}
 
-	public virtual void Hit(GunManager gunManager)
+	public virtual void Hit(GunManager gunManager, float damage)
 	{
 		if (OnHit != null) OnHit(this);
 		
@@ -31,14 +31,10 @@ public abstract class Hittable : MonoBehaviour
 		{
 			SetColor(gunManager.colorGun.GetColor());
 		}
-		else if (gunManager.currentMode == GunManager.GunMode.MAGNET && gunManager.magnetGun.pulledHittable == null)
-		{
-			gunManager.magnetGun.PullTarget(this);
-		}
-		else
+		else if (gunManager.currentMode == GunManager.GunMode.SHOOT)
 		{
 			Health health = GetComponent<Health>();
-			if(health != null) health.InflictDamage(gunManager.damage);
+			if(health != null) health.InflictDamage(damage);
 		}
 	}
 
