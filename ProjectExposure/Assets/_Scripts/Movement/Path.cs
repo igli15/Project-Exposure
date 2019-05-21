@@ -24,10 +24,30 @@ public class Path : MonoBehaviour {
     [SerializeField]
     private MovementPoint m_lastPoint = null;
 
+    public List<MovementPoint> points;
+
+
     public void Start()
     {
         if(button!=null)
             button.gameObject.SetActive(false);
+    }
+
+    public static List<MovementPoint> GetAllPoints(MovementPoint startPoint)
+    {
+        List<MovementPoint> buffer_points=new List<MovementPoint>();
+        while (startPoint.GetNextPoint() != null)
+        {
+            buffer_points.Add(startPoint);
+            startPoint = startPoint.GetNextPoint();
+        }
+
+        return buffer_points;
+    }
+
+    public static Vector3 GetPoint(Vector3 p0, Vector3 p1, Vector3 p2, float t)
+    {
+        return Vector3.Lerp(Vector3.Lerp(p0, p1, t), Vector3.Lerp(p1, p2, t), t);
     }
 
     public void SetPointCount(int pointCount)
@@ -37,6 +57,7 @@ public class Path : MonoBehaviour {
 
     public void GeneratePoints()
     {
+
         if (m_pointCount < 0) m_pointCount = 0;
         if (m_pointCount > 40) m_pointCount = 40;
         m_currentCount = m_pointCount;

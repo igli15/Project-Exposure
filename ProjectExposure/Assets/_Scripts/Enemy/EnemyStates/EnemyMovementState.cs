@@ -15,6 +15,7 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
         base.Enter(pAgent);
         if (!m_rb) m_rb = GetComponent<Rigidbody>();
         m_rb.useGravity = false;
+        if(m_currentTargetPoint==null)
         m_currentTargetPoint = path.GetFirstPoint();
         
         StartMovement();
@@ -51,6 +52,11 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
 
     }
 
+    public virtual void OnPointEntered()
+    {
+        StartMovement();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("MovementPoint")&&
@@ -66,7 +72,7 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
 
             //Move forward
             m_currentTargetPoint = other.GetComponent<MovementPoint>().GetNextPoint();
-            StartMovement();
+            OnPointEntered();
 
             //Activate all events binded to Point
             bufferPoint.ActivatePoint();
