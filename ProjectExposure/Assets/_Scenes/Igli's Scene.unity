@@ -339,7 +339,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &132765967
 RectTransform:
   m_ObjectHideFlags: 0
@@ -577,7 +577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_initColor: {r: 1, g: 1, b: 1, a: 1}
-  archerSpawnCount: 0
+  archerSpawnCount: 2
   tankSpawnCount: 0
   healerSpawnCount: 0
 --- !u!1 &226992191
@@ -2405,7 +2405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_initColor: {r: 0.12941177, g: 1, b: 0.023529412, a: 1}
-  archerSpawnCount: 0
+  archerSpawnCount: 3
   tankSpawnCount: 0
   healerSpawnCount: 0
 --- !u!1 &1679878437
@@ -2670,7 +2670,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_initColor: {r: 1, g: 1, b: 1, a: 1}
-  archerSpawnCount: 0
+  archerSpawnCount: 2
   tankSpawnCount: 0
   healerSpawnCount: 0
 --- !u!1 &1956196044
