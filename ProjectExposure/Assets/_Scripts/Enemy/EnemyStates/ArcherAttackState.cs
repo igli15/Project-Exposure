@@ -11,13 +11,15 @@ public class ArcherAttackState : AbstractState<EnemyFSM>
     [SerializeField]
     private float m_projectileSpeed = 10;
     private float m_lastShotTime = 0;
+    [SerializeField]
+    private float m_lookAtDuration = 0.5f;
     
     private bool m_isFreezed = false; 
     public override void Enter(IAgent pAgent)
     {
         base.Enter(pAgent);
         m_lastShotTime = Time.time;
-        transform.DOLookAt(Camera.main.transform.position, 0.5f);
+        transform.DOLookAt(Camera.main.transform.position, m_lookAtDuration);
     }
 
     void Update()
