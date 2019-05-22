@@ -8,6 +8,8 @@ public class ColorSlider : MonoBehaviour
 
 	[SerializeField] private GunManager m_gunManager;
 
+	[SerializeField] private SliderBase m_sliderBase;
+
 	private Slider m_slider;
 	
 	// Use this for initialization
@@ -18,6 +20,8 @@ public class ColorSlider : MonoBehaviour
 		
 		m_slider.onValueChanged.Invoke(m_slider.value);
 		
+		
+		m_sliderBase.OnSliderValueChanged += delegate(float f) { m_slider.value = f; };
 	}
 
 	void UpdateGunHue()

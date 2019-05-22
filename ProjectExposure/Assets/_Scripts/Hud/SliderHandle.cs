@@ -7,10 +7,10 @@ public class SliderHandle : MonoBehaviour
 {
 	public Action<SliderHandle> OnSliderDragged;
 
-	private void OnMouseDrag()
+	public void OnMouseDrag()
 	{		
+		Debug.Log("Dragged");
 		if(OnSliderDragged != null) OnSliderDragged(this);
 	}
-
 	
 }
