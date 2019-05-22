@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 0.008911141, g: 0.022094695, b: 0.05401613, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1419,7 +1419,7 @@ Transform:
   m_Children:
   - {fileID: 684412703}
   m_Father: {fileID: 1683726211}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &123197251
 GameObject:
@@ -2610,6 +2610,37 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 204934339}
   m_Mesh: {fileID: 4300054, guid: c4fa5ef6329c440bc95f6c587435e758, type: 3}
+--- !u!1 &216382261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 216382262}
+  m_Layer: 0
+  m_Name: Tentacles
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &216382262
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 216382261}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1544417061}
+  - {fileID: 318284632}
+  - {fileID: 1683726211}
+  m_Father: {fileID: 1583230819}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &217666583
 GameObject:
   m_ObjectHideFlags: 0
@@ -3563,12 +3594,12 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 318284631}
   m_LocalRotation: {x: -0.34018177, y: 0.614999, z: 0.69949025, w: -0.1294834}
-  m_LocalPosition: {x: -74.80931, y: 4.2672577, z: -14.9677925}
-  m_LocalScale: {x: 0.6910591, y: 0.6910591, z: 0.6910591}
+  m_LocalPosition: {x: -74.80931, y: 4.2672577, z: -14.967793}
+  m_LocalScale: {x: 0.6910589, y: 0.6910589, z: 0.6910591}
   m_Children:
   - {fileID: 916778483}
-  m_Father: {fileID: 1583230819}
-  m_RootOrder: 18
+  m_Father: {fileID: 216382262}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &318284633
 SphereCollider:
@@ -7943,7 +7974,7 @@ Transform:
   m_Children:
   - {fileID: 2091764038}
   m_Father: {fileID: 1544417061}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &735118014
 GameObject:
@@ -18030,20 +18061,20 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &837419659
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 400000, guid: 921a3ff88856fe04ebc86b196fd8cc59, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 837419658}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.048748944, y: 0.70308095, z: 0.42223382, w: 0.57010466}
+  m_LocalPosition: {x: 0.09, y: 0.53, z: 0.62}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 1544417061}
+  m_Father: {fileID: 1683726211}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -40.49, y: 89.503006, z: 32.881}
 --- !u!199 &837419660
 ParticleSystemRenderer:
   serializedVersion: 5
@@ -18109,10 +18140,10 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 837419658}
   serializedVersion: 5
-  lengthInSec: 20
+  lengthInSec: 2
   simulationSpeed: 1
   stopAction: 0
-  looping: 1
+  looping: 0
   prewarm: 0
   playOnAwake: 1
   useUnscaledTime: 0
@@ -18216,7 +18247,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 13.51
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -18252,7 +18283,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.972549, g: 0.972549, b: 0.972549, a: 1}
-      maxColor: {r: 0, g: 0, b: 0, a: 0.09019608}
+      maxColor: {r: 0, g: 0, b: 0, a: 0.7058824}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -18314,8 +18345,8 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 4
-      minScalar: 2
+      scalar: 28
+      minScalar: 20
       maxCurve:
         serializedVersion: 2
         m_Curve:
@@ -18600,7 +18631,7 @@ ParticleSystem:
     gravityModifier:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -0.03
+      scalar: 0
       minScalar: -0.03
       maxCurve:
         serializedVersion: 2
@@ -18654,7 +18685,7 @@ ParticleSystem:
     serializedVersion: 5
     enabled: 1
     type: 4
-    angle: 30
+    angle: 28.486736
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -18682,7 +18713,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.1
+      value: 0.5424969
       mode: 0
       spread: 0
       speed:
@@ -18801,7 +18832,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 50
+      scalar: 121.2
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -19398,7 +19429,7 @@ ParticleSystem:
     sprites:
     - sprite: {fileID: 0}
   VelocityModule:
-    enabled: 0
+    enabled: 1
     x:
       serializedVersion: 2
       minMaxState: 0
@@ -19446,7 +19477,7 @@ ParticleSystem:
     y:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -19490,7 +19521,7 @@ ParticleSystem:
     z:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0
+      scalar: 10
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -19955,7 +19986,7 @@ ParticleSystem:
         m_PreInfinity: 2
         m_PostInfinity: 2
         m_RotationOrder: 4
-    inWorldSpace: 1
+    inWorldSpace: 0
   InheritVelocityModule:
     enabled: 0
     m_Mode: 0
@@ -20017,7 +20048,7 @@ ParticleSystem:
     x:
       serializedVersion: 2
       minMaxState: 0
-      scalar: -1
+      scalar: 0
       minScalar: 0
       maxCurve:
         serializedVersion: 2
@@ -43147,7 +43178,7 @@ Transform:
   m_Children:
   - {fileID: 2027499962}
   m_Father: {fileID: 1683726211}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1450936379
 GameObject:
@@ -44015,13 +44046,12 @@ Transform:
   m_GameObject: {fileID: 1544417060}
   m_LocalRotation: {x: -0.33223283, y: 0.938277, z: 0.049675375, w: -0.082400985}
   m_LocalPosition: {x: -78.734245, y: 4.1079307, z: -8.484712}
-  m_LocalScale: {x: 0.69105893, y: 0.6910591, z: 0.6910591}
+  m_LocalScale: {x: 0.69105875, y: 0.6910591, z: 0.6910591}
   m_Children:
-  - {fileID: 837419659}
   - {fileID: 1844929141}
   - {fileID: 731398045}
-  m_Father: {fileID: 1583230819}
-  m_RootOrder: 17
+  m_Father: {fileID: 216382262}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1544417062
 SphereCollider:
@@ -44568,9 +44598,7 @@ Transform:
   - {fileID: 318983209}
   - {fileID: 923829811}
   - {fileID: 621232441}
-  - {fileID: 1544417061}
-  - {fileID: 318284632}
-  - {fileID: 1683726211}
+  - {fileID: 216382262}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -45408,6 +45436,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1683726211}
   - component: {fileID: 1683726212}
+  - component: {fileID: 1683726213}
   m_Layer: 0
   m_Name: Tentacles3
   m_TagString: Untagged
@@ -45423,12 +45452,13 @@ Transform:
   m_GameObject: {fileID: 1683726210}
   m_LocalRotation: {x: 0.010266055, y: 0.645855, z: 0.7579705, w: 0.09081096}
   m_LocalPosition: {x: -79.50923, y: 3.5729275, z: -17.3041}
-  m_LocalScale: {x: 0.691059, y: 0.6910592, z: 0.6910591}
+  m_LocalScale: {x: 0.6910589, y: 0.69105923, z: 0.6910591}
   m_Children:
+  - {fileID: 837419659}
   - {fileID: 1438525650}
   - {fileID: 121716827}
-  m_Father: {fileID: 1583230819}
-  m_RootOrder: 19
+  m_Father: {fileID: 216382262}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &1683726212
 SphereCollider:
@@ -45442,6 +45472,24 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.7691107
   m_Center: {x: 0.59465355, y: 0.67445695, z: 0.0000000048714215}
+--- !u!114 &1683726213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1683726210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a62a3611f4d42e449a37f4c0278e7ac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  color: {r: 1, g: 1, b: 1, a: 1}
+  m_inkSpray: {fileID: 837419658}
 --- !u!1 &1687000586
 GameObject:
   m_ObjectHideFlags: 0
@@ -47205,7 +47253,7 @@ Transform:
   m_Children:
   - {fileID: 1622781354}
   m_Father: {fileID: 1544417061}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1848531523
 GameObject:
@@ -58355,7 +58403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spline: {fileID: 1530200322}
-  duration: 45
+  duration: 2
   lookForward: 1
 --- !u!1 &2043150118
 GameObject:
