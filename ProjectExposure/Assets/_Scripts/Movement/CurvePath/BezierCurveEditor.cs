@@ -30,7 +30,8 @@ public class BezierCurveInspector : Editor
 
     void CustomOnSceneGUI(SceneView sceneview)
     {
-        if (!m_curve && !m_curve.enabled) return;
+        if (EditorApplication.isPlaying || EditorApplication.isPaused) return;
+        if (null==m_curve && !m_curve.enabled) return;
 
         Vector3 p0 = m_handleTransform.TransformPoint(m_curve.GetControlPoint((0)));
         for (int i = 1; i < m_curve.ControlPointCount; i += 3)
@@ -47,12 +48,12 @@ public class BezierCurveInspector : Editor
 
     private void OnSceneGUI()
     {
+        
         m_curve = target as BezierCurve;
-
         m_handleTransform = m_curve.transform;
         m_handleRotation = Tools.pivotRotation == PivotRotation.Local ?
             m_handleTransform.rotation : Quaternion.identity;
-
+        EditorApplication.Beep();
         Vector3 p0 = ShowPoint(0);
         for (int i = 1; i < m_curve.ControlPointCount; i += 3)
         {
@@ -82,6 +83,7 @@ public class BezierCurveInspector : Editor
         }
         if (GUILayout.Button("Add Curve"))
         {
+            EditorApplication.Beep();
             Undo.RecordObject(m_curve, "Add Curve");
             m_curve.AddCurve();
             EditorUtility.SetDirty(m_curve);
@@ -129,7 +131,7 @@ public class BezierCurveInspector : Editor
     private Vector3 ShowPoint(int index)
     {
         Vector3 point = m_handleTransform.TransformPoint(m_curve.GetControlPoint(index));
-
+        
         //Getting normal size based in Unity
         float size = HandleUtility.GetHandleSize(point);
 
@@ -155,6 +157,7 @@ public class BezierCurveInspector : Editor
             point = Handles.DoPositionHandle(point, m_handleRotation);
             if (EditorGUI.EndChangeCheck())
             {
+
                 Undo.RecordObject(m_curve, "Move Point");
                 EditorUtility.SetDirty(m_curve);
                 //updating data in spline
