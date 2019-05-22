@@ -1,4 +1,5 @@
-﻿using UnityEditor;
+﻿using System;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -22,13 +23,39 @@ public class BezierCurveInspector : Editor
     private const float m_pickSize = 0.06f;
     private int m_selectedIndex = -1;
 
+    void OnEnable()
+    {
+        SceneView.onSceneGUIDelegate += (SceneView.OnSceneFunc)Delegate.Combine(SceneView.onSceneGUIDelegate, new SceneView.OnSceneFunc(CustomOnSceneGUI));
+    }
+
+    void CustomOnSceneGUI(SceneView sceneview)
+    {
+        if (EditorApplication.isPlaying || EditorApplication.isPaused) return;
+        if (null == target) return;
+        if (null == m_curve) m_curve = target as BezierCurve;
+        if ( !m_curve.enabled) return;
+
+        Vector3 p0 = m_handleTransform.TransformPoint(m_curve.GetControlPoint((0)));
+        for (int i = 1; i < m_curve.ControlPointCount; i += 3)
+        {
+            Vector3 p1 = m_handleTransform.TransformPoint(m_curve.GetControlPoint((i)));
+            Vector3 p2 = m_handleTransform.TransformPoint(m_curve.GetControlPoint((i + 1)));
+            Vector3 p3 = m_handleTransform.TransformPoint(m_curve.GetControlPoint((i + 2)));
+
+            //Drawing actual bezierLine
+            Handles.DrawBezier(p0, p3, p1, p2, Color.white, null, 2f);
+            p0 = p3;
+        }
+    }
+
     private void OnSceneGUI()
     {
+        
         m_curve = target as BezierCurve;
         m_handleTransform = m_curve.transform;
         m_handleRotation = Tools.pivotRotation == PivotRotation.Local ?
             m_handleTransform.rotation : Quaternion.identity;
-
+        EditorApplication.Beep();
         Vector3 p0 = ShowPoint(0);
         for (int i = 1; i < m_curve.ControlPointCount; i += 3)
         {
@@ -36,29 +63,16 @@ public class BezierCurveInspector : Editor
             Vector3 p2 = ShowPoint(i + 1);
             Vector3 p3 = ShowPoint(i + 2);
 
-            Handles.color = Color.gray;
+            //Drawing lines from points to constraints
+            Handles.color = Color.green;
             Handles.DrawLine(p0, p1);
             Handles.DrawLine(p2, p3);
 
-            Handles.DrawBezier(p0, p3, p1, p2, Color.white, null, 2f);
+            //Drawing actual bezierLine
+            Handles.DrawBezier(p0, p3, p1, p2, Color.white, null, 4.5f);
             p0 = p3;
         }
         ShowDirections();
-        
-
-        Handles.color = Color.white;
-        Vector3 lineStart = m_curve.GetPoint(0f);
-        Handles.color = Color.green;
-        Handles.DrawLine(lineStart, lineStart + m_curve.GetDirection(0f));
-        for (int i = 1; i <= m_lineSteps; i++)
-        {
-            Vector3 lineEnd = m_curve.GetPoint(i / (float)m_lineSteps);
-            Handles.color = Color.white;
-            //Handles.DrawLine(lineStart, lineEnd);
-            Handles.color = Color.green;
-            Handles.DrawLine(lineEnd, lineEnd + m_curve.GetDirection(i / (float)m_lineSteps));
-            lineStart = lineEnd;
-        }
     }
 
     public override void OnInspectorGUI()
@@ -71,6 +85,7 @@ public class BezierCurveInspector : Editor
         }
         if (GUILayout.Button("Add Curve"))
         {
+            EditorApplication.Beep();
             Undo.RecordObject(m_curve, "Add Curve");
             m_curve.AddCurve();
             EditorUtility.SetDirty(m_curve);
@@ -89,6 +104,7 @@ public class BezierCurveInspector : Editor
             EditorUtility.SetDirty(m_curve);
             m_curve.SetControlPoint(m_selectedIndex, point);
         }
+
         EditorGUI.BeginChangeCheck();
         BezierCurve.BezierControlPointMode mode = (BezierCurve.BezierControlPointMode)
             EditorGUILayout.EnumPopup("Mode", m_curve.GetControlPointMode(m_selectedIndex));
@@ -117,22 +133,36 @@ public class BezierCurveInspector : Editor
     private Vector3 ShowPoint(int index)
     {
         Vector3 point = m_handleTransform.TransformPoint(m_curve.GetControlPoint(index));
-
+        
+        //Getting normal size based in Unity
         float size = HandleUtility.GetHandleSize(point);
+
+        //Getting color based on point or constraint mode
+        //Free     => White
+        //Mirrored => Cyan
+        //Alligned => Yellow
         Handles.color = m_modeColors[(int)m_curve.GetControlPointMode(index)];
+
+        //If Button is pressed, update editor info and switch selected index to new
         if (Handles.Button(point, m_handleRotation, size * m_handleSize, size * m_pickSize, Handles.DotCap))
         {
             Repaint();
             m_selectedIndex = index;
         }
+
+        //if we already selected this point or constraint then save all changes applied to its position
         if (m_selectedIndex == index)
         {
             EditorGUI.BeginChangeCheck();
+
+            //Activate Unity-Move Handles
             point = Handles.DoPositionHandle(point, m_handleRotation);
             if (EditorGUI.EndChangeCheck())
             {
+
                 Undo.RecordObject(m_curve, "Move Point");
                 EditorUtility.SetDirty(m_curve);
+                //updating data in spline
                 m_curve.SetControlPoint(index, m_handleTransform.InverseTransformPoint(point));
                 
             }

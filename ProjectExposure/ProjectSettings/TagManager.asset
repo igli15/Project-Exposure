@@ -9,6 +9,7 @@ TagManager:
   - Projectile
   - MovementPoint
   - SliderBase
+  - CurvePoint
   layers:
   - Default
   - TransparentFX
