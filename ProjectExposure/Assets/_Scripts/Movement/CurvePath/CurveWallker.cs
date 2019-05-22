@@ -31,7 +31,7 @@ public class CurveWallker : MonoBehaviour
     public bool lookForward;
     public void Start()
     {
-        DOTween.To(() => progress, x => progress = x, 1, duration).SetEase(Ease.InOutBounce).SetUpdate(true);
+        DOTween.To(() => progress, x => progress = x, 1, duration).SetEase(Ease.Linear).SetUpdate(true);
     }
     private void Update()
     {

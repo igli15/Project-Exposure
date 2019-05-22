@@ -4,21 +4,39 @@ using UnityEngine;
 using DG.Tweening;
 public class EnemyMovementState : AbstractState<EnemyFSM>
 {
+    //Legacy
     public Path path;
     public float speed = 2;
-
     private Rigidbody m_rb;
-    private MovementPoint m_currentTargetPoint;
+
+    //Current
+    public BezierCurve spline;
+    public bool lookForward;
+    public float duration;
+    private float m_progress;
 
     public override void Enter(IAgent pAgent)
     {
         base.Enter(pAgent);
         if (!m_rb) m_rb = GetComponent<Rigidbody>();
         m_rb.useGravity = false;
-        if(m_currentTargetPoint==null)
-        m_currentTargetPoint = path.GetFirstPoint();
         
-        StartMovement();
+        
+    }
+
+    private void Update()
+    {
+        m_progress += Time.deltaTime / duration;
+        if (m_progress > 1f)
+        {
+            m_progress = 1f;
+        }
+        Vector3 position = spline.GetPoint(m_progress);
+        transform.localPosition = position;
+        if (lookForward)
+        {
+            transform.LookAt(position + spline.GetDirection(m_progress));
+        }
     }
 
     public override void Exit(IAgent pAgent)
@@ -30,20 +48,17 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
 
     public void GoToLastPoint()
     {
-        m_currentTargetPoint = path.GetLastPoint();
-        StartMovement();
+
     }
 
     public void StartMovement()
     {
-        transform.DOLookAt(m_currentTargetPoint.transform.position, 0.5f);
-        Vector3 direction = m_currentTargetPoint.transform.position - transform.position;
-        m_rb.velocity = direction.normalized * speed;
+
     }
 
     public void StopMovement()
     {
-        m_rb.velocity = Vector3.zero;
+
     }
 
     public virtual void OnLastPointActivated()
@@ -54,28 +69,10 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
 
     public virtual void OnPointEntered()
     {
-        StartMovement();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("MovementPoint")&&
-            other.GetComponent<MovementPoint>().GetPath()==m_currentTargetPoint.GetPath())
-        {
-            
-            if (other.GetComponent<MovementPoint>().GetNextPoint() == null)
-            {
-                OnLastPointActivated();
-                return;
-            }
-            MovementPoint bufferPoint = m_currentTargetPoint;
 
-            //Move forward
-            m_currentTargetPoint = other.GetComponent<MovementPoint>().GetNextPoint();
-            OnPointEntered();
-
-            //Activate all events binded to Point
-            bufferPoint.ActivatePoint();
-        }
     }
 }
