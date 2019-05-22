@@ -43,7 +43,7 @@ public class Crystal : Hittable
 
 	public override void Hit(GunManager gunManager,float damage,Color gunColor)
 	{
-		if (OnHit != null) OnHit(this);
+		OnHit.Invoke();
 		
 		if (gunManager.currentMode == GunManager.GunMode.COLOR)
 		{
