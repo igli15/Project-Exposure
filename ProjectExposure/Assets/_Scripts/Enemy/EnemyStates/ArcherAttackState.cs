@@ -8,6 +8,8 @@ public class ArcherAttackState : AbstractState<EnemyFSM>
     public float waitingTime = 1;
     public float waitingTimeAfter = 1;
     public float rangeOfShooting = 300;
+    [SerializeField]
+    private float m_projectileSpeed = 10;
     private float m_lastShotTime = 0;
     
     private bool m_isFreezed = false; 
@@ -55,7 +57,7 @@ public class ArcherAttackState : AbstractState<EnemyFSM>
 
         GameObject projectile = ObjectPooler.instance.SpawnFromPool("Projectile", transform.position, transform.rotation);
         projectile.SetActive(true);
-        projectile.GetComponent<Rigidbody>().velocity = (Camera.main.transform.position - transform.position).normalized * 10;
+        projectile.GetComponent<Rigidbody>().velocity = (Camera.main.transform.position - transform.position).normalized * m_projectileSpeed;
         projectile.GetComponent<Rigidbody>().useGravity = false;
 
         //target.fsm.ChangeState<ArcherMovementState>();
