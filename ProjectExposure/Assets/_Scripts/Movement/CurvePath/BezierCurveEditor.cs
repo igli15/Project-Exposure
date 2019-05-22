@@ -31,7 +31,9 @@ public class BezierCurveInspector : Editor
     void CustomOnSceneGUI(SceneView sceneview)
     {
         if (EditorApplication.isPlaying || EditorApplication.isPaused) return;
-        if (null==m_curve && !m_curve.enabled) return;
+        if (null == target) return;
+        if (null == m_curve) m_curve = target as BezierCurve;
+        if ( !m_curve.enabled) return;
 
         Vector3 p0 = m_handleTransform.TransformPoint(m_curve.GetControlPoint((0)));
         for (int i = 1; i < m_curve.ControlPointCount; i += 3)
