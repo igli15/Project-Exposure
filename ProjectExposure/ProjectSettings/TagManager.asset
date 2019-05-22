@@ -10,6 +10,7 @@ TagManager:
   - MovementPoint
   - SliderBase
   - CurvePoint
+  - Crystals
   layers:
   - Default
   - TransparentFX

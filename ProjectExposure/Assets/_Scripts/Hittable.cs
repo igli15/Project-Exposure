@@ -5,10 +5,12 @@ using System.Security.Cryptography.X509Certificates;
 using DG.Tweening;
 using UnityEditor.MemoryProfiler;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class Hittable : MonoBehaviour
 {
-	public Action<Hittable> OnHit;
+	public UnityEvent OnHit;
+	
 	
 	public Action<Hittable> OnPulled;
 	public Action<Hittable> OnPushed;
@@ -25,7 +27,7 @@ public abstract class Hittable : MonoBehaviour
 
 	public virtual void Hit(GunManager gunManager, float damage,Color gunColor)
 	{
-		if (OnHit != null) OnHit(this);
+		OnHit.Invoke();
 		
 		if (gunManager.currentMode == GunManager.GunMode.COLOR)
 		{

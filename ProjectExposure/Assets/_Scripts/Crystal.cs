@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
+using DG.Tweening;
 using UnityEngine;
 
 public class Crystal : Hittable
@@ -12,8 +13,19 @@ public class Crystal : Hittable
 	[SerializeField] private float m_explosionRadius = 5;
 
 	[SerializeField] private AoeSphere m_aoeSphere;
+
+	private bool m_exploded = false;
 	
-	
+	public float explosionRadius
+	{
+		get { return m_explosionRadius; }
+	}
+
+	public bool exploded
+	{
+		get { return m_exploded; }
+	}
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -31,7 +43,7 @@ public class Crystal : Hittable
 
 	public override void Hit(GunManager gunManager,float damage,Color gunColor)
 	{
-		if (OnHit != null) OnHit(this);
+		OnHit.Invoke();
 		
 		if (gunManager.currentMode == GunManager.GunMode.COLOR)
 		{
@@ -42,17 +54,15 @@ public class Crystal : Hittable
 			if (damage > 0.2f)
 			{
 				Explode(gunManager);
-				if (OnExplode != null) OnExplode(this);
-				Instantiate(m_aoeSphere.gameObject, transform.position, Quaternion.identity);
-				Destroy(transform.gameObject);
 			}
 		}
 		
 	}
 
 
-	public void Explode(GunManager gunManager)
+	public void AoeOverlapSphere(GunManager gunManager)
 	{
+		m_exploded = true;
 		Collider[] colliders = Physics.OverlapSphere(transform.position, m_explosionRadius);
 
 		for (int i = 0; i < colliders.Length; i++)
@@ -60,12 +70,37 @@ public class Crystal : Hittable
 			Hittable hittable = colliders[i].GetComponent<Hittable>();
 			if( hittable!= null)
 			{
+				if (hittable.CompareTag("Crystals") && hittable.gameObject.GetInstanceID() != gameObject.GetInstanceID())
+				{
+					DOVirtual.DelayedCall(0.1f, () =>
+					{
+						Crystal c = hittable.GetComponent<Crystal>();
+						if (!c.exploded)
+						{
+							c.Explode(gunManager);
+						}
+					});
+				}
+				
 				Health h = colliders[i].GetComponent<Health>();
 				if (h != null)
 				{
-					h.InflictDamage(gunManager.CalculateDamage(color,hittable.GetColor()));
+					h.InflictDamage(gunManager.CalculateDamage(color, hittable.GetColor()));
 				}
+
 			}
+			
 		}
 	}
+
+	public void Explode(GunManager gunManager)
+	{
+		AoeOverlapSphere(gunManager);
+		if (OnExplode != null) OnExplode(this);
+		GameObject obj = Instantiate(m_aoeSphere.gameObject, transform.position, Quaternion.identity);
+		obj.transform.position += Vector3.up * 3;
+		obj.GetComponent<AoeSphere>().Activate(m_explosionRadius);
+		Destroy(transform.gameObject);
+	}
+
 }
