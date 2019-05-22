@@ -71,8 +71,5 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
     {
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
 
-    }
 }
