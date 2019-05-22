@@ -9,6 +9,7 @@ public class CurvePoint : MonoBehaviour {
     public float progress;
     public void StayAtSpline(float t)
     {
+        if(m_spline!=null)
         transform.position=m_spline.GetPoint(t);
     }
 }
