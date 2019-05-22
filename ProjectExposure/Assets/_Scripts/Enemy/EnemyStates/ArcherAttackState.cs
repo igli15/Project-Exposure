@@ -7,7 +7,9 @@ public class ArcherAttackState : AbstractState<EnemyFSM>
 {
     public float waitingTime = 1;
     public float waitingTimeAfter = 1;
+    public float rangeOfShooting = 300;
     private float m_lastShotTime = 0;
+    
     private bool m_isFreezed = false; 
     public override void Enter(IAgent pAgent)
     {
@@ -18,7 +20,8 @@ public class ArcherAttackState : AbstractState<EnemyFSM>
 
     void Update()
     {
-        if (Time.time - (m_isFreezed ? waitingTimeAfter:waitingTime) >m_lastShotTime&& IsPlayerInRange(30))
+        if (Time.time - (m_isFreezed ? waitingTimeAfter:waitingTime)
+            >m_lastShotTime&& IsPlayerInRange(rangeOfShooting))
         {
             if (m_isFreezed == false)
             {

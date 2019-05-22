@@ -15,15 +15,10 @@ public class ArcherMovementState : EnemyMovementState
 
     }
 
-    public override void OnPointEntered()
-    {
-        StopMovement();
-        target.fsm.ChangeState<ArcherAttackState>();
-    }
 
-    public override void OnLastPointActivated()
+    private void OnTriggerEnter(Collider other)
     {
-        StopMovement();
+        if(other.CompareTag("CurvePoint"))
         target.fsm.ChangeState<ArcherAttackState>();
     }
 }
