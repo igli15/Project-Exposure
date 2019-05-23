@@ -11,7 +11,7 @@
 		_Amplitude ("Amplitude",Range(0,1)) = 0.2
 		_Yaw ("Yaw" ,Range(-2,2)) = 0.5
 		_Roll ("Roll" ,Range(-2,2)) = 0.5
-		_Limit ("Movement Limit",Range (-2,2)) = 0
+		_Limit ("Movement Limit",Range (-4,4)) = 0
 		
 	}
 	SubShader {
