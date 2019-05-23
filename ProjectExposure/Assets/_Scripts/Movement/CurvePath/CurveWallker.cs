@@ -31,11 +31,11 @@ public class CurveWallker : MonoBehaviour
     public bool lookForward;
     public void Start()
     {
-        DOTween.To(() => progress, x => progress = x, 1, duration).SetEase(Ease.Linear).SetUpdate(true);
+       // DOTween.To(() => progress, x => progress = x, 1, duration).SetEase(Ease.Linear).SetUpdate(true);
     }
     private void Update()
     {
-        return;
+        
         m_progress += Time.deltaTime / duration;
         if (m_progress > 1f)
         {

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System;
 using UnityEngine;
 
-public class BezierCurve : MonoBehaviour {
+public class BezierCurve : MonoBehaviour
+{
     public enum BezierControlPointMode
     {
         Free,
@@ -16,8 +17,9 @@ public class BezierCurve : MonoBehaviour {
 
     [SerializeField]
     private Vector3[] m_points;
+    [SerializeField]
+    private float[] m_lengths;
 
- 
     public int ControlPointCount { get { return m_points.Length; } }
     public int CurveCount { get { return (m_points.Length - 1) / 3; } }
 
@@ -34,6 +36,16 @@ public class BezierCurve : MonoBehaviour {
             BezierControlPointMode.Free,
             BezierControlPointMode.Free
         };
+    }
+
+    public void Start()
+    {
+        float totalLength = 0;
+        for (int i = 0; i < CurveCount; i++)
+        {
+            totalLength+=CalculateLength(i);
+        }
+        Debug.Log("Spline legth is " + totalLength);
     }
 
     public Vector3 GetControlPoint(int index)
@@ -64,6 +76,27 @@ public class BezierCurve : MonoBehaviour {
         }
         return transform.TransformPoint(Bezier.GetPoint(
             m_points[i], m_points[i + 1], m_points[i + 2], m_points[i + 3], t));
+    }
+
+    public float GetLength(float t)
+    {
+        int i;
+        if (t >= 1f)
+        {
+            t = 1f;
+            i = m_points.Length - 4;
+        }
+        else
+        {
+            t = Mathf.Clamp01(t) * CurveCount;  // 0<t<curveCount
+            i = (int)t;
+            t -= i;
+            i *= 3;
+        }
+
+        Bezier.GetPoint(
+            m_points[i], m_points[i + 1], m_points[i + 2], m_points[i + 3], t);
+        return 0;
     }
 
     public Vector3 GetVelocity(float t)
@@ -107,7 +140,7 @@ public class BezierCurve : MonoBehaviour {
         }
         m_points[index] = point;
         EnforceMode(index);
-       
+
     }
 
     public void SetControlPointMode(int index, BezierControlPointMode mode)
@@ -115,6 +148,25 @@ public class BezierCurve : MonoBehaviour {
         EnforceMode(index);
         m_modes[(index + 1) / 3] = mode;
     }
+
+    public float CalculateLength(int index)
+    {
+        float depthLevel = 50;
+        float totalLength = 0;
+        Vector3 lastPoint= Bezier.GetPoint(m_points[index], m_points[index + 1], m_points[index + 2], m_points[index + 3], 0);
+        for (int i = 1; i < depthLevel; i++)
+        {
+            Vector3 currentPoint=Bezier.GetPoint(m_points[index], m_points[index + 1], m_points[index + 2], m_points[index + 3], (float)i/depthLevel);
+            totalLength += (currentPoint - lastPoint).magnitude;
+            lastPoint = currentPoint;
+        }
+        //Debug.Log("TotalLength of curve " + index + " is " + totalLength);
+
+        return totalLength;
+    }
+
+
+
 
     public void AddCurve()
     {
