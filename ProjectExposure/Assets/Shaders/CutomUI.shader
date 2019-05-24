@@ -118,7 +118,7 @@ Shader "Custom/UI/Frequency"
 			    float x = (IN.texcoord.x) * 2;
 			    float y = ( IN.texcoord.y) * 2;
 			
-			    x +=  _Speed * _Time.y;
+			    //x +=  _Speed * _Time.y;
 			
 			    float radius =  0.5 + sin(x * UNITY_PI / _Wavelength) * _Amplitude * 0.5 ;
 			

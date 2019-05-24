@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ColorUtils : MonoBehaviour 
+public abstract class ColorUtils 
 {
-	
 	public static Vector3 GetHSVOfAColor(Color color)
 	{
 		float hue = 0;
