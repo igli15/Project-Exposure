@@ -3434,6 +3434,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be9aeec9b55464ff4b2e3e91b3ec1fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_gunManager: {fileID: 1018826998}
   m_backgroundImage: {fileID: 792277710}
   m_slider: {fileID: 1214015364}
   m_frequencyWaveLengthRange: {x: 0.1, y: 0.5}

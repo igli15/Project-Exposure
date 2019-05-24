@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class FrequencyDisplay : MonoBehaviour
 {
+	[SerializeField] private GunManager m_gunManager;
 	[SerializeField] private Image m_backgroundImage;
 	[SerializeField] private Slider m_slider;
 
@@ -16,15 +17,22 @@ public class FrequencyDisplay : MonoBehaviour
 	void Start ()
 	{
 		m_material = GetComponent<Image>().material;
-
-		m_slider.onValueChanged.Invoke(m_slider.value);
 		
 		m_slider.onValueChanged.AddListener(delegate(float value)
 		{
 			float finalValue = Utils.Remap(value, 0, 1, 0.5f, 0.1f);
 			
 			m_material.SetFloat("_Wavelength", finalValue);
+			
+			float h = m_slider.value * 270.0f / 360.0f;
+
+			Color c  = Color.HSVToRGB(h, 1, 1);
+			m_backgroundImage.color = c;
+			m_gunManager.SetGunColors(c);
+
 		});
+		
+		m_slider.onValueChanged.Invoke(m_slider.value);
 	}
 	
 	// Update is called once per frame
