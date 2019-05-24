@@ -19,6 +19,7 @@ Shader "Custom/UI/Frequency"
         _Amplitude ("Amplitude", Float) = 1
 		_Wavelength ("Wavelength", Float) = 10
 		_Speed ("Speed", Float) = 1
+		
     }
 
     SubShader
@@ -118,15 +119,15 @@ Shader "Custom/UI/Frequency"
 			    float x = (IN.texcoord.x) * 2;
 			    float y = ( IN.texcoord.y) * 2;
 			
-			    //x +=  _Speed * _Time.y;
+			    x +=  _Speed * _Time.x;
 			
-			    float radius =  0.5 + sin(x * UNITY_PI / _Wavelength) * _Amplitude * 0.5 ;
-			
+			    float radius =  (0.5 + sin(x * UNITY_PI / _Wavelength) * _Amplitude * 0.5);  
+			        
 			    radius -= ( y - 0.6);
-            
+                
 			    clip(radius - 0.4);
-			
-
+			   clip(0.5 - radius );
+			    
                 return color;
             }
         ENDCG
