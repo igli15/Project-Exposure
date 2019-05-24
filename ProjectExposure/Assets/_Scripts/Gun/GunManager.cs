@@ -7,16 +7,11 @@ using UnityEngine.EventSystems;
 
 public class GunManager : MonoBehaviour,IAgent
 {
-	[SerializeField] private Gun m_damageGun;
-	[SerializeField] private Gun m_colorGun;
-
 	[SerializeField] private Transform m_gunGroup;
 
 	[SerializeField] private float m_baseDamage = 10;
 	[SerializeField] private float m_extraDamage = 20;
 	[SerializeField] private float m_hueDamageRange = 40;
-
-	[SerializeField] private SliderBase m_sliderBase;
 	
 	private float m_damage = 0;
 
@@ -24,72 +19,44 @@ public class GunManager : MonoBehaviour,IAgent
 
 	private bool m_mouseDown = false;
 
-	public enum GunMode
-	{
-		COLOR,
-		SHOOT,
-	}
+	private Color m_color;
 
-	private GunMode m_currentMode;
-
-	public GunMode currentMode
+	public Fsm<GunManager> fsm
 	{
-		get { return m_currentMode; }
+		get { return m_fsm; }
 	}
 
 	public float damage
 	{
 		get { return m_damage; }
 	}
+
+	public Color color
+	{
+		get { return m_color; }
+	}
 	
 	void Start () 
 	{
-		SetGunColors(Color.red);
-		
-		m_sliderBase.OnSliderValueChanged += delegate(float sliderValue)
+		if (m_fsm == null)
 		{
-			float h = sliderValue * 270.0f / 360.0f;
+			m_fsm = new Fsm<GunManager>(this);
+		}
 		
-			SetGunColors(Color.HSVToRGB(h ,1,1));
-		};
+		m_fsm.ChangeState<MergedGunsState>();
+		
+		SetGunColors(Color.red);
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-		if (Input.GetMouseButtonDown(0))
-		{
-			ShootTheRightGun();
-		}
-	}
-
-	public void ShootTheRightGun()
-	{
-		List<Hittable> hittables = RaycastFromGuns();
-
-		foreach (Hittable h in hittables)
-		{
-			if (h.GetColor() == Color.white)
-			{
-				m_currentMode = GunMode.COLOR;
-				m_colorGun.Shoot();
-				h.Hit(this,0,m_colorGun.GetColor());
-					
-			}
-			else
-			{
-				m_currentMode = GunMode.SHOOT;
-				m_damageGun.Shoot();
-				m_damage = CalculateDamage(m_damageGun.GetColor(), h.GetColor());
-				h.Hit(this,m_damage,m_damageGun.GetColor());
-			}
-		}
+		
 	}
 	
 	public void SetGunColors(Color newColor)
 	{
-		m_damageGun.SetColor(newColor);
-		m_colorGun.SetColor(newColor);
+		m_color = newColor;
 	}
 	
 	public float CalculateDamage(Color myColor,Color enemyColor)
@@ -98,7 +65,6 @@ public class GunManager : MonoBehaviour,IAgent
 
 		if (ColorUtils.GetHSVOfAColor(enemyColor).y < 0.2f)
 		{
-			Debug.Log(ColorUtils.GetHSVOfAColor(enemyColor).y);
 			return 0;
 		}
 		
@@ -118,7 +84,7 @@ public class GunManager : MonoBehaviour,IAgent
 	}
 
 	
-	protected List<Hittable> RaycastFromGuns()
+	public List<Hittable> RaycastFromGuns()
 	{        
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
      		
@@ -158,11 +124,6 @@ public class GunManager : MonoBehaviour,IAgent
 		Quaternion rot = Quaternion.LookRotation(r.direction.normalized,Vector3.up);
 		t.DORotate(rot.eulerAngles, 0.5f);
 		return r.direction;
-	}
-
-	private void OnMouseDrag()
-	{
-		m_sliderBase.gameObject.BroadcastMessage("OnMouseDrag"); // umm yea... unity and stuff
 	}
 
 	private void OnMouseDown()

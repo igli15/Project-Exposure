@@ -45,18 +45,22 @@ public class Crystal : Hittable
 	{
 		OnHit.Invoke();
 		
-		if (gunManager.currentMode == GunManager.GunMode.COLOR)
+		if (gunManager.fsm.GetCurrentState() is MergedGunsState)
 		{
-			SetColor(gunColor);
-		}
-		else if (gunManager.currentMode == GunManager.GunMode.SHOOT && ColorUtils.CheckIfColorAreSimilar(gunColor ,color,40))
-		{
-			if (damage > 0.2f)
+			MergedGunsState mergedGunsState = (gunManager.fsm.GetCurrentState() as MergedGunsState);
+			
+			if (mergedGunsState.currentMode == MergedGunsState.GunMode.COLOR)
 			{
-				Explode(gunManager);
+				SetColor(gunColor);
+			}
+			else if (mergedGunsState.currentMode == MergedGunsState.GunMode.SHOOT)
+			{
+				if (damage > 0.2f)
+				{
+					Explode(gunManager);
+				}
 			}
 		}
-		
 	}
 
 
