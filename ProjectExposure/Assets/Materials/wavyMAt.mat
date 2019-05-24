@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: wavyMAt
-  m_Shader: {fileID: 4800000, guid: ee3de3c480ded4a82bdc8982eb36ad8f, type: 3}
+  m_Shader: {fileID: 4800000, guid: b86d2a7dd7c31495ab7e781b95a8dbdd, type: 3}
   m_ShaderKeywords: XAxis ZAxis
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
