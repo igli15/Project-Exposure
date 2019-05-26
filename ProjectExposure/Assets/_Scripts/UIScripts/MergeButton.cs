@@ -5,26 +5,25 @@ using UnityEngine;
 public class MergeButton : TouchButton
 {
 
-	//[SerializeField] private GunManager m_gunManager;
+	[SerializeField] private GunManager m_gunManager;
 
 	// Use this for initialization
 	void Start ()
 	{
-		/*
+		
 		OnTouchEnter.AddListener(delegate
 		{
-			
-			if (m_gunManager.currentMode == GunManager.GunMode.MERGED)
+			if (m_gunManager.fsm.GetCurrentState() is MergedGunsState)
 			{
-				Debug.Log("split");
-				m_gunManager.SplitGuns();
+				
+				m_gunManager.fsm.ChangeState<SplitGunsState>();
 			}
 			else
 			{
-				m_gunManager.MergeGuns();
+				m_gunManager.fsm.ChangeState<MergedGunsState>();
 			}
 		});
-		*/
+		
 	}
 	
 }

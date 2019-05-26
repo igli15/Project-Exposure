@@ -126,6 +126,12 @@ public class GunManager : MonoBehaviour,IAgent
 		return r.direction;
 	}
 
+	public Vector3 GetDirFromGunToMouse()
+	{
+		Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);;
+		r.origin = transform.position;
+		return r.direction;
+	}
 	private void OnMouseDown()
 	{
 		m_mouseDown = true;

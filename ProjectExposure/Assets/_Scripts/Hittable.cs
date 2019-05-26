@@ -11,7 +11,6 @@ public abstract class Hittable : MonoBehaviour
 {
 	public UnityEvent OnHit;
 	
-	
 	public Action<Hittable> OnPulled;
 	public Action<Hittable> OnPushed;
 

@@ -1,15 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using JetBrains.Annotations;
 using UnityEngine;
 
-public class MergedGunsState : AbstractState<GunManager>
+public class MergedGunsState : GunState
 {
 	public enum GunMode
 	{
 		COLOR,
 		SHOOT,
 	}
+
+	[SerializeField] private Gun m_colorGun;
+	[SerializeField] private Gun m_damageGun;
 	
 	private GunMode m_currentMode;
 	
@@ -22,8 +26,13 @@ public class MergedGunsState : AbstractState<GunManager>
 	{
 		base.Enter(pAgent);
 	}
-	
-	public void ShootTheRightGun()
+
+	public override void Exit(IAgent pAgent)
+	{
+		base.Exit(pAgent);
+	}
+
+	public override void Shoot()
 	{
 		List<Hittable> hittables = target.RaycastFromGuns();
 
@@ -32,31 +41,17 @@ public class MergedGunsState : AbstractState<GunManager>
 			if (h.GetColor() == Color.white)
 			{
 				m_currentMode = GunMode.COLOR;
-				//m_colorGun.Shoot();
+				m_colorGun.Shoot();
 				h.Hit(target,0,target.color);
 					
 			}
 			else
 			{
 				m_currentMode = GunMode.SHOOT;
-				//m_damageGun.Shoot();
+				m_damageGun.Shoot();
 				float m_damage = target.CalculateDamage(target.color, h.GetColor());
 				h.Hit(target,m_damage,target.color);
 			}
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () 
-	{
-		if (Input.GetMouseButtonDown(0))
-		{
-			ShootTheRightGun();
-		}
-	}
-
-	public override void Exit(IAgent pAgent)
-	{
-		base.Exit(pAgent);
 	}
 }
