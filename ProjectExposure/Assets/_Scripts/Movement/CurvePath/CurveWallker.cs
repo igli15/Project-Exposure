@@ -12,8 +12,6 @@ public class CurveWallker : MonoBehaviour
 
     public static CurveWallker instance;
 
-    public float duration;
-    public float speed = 2;
     private float m_progress;
     public float progress
     {
