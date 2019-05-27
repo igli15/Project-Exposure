@@ -13,6 +13,8 @@ public class GunManager : MonoBehaviour,IAgent
 	[SerializeField] private float m_extraDamage = 20;
 	[SerializeField] private float m_hueDamageRange = 40;
 	
+	[SerializeField] private Transform m_origin;
+	
 	private float m_damage = 0;
 
 	private Fsm<GunManager> m_fsm;
@@ -35,7 +37,12 @@ public class GunManager : MonoBehaviour,IAgent
 	{
 		get { return m_color; }
 	}
-	
+
+	public Transform origin
+	{
+		get { return m_origin; }
+	}
+
 	void Start () 
 	{
 		if (m_fsm == null)
@@ -115,7 +122,7 @@ public class GunManager : MonoBehaviour,IAgent
 	public Vector3 LookInRayDirection(Transform t,Ray ray)
 	{
 		Ray r = ray;
-		r.origin = transform.position;
+		r.origin = origin.position;
 		Quaternion rot = Quaternion.LookRotation(r.direction.normalized,Vector3.up);
 		t.DORotate(rot.eulerAngles, 0.5f);
 		return r.direction;
@@ -124,7 +131,7 @@ public class GunManager : MonoBehaviour,IAgent
 	public Vector3 GetDirFromGunToMouse()
 	{
 		Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);;
-		r.origin = transform.position;
+		r.origin =  origin.position;
 		return r.direction;
 	}
 	private void OnMouseDown()

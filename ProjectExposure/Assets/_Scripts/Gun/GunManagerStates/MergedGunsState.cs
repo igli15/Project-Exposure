@@ -19,7 +19,6 @@ public class MergedGunsState : GunState
 	[SerializeField] private Material m_beamMat;
 	
 	private GunMode m_currentMode;
-	private bool m_canShoot = true;
 
 	public GunMode currentMode
 	{
@@ -40,14 +39,15 @@ public class MergedGunsState : GunState
 	{
 		Hittable hittable = target.RaycastFromGuns();
 
-		Color c = m_beamMat.GetColor("_TintColor");
+		Color c = target.color;
+		c *= 2;
 		c.a = 1;
 		m_beamMat.SetColor("_TintColor", c);
 			
 		m_lineRenderer.SetPosition(0,m_lineRenderer.transform.position);
-		
+		Debug.DrawRay(target.origin.position,target.GetDirFromGunToMouse() * 40,Color.red);
 		if(hittable != null) m_lineRenderer.SetPosition(1,hittable.transform.position);
-		else  m_lineRenderer.SetPosition(1,transform.position + target.GetDirFromGunToMouse() * 20);
+		else  m_lineRenderer.SetPosition(1,target.origin.position + target.GetDirFromGunToMouse() * 40);
 
 		c = m_beamMat.GetColor("_TintColor");
 		DOVirtual.Float(c.a, 0, 0.5f, 
