@@ -32,7 +32,7 @@ public class CurveWallker : MonoBehaviour
     private void Update()
     {
         
-        m_progress += Time.deltaTime / duration;
+        m_progress += Time.deltaTime / spline.Duration;
         if (m_progress > 1f)
         {
             m_progress = 1f;

@@ -1356,7 +1356,7 @@ MonoBehaviour:
   - {x: -31.109066, y: 1.7621244, z: 57.572086}
   m_lengths: []
   TotalLength: 0
-  Duration: 0
+  Duration: 5
 --- !u!4 &416917888
 Transform:
   m_ObjectHideFlags: 0
@@ -3193,7 +3193,7 @@ MonoBehaviour:
   - {x: 58.44093, y: -3.3602304, z: 264.0863}
   m_lengths: []
   TotalLength: 0
-  Duration: 0
+  Duration: 50
 --- !u!4 &1432644477
 Transform:
   m_ObjectHideFlags: 0
@@ -3205,7 +3205,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -0.15100001, y: -5.0280004, z: -1.4130001}
 --- !u!1 &1529770790
 GameObject:
@@ -3894,7 +3894,7 @@ Transform:
   - {fileID: 205661296}
   - {fileID: 46796607}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1911094459
 GameObject:
