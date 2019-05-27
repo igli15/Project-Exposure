@@ -23,6 +23,7 @@ public class BezierCurve : MonoBehaviour
     public int ControlPointCount { get { return m_points.Length; } }
     public int CurveCount { get { return (m_points.Length - 1) / 3; } }
     public float TotalLength = 0;
+    public float Duration = 30;
     public void Reset()
     {
         //Default values

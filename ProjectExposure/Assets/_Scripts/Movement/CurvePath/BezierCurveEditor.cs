@@ -78,6 +78,9 @@ public class BezierCurveInspector : Editor
     {
         m_curve = target as BezierCurve;
         EditorGUI.BeginChangeCheck();
+        GUILayout.Label("Duration");
+        float duration = EditorGUILayout.FloatField(0);
+        m_curve.Duration = duration;
         if (m_selectedIndex >= 0 && m_selectedIndex < m_curve.ControlPointCount)
         {
             DrawSelectedPointInspector();
