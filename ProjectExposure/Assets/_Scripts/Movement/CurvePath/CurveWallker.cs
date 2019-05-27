@@ -36,6 +36,15 @@ public class CurveWallker : MonoBehaviour
         if (m_progress > 1f)
         {
             m_progress = 1f;
+            if (spline.GetComponent<CurveBinder>())
+            {
+                CurveBinder binder = spline.GetComponent<CurveBinder>();
+                if (binder.EndSpline)
+                {
+                    spline = binder.EndSpline;
+                    progress = binder.endPprogress;
+                }
+            }
         }
         Vector3 position = spline.GetPoint(m_progress);
         transform.localPosition = position;

@@ -21,5 +21,17 @@ public class CurveBinderEditor : Editor {
             EditorUtility.SetDirty(curveBinder);
             curveBinder.startProgress = val;
         }
+        float val2;
+        EditorGUI.BeginChangeCheck();
+        val2 = GUILayout.HorizontalSlider(curveBinder.endPprogress, 0, 1);
+        curveBinder.AttachEndNode(val2);
+        if (EditorGUI.EndChangeCheck())
+        {
+            Undo.RecordObject(curveBinder, "curveBinder2");
+            EditorUtility.SetDirty(curveBinder);
+            curveBinder.endPprogress = val2;
+        }
+
+        ////🤬🤬🤬🤬🤬🤬🤬🤬🤬🤬🤬🤬🤬🤬🤬🤬
     }
 }

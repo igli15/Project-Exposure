@@ -18,7 +18,8 @@ public class CurveBinder : MonoBehaviour {
 
     private BezierCurve m_bindedSpline;
 
-
+    public BezierCurve EndSpline { get { return m_endSpline; } }
+    public BezierCurve StartSpline { get { return m_startSpline; } }
 
     public void Reset()
     {
@@ -61,7 +62,8 @@ public class CurveBinder : MonoBehaviour {
         {
             endPprogress = t;
             m_bindedSpline.SetRawPoint(m_endSpline.ControlPointCount-1, m_endSpline.GetPoint(t) - transform.position);
-            m_bindedSpline.SetRawPoint(m_endSpline.ControlPointCount-2, m_endSpline.GetPoint(t) - transform.position + m_endSpline.GetDirection(t) * 70);
+            m_bindedSpline.SetRawPoint(m_endSpline.ControlPointCount-2, m_endSpline.GetPoint(t) - transform.position - m_endSpline.GetDirection(t) * 70);
+
         }
         else { m_bindedSpline = GetComponent<BezierCurve>(); }
     }
