@@ -20,12 +20,6 @@ public class MergedGunsState : GunState
 	
 	private GunMode m_currentMode;
 	
-	Vector3[] positions = new Vector3[2];
-
-	private void Start()
-	{
-		positions[0] = Vector3.zero;
-	}
 
 	public GunMode currentMode
 	{
@@ -53,15 +47,14 @@ public class MergedGunsState : GunState
 			c.a = 1;
 			m_beamMat.SetColor("_TintColor", c);
 			
-			positions[0] = m_lineRenderer.transform.position;
-			positions[1] = hittables[0].transform.position;
-			m_lineRenderer.SetPositions(positions);
+			m_lineRenderer.SetPosition(0,m_lineRenderer.transform.position);
+			m_lineRenderer.SetPosition(1,hittables[0].transform.position);
+			
 
 			c = m_beamMat.GetColor("_TintColor");
 			DOVirtual.Float(c.a, 0, 0.5f, 
 				(delegate(float value) { c.a = value;
-					positions[0] = m_lineRenderer.transform.position;
-					m_lineRenderer.SetPositions(positions);
+					m_lineRenderer.SetPosition(0,m_lineRenderer.transform.position);
 				m_beamMat.SetColor("_TintColor", c);
 			}));
 			
