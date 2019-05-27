@@ -14,9 +14,19 @@ public class MergedGunsState : GunState
 
 	[SerializeField] private Gun m_colorGun;
 	[SerializeField] private Gun m_damageGun;
+
+	[SerializeField] private LineRenderer m_lineRenderer;
+	[SerializeField] private Material m_beamMat;
 	
 	private GunMode m_currentMode;
 	
+	Vector3[] positions = new Vector3[2];
+
+	private void Start()
+	{
+		positions[0] = Vector3.zero;
+	}
+
 	public GunMode currentMode
 	{
 		get { return m_currentMode; }
@@ -36,8 +46,26 @@ public class MergedGunsState : GunState
 	{
 		List<Hittable> hittables = target.RaycastFromGuns();
 
+
 		foreach (Hittable h in hittables)
 		{
+			Color c = m_beamMat.GetColor("_TintColor");
+			c.a = 1;
+			m_beamMat.SetColor("_TintColor", c);
+			
+			positions[0] = m_lineRenderer.transform.position;
+			positions[1] = hittables[0].transform.position;
+			m_lineRenderer.SetPositions(positions);
+
+			c = m_beamMat.GetColor("_TintColor");
+			DOVirtual.Float(c.a, 0, 0.5f, 
+				(delegate(float value) { c.a = value;
+					positions[0] = m_lineRenderer.transform.position;
+					m_lineRenderer.SetPositions(positions);
+				m_beamMat.SetColor("_TintColor", c);
+			}));
+			
+			
 			if (h.GetColor() == Color.white)
 			{
 				m_currentMode = GunMode.COLOR;

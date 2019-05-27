@@ -21,7 +21,6 @@ public class SplitGunsState : GunState
 	private bool m_targetIsInPlace ;
 
 	private Tweener m_scaleTween;
-	private Vector3 m_initScale;
 	
 	public override void Enter(IAgent pAgent)
 	{
@@ -103,13 +102,11 @@ public class SplitGunsState : GunState
 
 	public void PullTarget(Hittable t)
 	{
-
 		t.transform.localScale = t.transform.localScale * m_scaleDownFactor;
 		
 		t.GetComponent<Rigidbody>().velocity = Vector3.zero;
 		t.GetComponent<Rigidbody>().isKinematic = true;
 		m_pulledHittable = t;
-		m_initScale = t.transform.localScale;
 
 		if (t.OnPulled != null) t.OnPulled(t);
 	}
