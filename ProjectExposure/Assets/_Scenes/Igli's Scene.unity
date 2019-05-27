@@ -3215,12 +3215,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   m_pullTargetLocation: {fileID: 281078737}
-  m_pushForce: 10
+  m_pushForce: 20
   objToDisable:
   - {fileID: 769876220}
   - {fileID: 1339694979}
   - {fileID: 998229179}
   - {fileID: 1997887605}
+  m_scaleDownFactor: 0.79
 --- !u!114 &1882013013
 MonoBehaviour:
   m_ObjectHideFlags: 0

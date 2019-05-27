@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class SplitGunsState : GunState
@@ -7,14 +8,21 @@ public class SplitGunsState : GunState
 	[SerializeField] private Transform m_pullTargetLocation;
 	
 	[SerializeField] private float m_pushForce = 10;
+
+	[SerializeField] private float m_pullForce = 50;
 	
 	[SerializeField] private GameObject[] objToDisable;
+
+	[Range(0.1f,1)]
+	[SerializeField] private float m_scaleDownFactor = 0.8f;
 
 	private Hittable m_pulledHittable ;
 
 	private bool m_targetIsInPlace ;
 
-
+	private Tweener m_scaleTween;
+	private Vector3 m_initScale;
+	
 	public override void Enter(IAgent pAgent)
 	{
 		base.Enter(pAgent);
@@ -45,8 +53,6 @@ public class SplitGunsState : GunState
 		{
 			PushTarget(target.GetDirFromGunToMouse());
 		}
-
-		
 	}
 
 	protected override void Update()
@@ -61,7 +67,7 @@ public class SplitGunsState : GunState
 				m_pulledHittable.transform.parent = m_pullTargetLocation;
 			}
 			
-			m_pulledHittable.transform.position = Vector3.MoveTowards(m_pulledHittable.transform.position, m_pullTargetLocation.position,   20*Time.deltaTime);
+			m_pulledHittable.transform.position = Vector3.MoveTowards(m_pulledHittable.transform.position, m_pullTargetLocation.position,   m_pullForce*Time.deltaTime);
 		}
 		
 	}
@@ -76,6 +82,8 @@ public class SplitGunsState : GunState
 			
 			if (m_pulledHittable.OnPushed != null) m_pulledHittable.OnPushed(m_pulledHittable);
 
+			m_pulledHittable.transform.localScale = new Vector3(1,1,1);
+			m_pulledHittable.transform.SetParent(null);
 			m_pulledHittable = null;
 			m_targetIsInPlace = false;
 			
@@ -85,13 +93,24 @@ public class SplitGunsState : GunState
 	public void ReleaseTarget()
 	{
 		if(m_pulledHittable.OnReleased != null) m_pulledHittable.OnReleased(m_pulledHittable);
+		m_pulledHittable.transform.localScale = new Vector3(1,1,1);
+		m_pulledHittable.GetComponent<Rigidbody>().velocity = Vector3.zero;
+		m_pulledHittable.GetComponent<Rigidbody>().isKinematic = true;
+		
 		m_pulledHittable = null;
 		m_targetIsInPlace = false;
 	}
 
 	public void PullTarget(Hittable t)
-	{	
+	{
+
+		t.transform.localScale = t.transform.localScale * m_scaleDownFactor;
+		
+		t.GetComponent<Rigidbody>().velocity = Vector3.zero;
+		t.GetComponent<Rigidbody>().isKinematic = true;
 		m_pulledHittable = t;
+		m_initScale = t.transform.localScale;
+
 		if (t.OnPulled != null) t.OnPulled(t);
 	}
 }
