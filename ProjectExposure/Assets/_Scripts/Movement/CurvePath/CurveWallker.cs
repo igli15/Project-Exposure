@@ -22,6 +22,8 @@ public class CurveWallker : MonoBehaviour
         get { return m_progress; }
     }
     public bool lookForward;
+    private bool m_isActive = true;
+    private float m_durationMultiplier=1;
     public void Start()
     {
         if (isPlayer) instance = this;
@@ -29,8 +31,9 @@ public class CurveWallker : MonoBehaviour
     }
     private void Update()
     {
-        
-        m_progress += Time.deltaTime / spline.Duration;
+        if (!m_isActive) return;
+
+        m_progress += Time.deltaTime / ( spline.Duration*m_durationMultiplier );
         if (m_progress > 1f)
         {
             m_progress = 1f;
@@ -50,5 +53,25 @@ public class CurveWallker : MonoBehaviour
         {
             transform.LookAt(position + spline.GetDirection(m_progress));
         }
+    }
+
+    public void StartMovement()
+    {
+        m_isActive = true;
+    }
+
+    public void StopMovement()
+    {
+        m_isActive = false;
+    }
+
+    public void SetDurationMultiplier(float value)
+    {
+        m_durationMultiplier = value;
+    }
+
+    public float GetDurationMultiplier()
+    {
+        return m_durationMultiplier;
     }
 }
