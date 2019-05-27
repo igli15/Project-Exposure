@@ -55,7 +55,6 @@ public class BezierCurveInspector : Editor
         m_handleTransform = m_curve.transform;
         m_handleRotation = Tools.pivotRotation == PivotRotation.Local ?
             m_handleTransform.rotation : Quaternion.identity;
-        EditorApplication.Beep();
         Vector3 p0 = ShowPoint(0);
         for (int i = 1; i < m_curve.ControlPointCount; i += 3)
         {
@@ -85,7 +84,6 @@ public class BezierCurveInspector : Editor
         }
         if (GUILayout.Button("Add Curve"))
         {
-            EditorApplication.Beep();
             Undo.RecordObject(m_curve, "Add Curve");
             m_curve.AddCurve();
             EditorUtility.SetDirty(m_curve);

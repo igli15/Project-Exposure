@@ -58,7 +58,6 @@ public class ArcherFSM : EnemyFSM
         m_archerMovementState = GetComponent<ArcherMovementState>();
         m_rigidBody = GetComponent<Rigidbody>();
 
-        Debug.Log("Change State to movement");
         m_fsm.ChangeState<ArcherMovementState>();
     }
 
