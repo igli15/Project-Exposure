@@ -12,8 +12,6 @@ public class CurveWallker : MonoBehaviour
 
     public static CurveWallker instance;
 
-    public float duration;
-    public float speed = 2;
     private float m_progress;
     public float progress
     {
@@ -32,10 +30,19 @@ public class CurveWallker : MonoBehaviour
     private void Update()
     {
         
-        m_progress += Time.deltaTime / duration;
+        m_progress += Time.deltaTime / spline.Duration;
         if (m_progress > 1f)
         {
             m_progress = 1f;
+            if (spline.GetComponent<CurveBinder>())
+            {
+                CurveBinder binder = spline.GetComponent<CurveBinder>();
+                if (binder.EndSpline)
+                {
+                    spline = binder.EndSpline;
+                    progress = binder.endPprogress;
+                }
+            }
         }
         Vector3 position = spline.GetPoint(m_progress);
         transform.localPosition = position;
