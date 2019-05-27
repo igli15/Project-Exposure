@@ -4,15 +4,37 @@ using UnityEngine;
 
 public class SplitGunsState : GunState
 {
-
 	[SerializeField] private Transform m_pullTargetLocation;
 	
 	[SerializeField] private float m_pushForce = 10;
+	
+	[SerializeField] private GameObject[] objToDisable;
 
 	private Hittable m_pulledHittable ;
 
 	private bool m_targetIsInPlace ;
-	
+
+
+	public override void Enter(IAgent pAgent)
+	{
+		base.Enter(pAgent);
+		
+		for (int i = 0; i < objToDisable.Length; i++)
+		{
+			objToDisable[i].SetActive(false);
+		}
+	}
+
+	public override void Exit(IAgent pAgent)
+	{
+		base.Exit(pAgent);
+		
+		for (int i = 0; i < objToDisable.Length; i++)
+		{
+			objToDisable[i].SetActive(true);
+		}
+	}
+
 	public override void Shoot()
 	{
 		List<Hittable> hittables = target.RaycastFromGuns();
