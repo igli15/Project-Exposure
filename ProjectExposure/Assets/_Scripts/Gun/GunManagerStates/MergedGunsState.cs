@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using JetBrains.Annotations;
@@ -6,6 +7,7 @@ using UnityEngine;
 
 public class MergedGunsState : GunState
 {
+	public static Action<Hittable,GunManager> OnShoot;
 	public enum GunMode
 	{
 		COLOR,
@@ -14,9 +16,6 @@ public class MergedGunsState : GunState
 
 	[SerializeField] private Gun m_colorGun;
 	[SerializeField] private Gun m_damageGun;
-
-	[SerializeField] private LineRenderer m_lineRenderer;
-	[SerializeField] private Material m_beamMat;
 	
 	private GunMode m_currentMode;
 
@@ -24,6 +23,7 @@ public class MergedGunsState : GunState
 	{
 		get { return m_currentMode; }
 	}
+
 
 	public override void Enter(IAgent pAgent)
 	{
@@ -39,22 +39,8 @@ public class MergedGunsState : GunState
 	{
 		Hittable hittable = target.RaycastFromGuns();
 
-		Color c = target.color;
-		c *= 2;
-		c.a = 1;
-		m_beamMat.SetColor("_TintColor", c);
-			
-		m_lineRenderer.SetPosition(0,m_lineRenderer.transform.position);
-		Debug.DrawRay(target.origin.position,target.GetDirFromGunToMouse() * 40,Color.red);
-		if(hittable != null) m_lineRenderer.SetPosition(1,hittable.transform.position);
-		else  m_lineRenderer.SetPosition(1,target.origin.position + target.GetDirFromGunToMouse() * 40);
-
-		c = m_beamMat.GetColor("_TintColor");
-		DOVirtual.Float(c.a, 0, 0.5f, 
-			(delegate(float value) { c.a = value;
-				m_lineRenderer.SetPosition(0,m_lineRenderer.transform.position);
-				m_beamMat.SetColor("_TintColor", c);
-			}));
+		if(OnShoot != null) OnShoot(hittable, target);
+		
 		
 		if(hittable != null)
 		{
