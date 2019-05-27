@@ -84,37 +84,32 @@ public class GunManager : MonoBehaviour,IAgent
 	}
 
 	
-	public List<Hittable> RaycastFromGuns()
+	public Hittable RaycastFromGuns()
 	{        
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
      		
-		RaycastHit[] hits;
+		RaycastHit hit;
 		
-		List<Hittable> hittables = new List<Hittable>();
-		
-		if(EventSystem.current.IsPointerOverGameObject()) return hittables;
+		if(EventSystem.current.IsPointerOverGameObject()) return null;
 
 		//LookInRayDirection(m_colorGun.transform, ray);
 		//LookInRayDirection(m_damageGun.transform, ray);
 		
 		if(!m_mouseDown)
 		LookInRayDirection(m_gunGroup, ray);
-		
-		
-		hits = Physics.RaycastAll(ray);
 
-		for (int i = 0; i < hits.Length; i++)
+
+		if (Physics.Raycast(ray.origin, ray.direction, out hit, 200))
 		{
-			RaycastHit hit = hits[i];
-			Hittable hittable = hit.transform.gameObject.GetComponent<Hittable>();
-            
-			if(hittable != null)
+			Hittable h = hit.transform.GetComponent<Hittable>();
+			if (h != null)
 			{
-				hittables.Add(hittable);
+				return h;
 			}
 		}
 
-		return hittables;
+
+		return null;
 	}
 	
 	public Vector3 LookInRayDirection(Transform t,Ray ray)

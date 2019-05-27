@@ -38,18 +38,16 @@ public class MergedGunsState : GunState
 
 	public override void Shoot()
 	{
-		List<Hittable> hittables = target.RaycastFromGuns();
+		Hittable hittable = target.RaycastFromGuns();
 
-
-		foreach (Hittable h in hittables)
+		if(hittable != null)
 		{
 			Color c = m_beamMat.GetColor("_TintColor");
 			c.a = 1;
 			m_beamMat.SetColor("_TintColor", c);
 			
 			m_lineRenderer.SetPosition(0,m_lineRenderer.transform.position);
-			m_lineRenderer.SetPosition(1,hittables[0].transform.position);
-			
+			m_lineRenderer.SetPosition(1,hittable.transform.position);
 
 			c = m_beamMat.GetColor("_TintColor");
 			DOVirtual.Float(c.a, 0, 0.5f, 
@@ -59,19 +57,19 @@ public class MergedGunsState : GunState
 			}));
 			
 			
-			if (h.GetColor() == Color.white)
+			if (hittable.GetColor() == Color.white)
 			{
 				m_currentMode = GunMode.COLOR;
 				m_colorGun.Shoot();
-				h.Hit(target,0,target.color);
+				hittable.Hit(target,0,target.color);
 					
 			}
 			else
 			{
 				m_currentMode = GunMode.SHOOT;
 				m_damageGun.Shoot();
-				float m_damage = target.CalculateDamage(target.color, h.GetColor());
-				h.Hit(target,m_damage,target.color);
+				float m_damage = target.CalculateDamage(target.color, hittable.GetColor());
+				hittable.Hit(target,m_damage,target.color);
 			}
 		}
 	}

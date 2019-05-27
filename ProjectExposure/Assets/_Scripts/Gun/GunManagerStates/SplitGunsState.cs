@@ -44,9 +44,9 @@ public class SplitGunsState : GunState
 
 	public override void Shoot()
 	{
-		List<Hittable> hittables = target.RaycastFromGuns();
+		Hittable hittable = target.RaycastFromGuns();
 
-		if(hittables.Count>0 && !m_targetIsInPlace)PullTarget(hittables[0]);
+		if(hittable != null && !m_targetIsInPlace) PullTarget(hittable);
 		
 		if (m_targetIsInPlace)
 		{
