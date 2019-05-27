@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.008911141, g: 0.022094695, b: 0.05401613, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -54594,6 +54594,8 @@ MonoBehaviour:
   - {x: 365.1859, y: 31.530117, z: 233.79279}
   - {x: 373.40845, y: 31.530117, z: 288.38602}
   - {x: 376.3984, y: 31.530117, z: 329.16302}
+  m_lengths: []
+  TotalLength: 0
 --- !u!4 &1530200323
 Transform:
   m_ObjectHideFlags: 0
@@ -64444,14 +64446,16 @@ MonoBehaviour:
   - {x: -34.030506, y: -12.782961, z: -75.118454}
   - {x: 0.7359543, y: -8.946478, z: -32.881012}
   - {x: 2.8357468, y: -8.714766, z: -30.329994}
-  - {x: -48.675465, y: 11.194669, z: -63.729076}
+  - {x: -56.696045, y: 15.124919, z: -52.08416}
   - {x: -62.78572, y: 15.85705, z: -65.77343}
-  - {x: -70.63601, y: 18.450981, z: -66.91081}
+  - {x: -70.63601, y: 16.80085, z: -83.420456}
   - {x: -88.41222, y: 12.483065, z: -78.497406}
   - {x: -112.7215, y: 24.480213, z: -69.37829}
   - {x: -118.89804, y: 27.528471, z: -67.06129}
   - {x: -111.83432, y: 21.120625, z: 4.4449997}
   - {x: -105.83432, y: 21.120625, z: 4.4449997}
+  m_lengths: []
+  TotalLength: 0
 --- !u!4 &1979805371
 Transform:
   m_ObjectHideFlags: 0
@@ -69703,7 +69707,6 @@ GameObject:
   - component: {fileID: 2038926748}
   - component: {fileID: 2038926752}
   - component: {fileID: 2038926751}
-  - component: {fileID: 2038926750}
   - component: {fileID: 2038926749}
   - component: {fileID: 1140309990}
   - component: {fileID: 2038926753}
@@ -69744,22 +69747,6 @@ MonoBehaviour:
   m_health: 100
   m_maxHealth: 100
   m_shouldBeDestroyed: 0
---- !u!114 &2038926750
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114493879565655080, guid: 93736e1ef0ca5d842919074e5b8d1f95,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2038926747}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cf85853017204d42ab0bdb5870a3950, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 197618897}
-  speed: 5
-  rotationTime: 1
-  initialPath: {fileID: 0}
 --- !u!135 &2038926751
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -69801,7 +69788,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spline: {fileID: 1530200322}
-  duration: 80
+  duration: 90
+  speed: 0.09
   lookForward: 1
 --- !u!1 &2043150118
 GameObject:

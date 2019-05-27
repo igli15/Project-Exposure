@@ -22,7 +22,7 @@ public class BezierCurve : MonoBehaviour
 
     public int ControlPointCount { get { return m_points.Length; } }
     public int CurveCount { get { return (m_points.Length - 1) / 3; } }
-
+    public float TotalLength = 0;
     public void Reset()
     {
         //Default values
@@ -40,12 +40,7 @@ public class BezierCurve : MonoBehaviour
 
     public void Start()
     {
-        float totalLength = 0;
-        for (int i = 0; i < CurveCount; i++)
-        {
-            totalLength+=CalculateLength(i);
-        }
-        Debug.Log("Spline legth is " + totalLength);
+        CalculateTotalLength();
     }
 
     public Vector3 GetControlPoint(int index)
@@ -78,6 +73,60 @@ public class BezierCurve : MonoBehaviour
             m_points[i], m_points[i + 1], m_points[i + 2], m_points[i + 3], t));
     }
 
+    public int GetCurrentIndex(float t)
+    {
+        int i = 0;
+        if (t >= 1f)
+        {
+            i = m_points.Length - 4;
+        }
+        else
+        {
+            t = Mathf.Clamp01(t) * CurveCount;  // 0<t<curveCount
+            i = (int)t;
+        }
+        return i;
+    }
+
+    public float GetDeltaProgress(float t, float speed)
+    {
+        float init_t=t;
+        int i = 0;
+        if (t >= 1f)
+        {
+            t = 1f;
+            i = m_points.Length - 4;
+        }
+        else
+        {
+            t = Mathf.Clamp01(t) * CurveCount;  // 0<t<curveCount
+            i = (int)t;
+            t -= i;
+            i *= 3;
+        }
+        float length = CalculateLength(i);
+        if (speed > length) speed = length;
+
+        float deltaProgress = speed / length;
+        int nextIndex = GetCurrentIndex(init_t + deltaProgress);
+
+
+        //Debug.Log("REMAINING_LENGTH: " + (1 - t) * length+" /"+speed);
+        
+        if (i/3!=nextIndex)
+        {
+            Debug.Log("Current Index: " + i / 3 + ", Next Index: " + nextIndex);
+            float remainingLength = (1-t)*length;
+            float nextLength = CalculateLength(nextIndex);
+            float extraDelta = (speed - remainingLength) / nextLength;
+            //CLEAR AND FIX IT
+            Debug.Log("Delta progress: " + deltaProgress + ", t: " + t);
+            //Debug.Log("progress: " + deltaProgress * (1 - t) + " + " + extraDelta);
+            return speed/nextLength;
+        }
+        return deltaProgress;
+    }
+
     public float GetLength(float t)
     {
         int i;
@@ -94,9 +143,7 @@ public class BezierCurve : MonoBehaviour
             i *= 3;
         }
 
-        Bezier.GetPoint(
-            m_points[i], m_points[i + 1], m_points[i + 2], m_points[i + 3], t);
-        return 0;
+        return CalculateLength(i);
     }
 
     public Vector3 GetVelocity(float t)
@@ -143,10 +190,29 @@ public class BezierCurve : MonoBehaviour
 
     }
 
+    public void SetRawPoint(int index, Vector3 point)
+    {
+        m_points[index] = point;
+        EnforceMode(index);
+    }
+
     public void SetControlPointMode(int index, BezierControlPointMode mode)
     {
         EnforceMode(index);
         m_modes[(index + 1) / 3] = mode;
+    }
+
+    public void CalculateTotalLength()
+    {
+        m_lengths = new float[CurveCount];
+        TotalLength = 0;
+        for (int i = 0; i < CurveCount; i++)
+        {
+            float length= CalculateLength(i);
+            m_lengths[i] = TotalLength;
+            TotalLength += length;
+        }
+        Debug.Log("Length is Calculated "+TotalLength+", Spline ready to use");
     }
 
     public float CalculateLength(int index)

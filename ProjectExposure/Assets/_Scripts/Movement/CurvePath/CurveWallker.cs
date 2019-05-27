@@ -8,7 +8,7 @@ public class CurveWallker : MonoBehaviour
     public BezierCurve spline;
 
     public float duration;
-
+    public float speed = 2;
     private float m_progress;
     public float progress
     {
