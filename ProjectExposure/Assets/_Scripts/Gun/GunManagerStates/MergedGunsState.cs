@@ -19,7 +19,7 @@ public class MergedGunsState : GunState
 	[SerializeField] private Material m_beamMat;
 	
 	private GunMode m_currentMode;
-	
+	private bool m_canShoot = true;
 
 	public GunMode currentMode
 	{
@@ -40,22 +40,24 @@ public class MergedGunsState : GunState
 	{
 		Hittable hittable = target.RaycastFromGuns();
 
-		if(hittable != null)
-		{
-			Color c = m_beamMat.GetColor("_TintColor");
-			c.a = 1;
-			m_beamMat.SetColor("_TintColor", c);
+		Color c = m_beamMat.GetColor("_TintColor");
+		c.a = 1;
+		m_beamMat.SetColor("_TintColor", c);
 			
-			m_lineRenderer.SetPosition(0,m_lineRenderer.transform.position);
-			m_lineRenderer.SetPosition(1,hittable.transform.position);
+		m_lineRenderer.SetPosition(0,m_lineRenderer.transform.position);
+		
+		if(hittable != null) m_lineRenderer.SetPosition(1,hittable.transform.position);
+		else  m_lineRenderer.SetPosition(1,transform.position + target.GetDirFromGunToMouse() * 20);
 
-			c = m_beamMat.GetColor("_TintColor");
-			DOVirtual.Float(c.a, 0, 0.5f, 
-				(delegate(float value) { c.a = value;
-					m_lineRenderer.SetPosition(0,m_lineRenderer.transform.position);
+		c = m_beamMat.GetColor("_TintColor");
+		DOVirtual.Float(c.a, 0, 0.5f, 
+			(delegate(float value) { c.a = value;
+				m_lineRenderer.SetPosition(0,m_lineRenderer.transform.position);
 				m_beamMat.SetColor("_TintColor", c);
 			}));
-			
+		
+		if(hittable != null)
+		{
 			
 			if (hittable.GetColor() == Color.white)
 			{
