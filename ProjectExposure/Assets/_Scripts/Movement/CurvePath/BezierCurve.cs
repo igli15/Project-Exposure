@@ -20,7 +20,7 @@ public class BezierCurve : MonoBehaviour
     [SerializeField]
     private float[] m_lengths;
 
-    public int ControlPointCount { get { return m_points.Length; } }
+    public int ControlPointCount { get { return m_points.Length;} }
     public int CurveCount { get { return (m_points.Length - 1) / 3; } }
     public float TotalLength = 0;
     [SerializeField]
@@ -175,7 +175,6 @@ public class BezierCurve : MonoBehaviour
 
     public void SetControlPoint(int index, Vector3 point)
     {
-
         if (index % 3 == 0)
         {
             Vector3 delta = point - m_points[index];
@@ -190,7 +189,6 @@ public class BezierCurve : MonoBehaviour
         }
         m_points[index] = point;
         EnforceMode(index);
-
     }
 
     public void SetRawPoint(int index, Vector3 point)

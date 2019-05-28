@@ -8,11 +8,16 @@ public class CurveBinder : MonoBehaviour {
     private BezierCurve m_startSpline;
     [SerializeField]
     public float startProgress;
-
+    [SerializeField]
+    public float startConstrainStrength = 30;
     [SerializeField]
     private BezierCurve m_endSpline;
     [SerializeField]
     public float endPprogress;
+    [SerializeField]
+    public float endConstrainStrength = 30;
+
+    //TODO: scale of constrain for merging parts
 
     public bool isActivated = false;
 
@@ -46,25 +51,26 @@ public class CurveBinder : MonoBehaviour {
 
     public void AttachStartNode(float t)
     {
-
-        if (m_bindedSpline != null)
+        if (!m_bindedSpline) { m_bindedSpline = GetComponent<BezierCurve>(); }
+        if (m_bindedSpline && m_startSpline)
         {
             startProgress = t;
             m_bindedSpline.SetRawPoint(0, m_startSpline.GetPoint(t) - transform.position);
-            m_bindedSpline.SetRawPoint(1, m_startSpline.GetPoint(t) - transform.position + m_startSpline.GetDirection(t) * 70);
+            m_bindedSpline.SetRawPoint(1, m_startSpline.GetPoint(t) - transform.position + m_startSpline.GetDirection(t) * startConstrainStrength);
         }
-        else { m_bindedSpline = GetComponent<BezierCurve>(); }
     }
 
     public void AttachEndNode(float t)
     {
-        if (m_bindedSpline != null)
+        if(!m_bindedSpline) { m_bindedSpline = GetComponent<BezierCurve>(); }
+        if (m_bindedSpline && m_endSpline)
         {
             endPprogress = t;
-            m_bindedSpline.SetRawPoint(m_endSpline.ControlPointCount-1, m_endSpline.GetPoint(t) - transform.position);
-            m_bindedSpline.SetRawPoint(m_endSpline.ControlPointCount-2, m_endSpline.GetPoint(t) - transform.position - m_endSpline.GetDirection(t) * 70);
+            //fix last point getter
+            m_bindedSpline.SetRawPoint(m_bindedSpline.ControlPointCount-1, m_endSpline.GetPoint(t) - transform.position);
+            m_bindedSpline.SetRawPoint(m_bindedSpline.ControlPointCount-2, m_endSpline.GetPoint(t) - transform.position - m_endSpline.GetDirection(t) * endConstrainStrength);
 
         }
-        else { m_bindedSpline = GetComponent<BezierCurve>(); }
+        
     }
 }
