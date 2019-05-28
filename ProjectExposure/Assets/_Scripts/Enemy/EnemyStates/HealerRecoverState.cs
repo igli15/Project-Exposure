@@ -28,8 +28,6 @@ public class HealerRecoverState : AbstractState<EnemyFSM> {
             Debug.Log("Swaping back to white color and going SwapCOlor");
             target.fsm.ChangeState<HealerSwapColorState>();
             return;
-            target.fsm.ChangeState<HealerMovementState>();
-            target.GetComponent<HealerMovementState>().GoToLastPoint();
         }
     }
 

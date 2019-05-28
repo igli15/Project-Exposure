@@ -15,9 +15,4 @@ public class HealerMovementState : EnemyMovementState {
 
     }
 
-    public override void OnLastPointActivated()
-    {
-        StopMovement();
-        target.fsm.ChangeState<HealerSwapColorState>();
-    }
 }

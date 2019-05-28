@@ -36,8 +36,8 @@ public class BezierCurve : MonoBehaviour
             new Vector3(4f, 0f, 0f)
         };
         m_modes = new BezierControlPointMode[] {
-            BezierControlPointMode.Free,
-            BezierControlPointMode.Free
+            BezierControlPointMode.Aligned,
+            BezierControlPointMode.Aligned
         };
     }
 
