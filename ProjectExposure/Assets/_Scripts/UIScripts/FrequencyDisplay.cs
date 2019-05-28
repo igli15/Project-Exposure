@@ -8,8 +8,6 @@ public class FrequencyDisplay : MonoBehaviour
 	[SerializeField] private GunManager m_gunManager;
 	[SerializeField] private Image m_backgroundImage;
 	[SerializeField] private Slider m_slider;
-
-	[SerializeField] private Vector2 m_frequencyWaveLengthRange;
 	
 	private Material m_material;
 	

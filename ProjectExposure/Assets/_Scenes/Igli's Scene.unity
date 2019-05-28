@@ -175,11 +175,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!224 &68137773 stripped
-RectTransform:
-  m_PrefabParentObject: {fileID: 224521695181654606, guid: 93736e1ef0ca5d842919074e5b8d1f95,
-    type: 2}
-  m_PrefabInternal: {fileID: 267329173}
 --- !u!1 &132765966
 GameObject:
   m_ObjectHideFlags: 0
@@ -604,12 +599,12 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4668890754835670, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 224521695181654606, guid: 93736e1ef0ca5d842919074e5b8d1f95,
         type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4336812922701864, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
       propertyPath: m_RootOrder
@@ -1521,6 +1516,7 @@ GameObject:
   - component: {fileID: 884468478}
   - component: {fileID: 884468477}
   - component: {fileID: 884468476}
+  - component: {fileID: 884468479}
   m_Layer: 0
   m_Name: HUD Cavnvas
   m_TagString: Untagged
@@ -1543,8 +1539,8 @@ RectTransform:
   - {fileID: 132765967}
   - {fileID: 1997535003}
   - {fileID: 1214015363}
-  m_Father: {fileID: 68137773}
-  m_RootOrder: 0
+  m_Father: {fileID: 1882013008}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1608,6 +1604,18 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &884468479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 884468474}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8466e161ca73413a80dca865786c2b7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_mergeButton: {fileID: 132765966}
 --- !u!1 &929177914
 GameObject:
   m_ObjectHideFlags: 0
@@ -2954,7 +2962,6 @@ MonoBehaviour:
   m_gunManager: {fileID: 1018826998}
   m_backgroundImage: {fileID: 792277710}
   m_slider: {fileID: 1214015364}
-  m_frequencyWaveLengthRange: {x: 0.1, y: 0.5}
 --- !u!1 &1997887605 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1360737654279486, guid: 93736e1ef0ca5d842919074e5b8d1f95,
