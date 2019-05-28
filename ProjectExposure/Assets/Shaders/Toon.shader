@@ -50,6 +50,7 @@
 				float2 uv : TEXCOORD0;
                 float3 worldNormal : NORMAL;
                 float3 viewDir : TEXCOORD1;
+                UNITY_FOG_COORDS(1)
                 SHADOW_COORDS(2)
 			};
 
@@ -71,6 +72,7 @@
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 o.worldNormal = UnityObjectToWorldNormal(v.normal);
                 TRANSFER_SHADOW(o)
+                UNITY_TRANSFER_FOG(o,o.vertex);
                 o.viewDir = WorldSpaceViewDir(v.vertex);
 				return o;
 			}
@@ -101,6 +103,7 @@
                 rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);
                 float4 rim = rimIntensity * _RimColor;
 
+                 UNITY_APPLY_FOG(i.fogCoord, col);
 
 				float4 sample = tex2D(_MainTex, i.uv);
 

@@ -1,10 +1,12 @@
-﻿Shader "Custom/ToonGrass"
+﻿// Upgrade NOTE: replaced '_Object2World' with 'unity_ObjectToWorld'
+
+Shader "Custom/ToonWithNormals"
 {
 	Properties
 	{
 		_Color("Color", Color) = (0.5, 0.65, 1, 1)
 		_MainTex("Main Texture", 2D) = "white" {}	
-		_WindTex ("Wind Texutre",2D)= "white"{}
+		_NormalMap("NormalMap", 2D) = "white" {}
         [HDR]
         _AmbientColor("Ambient Color", Color) = (0.4,0.4,0.4,1)
 
@@ -17,12 +19,6 @@
         _RimAmount("Rim Amount", Range(0, 1)) = 0.716
 
         _RimThreshold("Rim Threshold", Range(0, 1)) = 0.1
-        
-        _Amplitude ("Amplitude", Float) = 1
-		_WaveSpeed ("Waving Speed", vector) = (1,1,1,1)
-		_WindSpeed ("Wind Speed",vector) = (1,1,0,0)
-		_WorldSize("World Size", vector) = (1, 1, 1, 1)
-		_AxisEffected("Axis Which Will Move",vector) = (1,0,1)
 
 	}
 	SubShader
@@ -49,6 +45,7 @@
 				float4 vertex : POSITION;				
 				float4 uv : TEXCOORD0;
                 float3 normal : NORMAL;
+                float3 tangent : TANGENT;
 			};
 
 			struct v2f
@@ -57,11 +54,15 @@
 				float2 uv : TEXCOORD0;
                 float3 worldNormal : NORMAL;
                 float3 viewDir : TEXCOORD1;
-                UNITY_FOG_COORDS(1)
+                float3 T : TEXCOORD3;
+				float3 B : TEXCOORD4;
+				float3 N : TEXCOORD5;
+				UNITY_FOG_COORDS(1)
                 SHADOW_COORDS(2)
 			};
 
 			sampler2D _MainTex;
+			sampler2D _NormalMap;
 			float4 _MainTex_ST;
 
             float _Glossiness;
@@ -71,15 +72,6 @@
             float _RimAmount;
 
             float _RimThreshold;
-            
-           
-        float _Amplitude;
-		float _Wavelength;
-		float3 _WaveSpeed;
-		float4 _WorldSize;
-		float3 _AxisEffected;
-		float2 _WindSpeed;
-		sampler2D _WindTex;
 			
 			v2f vert (appdata v)
 			{
@@ -91,19 +83,17 @@
                 UNITY_TRANSFER_FOG(o,o.vertex);
 
                 o.viewDir = WorldSpaceViewDir(v.vertex);
-                      
-                float4 worldPos = mul(v.vertex, unity_ObjectToWorld);
-               
-                float2 samplePos = worldPos.xz/_WorldSize.xz;
+                
+                float3 worldNormal = mul((float3x3)unity_ObjectToWorld, v.normal);
+				float3 worldTangent = mul((float3x3)unity_ObjectToWorld, v.tangent);
+				
+				float3 binormal = cross(v.normal, v.tangent.xyz);
+				float3 worldBinormal = mul((float3x3)unity_ObjectToWorld, binormal);
 
-                samplePos += _Time.y * _WindSpeed.xy;
-
-                float windSample = tex2Dlod(_WindTex, float4(samplePos, 0, 0));
-            
-                o.pos.x += cos(_WaveSpeed.x*windSample)*_Amplitude * _AxisEffected.x;
-                o.pos.y += sin(_WaveSpeed.y*windSample)*_Amplitude * _AxisEffected.y;
-                o.pos.z += sin(_WaveSpeed.z*windSample)*_Amplitude * _AxisEffected.z;
-			
+				o.N = normalize(worldNormal);
+				o.T = normalize(worldTangent);
+				o.B = normalize(worldBinormal);
+				
 				return o;
 			}
 			
@@ -112,8 +102,19 @@
 
 			float4 frag (v2f i) : SV_Target
 			{
-                float3 normal = normalize(i.worldNormal);
-                float NdotL = dot(_WorldSpaceLightPos0, normal);
+			    
+			    float3 tangentNormal = tex2D(_NormalMap, i.uv).xyz;
+			
+				tangentNormal = normalize(tangentNormal * 2 - 1);
+			
+				float3x3 TBN = float3x3(normalize(i.T), normalize(i.B), normalize(i.N));
+				TBN = transpose(TBN);
+
+				float3 worldNormal = mul(TBN, tangentNormal);
+				
+                float3 normal = normalize(worldNormal);
+                
+                float NdotL = dot(_WorldSpaceLightPos0, -normal);
 
                 float shadow = SHADOW_ATTENUATION(i);
                 float lightIntensity = smoothstep(0, 0.01, NdotL * shadow);
@@ -133,8 +134,8 @@
                 rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);
                 float4 rim = rimIntensity * _RimColor;
 
-
                 UNITY_APPLY_FOG(i.fogCoord, col);
+                
 				float4 sample = tex2D(_MainTex, i.uv);
 
               return _Color * sample * (_AmbientColor + light + specular + rim);

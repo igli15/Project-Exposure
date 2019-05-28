@@ -43,6 +43,11 @@ public class GunManager : MonoBehaviour,IAgent
 		get { return m_origin; }
 	}
 
+	public bool isMouseDown
+	{
+		get { return m_mouseDown; }
+	}
+
 	void Start () 
 	{
 		if (m_fsm == null)
