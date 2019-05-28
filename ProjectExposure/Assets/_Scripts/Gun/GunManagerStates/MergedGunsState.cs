@@ -8,6 +8,7 @@ using UnityEngine;
 public class MergedGunsState : GunState
 {
 	public static Action<Hittable,GunManager> OnShoot;
+	public static Action<MergedGunsState> OnMerge;
 	public enum GunMode
 	{
 		COLOR,
@@ -27,6 +28,7 @@ public class MergedGunsState : GunState
 
 	public override void Enter(IAgent pAgent)
 	{
+		if (OnMerge != null) OnMerge(this);
 		base.Enter(pAgent);
 	}
 
@@ -48,14 +50,14 @@ public class MergedGunsState : GunState
 			if (hittable.GetColor() == Color.white)
 			{
 				m_currentMode = GunMode.COLOR;
-				m_colorGun.Shoot();
+				//m_colorGun.Shoot();
 				hittable.Hit(target,0,target.color);
 					
 			}
 			else
 			{
 				m_currentMode = GunMode.SHOOT;
-				m_damageGun.Shoot();
+				//m_damageGun.Shoot();
 				float m_damage = target.CalculateDamage(target.color, hittable.GetColor());
 				hittable.Hit(target,m_damage,target.color);
 			}
