@@ -1,10 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
 public class SplitGunsState : GunState
 {
+	public static Action<Hittable,GunManager> OnPull;
+	public static Action<Hittable,GunManager> OnPulling;
+	public static Action<Hittable,GunManager> OnPush;
+	public static Action<Hittable,GunManager> OnTargetPulled;
+	
 	[SerializeField] private Transform m_pullTargetLocation;
 	
 	[SerializeField] private float m_pushForce = 10;
@@ -46,8 +52,11 @@ public class SplitGunsState : GunState
 	{
 		Hittable hittable = target.RaycastFromGuns();
 
-		if(hittable != null && !m_targetIsInPlace && !hittable.transform.CompareTag("Enemy")) 
+		if (hittable != null && !m_targetIsInPlace && !hittable.transform.CompareTag("Enemy"))
+		{
+			
 			PullTarget(hittable);
+		}
 		
 		if (m_targetIsInPlace)
 		{
@@ -63,10 +72,12 @@ public class SplitGunsState : GunState
 		{
 			if (Vector3.Distance(m_pulledHittable.transform.position, m_pullTargetLocation.position) < 0.5f)
 			{
+				if (OnTargetPulled != null) OnTargetPulled(m_pulledHittable, target);
 				m_targetIsInPlace = true;
 				m_pulledHittable.transform.parent = m_pullTargetLocation;
 			}
-			
+
+			if (OnPulling != null) OnPulling(m_pulledHittable, target);
 			m_pulledHittable.transform.position = Vector3.MoveTowards(m_pulledHittable.transform.position, m_pullTargetLocation.position,   m_pullForce*Time.deltaTime);
 		}
 		
@@ -76,6 +87,8 @@ public class SplitGunsState : GunState
 	{
 		if (m_targetIsInPlace)
 		{
+			if (OnPush != null) OnPush(m_pulledHittable, target);
+			
 			m_pulledHittable.transform.parent = null;
 			m_pulledHittable.GetComponent<Rigidbody>().isKinematic = false;
 			m_pulledHittable.GetComponent<Rigidbody>().AddForce(dir * m_pushForce, ForceMode.Impulse);
@@ -103,6 +116,8 @@ public class SplitGunsState : GunState
 
 	public void PullTarget(Hittable t)
 	{
+		if (OnPull != null) OnPull(m_pulledHittable, target);
+		
 		t.transform.localScale = t.transform.localScale * m_scaleDownFactor;
 		
 		t.GetComponent<Rigidbody>().velocity = Vector3.zero;

@@ -3568,9 +3568,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_lineRenderer: {fileID: 834713141}
+  m_magnetBeam: {fileID: 2100000, guid: ed410e505a1b34500be8ecbc33ea3743, type: 2}
+  m_shootBeam: {fileID: 2100000, guid: 4d4a37d4ae34e4595a63c943ce76c093, type: 2}
   m_colorIntensity: 2
   m_beamFadeDuration: 0.37
-  m_saturationScale: 0.5
+  m_saturationScale: 0.63
+  m_valueScale: 1
   m_particleFeedback: {fileID: 1667619967}
   m_muzzleFlashGameObject: {fileID: 1485873029}
   m_alpha: 0.22

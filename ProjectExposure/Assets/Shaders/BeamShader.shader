@@ -41,7 +41,7 @@
 				UNITY_FOG_COORDS(1)
 				float4 vertex : SV_POSITION;
 				
-				float2 noiseUV:TEXCOORD1;
+				float2 noiseUV:TEXCOORD2;
 			};
 
 			sampler2D _MainTex;
@@ -71,7 +71,7 @@
 				fixed4 noiseVal = tex2D(_NoiseTex, i.noiseUV);
 				
 				i.uv.x += noiseVal / _Mitigation;
-				i.uv.y += noiseVal / _Mitigation;
+				i.uv.y += sin(noiseVal / _Mitigation);
 				
 				fixed4 col = tex2D(_MainTex, i.uv) * _TintColor;
 				// apply fog
