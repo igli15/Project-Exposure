@@ -6,6 +6,8 @@ public class ArcherFSM : EnemyFSM
 {
     private Rigidbody m_rigidBody;
     private ArcherMovementState m_archerMovementState;
+    private Animator m_animator;
+
     private Enemy m_enemy;
     public bool isIndependentAgent=false;
     [SerializeField]
@@ -15,6 +17,8 @@ public class ArcherFSM : EnemyFSM
     public void Start()
     {
         base.Start();
+        m_animator = GetComponent<Animator>();
+
         m_enemy = GetComponent<Enemy>();
         m_enemy.OnPulled += OnPulled;
         m_enemy.OnPushed += OnPushed;
@@ -37,7 +41,7 @@ public class ArcherFSM : EnemyFSM
     public void OnReleased(Hittable hittable)
     {
         fsm.ChangeState<ArcherMovementState>();
-        m_archerMovementState.GoToLastPoint();
+        //m_archerMovementState.GoToLastPoint();
     }
 
     public void Update()
@@ -46,7 +50,7 @@ public class ArcherFSM : EnemyFSM
             m_timeOfPush + m_recoverTime < Time.time)
         {
             fsm.ChangeState<ArcherMovementState>();
-            m_archerMovementState.GoToLastPoint();
+            //m_archerMovementState.GoToLastPoint();
             m_isPushed = false;
         }
     }
@@ -64,8 +68,7 @@ public class ArcherFSM : EnemyFSM
     public override void DestroyEnemy()
     {
         base.DestroyEnemy();
-        
-        m_archerMovementState.path = null;
+
         m_rigidBody.velocity = Vector3.zero;
         ObjectPooler.instance.DestroyFromPool("Archer", gameObject);
     }

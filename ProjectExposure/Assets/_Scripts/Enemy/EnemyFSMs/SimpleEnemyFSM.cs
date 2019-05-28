@@ -41,7 +41,6 @@ public class SimpleEnemyFSM : EnemyFSM, IPooleableObject {
         Debug.Log("OnEnemyDestroy");
         if (onDeath != null) onDeath(this);
 
-        m_enemyMovementState.path = null;
         m_rigidBody.velocity = Vector3.zero;
         ObjectPooler.instance.DestroyFromPool("SimpleEnemy", gameObject);
     }

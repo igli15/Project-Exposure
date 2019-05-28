@@ -1,0 +1,293 @@
+fileFormatVersion: 2
+guid: 95b5ec89c1b0fb8479ad417d7ef99a2e
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Archer
+    100002: Archer_Body
+    100004: Archer_Fins
+    100006: //RootNode
+    100008: Crystal_01
+    100010: Crystal_010
+    100012: Crystal_011
+    100014: Crystal_012
+    100016: Crystal_013
+    100018: Crystal_015
+    100020: Crystal_016
+    100022: Crystal_017
+    100024: Crystal_018
+    100026: Crystal_019
+    100028: Crystal_020
+    100030: Crystal_021
+    100032: Crystal_022
+    100034: Crystal_023
+    100036: Crystal_09
+    100038: Crystals
+    100040: Head
+    100042: joint1
+    100044: joint2
+    100046: joint3
+    100048: joint4
+    100050: joint5
+    100052: joint7
+    100054: joint8
+    100056: Left_Fin_1
+    100058: Left_Fin_2
+    100060: Left_Fin_Tip
+    100062: Right_Fin_1
+    100064: Right_Fin_2
+    100066: Right_Fin_Tip
+    100068: Spine_1
+    100070: Spine_2
+    100072: Spine_3
+    100074: Spine_4
+    100076: Spine_5
+    100078: Spine_6
+    100080: Spine_Tale
+    400000: Archer
+    400002: Archer_Body
+    400004: Archer_Fins
+    400006: //RootNode
+    400008: Crystal_01
+    400010: Crystal_010
+    400012: Crystal_011
+    400014: Crystal_012
+    400016: Crystal_013
+    400018: Crystal_015
+    400020: Crystal_016
+    400022: Crystal_017
+    400024: Crystal_018
+    400026: Crystal_019
+    400028: Crystal_020
+    400030: Crystal_021
+    400032: Crystal_022
+    400034: Crystal_023
+    400036: Crystal_09
+    400038: Crystals
+    400040: Head
+    400042: joint1
+    400044: joint2
+    400046: joint3
+    400048: joint4
+    400050: joint5
+    400052: joint7
+    400054: joint8
+    400056: Left_Fin_1
+    400058: Left_Fin_2
+    400060: Left_Fin_Tip
+    400062: Right_Fin_1
+    400064: Right_Fin_2
+    400066: Right_Fin_Tip
+    400068: Spine_1
+    400070: Spine_2
+    400072: Spine_3
+    400074: Spine_4
+    400076: Spine_5
+    400078: Spine_6
+    400080: Spine_Tale
+    2100000: lambert1
+    2100002: lambert5
+    4300000: Archer_Fins
+    4300002: Archer_Body
+    4300004: Crystal_023
+    4300006: Crystal_01
+    4300008: Crystal_09
+    4300010: Crystal_010
+    4300012: Crystal_011
+    4300014: Crystal_012
+    4300016: Crystal_013
+    4300018: Crystal_015
+    4300020: Crystal_016
+    4300022: Crystal_017
+    4300024: Crystal_018
+    4300026: Crystal_019
+    4300028: Crystal_020
+    4300030: Crystal_021
+    4300032: Crystal_022
+    7400000: swim
+    7400002: idle
+    7400004: charge
+    7400006: shoot
+    9500000: //RootNode
+    13700000: Archer_Body
+    13700002: Archer_Fins
+    13700004: Crystal_01
+    13700006: Crystal_010
+    13700008: Crystal_011
+    13700010: Crystal_012
+    13700012: Crystal_013
+    13700014: Crystal_015
+    13700016: Crystal_016
+    13700018: Crystal_017
+    13700020: Crystal_018
+    13700022: Crystal_019
+    13700024: Crystal_020
+    13700026: Crystal_021
+    13700028: Crystal_022
+    13700030: Crystal_023
+    13700032: Crystal_09
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: swim
+      takeName: Take 001
+      firstFrame: 2
+      lastFrame: 29
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: charge
+      takeName: Take 001
+      firstFrame: 30
+      lastFrame: 50
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: shoot
+      takeName: Take 001
+      firstFrame: 50
+      lastFrame: 60
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -36,7 +36,7 @@ public class HealerFSM : EnemyFSM {
     public void OnReleased(Hittable hittable)
     {
         fsm.ChangeState<HealerMovementState>();
-        m_healerMovementState.GoToLastPoint();
+        //m_healerMovementState.GoToLastPoint();
     }
 
     public void Update()
@@ -45,7 +45,7 @@ public class HealerFSM : EnemyFSM {
             m_timeOfPush + m_recoverTime < Time.time)
         {
             fsm.ChangeState<HealerMovementState>();
-            m_healerMovementState.GoToLastPoint();
+            //m_healerMovementState.GoToLastPoint();
             m_isPushed = false;
         }
     }
@@ -65,7 +65,7 @@ public class HealerFSM : EnemyFSM {
     {
         base.DestroyEnemy();
 
-        m_healerMovementState.path = null;
+       // m_healerMovementState.path = null;
         m_rigidBody.velocity = Vector3.zero;
         ObjectPooler.instance.DestroyFromPool("Healer", gameObject);
     }

@@ -22,7 +22,7 @@ public abstract class Hittable : MonoBehaviour
 	public virtual void SetColor(Color newColor)
 	{
 		color = newColor;
-		GetComponent<Renderer>().material.color = newColor;
+		//GetComponent<Renderer>().material.color = newColor;
 	}
 
 	public virtual void Hit(GunManager gunManager, float damage,Color gunColor)
