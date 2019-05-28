@@ -20,29 +20,12 @@ public class ArcherFSM : EnemyFSM
         m_animator = GetComponent<Animator>();
 
         m_enemy = GetComponent<Enemy>();
-        m_enemy.OnPulled += OnPulled;
-        m_enemy.OnPushed += OnPushed;
-        m_enemy.OnReleased += OnReleased;
+
         GetComponent<Health>().OnDeath+=delegate(Health health){ DestroyEnemy(); };
 
         if (isIndependentAgent) InitializeEnemy();
     }
 
-    public void OnPulled(Hittable hittable)
-    {
-        fsm.ChangeState<EnemyDisableState>();
-        m_isPushed = false;
-    }
-    public void OnPushed(Hittable hittable)
-    {
-        m_isPushed = true;
-        m_timeOfPush = Time.time;
-    }
-    public void OnReleased(Hittable hittable)
-    {
-        fsm.ChangeState<ArcherMovementState>();
-        //m_archerMovementState.GoToLastPoint();
-    }
 
     public void Update()
     {
@@ -52,6 +35,11 @@ public class ArcherFSM : EnemyFSM
             fsm.ChangeState<ArcherMovementState>();
             //m_archerMovementState.GoToLastPoint();
             m_isPushed = false;
+        }
+
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            GetComponent<Health>().InflictDamage(999);
         }
     }
 
@@ -68,7 +56,7 @@ public class ArcherFSM : EnemyFSM
     public override void DestroyEnemy()
     {
         base.DestroyEnemy();
-
+        ScoreStats.instance.AddDeathData(m_enemy.GetColor(), transform);
         m_rigidBody.velocity = Vector3.zero;
         ObjectPooler.instance.DestroyFromPool("Archer", gameObject);
     }

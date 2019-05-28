@@ -11,13 +11,13 @@ public class SplitGunsState : GunState
 	public static Action<Hittable,GunManager> OnPush;
 	public static Action<Hittable,GunManager> OnTargetPulled;
 	
+	public static Action<SplitGunsState> OnSplit;
+	
 	[SerializeField] private Transform m_pullTargetLocation;
 	
 	[SerializeField] private float m_pushForce = 10;
 
 	[SerializeField] private float m_pullForce = 50;
-	
-	[SerializeField] private GameObject[] objToDisable;
 
 	[Range(0.1f,1)]
 	[SerializeField] private float m_scaleDownFactor = 0.8f;
@@ -31,21 +31,15 @@ public class SplitGunsState : GunState
 	public override void Enter(IAgent pAgent)
 	{
 		base.Enter(pAgent);
-		
-		for (int i = 0; i < objToDisable.Length; i++)
-		{
-			objToDisable[i].SetActive(false);
-		}
+
+		if (OnSplit != null) OnSplit(this);
+	
 	}
 
 	public override void Exit(IAgent pAgent)
 	{
 		base.Exit(pAgent);
-		
-		for (int i = 0; i < objToDisable.Length; i++)
-		{
-			objToDisable[i].SetActive(true);
-		}
+	
 	}
 
 	public override void Shoot()
