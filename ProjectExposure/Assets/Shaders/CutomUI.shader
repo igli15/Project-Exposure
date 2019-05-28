@@ -126,7 +126,7 @@ Shader "Custom/UI/Frequency"
 			    radius -= ( y - 0.6);
                 
 			    clip(radius - 0.4);
-			   clip(0.5 - radius );
+			   clip(0.65 - radius );
 			    
                 return color;
             }

@@ -8,8 +8,6 @@ public class FrequencyDisplay : MonoBehaviour
 	[SerializeField] private GunManager m_gunManager;
 	[SerializeField] private Image m_backgroundImage;
 	[SerializeField] private Slider m_slider;
-
-	[SerializeField] private Vector2 m_frequencyWaveLengthRange;
 	
 	private Material m_material;
 	
@@ -28,6 +26,7 @@ public class FrequencyDisplay : MonoBehaviour
 
 			Color c  = Color.HSVToRGB(h, 1, 1);
 			m_backgroundImage.color = c;
+			//m_material.color = c;
 			m_gunManager.SetGunColors(c);
 
 		});
