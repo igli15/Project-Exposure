@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43667546, g: 0.48427135, b: 0.5645225, a: 1}
+  m_IndirectSpecularColor: {r: 0.43667588, g: 0.48427194, b: 0.564524, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -492,7 +492,6 @@ GameObject:
   m_Component:
   - component: {fileID: 240744101}
   - component: {fileID: 240744100}
-  - component: {fileID: 240744099}
   m_Layer: 0
   m_Name: splineOpt
   m_TagString: Untagged
@@ -500,24 +499,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &240744099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 240744098}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02285af373f24e14dba4513b4db583b7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_startSpline: {fileID: 2106020183}
-  startProgress: 0.9402985
-  startConstrainStrength: 23.67
-  m_endSpline: {fileID: 1878835788}
-  endPprogress: 0.08358208
-  endConstrainStrength: 15.1
-  isActivated: 0
 --- !u!114 &240744100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -536,8 +517,8 @@ MonoBehaviour:
   - {x: -33.42198, y: 5.664032, z: 9.392216}
   - {x: 4.412775, y: 17.670044, z: 48.45215}
   - {x: 16.181957, y: 21.40473, z: 60.602444}
-  - {x: 61.794613, y: 19.884304, z: 70.90557}
-  - {x: 48.11594, y: 26.27983, z: 70.939766}
+  - {x: 18.841782, y: 34.98199, z: 70.340065}
+  - {x: 4.498089, y: 36.981216, z: 66.06554}
   m_lengths: []
   TotalLength: 0
   Duration: 25
@@ -616,13 +597,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9c2224c7f6140f3b22b526c1e71ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_damageGun: {fileID: 0}
-  m_colorGun: {fileID: 0}
   m_gunGroup: {fileID: 0}
   m_baseDamage: 10
   m_extraDamage: 30
   m_hueDamageRange: 40
-  m_sliderBase: {fileID: 0}
+  m_origin: {fileID: 0}
 --- !u!114 &280382499
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1479,6 +1458,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
+  m_gunManager: {fileID: 0}
 --- !u!114 &860393064
 MonoBehaviour:
   m_ObjectHideFlags: 0
