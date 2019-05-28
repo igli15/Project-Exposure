@@ -30,6 +30,7 @@ public class BezierCurveInspector : Editor
 
     void CustomOnSceneGUI(SceneView sceneview)
     {
+        return;
         if (EditorApplication.isPlaying || EditorApplication.isPaused) return;
         if (null == target) return;
         if (null == m_curve) m_curve = target as BezierCurve;
