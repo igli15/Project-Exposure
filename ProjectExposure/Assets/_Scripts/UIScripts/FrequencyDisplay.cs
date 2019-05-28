@@ -28,6 +28,7 @@ public class FrequencyDisplay : MonoBehaviour
 
 			Color c  = Color.HSVToRGB(h, 1, 1);
 			m_backgroundImage.color = c;
+			//m_material.color = c;
 			m_gunManager.SetGunColors(c);
 
 		});
