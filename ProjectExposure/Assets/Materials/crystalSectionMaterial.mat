@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: crystalSectionMaterial
-  m_Shader: {fileID: 4800000, guid: 28bf2e852bf5a49d3a141ac68df992b9, type: 3}
+  m_Shader: {fileID: 4800000, guid: 69a57431e20d246e8bf6a3b3ddf987ac, type: 3}
   m_ShaderKeywords: _EMISSION
   m_LightmapFlags: 2
   m_EnableInstancingVariants: 0
