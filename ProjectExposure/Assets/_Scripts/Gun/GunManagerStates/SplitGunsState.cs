@@ -46,7 +46,8 @@ public class SplitGunsState : GunState
 	{
 		Hittable hittable = target.RaycastFromGuns();
 
-		if(hittable != null && !m_targetIsInPlace) PullTarget(hittable);
+		if(hittable != null && !m_targetIsInPlace && !hittable.transform.CompareTag("Enemy")) 
+			PullTarget(hittable);
 		
 		if (m_targetIsInPlace)
 		{

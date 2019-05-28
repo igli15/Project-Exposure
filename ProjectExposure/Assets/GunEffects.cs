@@ -11,6 +11,7 @@ public class GunEffects : MonoBehaviour
 
 	[Range(0.1f, 2)] [SerializeField] private float m_colorIntensity = 2;
 	[Range(0, 1)] [SerializeField] private float m_beamFadeDuration = 0.3f;
+	[Range(0, 1)] [SerializeField] private float m_saturationScale = 0.5f;
 
 	[Header("Particles")]
 	[SerializeField] private ParticleSystem m_particleFeedback;
@@ -47,6 +48,10 @@ public class GunEffects : MonoBehaviour
 		if (manager.isMouseDown) return;
 		
 		Color c = manager.color;
+
+		Vector3 hsv = ColorUtils.GetHSVOfAColor(c);
+		hsv.y *= m_saturationScale;
+		c = Color.HSVToRGB(hsv.x,hsv.y,hsv.z,true);
 		c *= m_colorIntensity;
 		c.a = 1;
 		m_beamMat.SetColor("_TintColor", c);
