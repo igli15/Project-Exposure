@@ -1,0 +1,24 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using DG.Tweening;
+public class ScoreBehaviour : MonoBehaviour {
+
+    public void ActivateScoreBehaviour()
+    {
+        Tweener scalUp = transform.DOScale(1.5f, 1); 
+        Tweener scaleDown = transform.DOScale(0.5f, 1);
+        transform.DOMoveY(transform.position.y + 100, 2);
+        Sequence s = DOTween.Sequence();
+        s.Append(scalUp);
+        s.Append(scaleDown);
+        s.AppendCallback(Callback);
+        
+        //transform.DOMoveY(transform.position.y + 10, 4);
+    }
+
+    public void Callback()
+    {
+        Destroy(gameObject);
+    }
+}
