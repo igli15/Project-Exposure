@@ -69,10 +69,7 @@ public class GunEffects : MonoBehaviour
 		m_beamRenderer.material = mat;
 		mat.SetColor("_TintColor", c);
 
-		m_lineRenderer.SetPosition(0, m_lineRenderer.transform.position);
-		Debug.DrawRay(manager.origin.position, manager.GetDirFromGunToMouse() * 50, Color.red);
-		if (hittable != null) m_lineRenderer.SetPosition(1, hittable.transform.position);
-		else m_lineRenderer.SetPosition(1, manager.origin.position + manager.GetDirFromGunToMouse() * 40);
+		SetLineRendererPoints(hittable,manager);
 
 		c = mat.GetColor("_TintColor");
 		DOVirtual.Float(c.a, 0, m_beamFadeDuration,
@@ -99,10 +96,7 @@ public class GunEffects : MonoBehaviour
 		m_beamRenderer.material = mat;
 		mat.SetColor("_TintColor", c);
 			
-		m_lineRenderer.SetPosition(0,m_lineRenderer.transform.position);
-		Debug.DrawRay(manager.origin.position,manager.GetDirFromGunToMouse() * 50,Color.red);
-		if(hittable != null) m_lineRenderer.SetPosition(1,hittable.transform.position);
-		else  m_lineRenderer.SetPosition(1,manager.origin.position + manager.GetDirFromGunToMouse() * 40);
+		SetLineRendererPoints(hittable,manager);
 
 	}
 	
@@ -159,5 +153,12 @@ public class GunEffects : MonoBehaviour
 		
 		SplitGunsState.OnPulling -= UseMagneticBeam;
 		SplitGunsState.OnTargetPulled -= FadeMagneticBeam;
+	}
+
+	private void SetLineRendererPoints(Hittable hittable,GunManager manager)
+	{
+		m_lineRenderer.SetPosition(0,m_lineRenderer.transform.position);
+		if(hittable != null) m_lineRenderer.SetPosition(1,hittable.transform.position);
+		else  m_lineRenderer.SetPosition(1,manager.origin.position + manager.GetDirFromGunToMouse() * 40);
 	}
 }

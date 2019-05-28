@@ -35,6 +35,7 @@ Shader "Custom/ToonWithNormals"
 			#pragma vertex vert
 			#pragma fragment frag
             #pragma multi_compile_fwdbase
+            #pragma multi_compile_fog
 			
 			#include "UnityCG.cginc"
             #include "Lighting.cginc"
@@ -57,7 +58,7 @@ Shader "Custom/ToonWithNormals"
                 float3 T : TEXCOORD3;
 				float3 B : TEXCOORD4;
 				float3 N : TEXCOORD5;
-				UNITY_FOG_COORDS(1)
+				UNITY_FOG_COORDS(6)
                 SHADOW_COORDS(2)
 			};
 
@@ -80,7 +81,7 @@ Shader "Custom/ToonWithNormals"
 				o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 o.worldNormal = UnityObjectToWorldNormal(v.normal);
                 TRANSFER_SHADOW(o)
-                UNITY_TRANSFER_FOG(o,o.vertex);
+                UNITY_TRANSFER_FOG(o,o.pos);
 
                 o.viewDir = WorldSpaceViewDir(v.vertex);
                 
@@ -134,11 +135,13 @@ Shader "Custom/ToonWithNormals"
                 rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);
                 float4 rim = rimIntensity * _RimColor;
 
-                UNITY_APPLY_FOG(i.fogCoord, col);
+                
                 
 				float4 sample = tex2D(_MainTex, i.uv);
 
-              return _Color * sample * (_AmbientColor + light + specular + rim);
+               float4 result = _Color * sample * (_AmbientColor + light + specular + rim);
+               UNITY_APPLY_FOG(i.fogCoord, result);
+              return result;
 			}
 			ENDCG
 		}
