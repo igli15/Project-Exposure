@@ -16,7 +16,7 @@ public class BezierCurveInspector : Editor
     private Transform m_handleTransform;
     private Quaternion m_handleRotation;
 
-    private const int m_lineSteps = 10;
+    private const int m_lineSteps = 200;
 
     //Custom editor button
     private const float m_handleSize = 0.04f;
@@ -25,12 +25,13 @@ public class BezierCurveInspector : Editor
 
     void OnEnable()
     {
-        SceneView.onSceneGUIDelegate += (SceneView.OnSceneFunc)Delegate.Combine(SceneView.onSceneGUIDelegate, new SceneView.OnSceneFunc(CustomOnSceneGUI));
+        //Causing LAgs
+        //SceneView.onSceneGUIDelegate += (SceneView.OnSceneFunc)Delegate.Combine(SceneView.onSceneGUIDelegate, new SceneView.OnSceneFunc(CustomOnSceneGUI));
     }
 
     void CustomOnSceneGUI(SceneView sceneview)
     {
-        return;
+
         if (EditorApplication.isPlaying || EditorApplication.isPaused) return;
         if (null == target) return;
         if (null == m_curve) m_curve = target as BezierCurve;
@@ -57,6 +58,7 @@ public class BezierCurveInspector : Editor
         m_handleRotation = Tools.pivotRotation == PivotRotation.Local ?
             m_handleTransform.rotation : Quaternion.identity;
         Vector3 p0 = ShowPoint(0);
+        Handles.DrawLine(p0, new Vector3(p0.x, 0, p0.z));
         for (int i = 1; i < m_curve.ControlPointCount; i += 3)
         {
             Vector3 p1 = ShowPoint(i);
@@ -64,15 +66,17 @@ public class BezierCurveInspector : Editor
             Vector3 p3 = ShowPoint(i + 2);
 
             //Drawing lines from points to constraints
-            Handles.color = Color.green;
+            Handles.color = Color.gray;
             Handles.DrawLine(p0, p1);
             Handles.DrawLine(p2, p3);
 
+
+            Handles.DrawLine(p3, new Vector3(p3.x, 0, p3.z));
             //Drawing actual bezierLine
             Handles.DrawBezier(p0, p3, p1, p2, Color.white, null, 4.5f);
             p0 = p3;
         }
-        //ShowDirections();
+        ShowHeights();
     }
 
     public override void OnInspectorGUI()
@@ -118,7 +122,7 @@ public class BezierCurveInspector : Editor
         }
     }
 
-    private void ShowDirections()
+    private void ShowHeights()
     {
         Handles.color = Color.green;
         Vector3 point = m_curve.GetPoint(0f);
@@ -126,7 +130,8 @@ public class BezierCurveInspector : Editor
         for (int i = 1; i <= m_lineSteps; i++)
         {
             point = m_curve.GetPoint(i / (float)m_lineSteps);
-            Handles.DrawLine(point, point + m_curve.GetDirection(i / (float)m_lineSteps) );
+            Handles.color = (point.y > 0) ? Color.green : Color.red;
+            Handles.DrawLine(point, new Vector3(point.x,0,point.z) );
         }
     }
 
