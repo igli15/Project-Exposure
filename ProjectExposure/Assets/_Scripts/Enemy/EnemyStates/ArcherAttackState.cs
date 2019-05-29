@@ -29,7 +29,6 @@ public class ArcherAttackState : AbstractState<EnemyFSM>
         {
             if (m_isFreezed == false)
             {
-                Debug.Log("shoot!");
                 Shoot();
                 m_isFreezed = true;
             }
@@ -55,7 +54,6 @@ public class ArcherAttackState : AbstractState<EnemyFSM>
 
     void Shoot()
     {
-        Debug.Log("iam shootimg");
         transform.DOLookAt(Camera.main.transform.position, 0.5f);
         GetComponent<Animator>().SetTrigger("shoot");
         GameObject projectile = ObjectPooler.instance.SpawnFromPool("Projectile", transform.position, transform.rotation);
