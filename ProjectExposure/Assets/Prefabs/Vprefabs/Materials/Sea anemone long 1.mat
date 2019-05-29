@@ -39,7 +39,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: bf7ec36b5dcc58c44a4ddd67ae5001bc, type: 3}
+        m_Texture: {fileID: 2800000, guid: 21d770f3a2885c94a975fda414e2c4f1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -79,12 +79,12 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _AmbientColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
+    - _AmbientColor: {r: 0.1475169, g: 0.3134905, b: 0.3679245, a: 1}
     - _AxisEffected: {r: 0.5, g: 0, b: 0, a: 1}
-    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Color: {r: 0.40205592, g: 0.5352383, b: 0.6132076, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SpecularColor: {r: 0.03071345, g: 0.03071345, b: 0.03071345, a: 1}
+    - _SpecularColor: {r: 0.740566, g: 0.8995227, b: 1, a: 1}
     - _WaveSpeed: {r: 0.6, g: 1, b: 0, a: 1}
     - _WindSpeed: {r: 0.2, g: 1, b: 0, a: 0}
     - _WorldSize: {r: 2, g: 1, b: 0, a: 1}
