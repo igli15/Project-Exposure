@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 public class ScoreBehaviour : MonoBehaviour {
-
-    public void ActivateScoreBehaviour()
+    private string m_tag;
+    public void ActivateScoreBehaviour(string tag)
     {
+        m_tag = tag;
         Tweener scalUp = transform.DOScale(1.5f, 1); 
         Tweener scaleDown = transform.DOScale(0.5f, 1);
         transform.DOMoveY(transform.position.y + 100, 2);
@@ -19,6 +20,6 @@ public class ScoreBehaviour : MonoBehaviour {
 
     public void Callback()
     {
-        Destroy(gameObject);
+        ObjectPooler.instance.DestroyFromPool(m_tag, gameObject);
     }
 }

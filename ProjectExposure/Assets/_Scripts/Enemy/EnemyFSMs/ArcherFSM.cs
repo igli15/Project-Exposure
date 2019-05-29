@@ -41,7 +41,7 @@ public class ArcherFSM : EnemyFSM
 
         if (Input.GetKeyDown(KeyCode.D))
         {
-            GetComponent<Health>().InflictDamage(999);
+            //GetComponent<Health>().InflictDamage(999);
         }
     }
 
