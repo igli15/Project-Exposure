@@ -7,13 +7,15 @@ public class ArcherFSM : EnemyFSM
     private Rigidbody m_rigidBody;
     private ArcherMovementState m_archerMovementState;
     private Animator m_animator;
-
+    [SerializeField]
+    public int m_multiplierBonus = 2;
     private Enemy m_enemy;
     public bool isIndependentAgent=false;
     [SerializeField]
     private float m_recoverTime = 0.8f;
     private bool m_isPushed=false;
     private float m_timeOfPush = 0;
+
     public void Start()
     {
         base.Start();
@@ -56,7 +58,8 @@ public class ArcherFSM : EnemyFSM
     public override void DestroyEnemy()
     {
         base.DestroyEnemy();
-        ScoreStats.instance.AddDeathData(m_enemy.GetColor(), transform);
+        ScoreStats.instance.AddDeathData(m_enemy.GetColor(),2);
+
         m_rigidBody.velocity = Vector3.zero;
         ObjectPooler.instance.DestroyFromPool("Archer", gameObject);
     }
