@@ -4,6 +4,7 @@
 	{
 		_Color("Color", Color) = (0.5, 0.65, 1, 1)
 		_MainTex("Main Texture", 2D) = "white" {}	
+		_EmissionTex("Emission Texture", 2D) = "white" {}	
         [HDR]
         _AmbientColor("Ambient Color", Color) = (0.4,0.4,0.4,1)
 
@@ -16,6 +17,10 @@
         _RimAmount("Rim Amount", Range(0, 1)) = 0.716
 
         _RimThreshold("Rim Threshold", Range(0, 1)) = 0.1
+        
+         _EmissionScale("Emission Scale", Range(0, 5)) = 0
+         [HDR]
+        _EmissionColor("Emission Color", Color) = (1,1,1,1)
 
 	}
 	SubShader
@@ -56,8 +61,11 @@
 			};
 
 			sampler2D _MainTex;
+			sampler2D _EmissionTex;
 			float4 _MainTex_ST;
-
+			float4 _EmissionColor;
+			
+            float _EmissionScale;
             float _Glossiness;
             float4 _SpecularColor;
 
@@ -109,7 +117,11 @@
 
 			float4 sample = tex2D(_MainTex, i.uv);
 				
-             float4 result = _Color * sample * (_AmbientColor + light + specular + rim);
+			float4 emission = tex2D(_EmissionTex, i.uv) * _EmissionColor;
+			emission *= _EmissionScale;
+			
+			
+             float4 result = _Color * sample * (_AmbientColor + light + specular + rim + emission);
              UNITY_APPLY_FOG(i.fogCoord, result);
              return result;
 			}

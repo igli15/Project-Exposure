@@ -48,7 +48,6 @@ public class HandleScript : MonoBehaviour , IPointerExitHandler
 
 	public void OnPointerExit(PointerEventData eventData)
 	{
-		Debug.Log("here");
 		m_image.sprite = m_normalHandleSprite;
 	}
 }
