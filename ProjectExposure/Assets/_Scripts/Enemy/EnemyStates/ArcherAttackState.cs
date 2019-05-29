@@ -54,7 +54,6 @@ public class ArcherAttackState : AbstractState<EnemyFSM>
 
     void Shoot()
     {
-        
         transform.DOLookAt(Camera.main.transform.position, 0.5f);
         GetComponent<Animator>().SetTrigger("shoot");
         GameObject projectile = ObjectPooler.instance.SpawnFromPool("Projectile", transform.position, transform.rotation);
