@@ -10,7 +10,7 @@ public class FrequencyDisplay : MonoBehaviour
 	[SerializeField] private Slider m_slider;
 	
 	private Material m_material;
-	
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -18,6 +18,7 @@ public class FrequencyDisplay : MonoBehaviour
 		
 		m_slider.onValueChanged.AddListener(delegate(float value)
 		{
+		
 			float finalValue = Utils.Remap(value, 0, 1, 0.5f, 0.1f);
 			
 			m_material.SetFloat("_Wavelength", finalValue);
@@ -30,6 +31,7 @@ public class FrequencyDisplay : MonoBehaviour
 			m_gunManager.SetGunColors(c);
 
 		});
+	
 		
 		m_slider.onValueChanged.Invoke(m_slider.value);
 	}
