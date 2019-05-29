@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using DG.Tweening;
-using UnityEditor.MemoryProfiler;
+
 using UnityEngine;
 using UnityEngine.Events;
 

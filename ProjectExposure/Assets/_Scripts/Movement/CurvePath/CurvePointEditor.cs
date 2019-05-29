@@ -1,4 +1,5 @@
 ﻿using System;
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEngine;
 
@@ -23,3 +24,4 @@ public class CurvePointEditor : Editor
         
     }
 }
+#endif

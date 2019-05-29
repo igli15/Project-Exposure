@@ -1,5 +1,7 @@
 ﻿using System;
+#if UNITY_EDITOR
 using UnityEditor;
+
 using UnityEngine;
 
 
@@ -177,3 +179,4 @@ public class BezierCurveInspector : Editor
         return point;
     }
 }
+#endif
