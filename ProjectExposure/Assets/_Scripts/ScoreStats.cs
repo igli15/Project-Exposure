@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class ScoreStats : MonoBehaviour
 {
@@ -26,12 +27,13 @@ public class ScoreStats : MonoBehaviour
     public GameObject prefab8000;
 
     public static ScoreStats instance;
-
+    [SerializeField]
     private float m_timeRange = 0.4f;
 
     private int m_currentBonus = 1;
     private int m_currentScore=0;
     private float m_lastTimeDeath = 0;
+    private int m_tweenScore=0;
     public void Start()
     {
         instance = this;
@@ -39,15 +41,15 @@ public class ScoreStats : MonoBehaviour
 
     private void Update()
     {
-        return;
+        //return;
         //Comment return to test score stats
         if (Input.GetMouseButtonDown(0))
         {
-            AddDeathData(Color.red, transform);
+            AddDeathData(Color.red,3);
         }
     }
 
-    public void AddDeathData(Color color, Transform transform)
+    public void AddDeathData(Color color,int currentBonus=1)
     {
 
         if (Time.time - m_lastTimeDeath < m_timeRange)
@@ -55,7 +57,7 @@ public class ScoreStats : MonoBehaviour
             if(m_currentBonus<8)
                 m_currentBonus++;
         }
-        else m_currentBonus = 1;
+        else m_currentBonus = currentBonus;
 
         int score = 0;
 
@@ -96,7 +98,9 @@ public class ScoreStats : MonoBehaviour
         }
 
         m_currentScore += score;
-        text.text = "" + m_currentScore;
+
+        DOTween.To(() => m_tweenScore, x => { m_tweenScore = x; text.text = "" + m_tweenScore; }, m_currentScore , 0.2f).SetEase(Ease.Linear).SetUpdate(true);
+        
 
         GameObject scoreDisplay = GameObject.Instantiate(bufferPrefab, Input.mousePosition, new Quaternion(0, 0, 0, 0), transform.parent);
         scoreDisplay.GetComponent<ScoreBehaviour>().ActivateScoreBehaviour();
