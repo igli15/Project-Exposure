@@ -16,8 +16,8 @@ public class PillarChainReaction : MonoBehaviour {
     [SerializeField]
     private float m_camShakeDuration = 0.3f;
     [SerializeField]
-    //private Vector3 m_desiredPosition;
-    //[SerializeField]
+    private Vector3 m_desiredPosition;
+    [SerializeField]
     private Vector3 m_desiredRotation;
     [SerializeField]
     private Ease ease;
@@ -29,6 +29,8 @@ public class PillarChainReaction : MonoBehaviour {
     {
         if (!breakable) ;
         Tweener t = m_pillar.gameObject.transform.DORotate(m_desiredRotation, m_duration, RotateMode.Fast);
+        if(m_desiredPosition != null)
+        m_pillar.gameObject.transform.DOMove(m_desiredPosition, m_duration);
         Tweener camShake = m_player.transform.DOShakePosition(m_camShakeDuration, m_camShakeStrength);
         t.SetEase(ease);
         //m_pillar.gameObject.transform.DOLocalRotate(m_desiredRotation, m_duration);

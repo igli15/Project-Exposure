@@ -10,7 +10,7 @@ public class SpawnEnemy : MonoBehaviour {
     {
         foreach (GameObject enemy in m_enemies)
            {
-            if (enemy != null)
+            if (enemy != null && other.CompareTag("Player"))
             {
                 enemy.gameObject.SetActive(true);
                 enemy.GetComponent<ArcherFSM>().InitializeEnemy();
