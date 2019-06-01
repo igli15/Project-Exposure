@@ -99,7 +99,7 @@ public class GunManager : MonoBehaviour,IAgent
 	public Hittable RaycastFromGuns()
 	{        
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-     		
+		ray.origin = origin.position;
 		RaycastHit hit;
 		
 		if(EventSystem.current.IsPointerOverGameObject()) return null;
@@ -111,7 +111,7 @@ public class GunManager : MonoBehaviour,IAgent
 		LookInRayDirection(m_gunGroup, ray);
 
 
-		if (Physics.Raycast(ray.origin, ray.direction, out hit, 200))
+		if (Physics.SphereCast(ray.origin, 2,ray.direction, out hit, 2000))
 		{
 			Hittable h = hit.transform.GetComponent<Hittable>();
 			if (h != null)
