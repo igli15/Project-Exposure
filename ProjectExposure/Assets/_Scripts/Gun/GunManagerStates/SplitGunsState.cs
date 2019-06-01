@@ -58,9 +58,9 @@ public class SplitGunsState : GunState
 		}
 	}
 
-	protected override void Update()
+	protected override void FixedUpdate()
 	{
-		base.Update();
+		base.FixedUpdate();
 		
 		if (m_pulledHittable != null  && !m_targetIsInPlace)
 		{
