@@ -715,6 +715,11 @@ Prefab:
       propertyPath: m_Name
       value: RedCrystal (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 135697441727514210, guid: 75d45e22b988ff74a96e473f623676f3,
+        type: 2}
+      propertyPath: m_Radius
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75d45e22b988ff74a96e473f623676f3, type: 2}
   m_IsPrefabParent: 0
@@ -836,6 +841,11 @@ Prefab:
         type: 2}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158754744301208, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 2.4997559
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114956105155134340, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
