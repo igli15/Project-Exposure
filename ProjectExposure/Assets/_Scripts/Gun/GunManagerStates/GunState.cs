@@ -7,7 +7,7 @@ public abstract class GunState : AbstractState<GunManager>
 
     public abstract void Shoot();
 
-    protected virtual void Update()
+    protected virtual void FixedUpdate()
     {
         if (Input.GetMouseButtonDown(0))
         {
