@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00009205316, g: 0.09569118, b: 0.26676655, a: 1}
+  m_IndirectSpecularColor: {r: 0.0003227951, g: 0.10943895, b: 0.27149335, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -18611,6 +18611,18 @@ GameObject:
   m_PrefabParentObject: {fileID: 1705621142970206, guid: 93736e1ef0ca5d842919074e5b8d1f95,
     type: 2}
   m_PrefabInternal: {fileID: 1103909722}
+--- !u!114 &354624436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 354624435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98d16259443c149f088596615202b786, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
 --- !u!114 &354624446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28975,15 +28987,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4187607882115496, guid: 75d45e22b988ff74a96e473f623676f3, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 18.97
+      value: 19.49
       objectReference: {fileID: 0}
     - target: {fileID: 4187607882115496, guid: 75d45e22b988ff74a96e473f623676f3, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 81.13
+      value: 84.16
       objectReference: {fileID: 0}
     - target: {fileID: 4187607882115496, guid: 75d45e22b988ff74a96e473f623676f3, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 89.24
+      value: 88.06
       objectReference: {fileID: 0}
     - target: {fileID: 4187607882115496, guid: 75d45e22b988ff74a96e473f623676f3, type: 2}
       propertyPath: m_LocalRotation.x
@@ -29019,6 +29031,11 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 77a5e54fffaa92842a76ddae7bfda64b, type: 2}
+    - target: {fileID: 135697441727514210, guid: 75d45e22b988ff74a96e473f623676f3,
+        type: 2}
+      propertyPath: m_Radius
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75d45e22b988ff74a96e473f623676f3, type: 2}
   m_IsPrefabParent: 0
@@ -63053,7 +63070,7 @@ Prefab:
     - target: {fileID: 224516057909537728, guid: 93736e1ef0ca5d842919074e5b8d1f95,
         type: 2}
       propertyPath: m_AnchoredPosition.y
-      value: 15.000244
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 224516057909537728, guid: 93736e1ef0ca5d842919074e5b8d1f95,
         type: 2}
@@ -63205,8 +63222,21 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 224158754744301208, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -7.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224158989861494526, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -5
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 225335849071584306, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
+    - {fileID: 114100437833338138, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
+    - {fileID: 114956105155134340, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
+    - {fileID: 114201531636182850, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1108872862
@@ -129751,6 +129781,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2002999878}
   m_Mesh: {fileID: 4300000, guid: a221be98f798cb4479522f8e924ac477, type: 3}
+--- !u!1 &2003459879 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1311632513149234, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+    type: 2}
+  m_PrefabInternal: {fileID: 1103909722}
+--- !u!225 &2003459884
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2003459879}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 1
 --- !u!1001 &2005323200
 Prefab:
   m_ObjectHideFlags: 0

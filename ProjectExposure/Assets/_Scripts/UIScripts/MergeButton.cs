@@ -16,7 +16,7 @@ public class MergeButton : TouchButton
 			if (m_gunManager.fsm.GetCurrentState() is MergedGunsState)
 			{
 				
-				m_gunManager.fsm.ChangeState<SplitGunsState>();
+				m_gunManager.fsm.ChangeState<UltimateState>();
 			}
 			else
 			{
