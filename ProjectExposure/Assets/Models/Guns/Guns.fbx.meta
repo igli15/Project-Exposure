@@ -575,7 +575,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Shoot left
       takeName: Take 001
-      firstFrame: 71
+      firstFrame: 81
       lastFrame: 95
       wrapMode: 0
       orientationOffsetY: 0
@@ -603,7 +603,7 @@ ModelImporter:
     - serializedVersion: 16
       name: Shoot right
       takeName: Take 001
-      firstFrame: 99
+      firstFrame: 110
       lastFrame: 123
       wrapMode: 0
       orientationOffsetY: 0
