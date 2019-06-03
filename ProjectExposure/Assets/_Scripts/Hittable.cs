@@ -42,6 +42,12 @@ public abstract class Hittable : MonoBehaviour
 				if (health != null) health.InflictDamage(damage);
 			}
 		}
+		else if (gunManager.fsm.GetCurrentState() is UltimateState)
+		{
+			Health health = GetComponent<Health>();
+			
+			if (health != null) health.InflictDamage(100);
+		}
 	}
 
 	public Color GetColor()

@@ -61,6 +61,10 @@ public class Crystal : Hittable
 				}
 			}
 		}
+		else if (gunManager.fsm.GetCurrentState() is UltimateState)
+		{
+			Explode(gunManager);
+		}
 	}
 
 
