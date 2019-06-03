@@ -6,9 +6,13 @@ using DG.Tweening;
 
 public class ScoreStats : MonoBehaviour
 {
+    [Header("Texts")]
     [SerializeField]
     public Text text;
+    [SerializeField]
+    public Text critText;
 
+    [Header("ScoreNumber")]
     [SerializeField]
     public GameObject prefab100;
     [SerializeField]
@@ -26,6 +30,7 @@ public class ScoreStats : MonoBehaviour
     [SerializeField]
     public GameObject prefab8000;
 
+    [Header("General")]
     public static ScoreStats instance;
     [SerializeField]
     private float m_timeRange = 0.4f;
@@ -34,6 +39,10 @@ public class ScoreStats : MonoBehaviour
     private int m_currentScore=0;
     private float m_lastTimeDeath = 0;
     private int m_tweenScore=0;
+    private int m_critScore=0;
+
+    public bool isShot = false;
+
     public void Start()
     {
         instance = this;
@@ -41,23 +50,40 @@ public class ScoreStats : MonoBehaviour
 
     private void Update()
     {
-        return;
-        //Comment return to test score stats
-        if (Input.GetMouseButtonDown(0))
+        if (isShot&& Time.time - m_lastTimeDeath > m_timeRange)
         {
+            isShot = false;
+            m_currentScore += m_critScore;
             
+            DOTween.To(() => m_tweenScore, x => { m_tweenScore = x; text.text = "" + m_tweenScore; }, m_currentScore, 0.2f).SetEase(Ease.Linear).SetUpdate(true);
+            DOTween.To(() => m_critScore, x => 
+            {
+                m_critScore = x;
+                if (m_critScore != 0) critText.text = "" + m_critScore;
+                else critText.text = "";
+            }, 0, 0.2f).SetEase(Ease.Linear).SetUpdate(true);
+
+           // m_critScore = 0;
+            //critText.text = "" ;
         }
     }
+
+    
 
     public void AddDeathData(Color color,Transform enemy,int currentBonus=1)
     {
 
         if (Time.time - m_lastTimeDeath < m_timeRange)
         {
-            if(m_currentBonus<8)
+            if (m_currentBonus < 8)
                 m_currentBonus++;
         }
-        else m_currentBonus = currentBonus;
+        else
+        {
+            m_currentBonus = currentBonus;
+        }
+
+        isShot = true;
 
         int score = 0;
         string tag = "s100";
@@ -105,9 +131,18 @@ public class ScoreStats : MonoBehaviour
                 break;
         }
 
-        m_currentScore += score;
+        if (m_currentBonus > 1)
+        {
+            m_critScore += score;
+            critText.text = "" + m_critScore;
+        }
+        else
+        {
+            m_critScore = score;
+            
+        }
 
-        DOTween.To(() => m_tweenScore, x => { m_tweenScore = x; text.text = "" + m_tweenScore; }, m_currentScore , 0.2f).SetEase(Ease.Linear).SetUpdate(true);
+
 
 
         GameObject scoreDisplay = ObjectPooler.instance.SpawnFromPool(tag, Camera.main.WorldToScreenPoint(enemy.position), new Quaternion(0, 0, 0, 0));
