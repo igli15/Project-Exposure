@@ -12,27 +12,30 @@ public class GunAnimations : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		//TODO unsubscribe from these actions
-		MergedGunsState.OnShoot += delegate(Hittable hittable, GunManager manager) {  m_animator.SetTrigger("ShootMerged");};
-		MergedGunsState.OnMerge += delegate(MergedGunsState state) {m_animator.SetTrigger("Merge");  };
-		SplitGunsState.OnSplit += delegate(SplitGunsState state) {m_animator.SetTrigger("UnMerge");  };
-		SplitGunsState.OnShoot += delegate(Hittable hittable, GunManager manager, Gun gun) 
-		{ 
-			if(gun.gunSide == Gun.GunSide.RIGHT) m_animator.SetTrigger("ShootRight");
-			else m_animator.SetTrigger("ShootLeft");
-		 };
-		UltimateState.OnUltimateEnter += delegate(UltimateState state) { m_animator.SetTrigger("UnMerge"); };
+		MergedGunsState.OnShoot += SetMergedShootTrigger;
+		MergedGunsState.OnMerge += SetMergeTrigger;
+		SplitGunsState.OnSplit += SetUnMergeTrigger;
+		SplitGunsState.OnShoot += SetShootTrigger;
+	}
 
+	private void SetMergeTrigger(MergedGunsState state)
+	{
+		m_animator.SetTrigger("Merge");  
 	}
 	
-	// Update is called once per frame
-	void Update () 
+	private void SetUnMergeTrigger(SplitGunsState state)
 	{
-		
+		m_animator.SetTrigger("UnMerge");  
 	}
 
-	private void OnDestroy()
+	private void SetShootTrigger(Hittable hittable, GunManager manager, Gun gun)
 	{
-		
+		if(gun.gunSide == Gun.GunSide.RIGHT) m_animator.SetTrigger("ShootRight");
+		else m_animator.SetTrigger("ShootLeft");
+	}
+
+	private void SetMergedShootTrigger(Hittable hittable, GunManager manager)
+	{
+		m_animator.SetTrigger("ShootMerged");
 	}
 }

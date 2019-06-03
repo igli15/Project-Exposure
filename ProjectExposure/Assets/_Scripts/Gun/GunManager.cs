@@ -55,7 +55,7 @@ public class GunManager : MonoBehaviour,IAgent
 			m_fsm = new Fsm<GunManager>(this);
 		}
 		
-		//m_fsm.ChangeState<SplitGunsState>();
+		m_fsm.ChangeState<SplitGunsState>();
 		
 		SetGunColors(Color.red);
 	}
@@ -130,7 +130,6 @@ public class GunManager : MonoBehaviour,IAgent
 
 	public Vector3 GetDirFromGunToMouse()
 	{
-		//TODO Check if the gun aims correctly (test close to the camera)
 		Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);;
 		
 		r.origin =  origin.position;

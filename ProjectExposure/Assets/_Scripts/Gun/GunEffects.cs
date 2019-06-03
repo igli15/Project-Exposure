@@ -42,71 +42,11 @@ public class GunEffects : MonoBehaviour
 		m_muzzleColor = m_muzzleFlashMaterial.GetColor("_TintColor");
 		m_muzzleColor.a = 0;
 		m_muzzleFlashMaterial.SetColor("_TintColor",m_muzzleColor);
-		
-		
+
+		SplitGunsState.OnShoot += InitSplitGunRays;
 	}
 
-	public void InitMergeBeam(Hittable hittable, GunManager manager)
-	{
-		if (manager.isMouseDown) return;
-
-		Color c = manager.color;
-
-		Vector3 hsv = ColorUtils.GetHSVOfAColor(c);
-		hsv.y *= m_saturationScale;
-		hsv.z *= m_valueScale;
-		c = Color.HSVToRGB(hsv.x, hsv.y, hsv.z, true);
-		c *= m_colorIntensity;
-		c.a = 1;
-
-		Material mat = m_shootBeam;
-
-		m_beamRenderer.material = mat;
-		mat.SetColor("_TintColor", c);
-
-		SetLineRendererPoints(hittable,manager);
-
-		c = mat.GetColor("_TintColor");
-		DOVirtual.Float(c.a, 0, m_beamFadeDuration,
-			(delegate(float value)
-			{
-				c.a = value;
-				m_lineRenderer.SetPosition(0, m_lineRenderer.transform.position);
-				mat.SetColor("_TintColor", c);
-			}));
-	}
-
-	public void UseMagneticBeam(Hittable hittable,GunManager manager)
-	{
-		Color c = hittable.GetColor();
-		Vector3 hsv = ColorUtils.GetHSVOfAColor(c);
-		hsv.y *= m_saturationScale;
-		hsv.z *= m_valueScale;
-		c = Color.HSVToRGB(hsv.x,hsv.y,hsv.z,true);
-		c *= m_colorIntensity;
-		c.a = 1;
-		
-		Material mat = m_magnetBeam;
-
-		m_beamRenderer.material = mat;
-		mat.SetColor("_TintColor", c);
-			
-		SetLineRendererPoints(hittable,manager);
-
-	}
 	
-	public void FadeMagneticBeam(Hittable hittable,GunManager manager)
-	{
-		Color c = m_beamRenderer.material.GetColor("_TintColor");
-		DOVirtual.Float(c.a, 0, m_beamFadeDuration,
-			(delegate(float value)
-			{
-				c.a = value;
-				m_lineRenderer.SetPosition(0, m_lineRenderer.transform.position);
-				m_beamRenderer.material.SetColor("_TintColor", c);
-			}));
-	}
-
 	public void PlayParticles(Hittable hittable, GunManager manager)
 	{
 		if (manager.isMouseDown) return;
@@ -140,15 +80,46 @@ public class GunEffects : MonoBehaviour
 		
 	}
 
-	private void OnDestroy()
+	public void InitSplitGunRays(Hittable hittable,GunManager manager,Gun gun)
 	{
-	
-	}
+		if (manager.isMouseDown) return;
 
-	private void SetLineRendererPoints(Hittable hittable,GunManager manager)
+		Color c = manager.color;
+
+		Vector3 hsv = ColorUtils.GetHSVOfAColor(c);
+		hsv.y *= m_saturationScale;
+		hsv.z *= m_valueScale;
+		c = Color.HSVToRGB(hsv.x, hsv.y, hsv.z, true);
+		c *= m_colorIntensity;
+		c.a = 1;
+
+		Material mat = m_shootBeam;
+
+		m_beamRenderer.material = mat;
+		mat.SetColor("_TintColor", c);
+
+		SetLineRendererPoints(hittable,manager,gun.shootTransform);
+
+		c = mat.GetColor("_TintColor");
+		DOVirtual.Float(c.a, 0, m_beamFadeDuration,
+			(delegate(float value)
+			{
+				c.a = value;
+				m_lineRenderer.SetPosition(0, gun.shootTransform.position);
+				mat.SetColor("_TintColor", c);
+			}));
+	}
+	
+	private void SetLineRendererPoints(Hittable hittable,GunManager manager,Transform origin)
 	{
 		m_lineRenderer.SetPosition(0,m_lineRenderer.transform.position);
 		if(hittable != null) m_lineRenderer.SetPosition(1,hittable.transform.position);
-		else  m_lineRenderer.SetPosition(1,manager.origin.position + manager.GetDirFromGunToMouse() * 40);
+		else  m_lineRenderer.SetPosition(1,origin.position + manager.GetDirFromGunToMouse() * 40);
+	}
+	
+
+	private void OnDestroy()
+	{
+	
 	}
 }

@@ -25,10 +25,10 @@ public class MergedGunsState : GunState
 		
 		Hittable hittable = target.RaycastFromGuns();
 		
+		if (OnShoot != null) OnShoot(hittable,target);
+		
 		if(hittable != null)
 		{
-			if (OnShoot != null) OnShoot(hittable,target);
-			
 			hittable.Hit(target,100,target.color);
 		}
 	}
