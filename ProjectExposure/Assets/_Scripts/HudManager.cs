@@ -10,9 +10,9 @@ public class HudManager : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		SplitGunsState.OnPull += delegate(Hittable hittable, GunManager manager) { m_mergeButton.SetActive(false); };
+		//SplitGunsState.OnPull += delegate(Hittable hittable, GunManager manager) { m_mergeButton.SetActive(false); };
 		
-		SplitGunsState.OnPush += delegate(Hittable hittable, GunManager manager) { m_mergeButton.SetActive(true); };
+		//SplitGunsState.OnPush += delegate(Hittable hittable, GunManager manager) { m_mergeButton.SetActive(true); };
 	}
 	
 	// Update is called once per frame

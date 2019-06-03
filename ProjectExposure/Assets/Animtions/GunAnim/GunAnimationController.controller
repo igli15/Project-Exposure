@@ -123,7 +123,7 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1101 &1101445065773809482
+--- !u!1101 &1101632203268412572
 AnimatorStateTransition:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -134,7 +134,7 @@ AnimatorStateTransition:
     m_ConditionEvent: ShootLeft
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
-  m_DstState: {fileID: 1102078986621215670}
+  m_DstState: {fileID: 1102937994695083544}
   m_Solo: 0
   m_Mute: 0
   m_IsExit: 0
@@ -171,31 +171,6 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
---- !u!1102 &1102078986621215670
-AnimatorState:
-  serializedVersion: 5
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_Name: Shoot left
-  m_Speed: 1
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400006, guid: 5cbd6ec69f0f349ebba5fdbf00116ae9, type: 3}
-  m_Tag: 
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &1102233680404625868
 AnimatorState:
   serializedVersion: 5
@@ -203,7 +178,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Merge
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -228,7 +203,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Idle Unmerged
-  m_Speed: 1
+  m_Speed: 10
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -253,7 +228,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Unmerge
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -278,7 +253,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Shoot right
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -303,7 +278,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Shoot merged
-  m_Speed: 1
+  m_Speed: 0.5
   m_CycleOffset: 0
   m_Transitions: []
   m_StateMachineBehaviours: []
@@ -321,6 +296,31 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
+--- !u!1102 &1102937994695083544
+AnimatorState:
+  serializedVersion: 5
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Shoot left
+  m_Speed: 0.5
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400006, guid: 5cbd6ec69f0f349ebba5fdbf00116ae9, type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1107 &1107522641894438282
 AnimatorStateMachine:
   serializedVersion: 5
@@ -333,9 +333,6 @@ AnimatorStateMachine:
     m_State: {fileID: 1102233680404625868}
     m_Position: {x: 600, y: 24, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 1102078986621215670}
-    m_Position: {x: 840, y: 96, z: 0}
-  - serializedVersion: 1
     m_State: {fileID: 1102710973013268722}
     m_Position: {x: 600, y: 96, z: 0}
   - serializedVersion: 1
@@ -347,13 +344,16 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 1102373709887227370}
     m_Position: {x: 348, y: -96, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 1102937994695083544}
+    m_Position: {x: 864, y: 96, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 1101726315121999460}
   - {fileID: 1101302615070831552}
   - {fileID: 1101316876481307500}
-  - {fileID: 1101445065773809482}
   - {fileID: 1101261364547209570}
+  - {fileID: 1101632203268412572}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []

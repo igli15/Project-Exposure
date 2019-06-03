@@ -5,12 +5,25 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public abstract class Gun : MonoBehaviour
+public class Gun : MonoBehaviour
 {
-	public Action<Gun> OnShoot;
-	
-	public virtual void Shoot()
+	public enum GunSide
 	{
-		if (OnShoot != null) OnShoot(this);
+		LEFT,
+		RIGHT
+	}
+
+	[SerializeField] private GunSide m_gunSide;
+	[SerializeField] private Transform m_shootTransform;
+	
+
+	public GunSide gunSide
+	{
+		get { return m_gunSide; }
+	}
+
+	public Transform shootTransform
+	{
+		get { return m_shootTransform; }
 	}
 }

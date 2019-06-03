@@ -28,21 +28,21 @@ public abstract class Hittable : MonoBehaviour
 	{
 		OnHit.Invoke();
 
-		if (gunManager.fsm.GetCurrentState() is MergedGunsState)
+		if (gunManager.fsm.GetCurrentState() is SplitGunsState)
 		{
-			MergedGunsState mergedGunsState = (gunManager.fsm.GetCurrentState() as MergedGunsState);
+			SplitGunsState splitGunsState = (gunManager.fsm.GetCurrentState() as SplitGunsState);
 			
-			if (mergedGunsState.currentMode == MergedGunsState.GunMode.COLOR)
+			if (splitGunsState.currentMode == SplitGunsState.GunMode.COLOR)
 			{
 				SetColor(gunColor);
 			}
-			else if (mergedGunsState.currentMode == MergedGunsState.GunMode.SHOOT)
+			else if (splitGunsState.currentMode == SplitGunsState.GunMode.SHOOT)
 			{
 				Health health = GetComponent<Health>();
 				if (health != null) health.InflictDamage(damage);
 			}
 		}
-		else if (gunManager.fsm.GetCurrentState() is UltimateState)
+		else if (gunManager.fsm.GetCurrentState() is MergedGunsState)
 		{
 			Health health = GetComponent<Health>();
 			

@@ -45,15 +45,15 @@ public class Crystal : Hittable
 	{
 		OnHit.Invoke();
 		
-		if (gunManager.fsm.GetCurrentState() is MergedGunsState)
+		if (gunManager.fsm.GetCurrentState() is SplitGunsState)
 		{
-			MergedGunsState mergedGunsState = (gunManager.fsm.GetCurrentState() as MergedGunsState);
+			SplitGunsState splitGunsState = (gunManager.fsm.GetCurrentState() as SplitGunsState);
 			
-			if (mergedGunsState.currentMode == MergedGunsState.GunMode.COLOR)
+			if (splitGunsState.currentMode == SplitGunsState.GunMode.COLOR)
 			{
 				SetColor(gunColor);
 			}
-			else if (mergedGunsState.currentMode == MergedGunsState.GunMode.SHOOT)
+			else if (splitGunsState.currentMode == SplitGunsState.GunMode.SHOOT)
 			{
 				if (damage > 0.2f)
 				{
@@ -61,7 +61,7 @@ public class Crystal : Hittable
 				}
 			}
 		}
-		else if (gunManager.fsm.GetCurrentState() is UltimateState)
+		else if (gunManager.fsm.GetCurrentState() is MergedGunsState)
 		{
 			Explode(gunManager);
 		}

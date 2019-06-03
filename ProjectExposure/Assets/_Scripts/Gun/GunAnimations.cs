@@ -16,6 +16,11 @@ public class GunAnimations : MonoBehaviour
 		MergedGunsState.OnShoot += delegate(Hittable hittable, GunManager manager) {  m_animator.SetTrigger("ShootMerged");};
 		MergedGunsState.OnMerge += delegate(MergedGunsState state) {m_animator.SetTrigger("Merge");  };
 		SplitGunsState.OnSplit += delegate(SplitGunsState state) {m_animator.SetTrigger("UnMerge");  };
+		SplitGunsState.OnShoot += delegate(Hittable hittable, GunManager manager, Gun gun) 
+		{ 
+			if(gun.gunSide == Gun.GunSide.RIGHT) m_animator.SetTrigger("ShootRight");
+			else m_animator.SetTrigger("ShootLeft");
+		 };
 		UltimateState.OnUltimateEnter += delegate(UltimateState state) { m_animator.SetTrigger("UnMerge"); };
 
 	}

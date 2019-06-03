@@ -55,7 +55,7 @@ public class GunManager : MonoBehaviour,IAgent
 			m_fsm = new Fsm<GunManager>(this);
 		}
 		
-		m_fsm.ChangeState<MergedGunsState>();
+		//m_fsm.ChangeState<SplitGunsState>();
 		
 		SetGunColors(Color.red);
 	}
@@ -99,17 +99,12 @@ public class GunManager : MonoBehaviour,IAgent
 	public Hittable RaycastFromGuns()
 	{        
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		ray.origin = origin.position;
 		RaycastHit hit;
-		
-		if(EventSystem.current.IsPointerOverGameObject()) return null;
 
-		//LookInRayDirection(m_colorGun.transform, ray);
-		//LookInRayDirection(m_damageGun.transform, ray);
+		if (EventSystem.current.IsPointerOverGameObject()) return null;
 		
-		if(!m_mouseDown)
-		LookInRayDirection(m_gunGroup, ray);
-
+		//if(!m_mouseDown)
+		//LookInRayDirection(m_gunGroup, ray);
 
 		if (Physics.SphereCast(ray.origin, 2,ray.direction, out hit, 2000))
 		{

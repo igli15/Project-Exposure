@@ -43,12 +43,7 @@ public class GunEffects : MonoBehaviour
 		m_muzzleColor.a = 0;
 		m_muzzleFlashMaterial.SetColor("_TintColor",m_muzzleColor);
 		
-		MergedGunsState.OnShoot += InitMergeBeam;
-		MergedGunsState.OnShoot += PlayParticles;
-		MergedGunsState.OnShoot += EnableMuzzleFlash;
-
-		SplitGunsState.OnPulling += UseMagneticBeam;
-		SplitGunsState.OnTargetPulled += FadeMagneticBeam;
+		
 	}
 
 	public void InitMergeBeam(Hittable hittable, GunManager manager)
@@ -147,12 +142,7 @@ public class GunEffects : MonoBehaviour
 
 	private void OnDestroy()
 	{
-		MergedGunsState.OnShoot -= InitMergeBeam;
-		MergedGunsState.OnShoot -= PlayParticles;
-		MergedGunsState.OnShoot -= EnableMuzzleFlash;
-		
-		SplitGunsState.OnPulling -= UseMagneticBeam;
-		SplitGunsState.OnTargetPulled -= FadeMagneticBeam;
+	
 	}
 
 	private void SetLineRendererPoints(Hittable hittable,GunManager manager)
