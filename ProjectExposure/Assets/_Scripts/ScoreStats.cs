@@ -45,11 +45,11 @@ public class ScoreStats : MonoBehaviour
         //Comment return to test score stats
         if (Input.GetMouseButtonDown(0))
         {
-            AddDeathData(Color.red,3);
+            
         }
     }
 
-    public void AddDeathData(Color color,int currentBonus=1)
+    public void AddDeathData(Color color,Transform enemy,int currentBonus=1)
     {
 
         if (Time.time - m_lastTimeDeath < m_timeRange)
@@ -110,7 +110,7 @@ public class ScoreStats : MonoBehaviour
         DOTween.To(() => m_tweenScore, x => { m_tweenScore = x; text.text = "" + m_tweenScore; }, m_currentScore , 0.2f).SetEase(Ease.Linear).SetUpdate(true);
 
 
-        GameObject scoreDisplay = ObjectPooler.instance.SpawnFromPool(tag, Input.mousePosition, new Quaternion(0, 0, 0, 0));
+        GameObject scoreDisplay = ObjectPooler.instance.SpawnFromPool(tag, Camera.main.WorldToScreenPoint(enemy.position), new Quaternion(0, 0, 0, 0));
         scoreDisplay.transform.parent = transform.parent;
             //GameObject.Instantiate(bufferPrefab, Input.mousePosition, new Quaternion(0, 0, 0, 0), transform.parent);
         scoreDisplay.GetComponent<ScoreBehaviour>().ActivateScoreBehaviour(tag);
