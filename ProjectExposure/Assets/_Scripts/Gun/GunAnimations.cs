@@ -12,6 +12,7 @@ public class GunAnimations : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
+		//TODO unsubscribe from these actions
 		MergedGunsState.OnShoot += delegate(Hittable hittable, GunManager manager) {  m_animator.SetTrigger("ShootMerged");};
 		MergedGunsState.OnMerge += delegate(MergedGunsState state) {m_animator.SetTrigger("Merge");  };
 		SplitGunsState.OnSplit += delegate(SplitGunsState state) {m_animator.SetTrigger("UnMerge");  };
@@ -21,6 +22,11 @@ public class GunAnimations : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () 
+	{
+		
+	}
+
+	private void OnDestroy()
 	{
 		
 	}

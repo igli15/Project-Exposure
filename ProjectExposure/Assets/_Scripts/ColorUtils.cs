@@ -46,4 +46,14 @@ public abstract class ColorUtils
 		return false;
 	}
 
+	public static float GetOverlap(float hue, Color c1)
+	{
+		//TODO implement
+		return 0;
+	}
+
+	public static float GetOverlap(Color c1, Color c2)
+	{
+		return Mathf.Clamp(c1.r * c2.r + c1.g * c2.g + c1.b * c2.b, 0, 1);
+	}
 }
