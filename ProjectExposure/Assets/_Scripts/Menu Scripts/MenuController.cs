@@ -21,8 +21,8 @@ public class MenuController : MonoBehaviour
 			
 			if (Physics.Raycast(ray.origin,ray.direction, out hit, 2000))
 			{
-				WorldButton worldButton = hit.transform.GetComponent<WorldButton>();
-				if(worldButton != null) worldButton.Click();
+				Raycastable raycastable = hit.transform.GetComponent<Raycastable>();
+				if(raycastable != null) raycastable.Click(ray);
 			}
 		}
 	}
