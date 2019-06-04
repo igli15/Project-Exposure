@@ -35,7 +35,8 @@ public class VirtualKeyboard : MonoBehaviour
 	{
 		m_panelImage = GetComponent<Image>();
 		m_canvasGroup = GetComponent<CanvasGroup>();
-		m_saveButton.OnClick.AddListener(delegate { OnSave.Invoke(); });
+		m_saveButton.isSaveButton = true;
+		m_saveButton.OnClick.AddListener(delegate { Apply(); });
 	}
 
 	public string finalString
@@ -79,5 +80,13 @@ public class VirtualKeyboard : MonoBehaviour
 		m_canvasGroup.blocksRaycasts = false;
 		m_inputField = null;
 		m_finalString = "";
+	}
+
+	public void Apply()
+	{
+		OnSave.Invoke();
+		
+		HideKeyboard(false);
+
 	}
 }

@@ -18,9 +18,16 @@ public class KeyboardButton : MonoBehaviour,IPointerDownHandler
 
 	private VirtualKeyboard m_parentKeyboard;
 
+	private bool m_isSaveButton = false;
 	public string key
 	{
 		get { return m_key; }
+	}
+
+	public bool isSaveButton
+	{
+		get { return m_isSaveButton; }
+		set { m_isSaveButton = value; }
 	}
 
 	private void Start()
@@ -32,8 +39,11 @@ public class KeyboardButton : MonoBehaviour,IPointerDownHandler
 	public void OnPointerDown(PointerEventData eventData)
 	{
 		OnClick.Invoke();
+
+		if (isSaveButton) return;
 		
 		m_delayTween.Kill();
+	
 		m_image.color = Color.gray;
 
 		m_delayTween = DOVirtual.DelayedCall(0.2f, delegate { m_image.color = Color.white; }, true);
