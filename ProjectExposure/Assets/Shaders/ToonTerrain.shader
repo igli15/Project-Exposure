@@ -115,7 +115,7 @@ Shader "Custom/ToonWithNormals"
 				
                 float3 normal = normalize(worldNormal);
                 
-                float NdotL = dot(_WorldSpaceLightPos0, -normal);
+                float NdotL = dot(_WorldSpaceLightPos0, normal);
 
                 float shadow = SHADOW_ATTENUATION(i);
                 float lightIntensity = smoothstep(0, 0.01, NdotL * shadow);

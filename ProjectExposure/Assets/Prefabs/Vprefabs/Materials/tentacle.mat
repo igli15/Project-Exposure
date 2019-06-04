@@ -71,17 +71,17 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _Limit: 0.85
+    - _Limit: 0.73
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
     - _RimAmount: 0.39
     - _RimThreshold: 0.1
-    - _Roll: -1.32
+    - _Roll: 1.16
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.92
+    - _Speed: 0.58
     - _SrcBlend: 1
     - _UVSec: 0
     - _Yaw: -0.42
