@@ -108,7 +108,7 @@ public class Crystal : Hittable
 		GameObject obj = Instantiate(m_aoeSphere.gameObject, transform.position, Quaternion.identity);
 		obj.transform.position += Vector3.up * 3;
 		obj.GetComponent<AoeSphere>().Activate(m_explosionRadius);
-        ScoreStats.instance.AddDeathData(GetColor(), 2);
+        ScoreStats.instance.AddDeathData(GetColor(),transform, 2);
 		Destroy(transform.gameObject);
 	}
 

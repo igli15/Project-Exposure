@@ -58,7 +58,7 @@ public class ArcherFSM : EnemyFSM
     public override void DestroyEnemy()
     {
         base.DestroyEnemy();
-        ScoreStats.instance.AddDeathData(m_enemy.GetColor(),2);
+        ScoreStats.instance.AddDeathData(m_enemy.GetColor(),transform,2);
 
         m_rigidBody.velocity = Vector3.zero;
         ObjectPooler.instance.DestroyFromPool("Archer", gameObject);

@@ -31,7 +31,7 @@ public class CurveWallker : MonoBehaviour
     }
     private void Update()
     {
-        if (!m_isActive) return;
+        if (!m_isActive && !spline) return;
 
         m_progress += Time.deltaTime / ( spline.Duration*m_durationMultiplier );
         if (m_progress > 1f)

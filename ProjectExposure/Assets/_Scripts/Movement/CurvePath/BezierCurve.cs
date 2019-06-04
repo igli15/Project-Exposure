@@ -213,7 +213,7 @@ public class BezierCurve : MonoBehaviour
             m_lengths[i] = TotalLength;
             TotalLength += length;
         }
-        Debug.Log("Length is Calculated "+TotalLength+", Spline ready to use");
+
     }
 
     public float CalculateLength(int index)
