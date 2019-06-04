@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: branching coral tree
-  m_Shader: {fileID: 4800000, guid: 69a57431e20d246e8bf6a3b3ddf987ac, type: 3}
+  m_Shader: {fileID: 4800000, guid: 28bf2e852bf5a49d3a141ac68df992b9, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -55,7 +55,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _WindTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 991e7ae3f55cb45b2bfd28f36ed28076, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
@@ -80,7 +80,7 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _AmbientColor: {r: 0.5707547, g: 0.82307166, b: 1, a: 1}
-    - _AxisEffected: {r: 1, g: 0, b: 1, a: 1}
+    - _AxisEffected: {r: 0.2, g: 0, b: 0, a: 1}
     - _Color: {r: 0.8254717, g: 0.9113816, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
