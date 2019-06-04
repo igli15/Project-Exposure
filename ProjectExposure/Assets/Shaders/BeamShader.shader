@@ -73,6 +73,7 @@
 				i.uv.x += noiseVal / _Mitigation;
 				i.uv.y += sin(noiseVal / _Mitigation);
 				
+				
 				fixed4 col = tex2D(_MainTex, i.uv) * _TintColor;
 				// apply fog
 				

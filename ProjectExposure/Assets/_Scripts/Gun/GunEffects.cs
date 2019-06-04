@@ -10,7 +10,7 @@ public class GunEffects : MonoBehaviour
 	[Header("Beam")]
 	[SerializeField] private LineRenderer m_lineRenderer;
 
-	[SerializeField] private Material m_magnetBeam;
+	[SerializeField] private Material m_rainbowBeam;
 	[SerializeField] private Material m_shootBeam;
 
 	[Range(0.1f, 2)] [SerializeField] private float m_colorIntensity = 2;
@@ -33,9 +33,11 @@ public class GunEffects : MonoBehaviour
 	private Renderer m_beamRenderer;
 
 	private Color m_muzzleColor;
-	
+
+	private Sequence m_muzzleFlashSequence;
 	private void Awake()
 	{
+		
 		m_beamRenderer = m_lineRenderer.GetComponent<Renderer>();
 		m_muzzleFlashMaterial = m_muzzleFlashGameObject.GetComponent<Renderer>().material;
 
@@ -44,12 +46,15 @@ public class GunEffects : MonoBehaviour
 		m_muzzleFlashMaterial.SetColor("_TintColor",m_muzzleColor);
 
 		SplitGunsState.OnShoot += InitSplitGunRays;
+		MergedGunsState.OnShoot += InitMergeGunRay;
+		MergedGunsState.OnShoot += EnableMuzzleFlash;
+		//MergedGunsState.OnShoot += PlayParticles;
 	}
 
 	
 	public void PlayParticles(Hittable hittable, GunManager manager)
 	{
-		if (manager.isMouseDown) return;
+		//if (manager.isMouseDown) return;
 		
 		ParticleSystem.MainModule settingsFeedback = m_particleFeedback.main;
 		settingsFeedback.startColor = new ParticleSystem.MinMaxGradient( manager.color );
@@ -59,30 +64,53 @@ public class GunEffects : MonoBehaviour
 
 	public void EnableMuzzleFlash(Hittable hittable, GunManager manager)
 	{
-		if (manager.isMouseDown) return;
+		//if (manager.isMouseDown) return;
 		
-		Sequence s = DOTween.Sequence();
-
 		m_muzzleColor = manager.color;
 		m_muzzleColor.a = 0;
 		
-		s.Append(DOVirtual.Float(m_muzzleColor.a,m_alpha,m_fadeDuration,(delegate(float value)
+		//m_muzzleFlashSequence.Complete();
+		m_muzzleFlashSequence = DOTween.Sequence();
+		
+		
+		m_muzzleFlashSequence.Append(DOVirtual.Float(m_muzzleColor.a,m_alpha,m_fadeDuration,(delegate(float value)
 		{
 			m_muzzleColor.a = value;
 			m_muzzleFlashMaterial.SetColor("_TintColor",m_muzzleColor);
 		})));
 		
-		s.Append(DOVirtual.Float(m_muzzleColor.a,0f,m_fadeDuration,(delegate(float value)
+		m_muzzleFlashSequence.Append(DOVirtual.Float(m_muzzleColor.a,0f,m_fadeDuration,(delegate(float value)
 		{
 			m_muzzleColor.a = value;
 			m_muzzleFlashMaterial.SetColor("_TintColor",m_muzzleColor);
 		})));
-		
+	}
+
+	public void InitMergeGunRay(Hittable hittable, GunManager manager)
+	{
+		//if (manager.isMouseDown) return;
+
+		Material mat = m_rainbowBeam;
+		Color c = mat.GetColor("_TintColor");;
+		c.a = 1;
+
+		m_beamRenderer.material = mat;
+		mat.SetColor("_TintColor", c);
+
+		SetLineRendererPoints(hittable,manager,manager.origin);
+
+		DOVirtual.Float(c.a, 0, m_beamFadeDuration,
+			(delegate(float value)
+			{
+				c.a = value;
+				m_lineRenderer.SetPosition(0, manager.origin.position);
+				mat.SetColor("_TintColor", c);
+			}));
 	}
 
 	public void InitSplitGunRays(Hittable hittable,GunManager manager,Gun gun)
 	{
-		if (manager.isMouseDown) return;
+		//if (manager.isMouseDown) return;
 
 		Color c = manager.color;
 
@@ -112,9 +140,26 @@ public class GunEffects : MonoBehaviour
 	
 	private void SetLineRendererPoints(Hittable hittable,GunManager manager,Transform origin)
 	{
-		m_lineRenderer.SetPosition(0,m_lineRenderer.transform.position);
-		if(hittable != null) m_lineRenderer.SetPosition(1,hittable.transform.position);
-		else  m_lineRenderer.SetPosition(1,origin.position + manager.GetDirFromGunToMouse() * 40);
+		//m_lineRenderer.SetPosition(0,origin.position);
+		
+		int distribution = m_lineRenderer.positionCount;
+		
+		for (int i = 0; i < distribution; i++)
+		{
+			float lerpAmount = (float)i / distribution;
+			//Debug.Log(i+ "  " + lerpAmount);
+			if(hittable != null) m_lineRenderer.SetPosition(i,Vector3.Lerp(origin.position,hittable.transform.position,lerpAmount));
+			else
+			{
+				Vector3 finalpos = origin.position + manager.GetDirFromGunToMouse() * 40;
+				//Debug.Log(origin.position);
+				//Debug.Log(i + "  " + Vector3.Lerp(origin.position,finalpos,lerpAmount));
+				m_lineRenderer.SetPosition(i,Vector3.Lerp(origin.position,finalpos,lerpAmount));
+			}
+				
+		}
+		
+		
 	}
 	
 

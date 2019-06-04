@@ -1,0 +1,717 @@
+fileFormatVersion: 2
+guid: d6bbf2410a05945a6b6d698b7c58534b
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Backside
+    100004: BallR
+    100006: BallR 1
+    100008: Cannon
+    100010: CTRL_InnerGunR
+    100012: CTRL_InnerGunR 1
+    100014: CTRL_OuterGunR
+    100016: CTRL_OuterGunR 1
+    100018: CTRL_OuterGunR1
+    100020: CTRL_OuterGunR1 1
+    100022: CTRL_OuterGunR3
+    100024: CTRL_OuterGunR3 1
+    100026: CTRL_OuterGunR4
+    100028: CTRL_OuterGunR4 1
+    100030: CTRL_UpperGunR
+    100032: CTRL_UpperGunR 1
+    100034: CTRL_UpperGunR5
+    100036: CTRL_UpperGunR5 1
+    100038: Forearm
+    100040: Forearm 1
+    100042: group1
+    100044: group2
+    100046: Hand
+    100048: Hand1
+    100050: HandL
+    100052: HandR
+    100054: InnerGunHolderR
+    100056: InnerGunHolderR 1
+    100058: InnerLockInside
+    100060: InnerLockInside 1
+    100062: InnerLockL
+    100064: InnerLockR
+    100066: joint35
+    100068: joint36
+    100070: joint36 1
+    100072: joint37
+    100074: joint37 1
+    100076: joint38
+    100078: joint38 1
+    100080: joint39
+    100082: joint39 1
+    100084: joint40
+    100086: joint40 1
+    100088: joint41
+    100090: joint41 1
+    100092: joint42
+    100094: joint42 1
+    100096: joint43
+    100098: joint43 1
+    100100: joint44
+    100102: joint44 1
+    100104: joint45
+    100106: joint45 1
+    100108: joint46
+    100110: joint46 1
+    100112: joint47
+    100114: joint47 1
+    100116: joint48
+    100118: joint48 1
+    100120: joint49
+    100122: joint49 1
+    100124: joint50
+    100126: joint50 1
+    100128: joint51
+    100130: joint51 1
+    100132: joint52
+    100134: joint52 1
+    100136: joint53
+    100138: joint53 1
+    100140: joint54
+    100142: joint54 1
+    100144: joint55
+    100146: joint55 1
+    100148: joint56
+    100150: joint56 1
+    100152: joint57
+    100154: L_UnmergedGunTransform
+    100156: MasterCTRL
+    100158: MasterCTRL_L
+    100160: MasterCTRL_R
+    100162: MergedGunTransform
+    100164: nurbsCircle2
+    100166: nurbsCircle2 1
+    100168: nurbsCircle3
+    100170: nurbsCircle3 1
+    100172: nurbsCircle4
+    100174: nurbsCircle4 1
+    100176: nurbsCircle5
+    100178: nurbsCircle5 1
+    100180: nurbsCircle6
+    100182: nurbsCircle6 1
+    100184: nurbsCircle7
+    100186: nurbsCircle7 1
+    100188: nurbsCircle8
+    100190: nurbsCircle8 1
+    100192: nurbsCircle9
+    100194: nurbsCircle9 1
+    100196: nurbsCone1
+    100198: nurbsCone1 1
+    100200: nurbsCone2
+    100202: nurbsCone3
+    100204: OuterGunR
+    100206: OuterGunR 1
+    100208: OuterGunR2
+    100210: OuterGunR2 1
+    100212: pCube38
+    100214: pCube39
+    100216: pCube40
+    100218: pCube41
+    100220: pCube42
+    100222: pCube43
+    100224: pCube44
+    100226: pCube45
+    100228: pCylinder29
+    100230: Piece_L
+    100232: Piece_R
+    100234: polySurface14
+    100236: polySurface14 1
+    100238: polySurface15
+    100240: polySurface15 1
+    100242: polySurface16
+    100244: polySurface16 1
+    100246: polySurface68
+    100248: polySurface68 1
+    100250: polySurface82
+    100252: polySurface84
+    100254: polySurface85
+    100256: polySurface86
+    100258: polySurface87
+    100260: polySurface88
+    100262: polySurface89
+    100264: polySurface90
+    100266: Propeller
+    100268: Propeller 1
+    100270: R_UnmergedGunTransform
+    100272: transform1
+    100274: transform4
+    100276: Turbine
+    100278: Turbine 1
+    100280: TurbineVent1
+    100282: TurbineVent1 1
+    100284: TurbineVent2
+    100286: TurbineVent2 1
+    100288: TurbineVent3
+    100290: TurbineVent3 1
+    100292: UpperGunR
+    100294: UpperGunR 1
+    400000: //RootNode
+    400002: Backside
+    400004: BallR
+    400006: BallR 1
+    400008: Cannon
+    400010: CTRL_InnerGunR
+    400012: CTRL_InnerGunR 1
+    400014: CTRL_OuterGunR
+    400016: CTRL_OuterGunR 1
+    400018: CTRL_OuterGunR1
+    400020: CTRL_OuterGunR1 1
+    400022: CTRL_OuterGunR3
+    400024: CTRL_OuterGunR3 1
+    400026: CTRL_OuterGunR4
+    400028: CTRL_OuterGunR4 1
+    400030: CTRL_UpperGunR
+    400032: CTRL_UpperGunR 1
+    400034: CTRL_UpperGunR5
+    400036: CTRL_UpperGunR5 1
+    400038: Forearm
+    400040: Forearm 1
+    400042: group1
+    400044: group2
+    400046: Hand
+    400048: Hand1
+    400050: HandL
+    400052: HandR
+    400054: InnerGunHolderR
+    400056: InnerGunHolderR 1
+    400058: InnerLockInside
+    400060: InnerLockInside 1
+    400062: InnerLockL
+    400064: InnerLockR
+    400066: joint35
+    400068: joint36
+    400070: joint36 1
+    400072: joint37
+    400074: joint37 1
+    400076: joint38
+    400078: joint38 1
+    400080: joint39
+    400082: joint39 1
+    400084: joint40
+    400086: joint40 1
+    400088: joint41
+    400090: joint41 1
+    400092: joint42
+    400094: joint42 1
+    400096: joint43
+    400098: joint43 1
+    400100: joint44
+    400102: joint44 1
+    400104: joint45
+    400106: joint45 1
+    400108: joint46
+    400110: joint46 1
+    400112: joint47
+    400114: joint47 1
+    400116: joint48
+    400118: joint48 1
+    400120: joint49
+    400122: joint49 1
+    400124: joint50
+    400126: joint50 1
+    400128: joint51
+    400130: joint51 1
+    400132: joint52
+    400134: joint52 1
+    400136: joint53
+    400138: joint53 1
+    400140: joint54
+    400142: joint54 1
+    400144: joint55
+    400146: joint55 1
+    400148: joint56
+    400150: joint56 1
+    400152: joint57
+    400154: L_UnmergedGunTransform
+    400156: MasterCTRL
+    400158: MasterCTRL_L
+    400160: MasterCTRL_R
+    400162: MergedGunTransform
+    400164: nurbsCircle2
+    400166: nurbsCircle2 1
+    400168: nurbsCircle3
+    400170: nurbsCircle3 1
+    400172: nurbsCircle4
+    400174: nurbsCircle4 1
+    400176: nurbsCircle5
+    400178: nurbsCircle5 1
+    400180: nurbsCircle6
+    400182: nurbsCircle6 1
+    400184: nurbsCircle7
+    400186: nurbsCircle7 1
+    400188: nurbsCircle8
+    400190: nurbsCircle8 1
+    400192: nurbsCircle9
+    400194: nurbsCircle9 1
+    400196: nurbsCone1
+    400198: nurbsCone1 1
+    400200: nurbsCone2
+    400202: nurbsCone3
+    400204: OuterGunR
+    400206: OuterGunR 1
+    400208: OuterGunR2
+    400210: OuterGunR2 1
+    400212: pCube38
+    400214: pCube39
+    400216: pCube40
+    400218: pCube41
+    400220: pCube42
+    400222: pCube43
+    400224: pCube44
+    400226: pCube45
+    400228: pCylinder29
+    400230: Piece_L
+    400232: Piece_R
+    400234: polySurface14
+    400236: polySurface14 1
+    400238: polySurface15
+    400240: polySurface15 1
+    400242: polySurface16
+    400244: polySurface16 1
+    400246: polySurface68
+    400248: polySurface68 1
+    400250: polySurface82
+    400252: polySurface84
+    400254: polySurface85
+    400256: polySurface86
+    400258: polySurface87
+    400260: polySurface88
+    400262: polySurface89
+    400264: polySurface90
+    400266: Propeller
+    400268: Propeller 1
+    400270: R_UnmergedGunTransform
+    400272: transform1
+    400274: transform4
+    400276: Turbine
+    400278: Turbine 1
+    400280: TurbineVent1
+    400282: TurbineVent1 1
+    400284: TurbineVent2
+    400286: TurbineVent2 1
+    400288: TurbineVent3
+    400290: TurbineVent3 1
+    400292: UpperGunR
+    400294: UpperGunR 1
+    2100000: Arm_L_Mat
+    2100002: MiddlePiece_Mat
+    2100004: Arm_R_Mat
+    2300000: BallR
+    2300002: BallR 1
+    2300004: Forearm
+    2300006: Forearm 1
+    2300008: InnerGunHolderR
+    2300010: InnerGunHolderR 1
+    2300012: InnerLockInside
+    2300014: InnerLockInside 1
+    2300016: InnerLockL
+    2300018: InnerLockR
+    2300020: OuterGunR
+    2300022: OuterGunR 1
+    2300024: OuterGunR2
+    2300026: OuterGunR2 1
+    2300028: pCube38
+    2300030: pCube39
+    2300032: pCube40
+    2300034: pCube41
+    2300036: pCube42
+    2300038: pCube43
+    2300040: pCube44
+    2300042: pCube45
+    2300044: pCylinder29
+    2300046: polySurface14
+    2300048: polySurface14 1
+    2300050: polySurface15
+    2300052: polySurface15 1
+    2300054: polySurface16
+    2300056: polySurface16 1
+    2300058: polySurface68
+    2300060: polySurface68 1
+    2300062: polySurface82
+    2300064: polySurface84
+    2300066: polySurface85
+    2300068: polySurface86
+    2300070: polySurface87
+    2300072: polySurface88
+    2300074: polySurface89
+    2300076: polySurface90
+    2300078: Propeller
+    2300080: Propeller 1
+    2300082: Turbine
+    2300084: Turbine 1
+    2300086: TurbineVent1
+    2300088: TurbineVent1 1
+    2300090: TurbineVent2
+    2300092: TurbineVent2 1
+    2300094: TurbineVent3
+    2300096: TurbineVent3 1
+    2300098: UpperGunR
+    2300100: UpperGunR 1
+    3300000: BallR
+    3300002: BallR 1
+    3300004: Forearm
+    3300006: Forearm 1
+    3300008: InnerGunHolderR
+    3300010: InnerGunHolderR 1
+    3300012: InnerLockInside
+    3300014: InnerLockInside 1
+    3300016: InnerLockL
+    3300018: InnerLockR
+    3300020: OuterGunR
+    3300022: OuterGunR 1
+    3300024: OuterGunR2
+    3300026: OuterGunR2 1
+    3300028: pCube38
+    3300030: pCube39
+    3300032: pCube40
+    3300034: pCube41
+    3300036: pCube42
+    3300038: pCube43
+    3300040: pCube44
+    3300042: pCube45
+    3300044: pCylinder29
+    3300046: polySurface14
+    3300048: polySurface14 1
+    3300050: polySurface15
+    3300052: polySurface15 1
+    3300054: polySurface16
+    3300056: polySurface16 1
+    3300058: polySurface68
+    3300060: polySurface68 1
+    3300062: polySurface82
+    3300064: polySurface84
+    3300066: polySurface85
+    3300068: polySurface86
+    3300070: polySurface87
+    3300072: polySurface88
+    3300074: polySurface89
+    3300076: polySurface90
+    3300078: Propeller
+    3300080: Propeller 1
+    3300082: Turbine
+    3300084: Turbine 1
+    3300086: TurbineVent1
+    3300088: TurbineVent1 1
+    3300090: TurbineVent2
+    3300092: TurbineVent2 1
+    3300094: TurbineVent3
+    3300096: TurbineVent3 1
+    3300098: UpperGunR
+    3300100: UpperGunR 1
+    4300000: HandL
+    4300002: polySurface85
+    4300004: polySurface87
+    4300006: pCube45
+    4300008: pCube42
+    4300010: pCube38
+    4300012: polySurface88
+    4300014: polySurface82
+    4300016: pCylinder29
+    4300018: pCube43
+    4300020: pCube40
+    4300022: pCube41
+    4300024: pCube44
+    4300026: pCube39
+    4300028: polySurface90
+    4300030: polySurface89
+    4300032: polySurface84
+    4300034: polySurface86
+    4300036: InnerGunHolderR
+    4300038: OuterGunR2
+    4300040: UpperGunR
+    4300042: OuterGunR
+    4300044: BallR
+    4300046: InnerLockR
+    4300048: InnerLockInside
+    4300050: TurbineVent3
+    4300052: TurbineVent2
+    4300054: TurbineVent1
+    4300056: Turbine
+    4300058: Forearm
+    4300060: Propeller
+    4300062: polySurface16
+    4300064: polySurface68
+    4300066: polySurface14
+    4300068: polySurface15
+    4300070: InnerGunHolderR
+    4300072: OuterGunR2
+    4300074: UpperGunR
+    4300076: OuterGunR
+    4300078: BallR
+    4300080: InnerLockL
+    4300082: InnerLockInside
+    4300084: TurbineVent3
+    4300086: TurbineVent2
+    4300088: TurbineVent1
+    4300090: Turbine
+    4300092: Forearm
+    4300094: Propeller
+    4300096: polySurface16
+    4300098: polySurface68
+    4300100: polySurface14
+    4300102: polySurface15
+    4300104: HandR
+    7400000: Merge
+    7400002: ShootMerged
+    7400004: UnMerge
+    7400006: Shoot Left
+    7400008: Shoot Right
+    7400010: Idle Unmerged
+    9500000: //RootNode
+    13700000: HandL
+    13700002: HandR
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Merge
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 30
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: ShootMerged
+      takeName: Take 001
+      firstFrame: 30
+      lastFrame: 43
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: UnMerge
+      takeName: Take 001
+      firstFrame: 52
+      lastFrame: 66
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Shoot Left
+      takeName: Take 001
+      firstFrame: 81
+      lastFrame: 95
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Shoot Right
+      takeName: Take 001
+      firstFrame: 110
+      lastFrame: 123
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Idle Unmerged
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 1
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
