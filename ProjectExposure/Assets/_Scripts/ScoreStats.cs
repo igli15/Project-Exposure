@@ -62,16 +62,11 @@ public class ScoreStats : MonoBehaviour
 
     public void ShowCritBox()
     {
-        Debug.Log("SHOW");
-        //if (m_critTween.IsActive()) m_critTween.Kill();
-
         m_critTween =critBox.transform.DOScaleX(1, 0.1f).OnComplete ( ()=> {  } ).SetEase(Ease.InQuad);
     }
 
     public void HideCritBox()
     {
-        Debug.Log("HIDE");
-        
         m_critTween=critBox.transform.DOScaleX(0, 0.1f).OnComplete(() => { }).SetEase(Ease.InQuad);
     }
 

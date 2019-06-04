@@ -12,7 +12,7 @@ public class Crystal : Hittable
 
 	[SerializeField] private float m_explosionRadius = 5;
 
-	[SerializeField] private AoeSphere m_aoeSphere;
+	[SerializeField] private GameObject m_crystalExplosionPrefab;
 
 	private bool m_exploded = false;
 	
@@ -105,9 +105,7 @@ public class Crystal : Hittable
 	{
 		AoeOverlapSphere(gunManager);
 		if (OnExplode != null) OnExplode(this);
-		GameObject obj = Instantiate(m_aoeSphere.gameObject, transform.position, Quaternion.identity);
-		obj.transform.position += Vector3.up * 3;
-		obj.GetComponent<AoeSphere>().Activate(m_explosionRadius);
+        Instantiate(m_crystalExplosionPrefab.gameObject, transform.position, Quaternion.identity);
         ScoreStats.instance.AddDeathData(GetColor(),transform, 2);
 		Destroy(transform.gameObject);
 	}

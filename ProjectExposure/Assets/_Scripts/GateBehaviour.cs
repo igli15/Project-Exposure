@@ -71,10 +71,8 @@ public class GateBehaviour : MonoBehaviour {
         //if (Input.GetKeyDown(KeyCode.A)) crystalLeft.OnHit.Invoke();
         //if (Input.GetKeyDown(KeyCode.S)) crystalMidle.OnHit.Invoke();
         //if (Input.GetKeyDown(KeyCode.D)) crystalRight.OnHit.Invoke();
-        Debug.Log((Camera.main.transform.position - transform.position).magnitude + " range: "+ m_range);
         if (((Camera.main.transform.position - transform.position).magnitude) < m_range)
         {
-            Debug.Log("Stop!!!!!!");
             CurveWallker.instance.StopMovement();
         }
     }
@@ -82,7 +80,6 @@ public class GateBehaviour : MonoBehaviour {
     public void RotateCoin(GameObject coin)
     {
         coinCount++;
-        Debug.Log("RotateCoin: "+coin.name);
         //coin.transform.DORotate(new Vector3(0, 180, 0),1);
         Tween rotation=coin.transform.DOLocalRotateQuaternion(Quaternion.Euler(0,0,0),1);
         
