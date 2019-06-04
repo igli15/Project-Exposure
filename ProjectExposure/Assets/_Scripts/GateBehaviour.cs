@@ -4,6 +4,9 @@ using UnityEngine;
 using DG.Tweening;
 public class GateBehaviour : MonoBehaviour {
 
+    [SerializeField]
+    private float m_range = 105;
+
     [Header("Crystals")]
     [SerializeField]
     public Crystal crystalLeft;
@@ -45,13 +48,13 @@ public class GateBehaviour : MonoBehaviour {
 
     public void Start()
     {
-        crystalLeft.OnHit.AddListener(()=>RotateCoin(coinlLeft));
-        crystalMidle.OnHit.AddListener(() => RotateCoin(coinMidle));
-        crystalRight.OnHit.AddListener(() => RotateCoin(coinRight));
+        crystalLeft.OnExplode += (Crystal c) => RotateCoin(coinlLeft);
+        crystalMidle.OnExplode+=((Crystal c) => RotateCoin(coinMidle));
+        crystalRight.OnExplode+=((Crystal c) => RotateCoin(coinRight));
 
-        crystalLeft.OnHit.AddListener(() => RotateRing(ringLeft1,ringRight1));
-        crystalMidle.OnHit.AddListener(() => RotateRing(ringLeft2, ringRight2));
-        crystalRight.OnHit.AddListener(() => RotateRing(ringLeft3, ringRight3));
+        crystalLeft.OnExplode+=((Crystal c) => RotateRing(ringLeft1,ringRight1));
+        crystalMidle.OnExplode+=((Crystal c) => RotateRing(ringLeft2, ringRight2));
+        crystalRight.OnExplode+=((Crystal c) => RotateRing(ringLeft3, ringRight3));
 
         ringLeft1.transform.Rotate(new Vector3(0, 0, 45));
         ringRight1.transform.Rotate(new Vector3(0, 0, 45));
@@ -65,9 +68,15 @@ public class GateBehaviour : MonoBehaviour {
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A)) crystalLeft.OnHit.Invoke();
-        if (Input.GetKeyDown(KeyCode.S)) crystalMidle.OnHit.Invoke();
-        if (Input.GetKeyDown(KeyCode.D)) crystalRight.OnHit.Invoke();
+        //if (Input.GetKeyDown(KeyCode.A)) crystalLeft.OnHit.Invoke();
+        //if (Input.GetKeyDown(KeyCode.S)) crystalMidle.OnHit.Invoke();
+        //if (Input.GetKeyDown(KeyCode.D)) crystalRight.OnHit.Invoke();
+        Debug.Log((Camera.main.transform.position - transform.position).magnitude + " range: "+ m_range);
+        if (((Camera.main.transform.position - transform.position).magnitude) < m_range)
+        {
+            Debug.Log("Stop!!!!!!");
+            CurveWallker.instance.StopMovement();
+        }
     }
 
     public void RotateCoin(GameObject coin)
@@ -75,7 +84,7 @@ public class GateBehaviour : MonoBehaviour {
         coinCount++;
         Debug.Log("RotateCoin: "+coin.name);
         //coin.transform.DORotate(new Vector3(0, 180, 0),1);
-        Tween rotation=coin.transform.DOLocalRotateQuaternion(Quaternion.Euler(0,180,0),1);
+        Tween rotation=coin.transform.DOLocalRotateQuaternion(Quaternion.Euler(0,0,0),1);
         
         //OpenDoor();
     }
@@ -92,7 +101,9 @@ public class GateBehaviour : MonoBehaviour {
         if (coinCount >= 3)
         {
             doorLeft.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, -100, 0), 4).SetEase(Ease.InSine);
-            doorRight.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, 100, 0), 4).SetEase(Ease.InSine);
+            doorRight.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, 100, 0), 4).SetEase(Ease.InSine).onComplete+=()=> { CurveWallker.instance.StartMovement(); };
+            
+            this.enabled = false;
         }
 
     }
