@@ -22420,7 +22420,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: HELLO
+  m_Text: 
 --- !u!222 &1419737398
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -24294,7 +24294,7 @@ CanvasGroup:
   m_Enabled: 1
   m_Alpha: 0
   m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &1843649268
 GameObject:

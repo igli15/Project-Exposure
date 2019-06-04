@@ -17,6 +17,8 @@ public class VirtualKeyboard : MonoBehaviour
 	private string m_finalString;
 	private InputField m_inputField;
 	private CanvasGroup m_canvasGroup;
+	private Image m_panelImage;
+	private bool m_isShown = false;
 	
 	[Space(30)]
 	[SerializeField] private KeyboardButton m_saveButton;
@@ -31,6 +33,7 @@ public class VirtualKeyboard : MonoBehaviour
 
 	private void Start()
 	{
+		m_panelImage = GetComponent<Image>();
 		m_canvasGroup = GetComponent<CanvasGroup>();
 		m_saveButton.OnClick.AddListener(delegate { OnSave.Invoke(); });
 	}
@@ -41,19 +44,40 @@ public class VirtualKeyboard : MonoBehaviour
 		get { return m_finalString; }
 	}
 
+	private void Update()
+	{
+		if (Input.GetMouseButtonDown(0) && m_isShown)
+		{
+			Vector2 m_mouseViewPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+			if (m_panelImage.rectTransform.anchorMax.y < m_mouseViewPos.y)
+			{
+				HideKeyboard(true);
+			}
+		}
+	}
 
 	public void ShowKeyboard(InputField i)
 	{
 		OnShow.Invoke();
-		m_canvasGroup.DOFade(1, m_appearTime);
+		Tween tween = m_canvasGroup.DOFade(1, m_appearTime);
+		tween.onComplete += delegate { m_isShown = true;};
+		
+		m_canvasGroup.blocksRaycasts = true;
 		m_inputField = i;
 	}
 	
 	
-	public void HideKeyboard()
+	public void HideKeyboard(bool discard = false)
 	{
 		OnHide.Invoke();
-		m_canvasGroup.DOFade(0, m_dissapearTime);
+
+		if (discard) m_inputField.text = "";
+		
+		Tween tween = m_canvasGroup.DOFade(0, m_dissapearTime);
+		tween.onComplete += delegate { m_isShown = false;};
+
+		m_canvasGroup.blocksRaycasts = false;
 		m_inputField = null;
+		m_finalString = "";
 	}
 }
