@@ -24210,7 +24210,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1041915660
 RectTransform:
   m_ObjectHideFlags: 0
@@ -24219,7 +24219,7 @@ RectTransform:
   m_GameObject: {fileID: 1041915659}
   m_LocalRotation: {x: -0, y: -0.00000005960463, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.000044231}
-  m_LocalScale: {x: 1.000001, y: 1, z: 1.000001}
+  m_LocalScale: {x: 0, y: 1, z: 1.000001}
   m_Children: []
   m_Father: {fileID: 579911599}
   m_RootOrder: 1
@@ -24329,11 +24329,11 @@ MonoBehaviour:
     lineCount: 3
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
@@ -27034,6 +27034,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1701087132}
+        m_MethodName: Swap
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   m_saveButton: {fileID: 2112305236}
@@ -28693,6 +28704,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1701087131}
+  - component: {fileID: 1701087132}
   m_Layer: 0
   m_Name: ScoreScreenCanvas
   m_TagString: Untagged
@@ -28714,6 +28726,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1701087132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1701087130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 403071c3872c3475a8154f83ba5e68e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnSwaped:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_from: {fileID: 1879374567}
+  m_to: {fileID: 1041915660}
 --- !u!1 &1703714171
 GameObject:
   m_ObjectHideFlags: 0
@@ -29917,7 +29947,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1879374567
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30032,11 +30062,11 @@ MonoBehaviour:
     lineCount: 2
     pageCount: 1
     materialCount: 1
-  m_havePropertiesChanged: 1
+  m_havePropertiesChanged: 0
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_spriteAnimator: {fileID: 0}
-  m_isInputParsingRequired: 1
+  m_isInputParsingRequired: 0
   m_inputSource: 0
   m_hasFontAssetChanged: 0
   m_subTextObjects:
