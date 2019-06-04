@@ -37,6 +37,9 @@ public class VirtualKeyboard : MonoBehaviour
 		m_canvasGroup = GetComponent<CanvasGroup>();
 		m_saveButton.isSaveButton = true;
 		m_saveButton.OnClick.AddListener(delegate { Apply(); });
+		
+		m_canvasGroup.blocksRaycasts = false;
+		m_canvasGroup.alpha = 0;
 	}
 
 	public string finalString
