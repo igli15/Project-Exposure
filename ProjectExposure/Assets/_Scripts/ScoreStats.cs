@@ -93,38 +93,47 @@ public class ScoreStats : MonoBehaviour
 
         int score = 0;
         string tag = "s100";
+        Color currentColor = Color.white;
         switch (m_currentBonus) {
             case 1:
                 score += 100;
                 tag = "s100";
+                currentColor = Color.white;
                 break;
             case 2:
                 score += 200;
                 tag = "s200";
+                currentColor = Color.blue;
                 break;
             case 3:
                 score += 400;
                 tag = "s400";
+                currentColor = Color.cyan;
                 break;
             case 4:
                 score += 800;
                 tag = "s800";
+                currentColor = Color.green;
                 break;
             case 5:
                 score += 1000;
                 tag = "s1000";
+                currentColor = Color.red;
                 break;
             case 6:
                 score += 2000;
                 tag = "s2000";
+                currentColor = Color.yellow;
                 break;
             case 7:
                 score += 4000;
                 tag = "s4000";
+                currentColor = Color.magenta;
                 break;
             case 8:
                 score += 8000;
                 tag = "s8000";
+                currentColor = Color.magenta;
                 break;
         }
 
@@ -133,6 +142,8 @@ public class ScoreStats : MonoBehaviour
             
             m_tweenCritScore = m_critScore;
             m_critScore += score;
+
+            critText.color = currentColor;
             DOTween.To(() => m_tweenCritScore, x =>
             {
                 m_tweenCritScore = x;
