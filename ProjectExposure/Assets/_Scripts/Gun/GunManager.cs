@@ -115,7 +115,7 @@ public class GunManager : MonoBehaviour,IAgent
 			}
 		}
 
-
+	
 		return null;
 	}
 	

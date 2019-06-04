@@ -46,6 +46,7 @@ public class VirtualKeyboard : MonoBehaviour
 
 	private void Update()
 	{
+		/*
 		if (Input.GetMouseButtonDown(0) && m_isShown)
 		{
 			Vector2 m_mouseViewPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
@@ -54,6 +55,7 @@ public class VirtualKeyboard : MonoBehaviour
 				HideKeyboard(true);
 			}
 		}
+		*/
 	}
 
 	public void ShowKeyboard(InputField i)
