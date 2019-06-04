@@ -5,9 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/_Scenes/Waiwas scenes/Menu.unity
+    guid: 1f911eb1ad1984e43af96bb131d291ae
   - enabled: 1
     path: Assets/_Scenes/Guillaume's SCenes/PlaytestSession.unity
     guid: a7f29a28337c6aa4e8e7679e9ee55909

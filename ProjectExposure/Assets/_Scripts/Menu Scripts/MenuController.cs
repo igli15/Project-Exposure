@@ -1,10 +1,10 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class MenuController : MonoBehaviour 
 {
-
 	// Use this for initialization
 	void Start () 
 	{
@@ -18,7 +18,7 @@ public class MenuController : MonoBehaviour
 		{
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
-			
+
 			if (Physics.Raycast(ray.origin,ray.direction, out hit, 2000))
 			{
 				Raycastable raycastable = hit.transform.GetComponent<Raycastable>();

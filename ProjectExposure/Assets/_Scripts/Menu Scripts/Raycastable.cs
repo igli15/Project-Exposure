@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class Raycastable : MonoBehaviour
+public abstract class Raycastable : MonoBehaviour
 {
 
 	[SerializeField] private UnityEvent OnMouseDown;
