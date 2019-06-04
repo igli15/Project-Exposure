@@ -34,12 +34,8 @@ public class VirtualKeyboard : MonoBehaviour
 	private void Start()
 	{
 		m_panelImage = GetComponent<Image>();
-		m_canvasGroup = GetComponent<CanvasGroup>();
 		m_saveButton.isSaveButton = true;
 		m_saveButton.OnClick.AddListener(delegate { Apply(); });
-		
-		m_canvasGroup.blocksRaycasts = false;
-		m_canvasGroup.alpha = 0;
 	}
 
 	public string finalString
@@ -63,10 +59,9 @@ public class VirtualKeyboard : MonoBehaviour
 	public void ShowKeyboard(InputField i)
 	{
 		OnShow.Invoke();
-		Tween tween = m_canvasGroup.DOFade(1, m_appearTime);
-		tween.onComplete += delegate { m_isShown = true;};
 		
-		m_canvasGroup.blocksRaycasts = true;
+		DOVirtual.DelayedCall(0.1f, delegate { m_isShown = true; });
+		
 		m_inputField = i;
 	}
 	
@@ -77,10 +72,8 @@ public class VirtualKeyboard : MonoBehaviour
 
 		if (discard) m_inputField.text = "";
 		
-		Tween tween = m_canvasGroup.DOFade(0, m_dissapearTime);
-		tween.onComplete += delegate { m_isShown = false;};
+		DOVirtual.DelayedCall(0.1f, delegate { m_isShown = false; });
 
-		m_canvasGroup.blocksRaycasts = false;
 		m_inputField = null;
 		m_finalString = "";
 	}
