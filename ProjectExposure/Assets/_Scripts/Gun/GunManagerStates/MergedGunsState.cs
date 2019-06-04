@@ -7,34 +7,16 @@ using UnityEngine;
 
 public class MergedGunsState : GunState
 {
-	public static Action<Hittable,GunManager> OnShoot;
-	public static Action<MergedGunsState> OnMerge;
-	public enum GunMode
-	{
-		COLOR,
-		SHOOT,
-	}
-
-	[SerializeField] private Gun m_colorGun;
-	[SerializeField] private Gun m_damageGun;
 	
-	private GunMode m_currentMode;
-
-	public GunMode currentMode
-	{
-		get { return m_currentMode; }
-	}
-
+	public static Action<MergedGunsState> OnMerge;
+	public static Action<Hittable, GunManager> OnShoot;
+	
 
 	public override void Enter(IAgent pAgent)
 	{
-		if (OnMerge != null) OnMerge(this);
 		base.Enter(pAgent);
-	}
 
-	public override void Exit(IAgent pAgent)
-	{
-		base.Exit(pAgent);
+		if (OnMerge != null) OnMerge(this);
 	}
 
 	public override void Shoot()
@@ -42,27 +24,12 @@ public class MergedGunsState : GunState
 		if (target.isMouseDown) return; //if the mouse is clicking on the gun dont shoot!
 		
 		Hittable hittable = target.RaycastFromGuns();
-
-		if(OnShoot != null) OnShoot(hittable, target);
 		
+		if (OnShoot != null) OnShoot(hittable,target);
 		
 		if(hittable != null)
 		{
-			
-			if (hittable.GetColor() == Color.white)
-			{
-				m_currentMode = GunMode.COLOR;
-				//m_colorGun.Shoot();
-				hittable.Hit(target,0,target.color);
-					
-			}
-			else
-			{
-				m_currentMode = GunMode.SHOOT;
-				//m_damageGun.Shoot();
-				float m_damage = target.CalculateDamage(target.color, hittable.GetColor());
-				hittable.Hit(target,m_damage,target.color);
-			}
+			hittable.Hit(target,100,target.color);
 		}
 	}
 }

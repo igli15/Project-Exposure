@@ -3,121 +3,74 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class SplitGunsState : GunState
 {
-	public static Action<Hittable,GunManager> OnPull;
-	public static Action<Hittable,GunManager> OnPulling;
-	public static Action<Hittable,GunManager> OnPush;
-	public static Action<Hittable,GunManager> OnTargetPulled;
-	
+	public static Action<Hittable,GunManager,Gun> OnShoot;
 	public static Action<SplitGunsState> OnSplit;
+
 	
-	[SerializeField] private Transform m_pullTargetLocation;
+	public enum GunMode
+	{
+		COLOR,
+		SHOOT
+	}
+
+	[SerializeField] private Gun m_leftGun;
+	[SerializeField] private Gun m_rightGun;
 	
-	[SerializeField] private float m_pushForce = 10;
+	private Gun m_currentGun;
+	private GunMode m_currentMode;
 
-	[SerializeField] private float m_pullForce = 50;
+	public GunMode currentMode
+	{
+		get { return m_currentMode; }
+	}
 
-	[Range(0.1f,1)]
-	[SerializeField] private float m_scaleDownFactor = 0.8f;
-
-	private Hittable m_pulledHittable ;
-
-	private bool m_targetIsInPlace ;
-
-	private Tweener m_scaleTween;
-	
 	public override void Enter(IAgent pAgent)
 	{
-		base.Enter(pAgent);
-
 		if (OnSplit != null) OnSplit(this);
-	
+		base.Enter(pAgent);
 	}
 
 	public override void Exit(IAgent pAgent)
 	{
 		base.Exit(pAgent);
-	
 	}
 
 	public override void Shoot()
 	{
+		if (target.isMouseDown || EventSystem.current.IsPointerOverGameObject()) return; //if the mouse is clicking on the gun dont shoot!
+		
 		Hittable hittable = target.RaycastFromGuns();
 
-		if (hittable != null && !m_targetIsInPlace && !hittable.transform.CompareTag("Enemy"))
+		Vector3 cameraViewportPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+		if (cameraViewportPos.x > 0.5f) m_currentGun = m_rightGun;
+		else m_currentGun = m_leftGun;
+		
+		if(OnShoot != null) OnShoot(hittable, target,m_currentGun);
+		
+		
+		if(hittable != null)
 		{
 			
-			PullTarget(hittable);
-		}
-		
-		if (m_targetIsInPlace)
-		{
-			PushTarget(target.GetDirFromGunToMouse());
-		}
-	}
-
-	protected override void FixedUpdate()
-	{
-		base.FixedUpdate();
-		
-		if (m_pulledHittable != null  && !m_targetIsInPlace)
-		{
-			if (Vector3.Distance(m_pulledHittable.transform.position, m_pullTargetLocation.position) < 0.5f)
+			if (hittable.GetColor() == Color.white)
 			{
-				if (OnTargetPulled != null) OnTargetPulled(m_pulledHittable, target);
-				m_targetIsInPlace = true;
-				m_pulledHittable.transform.parent = m_pullTargetLocation;
+				m_currentMode = GunMode.COLOR;
+				//m_colorGun.Shoot();
+				hittable.Hit(target,0,target.color);
+					
 			}
-
-			if (OnPulling != null) OnPulling(m_pulledHittable, target);
-			m_pulledHittable.transform.position = Vector3.MoveTowards(m_pulledHittable.transform.position, m_pullTargetLocation.position,   m_pullForce*Time.deltaTime);
-		}
-		
-	}
-
-	public void PushTarget(Vector3 dir)
-	{
-		if (m_targetIsInPlace)
-		{
-			if (OnPush != null) OnPush(m_pulledHittable, target);
-			
-			m_pulledHittable.transform.parent = null;
-			m_pulledHittable.GetComponent<Rigidbody>().isKinematic = false;
-			m_pulledHittable.GetComponent<Rigidbody>().AddForce(dir * m_pushForce, ForceMode.Impulse);
-			
-			if (m_pulledHittable.OnPushed != null) m_pulledHittable.OnPushed(m_pulledHittable);
-
-			m_pulledHittable.transform.localScale = new Vector3(1,1,1);
-			m_pulledHittable.transform.SetParent(null);
-			m_pulledHittable = null;
-			m_targetIsInPlace = false;
-			
+			else
+			{
+				m_currentMode = GunMode.SHOOT;
+				//m_damageGun.Shoot();
+				float m_damage = target.CalculateDamage(target.color, hittable.GetColor());
+				hittable.Hit(target,m_damage,target.color);
+			}
 		}
 	}
 
-	public void ReleaseTarget()
-	{
-		if(m_pulledHittable.OnReleased != null) m_pulledHittable.OnReleased(m_pulledHittable);
-		m_pulledHittable.transform.localScale = new Vector3(1,1,1);
-		m_pulledHittable.GetComponent<Rigidbody>().velocity = Vector3.zero;
-		m_pulledHittable.GetComponent<Rigidbody>().isKinematic = true;
-		
-		m_pulledHittable = null;
-		m_targetIsInPlace = false;
-	}
 
-	public void PullTarget(Hittable t)
-	{
-		if (OnPull != null) OnPull(m_pulledHittable, target);
-		
-		t.transform.localScale = t.transform.localScale * m_scaleDownFactor;
-		
-		t.GetComponent<Rigidbody>().velocity = Vector3.zero;
-		t.GetComponent<Rigidbody>().isKinematic = true;
-		m_pulledHittable = t;
-
-		if (t.OnPulled != null) t.OnPulled(t);
-	}
 }
