@@ -6,18 +6,17 @@ public class WaterSlide : MonoBehaviour {
 
     [SerializeField]
     private GameObject m_waterStream;
+
     [SerializeField]
     private CurveBinder m_optionalPath;
+
     [SerializeField]
     private CurveBinder m_standardPath;
 
-    // Use this for initialization
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+    private void OnDestroy()
+    {
+        m_waterStream.SetActive(true);
+        m_optionalPath.isActivated = true;
+        m_standardPath.isActivated = true;
+    }
 }
