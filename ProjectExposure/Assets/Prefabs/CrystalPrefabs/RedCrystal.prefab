@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 135697441727514210}
   - component: {fileID: 54422607360702716}
   - component: {fileID: 114779294674596926}
+  - component: {fileID: 114899827049837982}
   m_Layer: 0
   m_Name: RedCrystal
   m_TagString: Crystals
@@ -37,13 +38,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1581030518602106}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 87.02, y: 42.79, z: -107.13}
-  m_LocalScale: {x: 0.59894, y: 0.5989401, z: 0.59893996}
+  m_LocalRotation: {x: 0.30102286, y: 0.3307809, z: 0.39860928, w: 0.80067474}
+  m_LocalPosition: {x: 51.28031, y: 83.82207, z: 26.374172}
+  m_LocalScale: {x: 0.5989401, y: 0.5989401, z: 0.59893996}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 12.611001, y: 52.065002, z: 59.111004}
 --- !u!23 &23852342358463598
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -121,6 +122,20 @@ MonoBehaviour:
   m_explosionRadius: 17
   m_aoeSphere: {fileID: 114511912697756272, guid: b34b2ee2b42264cada9837187feac2d3,
     type: 2}
+--- !u!114 &114899827049837982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1581030518602106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 722c0181e672ccd4bac9976694de0279, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_waterStream: {fileID: 0}
+  m_optionalPath: {fileID: 0}
+  m_standardPath: {fileID: 0}
 --- !u!135 &135697441727514210
 SphereCollider:
   m_ObjectHideFlags: 1
