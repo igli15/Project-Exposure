@@ -23,7 +23,7 @@ public class ScoreBubble : MonoBehaviour,IPointerDownHandler
 	// Update is called once per frame
 	void Update () 
 	{
-		if(m_rectTransform.anchoredPosition.y >= 54) Spawn();
+		if(m_rectTransform.anchoredPosition.y >= 80) Spawn();
 	}
 
 	public void Spawn(string s)
@@ -35,7 +35,7 @@ public class ScoreBubble : MonoBehaviour,IPointerDownHandler
 			m_rectTransform.anchoredPosition = new Vector3(Random.Range(-20, 26), 0.5f, 0);
 		}
 
-		DOVirtual.DelayedCall(Random.Range(1f,10.0f), delegate
+		DOVirtual.DelayedCall(Random.Range(1f,5.0f), delegate
 		{
 			m_bubbleText.text = s;
 			m_rigidbody2D.gravityScale = -0.2f;

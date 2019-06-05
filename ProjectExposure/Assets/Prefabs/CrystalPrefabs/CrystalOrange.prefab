@@ -39,7 +39,7 @@ Transform:
   m_GameObject: {fileID: 1240106778528794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 94.46, y: 25.44, z: -132.65}
-  m_LocalScale: {x: 0.7546644, y: 0.75466436, z: 0.7546642}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -85,7 +85,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1240106778528794}
-  m_Mesh: {fileID: 4300104, guid: 95241b6c04cc84a74a76a3c318bd8339, type: 3}
+  m_Mesh: {fileID: 4300002, guid: a11547a8f25c2654ba29bf5808b90c82, type: 3}
 --- !u!54 &54253663648629104
 Rigidbody:
   m_ObjectHideFlags: 1
@@ -129,7 +129,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   color: {r: 1, g: 0.64705884, b: 0, a: 1}
-  m_explosionRadius: 17
+  m_explosionRadius: 10
   m_crystalExplosionPrefab: {fileID: 1922569974235146, guid: c4858da8bb247d94db1b9727cd4d672d,
     type: 2}
 --- !u!135 &135004049051997738
@@ -142,5 +142,5 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2.9407623
-  m_Center: {x: 0.66802305, y: 0.109639406, z: -0.02933073}
+  m_Radius: 0.59
+  m_Center: {x: 0, y: 0, z: 0}
