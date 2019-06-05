@@ -166,4 +166,9 @@ public class ScoreStats : MonoBehaviour
         scoreDisplay.GetComponent<ScoreBehaviour>().ActivateScoreBehaviour(tag);
         m_lastTimeDeath = Time.time;
     }
+
+    public void UpdateHighScore()
+    {
+        HighScoreManager.instance.highScore = m_currentScore;
+    }
 }

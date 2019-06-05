@@ -8,10 +8,8 @@ public class WorldInputField : Raycastable
 	[SerializeField] private InputField m_inputField;
 	[SerializeField] private VirtualKeyboard m_virtualKeyboard;
 
-	public override void Click(Ray ray)
+	private void Start()
 	{
-		base.Click(ray);
-		
 		m_virtualKeyboard.ShowKeyboard(m_inputField);
 	}
 }

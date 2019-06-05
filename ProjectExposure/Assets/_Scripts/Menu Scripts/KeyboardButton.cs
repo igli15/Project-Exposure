@@ -47,7 +47,7 @@ public class KeyboardButton : MonoBehaviour,IPointerDownHandler
 		m_image.color = Color.gray;
 
 		m_delayTween = DOVirtual.DelayedCall(0.2f, delegate { m_image.color = Color.white; }, true);
-		//Debug.Log(m_key.ToString());
+		//Debug.Log( m_key );
 
 		m_parentKeyboard.finalString += m_key;
 		m_parentKeyboard.inputField.text += m_key;

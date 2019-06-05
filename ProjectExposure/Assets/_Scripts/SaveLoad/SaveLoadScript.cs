@@ -21,7 +21,7 @@ public static class SaveLoadScript
 		if (File.Exists(Application.persistentDataPath + "/"+ fileNameToLoadFrom + ".json"))
 		{
 			var loadedData = Encryption.Decrypt(File.ReadAllText(Application.persistentDataPath + "/"+ fileNameToLoadFrom + ".json"));
-
+			Debug.Log(loadedData);
 			JsonUtility.FromJsonOverwrite(loadedData, objToLoad);
 
 		}

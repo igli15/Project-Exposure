@@ -14,16 +14,30 @@ public class HighScoreManager : MonoBehaviour
 	{
 		public string name;
 		public int score;
+
+		public override string ToString()
+		{
+			return "name: "+ name + " " + "Score: "+ score;
+		}
 	}
 
 	[HideInInspector]
 	public HighscoreData[] highscoreArray;   //an array of data ;D
 
+	public IOrderedEnumerable<KeyValuePair<string, int>> orderedScores;
 
 	Dictionary<string,int> highscoreDictionary = new Dictionary<string,int>();
 
-
+	private int m_highScore;
+	
 	public static HighScoreManager instance;
+
+
+	public int highScore
+	{
+		get { return m_highScore; }
+		set { m_highScore = value; }
+	}
 
 	private void Awake()
 	{
@@ -44,13 +58,64 @@ public class HighScoreManager : MonoBehaviour
 		
 		//SceneManager.sceneLoaded += OnSceneLoaded;
 		
+	}
+
+	public void LoadHighScores()
+	{
 		SaveLoadScript.Load(this,"HighScores");
 		if (highscoreArray != null)
 		{
 			highscoreDictionary = HighScoreDictionaryFromArray(highscoreArray);   //Load array if there is one
 		}
+		
+		OrderScores();
 	}
 
+	private void OrderScores()
+	{
+		orderedScores = from pair in highscoreDictionary
+			orderby pair.Value descending 
+			select pair;
+
+	}
+
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.A))
+		{
+			SubmitHighScore("Igli");
+		}
+		
+		if (Input.GetKeyDown(KeyCode.B))
+		{
+			SubmitHighScore("Test");
+		}
+		
+		if (Input.GetKeyDown(KeyCode.C))
+		{
+			highscoreArray = null;
+		}
+	}
+
+	public void SubmitHighScore(string userName)         //Check if there is a username or not and apply score properly then save locally
+	{
+		if(!highscoreDictionary.ContainsKey(userName))
+		{
+			highscoreDictionary.Add(userName,m_highScore);
+			SaveHighscore();
+		}
+		else
+		{
+			int score = highscoreDictionary[userName];
+
+			if (score < m_highScore)
+			{
+				highscoreDictionary[userName] = m_highScore;
+			}
+			
+			SaveHighscore();
+		}
+	}
 
 	private void SaveHighscore()
 	{
@@ -83,10 +148,6 @@ public class HighScoreManager : MonoBehaviour
 		{
 			dictionaryToReturn.Add(arrayOfData[i].name,arrayOfData[i].score);
 		}
-		
-		var list = dictionaryToReturn.ToList();
-
-		list.Sort((pair1,pair2) => pair1.Value.CompareTo(pair2.Value));
 		
 		return dictionaryToReturn;
 	}
