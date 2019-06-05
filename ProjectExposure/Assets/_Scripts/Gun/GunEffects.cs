@@ -47,7 +47,7 @@ public class GunEffects : MonoBehaviour
 
 		SplitGunsState.OnShoot += InitSplitGunRays;
 		MergedGunsState.OnShoot += InitMergeGunRay;
-		MergedGunsState.OnShoot += EnableMuzzleFlash;
+		//MergedGunsState.OnShoot += EnableMuzzleFlash;
 		//MergedGunsState.OnShoot += PlayParticles;
 	}
 
