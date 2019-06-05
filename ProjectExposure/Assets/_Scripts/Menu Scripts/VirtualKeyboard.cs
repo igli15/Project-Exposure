@@ -82,6 +82,9 @@ public class VirtualKeyboard : MonoBehaviour
 
 	public void Apply()
 	{
+		HighScoreManager.instance.LoadHighScores();
+		HighScoreManager.instance.SubmitHighScore(m_inputField.text);
+		
 		OnSave.Invoke();
 		
 		HideKeyboard(false);
