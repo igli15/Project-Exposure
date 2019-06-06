@@ -10,18 +10,16 @@ public class RotationZone : MonoBehaviour {
 
     CurveWallker m_player;
     bool m_lookAtTarget = false;
-    // Use this for initialization
-    void Start () {
+
+    void Start ()
+    {
         m_player = CurveWallker.instance;
     }
 	
-	// Update is called once per frame
-	void Update () {
-        if (m_lookAtTarget)
-        {
-            m_player.transform.LookAt(target);
-        }
-	}
+	void Update ()
+    {
+        if (m_lookAtTarget) m_player.transform.LookAt(target);
+    }
 
     public void RotateTowards(Vector3 targetPosition,float time)
     {
@@ -32,8 +30,7 @@ public class RotationZone : MonoBehaviour {
         Vector3 futurePosition = m_player.GetPositionIn(time);
         Vector3 newTargetPosition = (targetPosition-futurePosition) + m_player.transform.position;
 
-        // m_player.transform.DORotate(eulerAngle,time).onComplete += () => { m_lookAtTarget = true; };
-        m_player.transform.DOLookAt(newTargetPosition, time).onComplete+=()=> { m_lookAtTarget = true;  };
+        m_player.transform.DOLookAt(newTargetPosition, time).onComplete+=()=> { m_lookAtTarget = true; };
     }
 
     public void RotateBackToSpline(float time)
@@ -45,19 +42,18 @@ public class RotationZone : MonoBehaviour {
         Vector3 newTargetPosition = m_player.transform.position + m_player.GetDirectionIn(time)*5;
 
         m_player.transform.DOLookAt(newTargetPosition, time).onComplete += () => { m_player.lookForward = true; };
-
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
-        RotateTowards(target.position, durationOfrotation);
+            RotateTowards(target.position, durationOfrotation);
     }
 
     private void OnTriggerExit(Collider other)
     {
         if (other.CompareTag("Player"))
-            RotateBackToSpline(3);
+            RotateBackToSpline(durationOfrotation);
     }
 
 
