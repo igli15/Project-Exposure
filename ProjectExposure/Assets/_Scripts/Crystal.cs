@@ -27,7 +27,7 @@ public class Crystal : Hittable
 	}
 
 	// Use this for initialization
-	void Start () 
+	public void Start () 
 	{
 		//OnReleased += delegate(Hittable hittable) { GetComponent<Rigidbody>().useGravity = true; };
 		//OnPulled += delegate(Hittable hittable) {   GetComponent<Rigidbody>().velocity = Vector3.zero;};

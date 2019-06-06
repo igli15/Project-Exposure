@@ -22,8 +22,13 @@ public class ArcherFSM : EnemyFSM
         m_animator = GetComponent<Animator>();
 
         m_enemy = GetComponent<Enemy>();
-
-        GetComponent<Health>().OnDeath+=delegate(Health health){ DestroyEnemy(); };
+        m_enemy.OnHit.AddListener( () => {
+            GameObject explotion= ObjectPooler.instance.SpawnFromPool("fishPlotion", transform.position, transform.rotation);
+            explotion.SetActive(false);
+            explotion.SetActive(true);
+        } 
+        ); 
+        GetComponent<Health>().OnDeath+=(Health health)=>{ DestroyEnemy(); };
 
         if (isIndependentAgent) InitializeEnemy();
     }
@@ -57,10 +62,12 @@ public class ArcherFSM : EnemyFSM
 
     public override void DestroyEnemy()
     {
-        base.DestroyEnemy();
         ScoreStats.instance.AddDeathData(m_enemy.GetColor(),transform,2);
+        
+        base.DestroyEnemy();
 
         m_rigidBody.velocity = Vector3.zero;
         ObjectPooler.instance.DestroyFromPool("Archer", gameObject);
+        
     }
 }
