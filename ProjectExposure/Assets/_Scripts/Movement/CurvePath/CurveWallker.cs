@@ -61,6 +61,12 @@ public class CurveWallker : MonoBehaviour
         return futurePosition;
     }
 
+    public Vector3 GetDirectionIn(float time)
+    {
+        Vector3 futureDirection = spline.GetDirection(m_progress + time / spline.Duration * m_durationMultiplier);
+        return futureDirection;
+    }
+
     public void StartMovement()
     {
         m_isActive = true;

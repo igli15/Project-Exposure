@@ -36,10 +36,28 @@ public class RotationZone : MonoBehaviour {
         m_player.transform.DOLookAt(newTargetPosition, time).onComplete+=()=> { m_lookAtTarget = true;  };
     }
 
+    public void RotateBackToSpline(float time)
+    {
+        m_player = CurveWallker.instance; //just in case
+        m_lookAtTarget = false;
+
+        Vector3 futurePosition = m_player.GetPositionIn(time);
+        Vector3 newTargetPosition = m_player.transform.position + m_player.GetDirectionIn(time)*5;
+
+        m_player.transform.DOLookAt(newTargetPosition, time).onComplete += () => { m_player.lookForward = true; };
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Player"))
         RotateTowards(target.position, durationOfrotation);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Player"))
+            RotateBackToSpline(3);
     }
 
 
