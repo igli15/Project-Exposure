@@ -40,12 +40,12 @@ public class Enemy : Hittable
     public void OnHealthChanged(Health health)
     {
         float healthPercantage = health.HP / health.MaxHealth;
-        float crystalPercentage = m_crystals.Count / m_maxCrystalCount;
+        float crystalPercentage = (float)m_crystals.Count / (float)m_maxCrystalCount;
+
         if (crystalPercentage > healthPercantage)
         {
             float delta = crystalPercentage - healthPercantage;
             int countToRemove = (int) ( delta * m_maxCrystalCount );
-            Debug.Log("DELTA: " + delta+" / "+countToRemove);
             for (int i = 0; i < countToRemove; i++)
             {
                 RemoveCrystal();

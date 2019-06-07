@@ -36,7 +36,7 @@ public class CurveWallker : MonoBehaviour
         if (!m_isActive || !spline) return;
 
         m_progress += Time.deltaTime / ( spline.Duration*m_durationMultiplier );
-        Debug.Log("PROGRESS: " + Time.deltaTime / (spline.Duration * m_durationMultiplier));
+
         SplineMove(m_progress);
     }
 
@@ -77,12 +77,10 @@ public class CurveWallker : MonoBehaviour
     }
 
     public void StartMovement()
-        //TODO SMOOTH initial speed
     {
-        m_durationMultiplier = 600f;
-        m_isActive = true;
-        DOTween.To(() => m_durationMultiplier, x => m_durationMultiplier = x, 1, 0.3f).onComplete += () => {  };
-     // DOTween.To(() => m_tweenProgress, x => { m_tweenProgress = x; SplineMove(x); }, m_progress +0.05f,  spline.Duration*m_durationMultiplier*0.05f).SetEase(Ease.InQuad).onComplete += () => { m_isActive = true; m_progress = m_tweenProgress; };
+        m_tweenProgress = 0;
+        DOTween.To(() => m_tweenProgress, x => { m_tweenProgress = x; m_progress += x; SplineMove(m_progress);},
+        Time.deltaTime / (spline.Duration * m_durationMultiplier), spline.Duration * m_durationMultiplier*0.05f).SetEase(Ease.InQuad).onComplete += () => { m_isActive = true;  };
     }
 
     public void StopMovement()
