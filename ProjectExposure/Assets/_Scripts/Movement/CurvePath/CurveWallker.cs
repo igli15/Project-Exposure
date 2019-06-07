@@ -13,6 +13,8 @@ public class CurveWallker : MonoBehaviour
     public static CurveWallker instance;
 
     private float m_progress;
+    private float m_tweenProgress;
+
     public float progress
     {
         set
@@ -34,9 +36,15 @@ public class CurveWallker : MonoBehaviour
         if (!m_isActive || !spline) return;
 
         m_progress += Time.deltaTime / ( spline.Duration*m_durationMultiplier );
-        if (m_progress > 1f)
+
+        SplineMove(m_progress);
+    }
+
+    void SplineMove(float p)
+    {
+        if (p > 1f)
         {
-            m_progress = 1f;
+            p = 1f;
             if (spline.GetComponent<CurveBinder>())
             {
                 CurveBinder binder = spline.GetComponent<CurveBinder>();
@@ -47,13 +55,14 @@ public class CurveWallker : MonoBehaviour
                 }
             }
         }
-        Vector3 position = spline.GetPoint(m_progress);
+        Vector3 position = spline.GetPoint(p);
         transform.localPosition = position;
         if (lookForward)
         {
-            transform.LookAt(position + spline.GetDirection(m_progress));
+            transform.LookAt(position + spline.GetDirection(p));
         }
     }
+
 
     public Vector3 GetPositionIn(float time)
     {
@@ -69,7 +78,9 @@ public class CurveWallker : MonoBehaviour
 
     public void StartMovement()
     {
-        m_isActive = true;
+        m_tweenProgress = 0;
+        DOTween.To(() => m_tweenProgress, x => { m_tweenProgress = x; m_progress += x; SplineMove(m_progress);},
+        Time.deltaTime / (spline.Duration * m_durationMultiplier), spline.Duration * m_durationMultiplier*0.05f).SetEase(Ease.InQuad).onComplete += () => { m_isActive = true;  };
     }
 
     public void StopMovement()

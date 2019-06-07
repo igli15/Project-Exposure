@@ -36,6 +36,8 @@ GameObject:
   - component: {fileID: 4772302652177376}
   - component: {fileID: 137855501645370878}
   - component: {fileID: 114212190967236636}
+  - component: {fileID: 54024674222227868}
+  - component: {fileID: 135513289479875572}
   m_Layer: 0
   m_Name: Crystal_023
   m_TagString: Untagged
@@ -143,6 +145,8 @@ GameObject:
   - component: {fileID: 4377147151309080}
   - component: {fileID: 137176219264781508}
   - component: {fileID: 114716622951582870}
+  - component: {fileID: 54140224523822498}
+  - component: {fileID: 135406337068521376}
   m_Layer: 0
   m_Name: Crystal_022
   m_TagString: Untagged
@@ -190,6 +194,8 @@ GameObject:
   - component: {fileID: 4573719776453898}
   - component: {fileID: 137561739516401428}
   - component: {fileID: 114559636195743938}
+  - component: {fileID: 54340613084503976}
+  - component: {fileID: 135015714037972932}
   m_Layer: 0
   m_Name: Crystal_017
   m_TagString: Untagged
@@ -237,6 +243,8 @@ GameObject:
   - component: {fileID: 4654834261419986}
   - component: {fileID: 137537495516992826}
   - component: {fileID: 114679720206306324}
+  - component: {fileID: 54050350183179792}
+  - component: {fileID: 135402714068520568}
   m_Layer: 0
   m_Name: Crystal_020
   m_TagString: Untagged
@@ -314,6 +322,8 @@ GameObject:
   - component: {fileID: 4492920954457900}
   - component: {fileID: 137967700533357258}
   - component: {fileID: 114152455028446230}
+  - component: {fileID: 54040443079940886}
+  - component: {fileID: 135410185377778406}
   m_Layer: 0
   m_Name: Crystal_016
   m_TagString: Untagged
@@ -370,6 +380,8 @@ GameObject:
   - component: {fileID: 4370512052092440}
   - component: {fileID: 137055451989850282}
   - component: {fileID: 114268004319797768}
+  - component: {fileID: 54870434740099040}
+  - component: {fileID: 135504110315973958}
   m_Layer: 0
   m_Name: Crystal_012
   m_TagString: Untagged
@@ -387,6 +399,8 @@ GameObject:
   - component: {fileID: 4580510321841528}
   - component: {fileID: 137950703004480616}
   - component: {fileID: 114237970127285352}
+  - component: {fileID: 54966012978209190}
+  - component: {fileID: 135447611660109008}
   m_Layer: 0
   m_Name: Crystal_013
   m_TagString: Untagged
@@ -404,6 +418,8 @@ GameObject:
   - component: {fileID: 4868820748639684}
   - component: {fileID: 137496064211180212}
   - component: {fileID: 114393993997280680}
+  - component: {fileID: 54285976462870628}
+  - component: {fileID: 135254000330009558}
   m_Layer: 0
   m_Name: Crystal_021
   m_TagString: Untagged
@@ -421,6 +437,8 @@ GameObject:
   - component: {fileID: 4783970886158858}
   - component: {fileID: 137847365722414616}
   - component: {fileID: 114311622871242996}
+  - component: {fileID: 54404555171680096}
+  - component: {fileID: 135345209380502304}
   m_Layer: 0
   m_Name: Crystal_019
   m_TagString: Untagged
@@ -438,6 +456,8 @@ GameObject:
   - component: {fileID: 4240432682610790}
   - component: {fileID: 137466220050875744}
   - component: {fileID: 114520163581492356}
+  - component: {fileID: 54490287884088186}
+  - component: {fileID: 135496923091955716}
   m_Layer: 0
   m_Name: Crystal_09
   m_TagString: Untagged
@@ -455,6 +475,8 @@ GameObject:
   - component: {fileID: 4586179822956446}
   - component: {fileID: 137106124646867700}
   - component: {fileID: 114195111524248970}
+  - component: {fileID: 54250529180730294}
+  - component: {fileID: 135964570290383296}
   m_Layer: 0
   m_Name: Crystal_011
   m_TagString: Untagged
@@ -532,6 +554,8 @@ GameObject:
   - component: {fileID: 4738066872447832}
   - component: {fileID: 137752601407834584}
   - component: {fileID: 114383080835131574}
+  - component: {fileID: 54516397948653244}
+  - component: {fileID: 135699413071678340}
   m_Layer: 0
   m_Name: Crystal_018
   m_TagString: Untagged
@@ -580,6 +604,8 @@ GameObject:
   - component: {fileID: 4198723788120362}
   - component: {fileID: 137714944532725174}
   - component: {fileID: 114253908057808126}
+  - component: {fileID: 54388882976921004}
+  - component: {fileID: 135721634544704792}
   m_Layer: 0
   m_Name: Crystal_01
   m_TagString: Untagged
@@ -597,6 +623,8 @@ GameObject:
   - component: {fileID: 4213828064531248}
   - component: {fileID: 137976976710504484}
   - component: {fileID: 114120146182199780}
+  - component: {fileID: 54843626253835088}
+  - component: {fileID: 135377002351746912}
   m_Layer: 0
   m_Name: Crystal_015
   m_TagString: Untagged
@@ -660,6 +688,8 @@ GameObject:
   - component: {fileID: 4896336108983760}
   - component: {fileID: 137724625212331128}
   - component: {fileID: 114791636392081772}
+  - component: {fileID: 54421430453057168}
+  - component: {fileID: 135110299734944386}
   m_Layer: 0
   m_Name: Crystal_010
   m_TagString: Untagged
@@ -876,15 +906,15 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1482241771059522}
-  m_LocalRotation: {x: -0, y: 0.8441576, z: -0, w: -0.5360952}
-  m_LocalPosition: {x: 64.8755, y: 79.61, z: 23.660765}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalRotation: {x: -0.26476187, y: -0.7351865, z: -0.44629723, w: 0.436143}
+  m_LocalPosition: {x: 51.125492, y: 94.290634, z: 133.00754}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4393325178979656}
   - {fileID: 4922708351305196}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 244.836, z: 0}
+  m_LocalEulerAnglesHint: {x: -62.520004, y: -118.644005, z: 0}
 --- !u!4 &4547754889529604
 Transform:
   m_ObjectHideFlags: 1
@@ -1275,12 +1305,237 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!54 &54024674222227868
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1037386715337702}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54040443079940886
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1438413525670218}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54050350183179792
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354925784080320}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54140224523822498
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1137610896878482}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54250529180730294
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1592899311946422}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54285976462870628
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1539255209925778}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54340613084503976
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1228112952134910}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54388882976921004
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1719205759849230}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54404555171680096
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1583346150082268}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54421430453057168
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905083892230410}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54490287884088186
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1584757435925126}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54516397948653244
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1705065355373314}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!54 &54583732673483954
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1482241771059522}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54843626253835088
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1736332566266466}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54870434740099040
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1498917714472634}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!54 &54966012978209190
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1527450317502180}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -1324,9 +1579,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  color: {r: 1, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 0}
   m_explosionRadius: 5
-  m_aoeSphere: {fileID: 0}
+  m_crystalExplosionPrefab: {fileID: 0}
 --- !u!114 &114127099676162182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1339,11 +1594,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
-  waitingTime: 1
-  waitingTimeAfter: 1
+  waitingTime: 0.8
+  waitingTimeAfter: 0.8
   rangeOfShooting: 5000
   m_projectileSpeed: 10
-  m_lookAtDuration: 0.5
+  m_lookAtDuration: 0.4
 --- !u!114 &114134331025513968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1355,8 +1610,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d31213434195949afb5be6cfd3e2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_multiplierBonus: 2
   isIndependentAgent: 0
-  m_recoverTime: 0.8
+  m_recoverTime: 0.7
 --- !u!114 &114152455028446230
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1373,9 +1629,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  color: {r: 1, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 0}
   m_explosionRadius: 5
-  m_aoeSphere: {fileID: 0}
+  m_crystalExplosionPrefab: {fileID: 0}
 --- !u!114 &114195111524248970
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1392,9 +1648,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  color: {r: 1, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 0}
   m_explosionRadius: 5
-  m_aoeSphere: {fileID: 0}
+  m_crystalExplosionPrefab: {fileID: 0}
 --- !u!114 &114212190967236636
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1411,9 +1667,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  color: {r: 1, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 0}
   m_explosionRadius: 5
-  m_aoeSphere: {fileID: 0}
+  m_crystalExplosionPrefab: {fileID: 0}
 --- !u!114 &114237970127285352
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1430,9 +1686,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  color: {r: 1, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 0}
   m_explosionRadius: 5
-  m_aoeSphere: {fileID: 0}
+  m_crystalExplosionPrefab: {fileID: 0}
 --- !u!114 &114253908057808126
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1449,9 +1705,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  color: {r: 1, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 0}
   m_explosionRadius: 5
-  m_aoeSphere: {fileID: 0}
+  m_crystalExplosionPrefab: {fileID: 0}
 --- !u!114 &114268004319797768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1468,9 +1724,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  color: {r: 1, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 0}
   m_explosionRadius: 5
-  m_aoeSphere: {fileID: 0}
+  m_crystalExplosionPrefab: {fileID: 0}
 --- !u!114 &114311622871242996
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1487,9 +1743,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  color: {r: 1, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 0}
   m_explosionRadius: 5
-  m_aoeSphere: {fileID: 0}
+  m_crystalExplosionPrefab: {fileID: 0}
 --- !u!114 &114336973269497818
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1520,9 +1776,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  color: {r: 1, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 0}
   m_explosionRadius: 5
-  m_aoeSphere: {fileID: 0}
+  m_crystalExplosionPrefab: {fileID: 0}
 --- !u!114 &114393993997280680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1539,9 +1795,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  color: {r: 1, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 0}
   m_explosionRadius: 5
-  m_aoeSphere: {fileID: 0}
+  m_crystalExplosionPrefab: {fileID: 0}
 --- !u!114 &114520163581492356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1558,9 +1814,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  color: {r: 1, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 0}
   m_explosionRadius: 5
-  m_aoeSphere: {fileID: 0}
+  m_crystalExplosionPrefab: {fileID: 0}
 --- !u!114 &114559636195743938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1577,9 +1833,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  color: {r: 1, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 0}
   m_explosionRadius: 5
-  m_aoeSphere: {fileID: 0}
+  m_crystalExplosionPrefab: {fileID: 0}
 --- !u!114 &114679720206306324
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1596,9 +1852,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  color: {r: 1, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 0}
   m_explosionRadius: 5
-  m_aoeSphere: {fileID: 0}
+  m_crystalExplosionPrefab: {fileID: 0}
 --- !u!114 &114692279153762936
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1612,21 +1868,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   OnHit:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1482241771059522}
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  color: {r: 1, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 0}
+  crystalsParrent: {fileID: 1715329800515812}
 --- !u!114 &114716622951582870
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1643,9 +1889,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  color: {r: 1, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 0}
   m_explosionRadius: 5
-  m_aoeSphere: {fileID: 0}
+  m_crystalExplosionPrefab: {fileID: 0}
 --- !u!114 &114791636392081772
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1662,9 +1908,9 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  color: {r: 1, g: 0, b: 0, a: 0}
+  color: {r: 0, g: 1, b: 0, a: 0}
   m_explosionRadius: 5
-  m_aoeSphere: {fileID: 0}
+  m_crystalExplosionPrefab: {fileID: 0}
 --- !u!114 &114795634695360030
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1676,9 +1922,153 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30fbcda5b89314e21b1caf23992cdd96, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_health: 100
-  m_maxHealth: 100
+  m_health: 80
+  m_maxHealth: 80
   m_shouldBeDestroyed: 0
+--- !u!135 &135015714037972932
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1228112952134910}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.0474448
+  m_Center: {x: -0.023370743, y: -0.10518551, z: 0.115706444}
+--- !u!135 &135110299734944386
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1905083892230410}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6.608983
+  m_Center: {x: -0.0043907166, y: 0.092654705, z: -0.017620087}
+--- !u!135 &135254000330009558
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1539255209925778}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4.5229573
+  m_Center: {x: -0.11645174, y: 0.12857533, z: 0.105210125}
+--- !u!135 &135345209380502304
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1583346150082268}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4.717491
+  m_Center: {x: 0.17244771, y: 0.28673315, z: 0.054650776}
+--- !u!135 &135377002351746912
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1736332566266466}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 7.1419754
+  m_Center: {x: 0.06593895, y: 0.09545612, z: 0.09285402}
+--- !u!135 &135402714068520568
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354925784080320}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.1331582
+  m_Center: {x: 0.13598561, y: -0.11890602, z: 0.24062443}
+--- !u!135 &135406337068521376
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1137610896878482}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 11.266702
+  m_Center: {x: 0.17231339, y: 0.34132385, z: -0.22821808}
+--- !u!135 &135410185377778406
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1438413525670218}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.8900142
+  m_Center: {x: 0.19636655, y: 0.060522556, z: -0.011539221}
+--- !u!135 &135447611660109008
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1527450317502180}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6.9888597
+  m_Center: {x: -0.040534973, y: 0.094519675, z: 0.13863373}
+--- !u!135 &135496923091955716
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1584757435925126}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.651143
+  m_Center: {x: 0.31692314, y: 15.062092, z: 3.9553232}
+--- !u!135 &135504110315973958
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1498917714472634}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 6.8554945
+  m_Center: {x: 0.02532959, y: -0.27047968, z: 0.013697624}
+--- !u!135 &135513289479875572
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1037386715337702}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.9356527
+  m_Center: {x: -2.2956994, y: 31.713963, z: 2.2478666}
 --- !u!135 &135584271284718498
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -1691,6 +2081,42 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!135 &135699413071678340
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1705065355373314}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 4.2571692
+  m_Center: {x: 0.17884237, y: -0.23554993, z: 0.13073158}
+--- !u!135 &135721634544704792
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1719205759849230}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5.8741164
+  m_Center: {x: 0.08675957, y: 0.47818673, z: -0.075330734}
+--- !u!135 &135964570290383296
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1592899311946422}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 3.6848526
+  m_Center: {x: 0.090001106, y: 0.09063077, z: 0.2065363}
 --- !u!137 &137055451989850282
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

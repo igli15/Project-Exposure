@@ -46,7 +46,7 @@ public abstract class Hittable : MonoBehaviour
 		{
 			Health health = GetComponent<Health>();
 			
-			if (health != null) health.InflictDamage(100);
+			if (health != null) health.InflictDamage(101);
 		}
 	}
 
