@@ -15,7 +15,19 @@ public class Gun : MonoBehaviour
 
 	[SerializeField] private GunSide m_gunSide;
 	[SerializeField] private Transform m_shootTransform;
+
+
+	[SerializeField] private GunEffectGroup[] gunEffectGroups;
+
+	public int GetEffectGroupCount()
+	{
+		return gunEffectGroups.Length;
+	}
 	
+	public GunEffectGroup GetEffectGroupAt(int index)
+	{
+		return gunEffectGroups[index];
+	}
 
 	public GunSide gunSide
 	{

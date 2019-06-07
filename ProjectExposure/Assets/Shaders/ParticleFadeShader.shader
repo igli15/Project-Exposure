@@ -70,6 +70,8 @@ Shader "Custom/Particles/FadingShader"
             fixed4 frag (v2f i) : COLOR
             {
                 fixed4 col;
+                //i.gradientUV.x = (cos(_Time.y) +1)/2;
+               // i.gradientUV.y = (sin(_Time.y) + 1)/2;
                 
                 i.gradientUV.y += _Time.y;
                 fixed4 tex = tex2D(_MainTex, i.texcoord);

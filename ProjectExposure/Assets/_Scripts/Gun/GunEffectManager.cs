@@ -4,7 +4,7 @@ using DG.Tweening;
 using JetBrains.Annotations;
 using UnityEngine;
 
-public class GunEffects : MonoBehaviour 
+public class GunEffectManager : MonoBehaviour 
 {
 
 	[Header("Beam")]
@@ -18,16 +18,6 @@ public class GunEffects : MonoBehaviour
 	[Range(0, 1)] [SerializeField] private float m_saturationScale = 0.5f;
 	[Range(0, 1)] [SerializeField] private float m_valueScale = 1;
 
-	[Header("Particles")]
-	[SerializeField] private ParticleSystem m_particleFeedback;
-
-	[Header("Muzzle Flash")]
-	[SerializeField] private GameObject m_muzzleFlashGameObject;
-
-	[Range(0, 1)] [SerializeField] private float m_alpha = 0.3f;
-	[Range(0, 0.1f)] [SerializeField] private float m_fadeDuration = 0.1f;
-
-	
 	private Material m_muzzleFlashMaterial;
 	
 	private Renderer m_beamRenderer;
@@ -37,53 +27,19 @@ public class GunEffects : MonoBehaviour
 	private Sequence m_muzzleFlashSequence;
 	private void Awake()
 	{
-		
 		m_beamRenderer = m_lineRenderer.GetComponent<Renderer>();
-		m_muzzleFlashMaterial = m_muzzleFlashGameObject.GetComponent<Renderer>().material;
-
-		m_muzzleColor = m_muzzleFlashMaterial.GetColor("_TintColor");
-		m_muzzleColor.a = 0;
-		m_muzzleFlashMaterial.SetColor("_TintColor",m_muzzleColor);
 
 		SplitGunsState.OnShoot += InitSplitGunRays;
+		SplitGunsState.OnShoot += PlayGunParticles;
 		MergedGunsState.OnShoot += InitMergeGunRay;
-		//MergedGunsState.OnShoot += EnableMuzzleFlash;
-		//MergedGunsState.OnShoot += PlayParticles;
+		
 	}
 
-	
-	public void PlayParticles(Hittable hittable, GunManager manager)
-	{
-		//if (manager.isMouseDown) return;
-		
-		ParticleSystem.MainModule settingsFeedback = m_particleFeedback.main;
-		settingsFeedback.startColor = new ParticleSystem.MinMaxGradient( manager.color );
-		
-		m_particleFeedback.Play();
-	}
 
-	public void EnableMuzzleFlash(Hittable hittable, GunManager manager)
+	public void PlayGunParticles(Hittable hittable, GunManager gunManager,Gun gun)
 	{
-		//if (manager.isMouseDown) return;
 		
-		m_muzzleColor = manager.color;
-		m_muzzleColor.a = 0;
-		
-		//m_muzzleFlashSequence.Complete();
-		m_muzzleFlashSequence = DOTween.Sequence();
-		
-		
-		m_muzzleFlashSequence.Append(DOVirtual.Float(m_muzzleColor.a,m_alpha,m_fadeDuration,(delegate(float value)
-		{
-			m_muzzleColor.a = value;
-			m_muzzleFlashMaterial.SetColor("_TintColor",m_muzzleColor);
-		})));
-		
-		m_muzzleFlashSequence.Append(DOVirtual.Float(m_muzzleColor.a,0f,m_fadeDuration,(delegate(float value)
-		{
-			m_muzzleColor.a = value;
-			m_muzzleFlashMaterial.SetColor("_TintColor",m_muzzleColor);
-		})));
+		gun.GetEffectGroupAt(0).PlayARandomEffectInAColor(gunManager.color);
 	}
 
 	public void InitMergeGunRay(Hittable hittable, GunManager manager)
@@ -142,6 +98,7 @@ public class GunEffects : MonoBehaviour
 	{
 		//m_lineRenderer.SetPosition(0,origin.position);
 		
+		/*
 		int distribution = m_lineRenderer.positionCount;
 		
 		for (int i = 0; i < distribution; i++)
@@ -158,7 +115,9 @@ public class GunEffects : MonoBehaviour
 			}
 				
 		}
-		
+		*/
+		Vector3 finalpos = origin.position + manager.GetDirFromGunToMouse() * 20;
+		m_lineRenderer.SetPosition(1,finalpos); 
 		
 	}
 	
