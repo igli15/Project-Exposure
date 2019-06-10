@@ -7,11 +7,14 @@ using UnityEngine.EventSystems;
 
 public class GunManager : MonoBehaviour,IAgent
 {
+	[SerializeField] private AbstractGun[] guns;
+	
 	[SerializeField] private float m_baseDamage = 10;
 	[SerializeField] private float m_extraDamage = 20;
 	[SerializeField] private float m_hueDamageRange = 40;
 	
 	[SerializeField] private Transform m_origin;
+	
 	
 	private float m_damage = 0;
 
@@ -66,8 +69,11 @@ public class GunManager : MonoBehaviour,IAgent
 	
 	public void SetGunColors(Color newColor)
 	{
-		((GunState) m_fsm.GetCurrentState()).SetGunColor(newColor);
-		m_color = newColor;
+		foreach (AbstractGun gun in guns)
+		{
+			gun.color = newColor;
+		}
+		//m_color = newColor;
 	}
 	
 	public float CalculateDamage(Color myColor,Color enemyColor)
@@ -94,7 +100,17 @@ public class GunManager : MonoBehaviour,IAgent
 		return damage;
 	}
 
-	
+	public int GetGunCount()
+	{
+		return guns.Length;
+	}
+
+	public AbstractGun GetGunAt(int index)
+	{
+		return guns[index];
+	}
+
+	/*
 	public Hittable RaycastFromGuns()
 	{        
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -117,16 +133,9 @@ public class GunManager : MonoBehaviour,IAgent
 	
 		return null;
 	}
+	*/
 	
-	public Vector3 LookInRayDirection(Transform t,Ray ray)
-	{
-		Ray r = ray;
-		r.origin = origin.position;
-		Quaternion rot = Quaternion.LookRotation(r.direction.normalized,Vector3.up);
-		t.DORotate(rot.eulerAngles, 0.5f);
-		return r.direction;
-	}
-
+	/*
 	public Vector3 GetDirFromGunToMouse()
 	{
 		Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);;
@@ -134,6 +143,7 @@ public class GunManager : MonoBehaviour,IAgent
 		r.origin =  origin.position;
 		return r.direction;
 	}
+	*/
 	private void OnMouseDown()
 	{
 		m_mouseDown = true;

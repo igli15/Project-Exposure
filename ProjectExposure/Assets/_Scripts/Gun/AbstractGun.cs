@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -13,6 +14,15 @@ public abstract class AbstractGun : MonoBehaviour
     [SerializeField] private float m_sphereCastRadius = 2;
 
     private Color m_color = Color.red;
+
+    private GunManager m_manager;
+    
+
+    public GunManager manager
+    {
+        get { return m_manager; }
+        set { m_manager = value; }
+    }
 
     public Transform origin
     {
@@ -35,7 +45,7 @@ public abstract class AbstractGun : MonoBehaviour
         return gunEffectGroups[index];
     }
     
-    public abstract void Shoot();
+    public abstract Hittable Shoot();
     
     public Vector3 GetDirFromGunToMouse()
     {

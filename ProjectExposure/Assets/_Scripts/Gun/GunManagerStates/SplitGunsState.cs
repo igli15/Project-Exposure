@@ -4,10 +4,11 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public class SplitGunsState : GunState
 {
-	public static Action<Hittable,GunManager,Gun> OnShoot;
+	public static Action<SingleGun,Hittable> OnShoot;
 	public static Action<SplitGunsState> OnSplit;
 
 	
@@ -17,10 +18,10 @@ public class SplitGunsState : GunState
 		SHOOT
 	}
 
-	[SerializeField] private Gun m_leftGun;
-	[SerializeField] private Gun m_rightGun;
+	[FormerlySerializedAs("m_leftGun")] [SerializeField] private SingleGun leftSingleGun;
+	[FormerlySerializedAs("m_rightGun")] [SerializeField] private SingleGun rightSingleGun;
 	
-	private Gun m_currentGun;
+	private SingleGun m_currentSingleGun;
 	private GunMode m_currentMode;
 
 	public GunMode currentMode
@@ -31,6 +32,10 @@ public class SplitGunsState : GunState
 	public override void Enter(IAgent pAgent)
 	{
 		if (OnSplit != null) OnSplit(this);
+		
+		leftSingleGun.manager = target;
+		rightSingleGun.manager = target;
+		
 		base.Enter(pAgent);
 	}
 
@@ -46,35 +51,17 @@ public class SplitGunsState : GunState
 		//Hittable hittable = target.RaycastFromGuns();
 
 		Vector3 cameraViewportPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
-		if (cameraViewportPos.x > 0.5f) m_currentGun = m_rightGun;
-		else m_currentGun = m_leftGun;
+		if (cameraViewportPos.x > 0.5f) m_currentSingleGun = rightSingleGun;
+		else m_currentSingleGun = leftSingleGun;
 		
-		Hittable hittable = m_currentGun.RaycastFromGuns();
-		if(OnShoot != null) OnShoot(hittable, target,m_currentGun);
+		Hittable hittable = m_currentSingleGun.Shoot();
+		if(OnShoot != null) OnShoot(m_currentSingleGun,hittable);
 		
-		if(hittable != null)
-		{
-			
-			if (hittable.GetColor() == Color.white)
-			{
-				m_currentMode = GunMode.COLOR;
-				
-				hittable.Hit(target,0,target.color);
-					
-			}
-			else
-			{
-				m_currentMode = GunMode.SHOOT;
-				
-				float m_damage = target.CalculateDamage(target.color, hittable.GetColor());
-				hittable.Hit(target,m_damage,target.color);
-			}
-		}
 	}
 
 	public override void SetGunColor(Color c)
 	{
-		m_leftGun.color = c;
-		m_rightGun.color = c;
+		leftSingleGun.color = c;
+		rightSingleGun.color = c;
 	}
 }

@@ -16,9 +16,9 @@ public class HealerFSM : EnemyFSM {
     {
         base.Start();
         m_enemy = GetComponent<Enemy>();
-        m_enemy.OnPulled += OnPulled;
-        m_enemy.OnPushed += OnPushed;
-        m_enemy.OnReleased += OnReleased;
+       // m_enemy.OnPulled += OnPulled;
+       // m_enemy.OnPushed += OnPushed;
+       // m_enemy.OnReleased += OnReleased;
         GetComponent<Health>().OnDeath += delegate (Health health) { DestroyEnemy(); };
     }
 

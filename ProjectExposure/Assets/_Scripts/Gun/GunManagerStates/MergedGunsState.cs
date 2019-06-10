@@ -9,7 +9,7 @@ public class MergedGunsState : GunState
 {
 	
 	public static Action<MergedGunsState> OnMerge;
-	public static Action<Hittable, GunManager> OnShoot;
+	public static Action<MergedGun,Hittable> OnShoot;
 
 	[SerializeField] private MergedGun m_mergedGun;
 	
@@ -18,21 +18,14 @@ public class MergedGunsState : GunState
 	{
 		base.Enter(pAgent);
 
+		m_mergedGun.manager = target;
 		if (OnMerge != null) OnMerge(this);
 	}
 
 	public override void Shoot()
 	{
-		if (target.isMouseDown) return; //if the mouse is clicking on the gun dont shoot!
-		
-		Hittable hittable = target.RaycastFromGuns();
-		
-		if (OnShoot != null) OnShoot(hittable,target);
-		
-		if(hittable != null)
-		{
-			hittable.Hit(target,100,target.color);
-		}
+		Hittable h = m_mergedGun.Shoot();
+		if (OnShoot != null)  OnShoot(m_mergedGun,h);
 	}
 
 	public override void SetGunColor(Color c)

@@ -67322,7 +67322,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c9c2224c7f6140f3b22b526c1e71ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_gunGroup: {fileID: 0}
+  guns:
+  - {fileID: 479003898}
+  - {fileID: 64918913}
+  - {fileID: 673808644}
   m_baseDamage: 10
   m_extraDamage: 30
   m_hueDamageRange: 40
