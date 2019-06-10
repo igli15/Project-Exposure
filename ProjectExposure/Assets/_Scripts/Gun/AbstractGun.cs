@@ -12,9 +12,17 @@ public abstract class AbstractGun : MonoBehaviour
 
     [SerializeField] private float m_sphereCastRadius = 2;
 
+    private Color m_color = Color.red;
+
     public Transform origin
     {
         get { return m_origin; }
+    }
+
+    public Color color
+    {
+        get { return m_color; }
+        set { m_color = value; }
     }
 
     public int GetEffectGroupCount()
