@@ -110,40 +110,6 @@ public class GunManager : MonoBehaviour,IAgent
 		return guns[index];
 	}
 
-	/*
-	public Hittable RaycastFromGuns()
-	{        
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		RaycastHit hit;
-
-		if (EventSystem.current.IsPointerOverGameObject()) return null;
-		
-		//if(!m_mouseDown)
-		//LookInRayDirection(m_gunGroup, ray);
-
-		if (Physics.SphereCast(ray.origin, 2,ray.direction, out hit, 2000))
-		{
-			Hittable h = hit.transform.GetComponent<Hittable>();
-			if (h != null)
-			{
-				return h;
-			}
-		}
-
-	
-		return null;
-	}
-	*/
-	
-	/*
-	public Vector3 GetDirFromGunToMouse()
-	{
-		Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);;
-		
-		r.origin =  origin.position;
-		return r.direction;
-	}
-	*/
 	private void OnMouseDown()
 	{
 		m_mouseDown = true;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GunEffectManager : MonoBehaviour 
 {
@@ -34,19 +35,26 @@ public class GunEffectManager : MonoBehaviour
 		SplitGunsState.OnShoot += InitSplitGunRays;
 		SplitGunsState.OnShoot += PlayGunParticles;
 		MergedGunsState.OnShoot += InitMergeGunRay;
+		MergedGunsState.OnShoot += PlayMergeShotParticles;
 
 	}
 
 
 	public void PlayGunParticles(SingleGun singleGun,Hittable hittable)
 	{
-		
+		if (EventSystem.current.IsPointerOverGameObject()) return ;
 		singleGun.GetEffectGroupAt(0).PlayARandomEffectInAColor(singleGun.color);
+	}
+
+	public void PlayMergeShotParticles(MergedGun mergedGun, Hittable hittable)
+	{
+		if (EventSystem.current.IsPointerOverGameObject()) return ;
+		mergedGun.GetEffectGroupAt(0).PlayAllEffects();
 	}
 
 	public void InitMergeGunRay(MergedGun gun,Hittable hittable)
 	{
-		//if (manager.isMouseDown) return;
+		if (EventSystem.current.IsPointerOverGameObject()) return ;
 
 		Material mat = m_rainbowBeam;
 		Color c = mat.GetColor("_TintColor");;
@@ -55,7 +63,7 @@ public class GunEffectManager : MonoBehaviour
 		m_beamRenderer.material = mat;
 		mat.SetColor("_TintColor", c);
 
-		SetLineRendererPoints(hittable,gun,gun.origin);
+		SetLineRendererPoints(gun);
 
 		DOVirtual.Float(c.a, 0, m_beamFadeDuration,
 			(delegate(float value)
@@ -68,7 +76,7 @@ public class GunEffectManager : MonoBehaviour
 
 	public void InitSplitGunRays(SingleGun gun,Hittable hittable)
 	{
-		//if (manager.isMouseDown) return;
+		if (EventSystem.current.IsPointerOverGameObject()) return ;
 
 		Color c = gun.color;
 
@@ -84,7 +92,7 @@ public class GunEffectManager : MonoBehaviour
 		m_beamRenderer.material = mat;
 		mat.SetColor("_TintColor", c);
 
-		SetLineRendererPoints(hittable,gun,gun.origin);
+		SetLineRendererPoints(gun);
 
 		c = mat.GetColor("_TintColor");
 		DOVirtual.Float(c.a, 0, m_beamFadeDuration,
@@ -96,29 +104,10 @@ public class GunEffectManager : MonoBehaviour
 			}));
 	}
 	
-	private void SetLineRendererPoints(Hittable hittable,AbstractGun gun,Transform origin)
+	private void SetLineRendererPoints(AbstractGun gun)
 	{
-		//m_lineRenderer.SetPosition(0,origin.position);
 		
-		/*
-		int distribution = m_lineRenderer.positionCount;
-		
-		for (int i = 0; i < distribution; i++)
-		{
-			float lerpAmount = (float)i / distribution;
-			//Debug.Log(i+ "  " + lerpAmount);
-			if(hittable != null) m_lineRenderer.SetPosition(i,Vector3.Lerp(origin.position,hittable.transform.position,lerpAmount));
-			else
-			{
-				Vector3 finalpos = origin.position + manager.GetDirFromGunToMouse() * 40;
-				//Debug.Log(origin.position);
-				//Debug.Log(i + "  " + Vector3.Lerp(origin.position,finalpos,lerpAmount));
-				m_lineRenderer.SetPosition(i,Vector3.Lerp(origin.position,finalpos,lerpAmount));
-			}
-				
-		}
-		*/
-		Vector3 finalpos = origin.position + gun.GetDirFromGunToMouse() * 20;
+		Vector3 finalpos = gun.origin.position + gun.GetDirFromGunToMouse() * 20;
 		m_lineRenderer.SetPosition(1,finalpos); 
 		
 	}
@@ -126,6 +115,8 @@ public class GunEffectManager : MonoBehaviour
 
 	private void OnDestroy()
 	{
-	
+		SplitGunsState.OnShoot -= InitSplitGunRays;
+		SplitGunsState.OnShoot -= PlayGunParticles;
+		MergedGunsState.OnShoot -= InitMergeGunRay;
 	}
 }
