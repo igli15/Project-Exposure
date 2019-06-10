@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -37,5 +38,13 @@ public class GunAnimations : MonoBehaviour
 	private void SetMergedShootTrigger(AbstractGun manager,Hittable hittable)
 	{
 		m_animator.SetTrigger("ShootMerged");
+	}
+
+	private void OnDestroy()
+	{
+		MergedGunsState.OnShoot -= SetMergedShootTrigger;
+		MergedGunsState.OnMerge -= SetMergeTrigger;
+		SplitGunsState.OnSplit -= SetUnMergeTrigger;
+		SplitGunsState.OnShoot -= SetShootTrigger;
 	}
 }
