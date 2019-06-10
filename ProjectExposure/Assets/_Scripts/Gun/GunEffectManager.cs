@@ -43,7 +43,9 @@ public class GunEffectManager : MonoBehaviour
 	public void PlayGunParticles(SingleGun singleGun,Hittable hittable)
 	{
 		if (EventSystem.current.IsPointerOverGameObject()) return ;
+
 		singleGun.GetEffectGroupAt(0).PlayARandomEffectInAColor(singleGun.color);
+		singleGun.GetEffectGroupAt(1).PlayAllEffects();
 	}
 
 	public void PlayMergeShotParticles(MergedGun mergedGun, Hittable hittable)
