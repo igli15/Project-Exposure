@@ -14,7 +14,8 @@ public class GunManager : MonoBehaviour,IAgent
 	[SerializeField] private float m_hueDamageRange = 40;
 	
 	[SerializeField] private Transform m_origin;
-	
+
+	[SerializeField] private RectTransform m_shootingArea;
 	
 	private float m_damage = 0;
 
