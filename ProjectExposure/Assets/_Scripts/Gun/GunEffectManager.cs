@@ -82,14 +82,14 @@ public class GunEffectManager : MonoBehaviour
 		m_beamRenderer.material = mat;
 		mat.SetColor("_TintColor", c);
 
-		SetLineRendererPoints(hittable,manager,gun.shootTransform);
+		SetLineRendererPoints(hittable,manager,gun.origin);
 
 		c = mat.GetColor("_TintColor");
 		DOVirtual.Float(c.a, 0, m_beamFadeDuration,
 			(delegate(float value)
 			{
 				c.a = value;
-				m_lineRenderer.SetPosition(0, gun.shootTransform.position);
+				m_lineRenderer.SetPosition(0, gun.origin.position);
 				mat.SetColor("_TintColor", c);
 			}));
 	}
