@@ -8488,7 +8488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_origin: {fileID: 4157904634852662}
-  gunEffectGroups:
+  effectGroups:
   - {fileID: 114489207664865602}
   - {fileID: 114925921352956024}
   m_sphereCastRadius: 2
@@ -8823,7 +8823,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_origin: {fileID: 4884368035654136}
-  gunEffectGroups:
+  effectGroups:
   - {fileID: 114221477337048710}
   - {fileID: 114685726825643094}
   m_sphereCastRadius: 2
@@ -8880,7 +8880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_origin: {fileID: 4789885149780656}
-  gunEffectGroups:
+  effectGroups:
   - {fileID: 114493044414679708}
   m_sphereCastRadius: 2
 --- !u!114 &114924968786016618

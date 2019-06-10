@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Serialization;
 
 public abstract class AbstractGun : MonoBehaviour
 {
     [SerializeField] protected Transform m_origin;
     
-    [SerializeField] private GunEffectGroup[] gunEffectGroups;
+    [FormerlySerializedAs("gunEffectGroups")] [SerializeField] private EffectGroup[] effectGroups;
 
     [SerializeField] private float m_sphereCastRadius = 2;
 
@@ -37,12 +38,12 @@ public abstract class AbstractGun : MonoBehaviour
 
     public int GetEffectGroupCount()
     {
-        return gunEffectGroups.Length;
+        return effectGroups.Length;
     }
 	
-    public GunEffectGroup GetEffectGroupAt(int index)
+    public EffectGroup GetEffectGroupAt(int index)
     {
-        return gunEffectGroups[index];
+        return effectGroups[index];
     }
     
     public abstract Hittable Shoot();

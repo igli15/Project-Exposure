@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class GunEffectGroup : MonoBehaviour
+public class EffectGroup : MonoBehaviour
 {
 	private IEffect[] m_effects;
 	

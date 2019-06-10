@@ -17,7 +17,6 @@ public class VirtualKeyboard : MonoBehaviour
 	private string m_finalString;
 	private InputField m_inputField;
 	private CanvasGroup m_canvasGroup;
-	private Image m_panelImage;
 	private bool m_isShown = false;
 	
 	[Space(30)]
@@ -33,7 +32,6 @@ public class VirtualKeyboard : MonoBehaviour
 
 	private void Start()
 	{
-		m_panelImage = GetComponent<Image>();
 		m_saveButton.isSaveButton = true;
 		m_saveButton.OnClick.AddListener(delegate { Apply(); });
 	}
