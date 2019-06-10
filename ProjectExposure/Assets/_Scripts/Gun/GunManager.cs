@@ -50,6 +50,11 @@ public class GunManager : MonoBehaviour,IAgent
 		get { return m_mouseDown; }
 	}
 
+	public RectTransform shootingArea
+	{
+		get { return m_shootingArea; }
+	}
+
 	void Start () 
 	{
 		if (m_fsm == null)
