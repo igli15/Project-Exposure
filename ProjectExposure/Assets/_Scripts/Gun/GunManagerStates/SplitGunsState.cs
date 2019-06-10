@@ -43,14 +43,14 @@ public class SplitGunsState : GunState
 	{
 		if (target.isMouseDown || EventSystem.current.IsPointerOverGameObject()) return; //if the mouse is clicking on the gun dont shoot!
 		
-		Hittable hittable = target.RaycastFromGuns();
+		//Hittable hittable = target.RaycastFromGuns();
 
 		Vector3 cameraViewportPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
 		if (cameraViewportPos.x > 0.5f) m_currentGun = m_rightGun;
 		else m_currentGun = m_leftGun;
 		
+		Hittable hittable = m_currentGun.RaycastFromGuns();
 		if(OnShoot != null) OnShoot(hittable, target,m_currentGun);
-		
 		
 		if(hittable != null)
 		{
@@ -58,19 +58,23 @@ public class SplitGunsState : GunState
 			if (hittable.GetColor() == Color.white)
 			{
 				m_currentMode = GunMode.COLOR;
-				//m_colorGun.Shoot();
+				
 				hittable.Hit(target,0,target.color);
 					
 			}
 			else
 			{
 				m_currentMode = GunMode.SHOOT;
-				//m_damageGun.Shoot();
+				
 				float m_damage = target.CalculateDamage(target.color, hittable.GetColor());
 				hittable.Hit(target,m_damage,target.color);
 			}
 		}
 	}
 
-
+	public override void SetGunColor(Color c)
+	{
+		m_leftGun.color = c;
+		m_rightGun.color = c;
+	}
 }

@@ -10,6 +10,8 @@ public class MergedGunsState : GunState
 	
 	public static Action<MergedGunsState> OnMerge;
 	public static Action<Hittable, GunManager> OnShoot;
+
+	[SerializeField] private MergedGun m_mergedGun;
 	
 
 	public override void Enter(IAgent pAgent)
@@ -31,5 +33,10 @@ public class MergedGunsState : GunState
 		{
 			hittable.Hit(target,100,target.color);
 		}
+	}
+
+	public override void SetGunColor(Color c)
+	{
+		m_mergedGun.color = c;
 	}
 }

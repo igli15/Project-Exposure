@@ -7,8 +7,6 @@ using UnityEngine.EventSystems;
 
 public class GunManager : MonoBehaviour,IAgent
 {
-	[SerializeField] private Transform m_gunGroup;
-
 	[SerializeField] private float m_baseDamage = 10;
 	[SerializeField] private float m_extraDamage = 20;
 	[SerializeField] private float m_hueDamageRange = 40;
@@ -68,6 +66,7 @@ public class GunManager : MonoBehaviour,IAgent
 	
 	public void SetGunColors(Color newColor)
 	{
+		((GunState) m_fsm.GetCurrentState()).SetGunColor(newColor);
 		m_color = newColor;
 	}
 	

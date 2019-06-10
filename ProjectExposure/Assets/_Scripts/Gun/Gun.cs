@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Gun : MonoBehaviour
+public class Gun : AbstractGun
 {
 	public enum GunSide
 	{
@@ -14,16 +14,14 @@ public class Gun : MonoBehaviour
 	}
 
 	[SerializeField] private GunSide m_gunSide;
-	[SerializeField] private Transform m_shootTransform;
-	
 
 	public GunSide gunSide
 	{
 		get { return m_gunSide; }
 	}
 
-	public Transform shootTransform
+	public override void Shoot()
 	{
-		get { return m_shootTransform; }
+		
 	}
 }

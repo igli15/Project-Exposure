@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class GunState : AbstractState<GunManager>
 {
     public abstract void Shoot();
+    public abstract void SetGunColor(Color c);
 
     protected bool m_canShoot = true;
 
