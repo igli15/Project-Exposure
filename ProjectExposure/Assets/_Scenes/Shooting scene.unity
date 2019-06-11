@@ -1097,7 +1097,7 @@ RectTransform:
   - {fileID: 1472035800}
   - {fileID: 574895558}
   m_Father: {fileID: 719805710}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -26495,6 +26495,7 @@ GameObject:
   - component: {fileID: 635150236}
   - component: {fileID: 635150238}
   - component: {fileID: 635150237}
+  - component: {fileID: 635150239}
   m_Layer: 0
   m_Name: BroderImage
   m_TagString: Untagged
@@ -26554,6 +26555,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 635150235}
+--- !u!114 &635150239
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 635150235}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6052457e73a13478992e6ad6de0672cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_alpha: 1
 --- !u!1 &661773045
 GameObject:
   m_ObjectHideFlags: 0
@@ -26763,13 +26776,14 @@ GameObject:
   - component: {fileID: 697003984}
   - component: {fileID: 697003986}
   - component: {fileID: 697003985}
+  - component: {fileID: 697003987}
   m_Layer: 0
   m_Name: HudGrid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &697003984
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26777,12 +26791,12 @@ RectTransform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 697003983}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 719805710}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -26801,7 +26815,7 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 2100000, guid: 8e73d7b58ed5e4810be90a932011af52, type: 2}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
@@ -26824,6 +26838,18 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 697003983}
+--- !u!114 &697003987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 697003983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6052457e73a13478992e6ad6de0672cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_alpha: 1
 --- !u!1 &708523101
 GameObject:
   m_ObjectHideFlags: 0
@@ -36303,8 +36329,8 @@ RectTransform:
   - {fileID: 1030086153}
   - {fileID: 576022224}
   - {fileID: 918071451}
-  - {fileID: 297275371}
   - {fileID: 697003984}
+  - {fileID: 297275371}
   - {fileID: 2000228900}
   - {fileID: 1003187953}
   - {fileID: 721813872}
@@ -51398,7 +51424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.2784314}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.31764707}
   m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -56184,6 +56210,7 @@ GameObject:
   - component: {fileID: 934746355}
   - component: {fileID: 934746357}
   - component: {fileID: 934746356}
+  - component: {fileID: 934746358}
   m_Layer: 0
   m_Name: BroderImage
   m_TagString: Untagged
@@ -56243,6 +56270,18 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 934746354}
+--- !u!114 &934746358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 934746354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6052457e73a13478992e6ad6de0672cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_alpha: 1
 --- !u!1 &941331439
 GameObject:
   m_ObjectHideFlags: 0
@@ -61315,7 +61354,6 @@ GameObject:
   - component: {fileID: 1003187956}
   - component: {fileID: 1003187955}
   - component: {fileID: 1003187954}
-  - component: {fileID: 1003187958}
   m_Layer: 5
   m_Name: MergeButton
   m_TagString: Untagged
@@ -61337,11 +61375,11 @@ RectTransform:
   m_Father: {fileID: 719805710}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.8048751, y: 0.064}
-  m_AnchorMax: {x: 0.95633334, y: 0.23073483}
-  m_AnchoredPosition: {x: 4.0999756, y: -1.3000488}
-  m_SizeDelta: {x: 5, y: -1.2000008}
-  m_Pivot: {x: 1, y: 0.5}
+  m_AnchorMin: {x: 0.8384792, y: 0.10474256}
+  m_AnchorMax: {x: 0.9213751, y: 0.18526615}
+  m_AnchoredPosition: {x: 0.6999512, y: 1.1000366}
+  m_SizeDelta: {x: 1, y: 3}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &1003187954
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -61402,7 +61440,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 43690437033964109914803144f9ea72, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8de856732d8ce461481018567895331a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -61417,18 +61455,6 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1003187952}
---- !u!114 &1003187958
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1003187952}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6052457e73a13478992e6ad6de0672cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_alpha: 1
 --- !u!1001 &1006437368
 Prefab:
   m_ObjectHideFlags: 0
