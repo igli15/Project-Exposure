@@ -7,6 +7,9 @@ using UnityEngine.EventSystems;
 
 public class GunManager : MonoBehaviour,IAgent
 {
+
+	public static Action<Color> OnColorChanged;
+	
 	[SerializeField] private AbstractGun[] guns;
 	
 	[SerializeField] private float m_baseDamage = 10;
@@ -75,6 +78,8 @@ public class GunManager : MonoBehaviour,IAgent
 	
 	public void SetGunColors(Color newColor)
 	{
+		if (OnColorChanged != null) OnColorChanged(newColor);
+		
 		foreach (AbstractGun gun in guns)
 		{
 			gun.color = newColor;
