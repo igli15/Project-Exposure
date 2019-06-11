@@ -13,8 +13,7 @@ public class EffectGroup : MonoBehaviour
 	{
 		m_effects = GetComponentsInChildren<IEffect>();
 	}
-
-
+	
 	public int GetEffectCount()
 	{
 		return m_effects.Length;
