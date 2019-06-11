@@ -17,6 +17,7 @@ public class BezierCurveInspector : Editor
     private BezierCurve m_curve;
     private Transform m_handleTransform;
     private Quaternion m_handleRotation;
+    private bool m_drawInEditor = false;
 
     private const int m_lineSteps = 200;
 
@@ -27,8 +28,7 @@ public class BezierCurveInspector : Editor
 
     void OnEnable()
     {
-        //Causing LAgs
-        //SceneView.onSceneGUIDelegate += (SceneView.OnSceneFunc)Delegate.Combine(SceneView.onSceneGUIDelegate, new SceneView.OnSceneFunc(CustomOnSceneGUI));
+        SceneView.onSceneGUIDelegate +=CustomOnSceneGUI;
     }
 
     void CustomOnSceneGUI(SceneView sceneview)
@@ -84,6 +84,9 @@ public class BezierCurveInspector : Editor
     public override void OnInspectorGUI()
     {
         m_curve = target as BezierCurve;
+
+        GUILayout.Toggle(m_drawInEditor);
+
         EditorGUI.BeginChangeCheck();
         GUILayout.Label("Duration");
         float duration = EditorGUILayout.FloatField(m_curve.Duration);
@@ -98,6 +101,8 @@ public class BezierCurveInspector : Editor
             m_curve.AddCurve();
             EditorUtility.SetDirty(m_curve);
         }
+
+
 
     }
 
