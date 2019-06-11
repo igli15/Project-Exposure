@@ -7,7 +7,6 @@ using UnityEngine;
 
 public class Crystal : Hittable
 {
-
 	public Action<Crystal> OnExplode;
 
 	[SerializeField] private float m_explosionRadius = 5;
@@ -41,34 +40,17 @@ public class Crystal : Hittable
 	}
 
 
-	public override void Hit(GunManager gunManager,float damage,Color gunColor)
+	public override void Hit(AbstractGun gun,float damage)
 	{
 		OnHit.Invoke();
 		
-		if (gunManager.fsm.GetCurrentState() is SplitGunsState)
-		{
-			SplitGunsState splitGunsState = (gunManager.fsm.GetCurrentState() as SplitGunsState);
-			
-			if (splitGunsState.currentMode == SplitGunsState.GunMode.COLOR)
-			{
-				SetColor(gunColor);
-			}
-			else if (splitGunsState.currentMode == SplitGunsState.GunMode.SHOOT)
-			{
-				if (damage > 0.2f)
-				{
-					Explode(gunManager);
-				}
-			}
-		}
-		else if (gunManager.fsm.GetCurrentState() is MergedGunsState)
-		{
-			Explode(gunManager);
-		}
+		if(damage > 0.2f)
+			Explode(gun);
+		
 	}
 
 
-	public void AoeOverlapSphere(GunManager gunManager)
+	public void AoeOverlapSphere(AbstractGun gun)
 	{
 		m_exploded = true;
 		Collider[] colliders = Physics.OverlapSphere(transform.position, m_explosionRadius);
@@ -85,7 +67,7 @@ public class Crystal : Hittable
 						Crystal c = hittable.GetComponent<Crystal>();
 						if (!c.exploded)
 						{
-							c.Explode(gunManager);
+							c.Explode(gun);
 						}
 					});
 				}
@@ -93,7 +75,7 @@ public class Crystal : Hittable
 				Health h = colliders[i].GetComponent<Health>();
 				if (h != null)
 				{
-					h.InflictDamage(gunManager.CalculateDamage(color, hittable.GetColor()));
+					h.InflictDamage(gun.manager.CalculateDamage(color, hittable.GetColor()));
 				}
 
 			}
@@ -101,9 +83,9 @@ public class Crystal : Hittable
 		}
 	}
 
-	public void Explode(GunManager gunManager)
+	public void Explode(AbstractGun gun)
 	{
-		AoeOverlapSphere(gunManager);
+		AoeOverlapSphere(gun);
 		if (OnExplode != null) OnExplode(this);
         Instantiate(m_crystalExplosionPrefab.gameObject, transform.position, Quaternion.identity);
         ScoreStats.instance.AddDeathData(GetColor(),transform, 2);

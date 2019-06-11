@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class GunEffectManager : MonoBehaviour 
 {
@@ -25,6 +26,8 @@ public class GunEffectManager : MonoBehaviour
 	private Color m_muzzleColor;
 
 	private Sequence m_muzzleFlashSequence;
+
+	private GunManager m_GunManager;
 	private void Awake()
 	{
 		m_beamRenderer = m_lineRenderer.GetComponent<Renderer>();
@@ -32,19 +35,28 @@ public class GunEffectManager : MonoBehaviour
 		SplitGunsState.OnShoot += InitSplitGunRays;
 		SplitGunsState.OnShoot += PlayGunParticles;
 		MergedGunsState.OnShoot += InitMergeGunRay;
-		
+		MergedGunsState.OnShoot += PlayMergeShotParticles;
+
 	}
 
 
-	public void PlayGunParticles(Hittable hittable, GunManager gunManager,Gun gun)
+	public void PlayGunParticles(SingleGun singleGun,Hittable hittable)
 	{
-		
-		gun.GetEffectGroupAt(0).PlayARandomEffectInAColor(gunManager.color);
+		if (EventSystem.current.IsPointerOverGameObject()) return ;
+
+		singleGun.GetEffectGroupAt(0).PlayARandomEffectInAColor(singleGun.color);
+		singleGun.GetEffectGroupAt(1).PlayAllEffects();
 	}
 
-	public void InitMergeGunRay(Hittable hittable, GunManager manager)
+	public void PlayMergeShotParticles(MergedGun mergedGun, Hittable hittable)
 	{
-		//if (manager.isMouseDown) return;
+		if (EventSystem.current.IsPointerOverGameObject()) return ;
+		mergedGun.GetEffectGroupAt(0).PlayAllEffects();
+	}
+
+	public void InitMergeGunRay(MergedGun gun,Hittable hittable)
+	{
+		if (EventSystem.current.IsPointerOverGameObject()) return ;
 
 		Material mat = m_rainbowBeam;
 		Color c = mat.GetColor("_TintColor");;
@@ -53,22 +65,22 @@ public class GunEffectManager : MonoBehaviour
 		m_beamRenderer.material = mat;
 		mat.SetColor("_TintColor", c);
 
-		SetLineRendererPoints(hittable,manager,manager.origin);
+		SetLineRendererPoints(gun);
 
 		DOVirtual.Float(c.a, 0, m_beamFadeDuration,
 			(delegate(float value)
 			{
 				c.a = value;
-				m_lineRenderer.SetPosition(0, manager.origin.position);
+				m_lineRenderer.SetPosition(0, gun.origin.position);
 				mat.SetColor("_TintColor", c);
 			}));
 	}
 
-	public void InitSplitGunRays(Hittable hittable,GunManager manager,Gun gun)
+	public void InitSplitGunRays(SingleGun gun,Hittable hittable)
 	{
-		//if (manager.isMouseDown) return;
+		if (EventSystem.current.IsPointerOverGameObject()) return ;
 
-		Color c = manager.color;
+		Color c = gun.color;
 
 		Vector3 hsv = ColorUtils.GetHSVOfAColor(c);
 		hsv.y *= m_saturationScale;
@@ -82,7 +94,7 @@ public class GunEffectManager : MonoBehaviour
 		m_beamRenderer.material = mat;
 		mat.SetColor("_TintColor", c);
 
-		SetLineRendererPoints(hittable,manager,gun.origin);
+		SetLineRendererPoints(gun);
 
 		c = mat.GetColor("_TintColor");
 		DOVirtual.Float(c.a, 0, m_beamFadeDuration,
@@ -94,29 +106,10 @@ public class GunEffectManager : MonoBehaviour
 			}));
 	}
 	
-	private void SetLineRendererPoints(Hittable hittable,GunManager manager,Transform origin)
+	private void SetLineRendererPoints(AbstractGun gun)
 	{
-		//m_lineRenderer.SetPosition(0,origin.position);
 		
-		/*
-		int distribution = m_lineRenderer.positionCount;
-		
-		for (int i = 0; i < distribution; i++)
-		{
-			float lerpAmount = (float)i / distribution;
-			//Debug.Log(i+ "  " + lerpAmount);
-			if(hittable != null) m_lineRenderer.SetPosition(i,Vector3.Lerp(origin.position,hittable.transform.position,lerpAmount));
-			else
-			{
-				Vector3 finalpos = origin.position + manager.GetDirFromGunToMouse() * 40;
-				//Debug.Log(origin.position);
-				//Debug.Log(i + "  " + Vector3.Lerp(origin.position,finalpos,lerpAmount));
-				m_lineRenderer.SetPosition(i,Vector3.Lerp(origin.position,finalpos,lerpAmount));
-			}
-				
-		}
-		*/
-		Vector3 finalpos = origin.position + manager.GetDirFromGunToMouse() * 20;
+		Vector3 finalpos = gun.origin.position + gun.GetDirFromGunToMouse() * 20;
 		m_lineRenderer.SetPosition(1,finalpos); 
 		
 	}
@@ -124,6 +117,8 @@ public class GunEffectManager : MonoBehaviour
 
 	private void OnDestroy()
 	{
-	
+		SplitGunsState.OnShoot -= InitSplitGunRays;
+		SplitGunsState.OnShoot -= PlayGunParticles;
+		MergedGunsState.OnShoot -= InitMergeGunRay;
 	}
 }

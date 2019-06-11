@@ -7,11 +7,15 @@ using UnityEngine.EventSystems;
 
 public class GunManager : MonoBehaviour,IAgent
 {
+	[SerializeField] private AbstractGun[] guns;
+	
 	[SerializeField] private float m_baseDamage = 10;
 	[SerializeField] private float m_extraDamage = 20;
 	[SerializeField] private float m_hueDamageRange = 40;
 	
 	[SerializeField] private Transform m_origin;
+
+	[SerializeField] private RectTransform m_shootingArea;
 	
 	private float m_damage = 0;
 
@@ -46,6 +50,11 @@ public class GunManager : MonoBehaviour,IAgent
 		get { return m_mouseDown; }
 	}
 
+	public RectTransform shootingArea
+	{
+		get { return m_shootingArea; }
+	}
+
 	void Start () 
 	{
 		if (m_fsm == null)
@@ -66,8 +75,11 @@ public class GunManager : MonoBehaviour,IAgent
 	
 	public void SetGunColors(Color newColor)
 	{
-		((GunState) m_fsm.GetCurrentState()).SetGunColor(newColor);
-		m_color = newColor;
+		foreach (AbstractGun gun in guns)
+		{
+			gun.color = newColor;
+		}
+		//m_color = newColor;
 	}
 	
 	public float CalculateDamage(Color myColor,Color enemyColor)
@@ -94,46 +106,16 @@ public class GunManager : MonoBehaviour,IAgent
 		return damage;
 	}
 
-	
-	public Hittable RaycastFromGuns()
-	{        
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		RaycastHit hit;
-
-		if (EventSystem.current.IsPointerOverGameObject()) return null;
-		
-		//if(!m_mouseDown)
-		//LookInRayDirection(m_gunGroup, ray);
-
-		if (Physics.SphereCast(ray.origin, 2,ray.direction, out hit, 2000))
-		{
-			Hittable h = hit.transform.GetComponent<Hittable>();
-			if (h != null)
-			{
-				return h;
-			}
-		}
-
-	
-		return null;
-	}
-	
-	public Vector3 LookInRayDirection(Transform t,Ray ray)
+	public int GetGunCount()
 	{
-		Ray r = ray;
-		r.origin = origin.position;
-		Quaternion rot = Quaternion.LookRotation(r.direction.normalized,Vector3.up);
-		t.DORotate(rot.eulerAngles, 0.5f);
-		return r.direction;
+		return guns.Length;
 	}
 
-	public Vector3 GetDirFromGunToMouse()
+	public AbstractGun GetGunAt(int index)
 	{
-		Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);;
-		
-		r.origin =  origin.position;
-		return r.direction;
+		return guns[index];
 	}
+
 	private void OnMouseDown()
 	{
 		m_mouseDown = true;

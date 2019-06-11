@@ -2,19 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MergedGun : AbstractGun 
+public class MergedGun : AbstractGun
 {
-	public override void Shoot()
+	[SerializeField] private Transform m_cannonTransform;
+	
+	public override Hittable Shoot()
 	{
-		//if (target.isMouseDown) return; //if the mouse is clicking on the gun dont shoot!
-		
 		Hittable hittable = RaycastFromGuns();
-		
-		//if (OnShoot != null) OnShoot(hittable,target);
+		LookInRayDirection(m_cannonTransform, new Ray(m_cannonTransform.position, GetDirFromGunToMouse()));
 		
 		if(hittable != null)
 		{
-			//hittable.Hit(target,100,target.color);
+			hittable.Hit(this,100);
 		}
+
+		return hittable;
 	}
 }

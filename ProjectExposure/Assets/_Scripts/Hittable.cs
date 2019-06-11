@@ -11,10 +11,6 @@ public abstract class Hittable : MonoBehaviour
 {
 	public UnityEvent OnHit;
 	
-	public Action<Hittable> OnPulled;
-	public Action<Hittable> OnPushed;
-
-	public Action<Hittable> OnReleased;
 
 	[SerializeField] protected Color color;
 
@@ -24,25 +20,16 @@ public abstract class Hittable : MonoBehaviour
 		GetComponent<Renderer>().material.color = newColor;
 	}
 
-	public virtual void Hit(GunManager gunManager, float damage,Color gunColor)
+	public virtual void Hit(AbstractGun gun, float damage)
 	{
 		OnHit.Invoke();
 
-		if (gunManager.fsm.GetCurrentState() is SplitGunsState)
+		if (gun is SingleGun)
 		{
-			SplitGunsState splitGunsState = (gunManager.fsm.GetCurrentState() as SplitGunsState);
-			
-			if (splitGunsState.currentMode == SplitGunsState.GunMode.COLOR)
-			{
-				SetColor(gunColor);
-			}
-			else if (splitGunsState.currentMode == SplitGunsState.GunMode.SHOOT)
-			{
-				Health health = GetComponent<Health>();
-				if (health != null) health.InflictDamage(damage);
-			}
+			Health health = GetComponent<Health>();
+			if (health != null) health.InflictDamage(damage);
 		}
-		else if (gunManager.fsm.GetCurrentState() is MergedGunsState)
+		else if (gun is MergedGun)
 		{
 			Health health = GetComponent<Health>();
 			

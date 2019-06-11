@@ -6,7 +6,7 @@ public class Tentacles : Hittable {
 
     [SerializeField]
     private GameObject m_inkSpray;
-    public override void Hit(GunManager gunManager, float damage, Color gunColor)
+    public override void Hit(AbstractGun gun, float damage)
     {
         Debug.Log("suck my tit");
         m_inkSpray.gameObject.SetActive(true);

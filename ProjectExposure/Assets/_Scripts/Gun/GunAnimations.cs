@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 
 using UnityEngine;
@@ -28,14 +29,22 @@ public class GunAnimations : MonoBehaviour
 		m_animator.SetTrigger("UnMerge");  
 	}
 
-	private void SetShootTrigger(Hittable hittable, GunManager manager, Gun gun)
+	private void SetShootTrigger(SingleGun singleGun,Hittable hittable)
 	{
-		if(gun.gunSide == Gun.GunSide.RIGHT) m_animator.SetTrigger("ShootRight");
+		if(singleGun.gunSide == SingleGun.GunSide.RIGHT) m_animator.SetTrigger("ShootRight");
 		else m_animator.SetTrigger("ShootLeft");
 	}
 
-	private void SetMergedShootTrigger(Hittable hittable, GunManager manager)
+	private void SetMergedShootTrigger(AbstractGun manager,Hittable hittable)
 	{
 		m_animator.SetTrigger("ShootMerged");
+	}
+
+	private void OnDestroy()
+	{
+		MergedGunsState.OnShoot -= SetMergedShootTrigger;
+		MergedGunsState.OnMerge -= SetMergeTrigger;
+		SplitGunsState.OnSplit -= SetUnMergeTrigger;
+		SplitGunsState.OnShoot -= SetShootTrigger;
 	}
 }
