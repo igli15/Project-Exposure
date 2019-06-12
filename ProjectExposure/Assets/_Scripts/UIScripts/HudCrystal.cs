@@ -41,12 +41,19 @@ public class HudCrystal : MonoBehaviour
 		m_isActive = true;
 	}
 
+	public void ChangeToDisableSprite()
+	{
+		m_image.sprite = m_disableSprite;
+		
+		
+	}
+
 	public void FadeCrystal()
 	{
 		if(m_isActive) m_animator.SetTrigger("DeActivate");
 		m_isActive = false;
-		m_image.sprite = m_disableSprite;
 		m_image.DOFade(0, 0.2f);
+		
 	}
 
 	public void ResetCrystalSprite()

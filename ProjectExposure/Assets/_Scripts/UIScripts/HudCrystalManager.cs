@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 
 public class HudCrystalManager : MonoBehaviour
@@ -12,14 +13,6 @@ public class HudCrystalManager : MonoBehaviour
 		SplitGunsState.OnSplit += ResetAllCrystals;
 	}
 
-	private void Update()
-	{
-		if (Input.GetKeyDown(KeyCode.A))
-		{
-			ResetAllCrystals(null);
-		}
-	}
-
 	public void ActivateCrystalAt(int index)
 	{
 		m_hudCrystals[index].ActivateCrystal();
@@ -28,6 +21,20 @@ public class HudCrystalManager : MonoBehaviour
 	public HudCrystal GetCrystalAt(int index)
 	{
 		return m_hudCrystals[index];
+	}
+
+	public void StartFadingCrystals()
+	{
+		Sequence s = DOTween.Sequence();
+
+		for (int i = 0; i < m_hudCrystals.Length ; i++)
+		{
+			var i1 = i;
+
+			Tween t = DOVirtual.DelayedCall(10f / 7.2f, delegate { m_hudCrystals[i1].FadeCrystal(); });
+			t.onPlay += delegate { m_hudCrystals[i1].ChangeToDisableSprite(); };
+			s.Append(t);
+		}
 	}
 	
 	public void ResetAllCrystals(SplitGunsState splitGunsState)

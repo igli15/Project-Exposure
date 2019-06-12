@@ -60,6 +60,10 @@ public class SplitGunsState : GunState
 	public override void Exit(IAgent pAgent)
 	{
 		base.Exit(pAgent);
+
+		m_hudCrystalManager.StartFadingCrystals();
+
+		
 	}
 
 	public override void Shoot()
