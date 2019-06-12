@@ -90,17 +90,17 @@ public class ScoreStats : MonoBehaviour
 
         int score = 0;
         string tag = "s100";
-        Color currentColor = Color.white;
+        Color currentColor = Color.gray;
         switch (m_currentBonus) {
             case 1:
                 score += 100;
                 tag = "s100";
-                currentColor = Color.white;
+                currentColor = Color.gray;
                 break;
             case 2:
                 score += 200;
                 tag = "s200";
-                currentColor = Color.blue;
+                currentColor = Color.green;
                 break;
             case 3:
                 score += 400;
@@ -110,27 +110,27 @@ public class ScoreStats : MonoBehaviour
             case 4:
                 score += 800;
                 tag = "s800";
-                currentColor = Color.green;
+                currentColor = Color.blue;
                 break;
             case 5:
                 score += 1000;
                 tag = "s1000";
-                currentColor = Color.red;
+                currentColor = new Color(80,50,20,1);
                 break;
             case 6:
                 score += 2000;
                 tag = "s2000";
-                currentColor = Color.yellow;
+                currentColor = new Color(192, 192, 192, 1);
                 break;
             case 7:
                 score += 4000;
                 tag = "s4000";
-                currentColor = Color.magenta;
+                currentColor = new Color(255, 215, 0, 1);
                 break;
             case 8:
                 score += 8000;
                 tag = "s8000";
-                currentColor = Color.magenta;
+                currentColor = new Color(185, 242, 255);
                 break;
         }
 
