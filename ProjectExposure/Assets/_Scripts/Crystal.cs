@@ -43,9 +43,15 @@ public class Crystal : Hittable
 	public override void Hit(AbstractGun gun,float damage)
 	{
 		OnHit.Invoke();
-		
-		if(damage > 0.2f)
+
+		if (damage > 0.2f)
+		{
+			if (gun.manager.fsm.GetCurrentState() is SplitGunsState)
+			{
+				(gun.manager.fsm.GetCurrentState() as SplitGunsState).AddCollectedColor(GetColor());
+			}
 			Explode(gun);
+		}
 		
 	}
 

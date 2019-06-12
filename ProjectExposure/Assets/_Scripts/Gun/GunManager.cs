@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 
 public class GunManager : MonoBehaviour,IAgent
 {
-
 	public static Action<Color> OnColorChanged;
 	
 	[SerializeField] private AbstractGun[] guns;

@@ -12,6 +12,7 @@ public class MergedGunsState : GunState
 	public static Action<MergedGun,Hittable> OnShoot;
 
 	[SerializeField] private MergedGun m_mergedGun;
+	[SerializeField] private float m_mergedTimeInSeconds = 10;
 	
 
 	public override void Enter(IAgent pAgent)
@@ -20,6 +21,8 @@ public class MergedGunsState : GunState
 
 		m_mergedGun.manager = target;
 		if (OnMerge != null) OnMerge(this);
+
+		DOVirtual.DelayedCall(m_mergedTimeInSeconds, delegate { target.fsm.ChangeState<SplitGunsState>(); });
 	}
 
 	public override void Shoot()

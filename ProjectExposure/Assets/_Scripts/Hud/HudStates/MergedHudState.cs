@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class MergedHudState : AbstractState<HudManager>
 {
+	
+	
 	public override void Enter(IAgent pAgent)
 	{
-		//target.MoveElementsOutsideCanvas();
+		target.DisableMergeButton();
+
 		base.Enter(pAgent);
 	}
 
