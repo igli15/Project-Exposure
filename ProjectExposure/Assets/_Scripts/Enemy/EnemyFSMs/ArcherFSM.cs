@@ -78,7 +78,7 @@ public class ArcherFSM : EnemyFSM
         ScoreStats.instance.AddDeathData(m_enemy.GetColor(),transform,2);
         
         base.DestroyEnemy();
-
+        GameObject explotion = ObjectPooler.instance.SpawnFromPool("escapeEffect", transform.position, transform.rotation);
         //fsm.ChangeState<ArcherMovementState>();
         m_escapeSpline.transform.parent = null;
         GetComponent<ArcherMovementState>().GoToTweenMovement(m_escapeSpline);
