@@ -73,7 +73,7 @@ Material:
     - _GlossyReflections: 1
     - _Metallic: 0
     - _MinAlpha: 0
-    - _Mitigation: 1.3
+    - _Mitigation: 3.7
     - _Mode: 0
     - _MoveHorizontally: 1
     - _MoveHorizontaly: 0
@@ -82,7 +82,7 @@ Material:
     - _Parallax: 0.02
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.16
+    - _Speed: 0.31
     - _SrcBlend: 1
     - _UVSec: 0
     - _UseNoise: 1
