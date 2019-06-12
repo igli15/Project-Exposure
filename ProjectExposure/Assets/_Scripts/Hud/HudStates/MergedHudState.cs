@@ -6,7 +6,7 @@ public class MergedHudState : AbstractState<HudManager>
 {
 	public override void Enter(IAgent pAgent)
 	{
-		target.MoveElementsOutsideCanvas();
+		//target.MoveElementsOutsideCanvas();
 		base.Enter(pAgent);
 	}
 

@@ -11,7 +11,7 @@ public class TintableUiImage : MonoBehaviour
 
 	private Image m_image;
 
-	public void Start()
+	public void Awake()
 	{
 		m_image = GetComponent<Image>();
 		GunManager.OnColorChanged += ChangeColor;

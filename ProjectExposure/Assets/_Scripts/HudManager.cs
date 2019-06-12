@@ -27,7 +27,7 @@ public class HudManager : MonoBehaviour,IAgent
 		m_rightBorderInit = m_rightBorder.position;
 		m_sliderInit = m_slider.position;
 		
-		SetUpElements();
+		//SetUpElements();
 		
 		m_fsm.ChangeState<SplitHudState>();
 		
