@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,7 +7,6 @@ using UnityEngine.UI;
 public class FrequencyDisplay : MonoBehaviour
 {
 	[SerializeField] private GunManager m_gunManager;
-	[SerializeField] private Image m_backgroundImage;
 	[SerializeField] private Slider m_slider;
 	
 	private Material m_material;
@@ -26,7 +26,7 @@ public class FrequencyDisplay : MonoBehaviour
 			float h = m_slider.value * 270.0f / 360.0f;
 
 			Color c  = Color.HSVToRGB(h, 1, 1);
-			m_backgroundImage.color = c;
+
 			//m_material.color = c;
 			m_gunManager.SetGunColors(c);
 

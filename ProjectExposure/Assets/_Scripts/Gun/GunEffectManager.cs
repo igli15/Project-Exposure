@@ -109,7 +109,7 @@ public class GunEffectManager : MonoBehaviour
 	private void SetLineRendererPoints(AbstractGun gun)
 	{
 		
-		Vector3 finalpos = gun.origin.position + gun.GetDirFromGunToMouse() * 20;
+		Vector3 finalpos = gun.origin.position + gun.GetDirFromGunToMouse() * 10;
 		m_lineRenderer.SetPosition(1,finalpos); 
 		
 	}
