@@ -46,6 +46,8 @@ public class ScoreStats : MonoBehaviour
             
 
             DOTween.To(() => m_tweenScore, x => { m_tweenScore = x; text.text = "" + m_tweenScore; }, m_currentScore, 0.2f).SetEase(Ease.Linear).SetUpdate(true);
+
+            //USSR
             DOTween.To(() => m_critScore, x =>
             {
                 m_critScore = x;
@@ -139,6 +141,8 @@ public class ScoreStats : MonoBehaviour
             m_critScore += score;
 
             critText.color = currentColor;
+
+            //Tweening creet score to critScore
             DOTween.To(() => m_tweenCritScore, x =>
             {
                 m_tweenCritScore = x;
@@ -156,8 +160,6 @@ public class ScoreStats : MonoBehaviour
             m_critScore = score;
             
         }
-
-
 
         //Activating worldSpace scores
         GameObject scoreDisplay = ObjectPooler.instance.SpawnFromPool(tag, Camera.main.WorldToScreenPoint(enemy.position), new Quaternion(0, 0, 0, 0));

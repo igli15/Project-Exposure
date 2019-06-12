@@ -8,15 +8,20 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
     public BezierCurve spline;
     public bool lookForward;
 
+    public bool TweenMovement = false;
+
     private float m_progress;
 
     public override void Enter(IAgent pAgent)
     {
         base.Enter(pAgent);
+
     }
 
     private void Update()
     {
+        if (TweenMovement) return;
+
         if (!spline)
         {
             Debug.Log("Attach spline to an Enemy: " + gameObject.name);
@@ -38,5 +43,25 @@ public class EnemyMovementState : AbstractState<EnemyFSM>
     public override void Exit(IAgent pAgent)
     {
         base.Exit(pAgent);
+    }
+
+    public void GoToTweenMovement(BezierCurve Spline)
+    {
+        TweenMovement = true;
+        spline = Spline;
+        m_progress = 0;
+
+
+
+        DOTween.To(() => m_progress, x =>
+        {
+            m_progress = x;
+            transform.position = spline.GetPoint(m_progress);
+            transform.LookAt(transform.position + spline.GetDirection(m_progress));
+        }
+        , 1, Spline.Duration).SetEase(Ease.Linear).SetUpdate(true);
+
+
+        
     }
 }

@@ -1,12 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class ArcherFSM : EnemyFSM
 {
     private Rigidbody m_rigidBody;
     private ArcherMovementState m_archerMovementState;
     private Animator m_animator;
+
+    [SerializeField]
+    private BezierCurve m_escapeSpline;
+
     [SerializeField]
     public int m_multiplierBonus = 2;
     private Enemy m_enemy;
@@ -15,6 +20,8 @@ public class ArcherFSM : EnemyFSM
     private float m_recoverTime = 0.8f;
     private bool m_isPushed=false;
     private float m_timeOfPush = 0;
+
+    private bool m_isDead = false;
 
     public void Start()
     {
@@ -52,22 +59,32 @@ public class ArcherFSM : EnemyFSM
 
     public override void InitializeEnemy()
     {
+        //if (!m_isDead) return;
         base.InitializeEnemy();
         
         m_archerMovementState = GetComponent<ArcherMovementState>();
+        m_archerMovementState.TweenMovement = false;
         m_rigidBody = GetComponent<Rigidbody>();
 
         m_fsm.ChangeState<ArcherMovementState>();
+        m_escapeSpline.transform.SetParent(transform);
+
+        m_isDead = false;
     }
 
     public override void DestroyEnemy()
     {
+        if (m_isDead) return;
         ScoreStats.instance.AddDeathData(m_enemy.GetColor(),transform,2);
         
         base.DestroyEnemy();
 
+        //fsm.ChangeState<ArcherMovementState>();
+        m_escapeSpline.transform.parent = null;
+        GetComponent<ArcherMovementState>().GoToTweenMovement(m_escapeSpline);
+
         m_rigidBody.velocity = Vector3.zero;
-        ObjectPooler.instance.DestroyFromPool("Archer", gameObject);
-        
+
+        m_isDead = true;
     }
 }

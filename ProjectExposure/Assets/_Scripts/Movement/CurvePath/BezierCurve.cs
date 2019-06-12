@@ -122,9 +122,7 @@ public class BezierCurve : MonoBehaviour
             float remainingLength = (1-t)*length;
             float nextLength = CalculateLength(nextIndex);
             float extraDelta = (speed - remainingLength) / nextLength;
-            //CLEAR AND FIX IT
-            Debug.Log("Delta progress: " + deltaProgress + ", t: " + t);
-            //Debug.Log("progress: " + deltaProgress * (1 - t) + " + " + extraDelta);
+
             return speed/nextLength;
         }
         return deltaProgress;

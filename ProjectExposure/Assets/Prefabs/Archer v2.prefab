@@ -484,6 +484,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1614728801644128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4516684167947970}
+  - component: {fileID: 114492366682049678}
+  m_Layer: 0
+  m_Name: escapeSpline
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1643410054590738
 GameObject:
   m_ObjectHideFlags: 1
@@ -900,6 +916,19 @@ Transform:
   m_Father: {fileID: 4957698318532988}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4516684167947970
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1614728801644128}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4538468927275648}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4538468927275648
 Transform:
   m_ObjectHideFlags: 1
@@ -912,6 +941,7 @@ Transform:
   m_Children:
   - {fileID: 4393325178979656}
   - {fileID: 4922708351305196}
+  - {fileID: 4516684167947970}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -62.520004, y: -118.644005, z: 0}
@@ -1610,6 +1640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3d31213434195949afb5be6cfd3e2a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_escapeSpline: {fileID: 114492366682049678}
   m_multiplierBonus: 2
   isIndependentAgent: 0
   m_recoverTime: 0.7
@@ -1760,6 +1791,7 @@ MonoBehaviour:
   target: {fileID: 0}
   spline: {fileID: 0}
   lookForward: 1
+  TweenMovement: 0
 --- !u!114 &114383080835131574
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1798,6 +1830,26 @@ MonoBehaviour:
   color: {r: 0, g: 1, b: 0, a: 0}
   m_explosionRadius: 5
   m_crystalExplosionPrefab: {fileID: 0}
+--- !u!114 &114492366682049678
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1614728801644128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0ac317f6fbc7347b8a03bc52735f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_modes: 0100000001000000
+  m_points:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0.97740936, y: 7.4817657, z: -5.788353}
+  - {x: 5.601433, y: -0.5471573, z: -5.8948364}
+  - {x: 5.6698837, y: 9.24852, z: 0}
+  m_lengths: []
+  TotalLength: 0
+  Duration: 10
 --- !u!114 &114520163581492356
 MonoBehaviour:
   m_ObjectHideFlags: 1
