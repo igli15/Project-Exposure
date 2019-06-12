@@ -6,11 +6,9 @@ using UnityEngine.Events;
 
 public class LevelLoader : MonoBehaviour
 {
-	[SerializeField]
-	private UnityEvent OnLoadFinished;
+	public UnityEvent OnLoadFinished;
 	
-	[SerializeField]
-	private UnityEvent OnLoadStarted;
+	public UnityEvent OnLoadStarted;
 
 	[SerializeField] 
 	private float m_extraTimeToWait = 0.5f;

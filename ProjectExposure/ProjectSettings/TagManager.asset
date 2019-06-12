@@ -11,6 +11,7 @@ TagManager:
   - SliderBase
   - CurvePoint
   - Crystals
+  - Guns
   layers:
   - Default
   - TransparentFX

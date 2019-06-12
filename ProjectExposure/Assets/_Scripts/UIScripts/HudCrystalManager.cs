@@ -31,7 +31,7 @@ public class HudCrystalManager : MonoBehaviour
 		{
 			var i1 = i;
 
-			Tween t = DOVirtual.DelayedCall(10f / 7.2f, delegate { m_hudCrystals[i1].FadeCrystal(); });
+			Tween t = DOVirtual.DelayedCall(10f / 7.5f, delegate { m_hudCrystals[i1].FadeCrystal(); });
 			t.onPlay += delegate { m_hudCrystals[i1].ChangeToDisableSprite(); };
 			s.Append(t);
 		}
