@@ -43,9 +43,11 @@ public class Crystal : Hittable
 	public override void Hit(AbstractGun gun,float damage)
 	{
 		OnHit.Invoke();
-		
-		if(damage > 0.2f)
+
+		if (damage > 0.2f)
+		{
 			Explode(gun);
+		}
 		
 	}
 
@@ -85,6 +87,11 @@ public class Crystal : Hittable
 
 	public void Explode(AbstractGun gun)
 	{
+		if (gun.manager.fsm.GetCurrentState() is SplitGunsState)
+		{
+			(gun.manager.fsm.GetCurrentState() as SplitGunsState).AddCollectedColor(GetColor());
+		}
+		
 		AoeOverlapSphere(gun);
 		if (OnExplode != null) OnExplode(this);
         Instantiate(m_crystalExplosionPrefab.gameObject, transform.position, Quaternion.identity);

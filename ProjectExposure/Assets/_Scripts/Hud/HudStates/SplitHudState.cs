@@ -6,7 +6,7 @@ public class SplitHudState : AbstractState<HudManager>
 {
 	public override void Enter(IAgent pAgent)
 	{
-		//target.MoveElementsInsideCanvas();
+		target.DisableMergeButton();
 		base.Enter(pAgent);
 	}
 

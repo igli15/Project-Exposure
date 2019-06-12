@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 
 public class GunManager : MonoBehaviour,IAgent
 {
-
 	public static Action<Color> OnColorChanged;
 	
 	[SerializeField] private AbstractGun[] guns;
@@ -107,7 +106,7 @@ public class GunManager : MonoBehaviour,IAgent
 			float precisionLevel= ((m_hueDamageRange - hueDiff) / m_hueDamageRange);
 			damage =  m_baseDamage + precisionLevel * m_extraDamage;
 		}
-		Debug.Log(damage);
+		//Debug.Log(damage);
 		return damage;
 	}
 
