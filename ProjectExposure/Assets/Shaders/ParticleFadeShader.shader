@@ -8,7 +8,7 @@ Shader "Custom/Particles/FadingShader"
 		_MainTex ("Albedo (RGB)", 2D) = "white" {}
 		_Gradient (" Gradient", 2D) = "white" {}
 		
-		 _Speed ("Speed", Range(0,2)) = 0.5
+		 _Speed ("Speed", Range(-2,2)) = 0.5
 		 
 		[Toggle(MOVE GRADIENT VERICALLY)]
         _MoveVertically ("Move Gradient Vertically", Float) = 1
