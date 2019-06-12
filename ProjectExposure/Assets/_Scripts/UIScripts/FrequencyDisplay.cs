@@ -23,7 +23,7 @@ public class FrequencyDisplay : MonoBehaviour
 			
 			m_material.SetFloat("_Wavelength", finalValue);
 			
-			float h = m_slider.value * 270.0f / 360.0f;
+			float h = m_slider.value * 300.0f / 360.0f;
 
 			Color c  = Color.HSVToRGB(h, 1, 1);
 

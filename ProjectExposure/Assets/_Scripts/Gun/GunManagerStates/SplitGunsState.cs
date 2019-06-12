@@ -42,6 +42,7 @@ public class SplitGunsState : GunState
 		
 		m_collectedColors.Clear();
 		m_collectedAllCrystals = false;
+		
 		for (int i = 0; i < 7; i++)
 		{
 			m_collectedColors.Add(Color.clear);
@@ -85,6 +86,8 @@ public class SplitGunsState : GunState
 
 	public void AddCollectedColor(Color c)
 	{
+		if (m_collectedAllCrystals) return;
+		
 		if (ColorUtils.CheckIfColorAreSimilar(c , m_hudCrystalManager.GetCrystalAt(0).color,15))
 		{
 			m_collectedColors[0]=  m_hudCrystalManager.GetCrystalAt(0).color;

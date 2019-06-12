@@ -46,10 +46,6 @@ public class Crystal : Hittable
 
 		if (damage > 0.2f)
 		{
-			if (gun.manager.fsm.GetCurrentState() is SplitGunsState)
-			{
-				(gun.manager.fsm.GetCurrentState() as SplitGunsState).AddCollectedColor(GetColor());
-			}
 			Explode(gun);
 		}
 		
@@ -91,6 +87,11 @@ public class Crystal : Hittable
 
 	public void Explode(AbstractGun gun)
 	{
+		if (gun.manager.fsm.GetCurrentState() is SplitGunsState)
+		{
+			(gun.manager.fsm.GetCurrentState() as SplitGunsState).AddCollectedColor(GetColor());
+		}
+		
 		AoeOverlapSphere(gun);
 		if (OnExplode != null) OnExplode(this);
         Instantiate(m_crystalExplosionPrefab.gameObject, transform.position, Quaternion.identity);

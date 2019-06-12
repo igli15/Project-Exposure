@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class HudCrystal : MonoBehaviour
 {
 	[SerializeField] private Color m_color;
+	[SerializeField] private Sprite m_disableSprite;
 	
 	private Sprite m_initSprite;
 	private Animator m_animator;
@@ -35,14 +37,21 @@ public class HudCrystal : MonoBehaviour
 
 	public void ActivateCrystal()
 	{
+		if(!m_isActive)m_animator.SetTrigger("Activate");
 		m_isActive = true;
-		m_animator.SetTrigger("Activate");
+	}
+
+	public void FadeCrystal()
+	{
+		if(m_isActive) m_animator.SetTrigger("DeActivate");
+		m_isActive = false;
+		m_image.sprite = m_disableSprite;
+		m_image.DOFade(0, 0.2f);
 	}
 
 	public void ResetCrystalSprite()
 	{
-		m_isActive = false;
-		m_animator.SetTrigger("DeActivate");
+		m_image.DOFade(1, 0);
 		m_image.sprite = m_initSprite;
 	}
 }
