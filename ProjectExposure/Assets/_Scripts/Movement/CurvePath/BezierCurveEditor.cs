@@ -17,7 +17,6 @@ public class BezierCurveInspector : Editor
     private BezierCurve m_curve;
     private Transform m_handleTransform;
     private Quaternion m_handleRotation;
-    private bool m_drawInEditor=false;
 
     private const int m_lineSteps = 200;
 
@@ -86,15 +85,15 @@ public class BezierCurveInspector : Editor
         m_curve = target as BezierCurve;
 
         GUILayout.Label("DrawInEditor");
-        bool bufferDrawInEditor = GUILayout.Toggle(m_drawInEditor, SplineManager.instance.TextureDisplay);
+        bool bufferDrawInEditor = GUILayout.Toggle(m_curve.drawInEditor, m_curve.splineManager.TextureDisplay);
 
-        if (bufferDrawInEditor != m_drawInEditor)
+        if (bufferDrawInEditor != m_curve.drawInEditor)
         {
 
         }
 
-        m_drawInEditor = bufferDrawInEditor;
-        Debug.Log("DrawInEditor: " + m_drawInEditor);
+        m_curve.drawInEditor = bufferDrawInEditor;
+        //Debug.Log("DrawInEditor: " + m_curve.drawInEditor);
 
         EditorGUI.BeginChangeCheck();
         GUILayout.Label("Duration");

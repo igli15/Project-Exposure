@@ -7,7 +7,8 @@ public class SplineManager : MonoBehaviour
     [SerializeField]
     public Texture TextureDisplay;
 
-    public static SplineManager instance;
+    public static bool SubscribedToUpdate=false;
+    public List<BezierCurve> splines;
 
     public void Start()
     {
@@ -16,6 +17,7 @@ public class SplineManager : MonoBehaviour
 
     public void Reset()
     {
-
+        splines = new List<BezierCurve>();
+        
     }
 }

@@ -14,7 +14,37 @@ public class SplineManagerEditor : Editor
         base.OnInspectorGUI();
         m_manager = target as SplineManager;
 
-        //GUILayout.Label("DrawInEditor");
+        EditorGUI.BeginChangeCheck();
+        
+        if (GUILayout.Button("Subscribe to Update"))
+        {
+            SubscribeToUpdate();
+        }
+    }
+
+    public void SubscribeToUpdate()
+    {
+        if (SplineManager.SubscribedToUpdate == false)
+        {
+            Debug.Log("Subscribing to Editor Update");
+            EditorApplication.update += OnCustomSceneGUI;
+            SplineManager.SubscribedToUpdate = true;
+        }
+    }
+
+    void OnCustomSceneGUI()
+    {
+        //Debug.Log("OnCustomSceneGUI");
+    }
+
+    private void OnDisable()
+    {
+        if (SplineManager.SubscribedToUpdate == true)
+        {
+            Debug.Log("Unsubscribing from Editor Update");
+            EditorApplication.update -= OnCustomSceneGUI;
+            SplineManager.SubscribedToUpdate = false;
+        }
     }
 
 }
