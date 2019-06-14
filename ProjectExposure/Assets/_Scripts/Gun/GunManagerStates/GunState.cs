@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -10,11 +11,16 @@ public abstract class GunState : AbstractState<GunManager>
 
     protected bool m_canShoot = true;
 
+    private void Start()
+    {
+        Input.multiTouchEnabled = true;
+    }
+
     protected virtual void FixedUpdate()
     {
+        //Debug.Log(Input.touchCount);
         if (Input.GetMouseButtonDown(0) && m_canShoot)
         {
-
             if (isInsideShootingArea())
             {
                 m_canShoot = false;

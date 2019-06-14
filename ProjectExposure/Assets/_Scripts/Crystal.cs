@@ -64,7 +64,7 @@ public class Crystal : Hittable
 			{
 				if (hittable.CompareTag("Crystals") && hittable.gameObject.GetInstanceID() != gameObject.GetInstanceID())
 				{
-					DOVirtual.DelayedCall(0.1f, () =>
+					DOVirtual.DelayedCall(0.5f, () =>
 					{
 						Crystal c = hittable.GetComponent<Crystal>();
 						if (!c.exploded)
