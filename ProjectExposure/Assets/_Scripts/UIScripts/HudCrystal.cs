@@ -43,21 +43,21 @@ public class HudCrystal : MonoBehaviour
 
 	public void ChangeToDisableSprite()
 	{
-		m_image.sprite = m_disableSprite;
-		
-		
+		m_animator.SetTrigger("Crack");
 	}
 
 	public void FadeCrystal()
 	{
-		if(m_isActive) m_animator.SetTrigger("DeActivate");
-		m_isActive = false;
-		m_image.DOFade(0, 0.2f);
 		
+		//ChangeToDisableSprite();
+		m_image.DOFade(0, 0.2f);
 	}
 
 	public void ResetCrystalSprite()
 	{
+		if(m_isActive) m_animator.SetTrigger("DeActivate");
+		m_isActive = false;
+		
 		m_image.DOFade(1, 0);
 		m_image.sprite = m_initSprite;
 	}
