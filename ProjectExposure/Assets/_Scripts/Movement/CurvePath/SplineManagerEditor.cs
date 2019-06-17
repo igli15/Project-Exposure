@@ -15,10 +15,11 @@ public class SplineManagerEditor : Editor
         m_manager = target as SplineManager;
 
         EditorGUI.BeginChangeCheck();
-        
-        if (GUILayout.Button("Subscribe to Update"))
+        GUILayoutOption[] opt = { GUILayout.Height(60) };
+        if (GUILayout.Button("Activate all elements",opt))
         {
-            SubscribeToUpdate();
+            SubscribeToUpdate(); 
+            m_manager.UpdateSplineList();
         }
     }
 
@@ -31,6 +32,8 @@ public class SplineManagerEditor : Editor
             SplineManager.SubscribedToUpdate = true;
         }
     }
+
+    
 
     void OnCustomSceneGUI()
     {
