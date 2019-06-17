@@ -27,8 +27,7 @@ public class BezierCurveInspector : Editor
 
     void OnEnable()
     {
-        //Causing LAgs
-        //SceneView.onSceneGUIDelegate += (SceneView.OnSceneFunc)Delegate.Combine(SceneView.onSceneGUIDelegate, new SceneView.OnSceneFunc(CustomOnSceneGUI));
+        //.onSceneGUIDelegate +=CustomOnSceneGUI;
     }
 
     void CustomOnSceneGUI(SceneView sceneview)
@@ -54,7 +53,6 @@ public class BezierCurveInspector : Editor
 
     private void OnSceneGUI()
     {
-        
         m_curve = target as BezierCurve;
         m_handleTransform = m_curve.transform;
         m_handleRotation = Tools.pivotRotation == PivotRotation.Local ?
@@ -84,10 +82,17 @@ public class BezierCurveInspector : Editor
     public override void OnInspectorGUI()
     {
         m_curve = target as BezierCurve;
+
+        GUILayout.Label("DrawInEditor");
+        bool bufferDrawInEditor = GUILayout.Toggle(m_curve.drawInEditor, m_curve.GetSplineManager().TextureDisplay);
+        m_curve.drawInEditor = bufferDrawInEditor;
+
         EditorGUI.BeginChangeCheck();
+
         GUILayout.Label("Duration");
         float duration = EditorGUILayout.FloatField(m_curve.Duration);
         m_curve.Duration = duration;
+
         if (m_selectedIndex >= 0 && m_selectedIndex < m_curve.ControlPointCount)
         {
             DrawSelectedPointInspector();
@@ -98,7 +103,6 @@ public class BezierCurveInspector : Editor
             m_curve.AddCurve();
             EditorUtility.SetDirty(m_curve);
         }
-
     }
 
     private void DrawSelectedPointInspector()

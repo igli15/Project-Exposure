@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class BezierCurve : MonoBehaviour
 {
+    [SerializeField]
+    public SplineManager splineManager; 
+
     public enum BezierControlPointMode
     {
         Free,
@@ -22,12 +25,19 @@ public class BezierCurve : MonoBehaviour
 
     public int ControlPointCount { get { return m_points.Length;} }
     public int CurveCount { get { return (m_points.Length - 1) / 3; } }
+    public bool drawInEditor=false;
     public float TotalLength = 0;
     [SerializeField]
     public float Duration = 30;
 
     public void Reset()
     {
+
+        if (!GetSplineManager().splines.Contains(this))
+        {
+            GetSplineManager().splines.Add(this);
+            Debug.Log("Added to this splines " + gameObject.name);
+        }
         //Default values
         m_points = new Vector3[] {
             new Vector3(1f, 0f, 0f),
@@ -39,6 +49,20 @@ public class BezierCurve : MonoBehaviour
             BezierControlPointMode.Aligned,
             BezierControlPointMode.Aligned
         };
+    }
+
+    public SplineManager GetSplineManager()
+    {
+        if (!splineManager)
+        {
+            splineManager = GameObject.FindObjectOfType<SplineManager>();
+            if (!splineManager)
+            {
+                Debug.LogError("Add object with SplineManager to the scene!");
+            }
+        } 
+        
+        return splineManager;
     }
 
     public void Start()
