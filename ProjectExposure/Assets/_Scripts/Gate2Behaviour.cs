@@ -20,7 +20,7 @@ public class Gate2Behaviour : MonoBehaviour {
     [SerializeField]
     public Material material;
 
-    private bool m_rotate=false;
+    private bool m_rotate=true;
 
     public void Start()
     {
@@ -30,7 +30,7 @@ public class Gate2Behaviour : MonoBehaviour {
 
     void OnGemHit()
     {
-        if ( innerRing.transform.eulerAngles.z<60 || innerRing.transform.eulerAngles.z > 300)
+        if (innerRing.transform.eulerAngles.z < 60 || innerRing.transform.eulerAngles.z > 300)
         {
             //OpenDoor();
             this.enabled = false;
@@ -38,10 +38,16 @@ public class Gate2Behaviour : MonoBehaviour {
             gem.onHit -= OnGemHit;
             material.SetFloat("_EmissionScale", 6);
 
-            gem.transform.DOLocalMoveZ(gem.transform.localPosition.z-0.04f, delayTime).OnComplete (OpenDoor);
-            return;
+            gem.transform.DOLocalMoveZ(gem.transform.localPosition.z - 0.04f, delayTime).OnComplete(OpenDoor);
+
         }
-        m_rotate = !m_rotate;
+        else
+        {
+            m_rotate = false;
+
+            innerRing.transform.DORotate(innerRing.transform.eulerAngles - new Vector3(0, 0, 10), 0.6f).OnComplete(()=> { m_rotate = true; });
+        }
+        
     }
 
     void OpenDoor()
@@ -50,7 +56,7 @@ public class Gate2Behaviour : MonoBehaviour {
     }
 
     void Update () {
-        Debug.Log("Z" + innerRing.transform.eulerAngles.z);
+        
         if (m_rotate)
             innerRing.transform.eulerAngles += new Vector3(0, 0, speed);
 	}
