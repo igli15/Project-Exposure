@@ -7,6 +7,7 @@
 		_EmissionTex("Emission Texture", 2D) = "white" {}
 		_NoiseTex ("Noise Texture",2D) = "white"{}
 		_Mitigation("Mitigation", Range(1, 20)) = 5
+		_Speed ("Speed",Range(0,20)) = 5
  	
         [HDR]
         _AmbientColor("Ambient Color", Color) = (0.4,0.4,0.4,1)
@@ -71,6 +72,7 @@
 			float4 _MainTex_ST;
 			float4 _NoiseTex_ST;
 			float4 _EmissionColor;
+			float _Speed;
 			
             float _EmissionScale;
             float _Glossiness;
@@ -123,11 +125,11 @@
                 rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);
                 float4 rim = rimIntensity * _RimColor;
 
-            i.noiseUV.x -= _Time.x;
+            i.noiseUV.x -= _Time.x * _Speed;
             //i.noiseUV.y += _Time.x;
             float noise = tex2D(_NoiseTex,i.noiseUV);
             
-            i.uv.x += noise/_Mitigation + _Time.x;
+            i.uv.x += noise/_Mitigation + _Time.x * _Speed;
            // i.uv.y += noise/_Mitigation + _Time.x;
             
             
