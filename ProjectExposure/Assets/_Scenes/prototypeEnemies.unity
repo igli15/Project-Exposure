@@ -1172,7 +1172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0ac317f6fbc7347b8a03bc52735f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splineManager: {fileID: 0}
+  splineManager: {fileID: 1029581184}
   m_modes: 0100000001000000
   m_points:
   - {x: 1, y: 0, z: 0}
@@ -1560,6 +1560,48 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 674113657}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1001 &792426086
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4696652646485654, guid: 05cd6e799915c1f4ba0389ccd62d738a, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 216.06387
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696652646485654, guid: 05cd6e799915c1f4ba0389ccd62d738a, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 7.175503
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696652646485654, guid: 05cd6e799915c1f4ba0389ccd62d738a, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -99.88841
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696652646485654, guid: 05cd6e799915c1f4ba0389ccd62d738a, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696652646485654, guid: 05cd6e799915c1f4ba0389ccd62d738a, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696652646485654, guid: 05cd6e799915c1f4ba0389ccd62d738a, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696652646485654, guid: 05cd6e799915c1f4ba0389ccd62d738a, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4696652646485654, guid: 05cd6e799915c1f4ba0389ccd62d738a, type: 2}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 05cd6e799915c1f4ba0389ccd62d738a, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &803889136
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,48 +2162,12 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 998747432}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1029581183
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1029581185}
-  - component: {fileID: 1029581184}
-  m_Layer: 0
-  m_Name: SplineManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1029581184
+--- !u!114 &1029581184 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1029581183}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
+  m_PrefabParentObject: {fileID: 114772586839318462, guid: 05cd6e799915c1f4ba0389ccd62d738a,
+    type: 2}
+  m_PrefabInternal: {fileID: 792426086}
   m_Script: {fileID: 11500000, guid: 4d1a0a4361614c24290b4ca1e7f1e692, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  TextureDisplay: {fileID: 2800000, guid: e59ddd6942505a04da43e555d3ccaa7b, type: 3}
-  splines: []
---- !u!4 &1029581185
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1029581183}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 216.06387, y: 7.175503, z: -99.88841}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1042803556
 GameObject:
   m_ObjectHideFlags: 0
@@ -2202,11 +2208,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0ac317f6fbc7347b8a03bc52735f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splineManager: {fileID: 0}
+  splineManager: {fileID: 1029581184}
   m_modes: 0100000001000000
   m_points:
   - {x: 1, y: 0, z: 0}
-  - {x: 5.3349123, y: 0, z: 11.778765}
+  - {x: 4.45963, y: 0, z: 11.794188}
   - {x: -25.25523, y: 4.1240997, z: 9.824573}
   - {x: -15.792707, y: 4.1240997, z: 22.102842}
   m_lengths: []
@@ -2241,6 +2247,7 @@ Transform:
   - {fileID: 418815689}
   - {fileID: 1042803557}
   - {fileID: 1657969335}
+  - {fileID: 1917505458}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3504,7 +3511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac0ac317f6fbc7347b8a03bc52735f1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  splineManager: {fileID: 0}
+  splineManager: {fileID: 1029581184}
   m_modes: 0100000001000000
   m_points:
   - {x: 1, y: 0, z: 0}
@@ -3994,6 +4001,57 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!1 &1917505457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1917505458}
+  - component: {fileID: 1917505459}
+  m_Layer: 0
+  m_Name: path (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1917505458
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1917505457}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1045037694}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1917505459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1917505457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac0ac317f6fbc7347b8a03bc52735f1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splineManager: {fileID: 1029581184}
+  m_modes: 0100000001000000
+  m_points:
+  - {x: 1, y: 0, z: 0}
+  - {x: 14.5692005, y: 0, z: -0.41966724}
+  - {x: 2.5514545, y: 4.1240997, z: -35.5188}
+  - {x: 12.013977, y: 4.1240997, z: -23.240519}
+  m_lengths: []
+  drawInEditor: 1
+  TotalLength: 0
+  Duration: 30
 --- !u!1 &1929121786
 GameObject:
   m_ObjectHideFlags: 0
