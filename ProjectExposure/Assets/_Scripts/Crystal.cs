@@ -14,6 +14,8 @@ public class Crystal : Hittable
 	[SerializeField] private GameObject m_crystalExplosionPrefab;
 
 	private bool m_exploded = false;
+
+	private float m_delay = 0.25f;
 	
 	public float explosionRadius
 	{
@@ -63,7 +65,7 @@ public class Crystal : Hittable
 			{
 				if (hittable.CompareTag("Crystals") && hittable.gameObject.GetInstanceID() != gameObject.GetInstanceID())
 				{
-					DOVirtual.DelayedCall(0.5f, () =>
+					DOVirtual.DelayedCall(m_delay, () =>
 					{
 						Crystal c = hittable.GetComponent<Crystal>();
 						if (!c.exploded)
