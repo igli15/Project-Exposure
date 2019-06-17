@@ -123,10 +123,12 @@
                 rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);
                 float4 rim = rimIntensity * _RimColor;
 
-            i.noiseUV.x += _Time.x;
+            i.noiseUV.x -= _Time.x;
+            //i.noiseUV.y += _Time.x;
             float noise = tex2D(_NoiseTex,i.noiseUV);
             
             i.uv.x += noise/_Mitigation + _Time.x;
+           // i.uv.y += noise/_Mitigation + _Time.x;
             
             
 			float4 sample = tex2D(_MainTex, i.uv);

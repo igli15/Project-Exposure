@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ public class HighScoreManager : MonoBehaviour
 	}
 
 	[HideInInspector]
-	public HighscoreData[] highscoreArray;   //an array of data ;D
+	public HighscoreData[] highscoreArray;   //an array of data 
 
 	public IOrderedEnumerable<KeyValuePair<string, int>> orderedScores;
 
@@ -78,19 +79,9 @@ public class HighScoreManager : MonoBehaviour
 
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.A))
+		if (Input.GetKeyDown(KeyCode.R))
 		{
-			SubmitHighScore("Igli");
-		}
-		
-		if (Input.GetKeyDown(KeyCode.B))
-		{
-			SubmitHighScore("Test");
-		}
-		
-		if (Input.GetKeyDown(KeyCode.C))
-		{
-			highscoreArray = null;
+			SaveLoadScript.DeleteJson("HighScores");
 		}
 	}
 

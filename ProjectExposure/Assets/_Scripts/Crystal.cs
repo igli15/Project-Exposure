@@ -36,7 +36,6 @@ public class Crystal : Hittable
 	// Update is called once per frame
 	void Update () 
 	{
-		
 	}
 
 
