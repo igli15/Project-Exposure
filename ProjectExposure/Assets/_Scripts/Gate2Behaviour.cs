@@ -10,11 +10,15 @@ public class Gate2Behaviour : MonoBehaviour {
     [SerializeField]
     public float delayTime = 3;
 
-    [Header("DragNdrop")]
 
+
+    [Header("Crystals")]
     [SerializeField]
     List<GameObject> crystals;
 
+    [Header("DragNdrop")]
+    [SerializeField]
+    Animator m_shipAnimator;
     [SerializeField]
     public Gem gem;
     [SerializeField]
@@ -35,6 +39,7 @@ public class Gate2Behaviour : MonoBehaviour {
             crystal.SetActive(false);
         }
 
+        crystals[crystals.Count - 1].GetComponent<Crystal>().OnExplode += (Crystal c) => { m_shipAnimator.SetTrigger("Break"); };
 
     }
 
@@ -66,7 +71,7 @@ public class Gate2Behaviour : MonoBehaviour {
         {
             crystal.SetActive(true);
         }
-        door.transform.DOLocalRotate(new Vector3(-100, 0, 0), 1.8f).SetEase(Ease.InQuad).OnComplete(CurveWallker.instance.StartMovement);
+        door.transform.DOLocalRotate(new Vector3(-100, 0, 0), 1.8f).SetEase(Ease.InQuad).OnComplete(CurveWallker.instance.StopMovement);
     }
 
     void Update () {
