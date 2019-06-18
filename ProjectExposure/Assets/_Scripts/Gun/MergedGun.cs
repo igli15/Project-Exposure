@@ -9,6 +9,19 @@ public class MergedGun : AbstractGun
 	public override Hittable Shoot(int touchIndex)
 	{
 		Hittable hittable = RaycastFromGuns(touchIndex);
+		LookInRayDirection(m_cannonTransform, new Ray(m_cannonTransform.position, GetDirFromGunToTouch()));
+		
+		if(hittable != null)
+		{
+			hittable.Hit(this,100);
+		}
+
+		return hittable;
+	}
+
+	public override Hittable Shoot()
+	{
+		Hittable hittable = RaycastFromGuns();
 		LookInRayDirection(m_cannonTransform, new Ray(m_cannonTransform.position, GetDirFromGunToMouse()));
 		
 		if(hittable != null)

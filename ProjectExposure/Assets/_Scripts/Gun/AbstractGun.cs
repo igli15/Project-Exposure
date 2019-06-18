@@ -47,14 +47,24 @@ public abstract class AbstractGun : MonoBehaviour
     }
     
     public abstract Hittable Shoot(int touchIndex);
+    public abstract Hittable Shoot();
     
-    public Vector3 GetDirFromGunToMouse()
+    public Vector3 GetDirFromGunToTouch()
     {
         Ray r = Camera.main.ScreenPointToRay(Input.GetTouch(manager.touchManager.GetIndexTheFirstTouchOnShootingArea()).position);
 		
         r.origin =  origin.position;
         return r.direction;
     }
+    
+    public Vector3 GetDirFromGunToMouse()
+    {
+        Ray r = Camera.main.ScreenPointToRay(Input.mousePosition);
+		
+        r.origin =  origin.position;
+        return r.direction;
+    }
+    
     
     public Vector3 LookInRayDirection(Transform t,Ray ray)
     {
@@ -67,7 +77,7 @@ public abstract class AbstractGun : MonoBehaviour
     
     public Hittable RaycastFromGuns()
     {        
-        Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(manager.touchManager.GetIndexTheFirstTouchOnShootingArea()).position);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         Debug.Log(manager.touchManager.GetIndexTheFirstTouchOnShootingArea());
         RaycastHit hit;
 

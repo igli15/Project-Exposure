@@ -7,6 +7,7 @@ using UnityEngine;
 public abstract class GunState : AbstractState<GunManager>
 {
     public abstract void Shoot(int touchIndex);
+    public abstract void Shoot();
     public abstract void SetGunColor(Color c);
 
     protected bool m_canShoot = true;
@@ -18,15 +19,28 @@ public abstract class GunState : AbstractState<GunManager>
 
     protected virtual void Update()
     {
-       // Debug.Log(target.touchManager.GetIndexTheFirstTouchOnShootingArea());
-        if (target.touchManager.GetIndexTheFirstTouchOnShootingArea() >= 0 )
-        {   
-            
-            //Debug.Log(t);
-            m_canShoot = false;
-                DOVirtual.DelayedCall(0.1f, delegate { m_canShoot = true; });
+        if (target.touchInputs)
+        {
+            if (target.touchManager.GetIndexTheFirstTouchOnShootingArea() >= 0)
+            {
+                //Debug.Log(t);
+                m_canShoot = false;
+                //DOVirtual.DelayedCall(0.1f, delegate { m_canShoot = true; });
                 Shoot(target.touchManager.GetIndexTheFirstTouchOnShootingArea());
-            
+
+            }
+        }
+        else
+        {
+            if (Input.GetMouseButtonDown(0) && m_canShoot)
+            {
+                if (isInsideShootingArea())
+                {
+                    m_canShoot = false;
+                    DOVirtual.DelayedCall(0.1f, delegate { m_canShoot = true; });
+                    Shoot();
+                }
+            }
         }
     }
 

@@ -31,6 +31,12 @@ public class MergedGunsState : GunState
 		if (OnShoot != null)  OnShoot(m_mergedGun,h);
 	}
 
+	public override void Shoot()
+	{
+		Hittable h = m_mergedGun.Shoot();
+		if (OnShoot != null)  OnShoot(m_mergedGun,h);
+	}
+
 	public override void SetGunColor(Color c)
 	{
 		m_mergedGun.color = c;
