@@ -11,6 +11,10 @@ public class Gate2Behaviour : MonoBehaviour {
     public float delayTime = 3;
 
     [Header("DragNdrop")]
+
+    [SerializeField]
+    List<GameObject> crystals;
+
     [SerializeField]
     public Gem gem;
     [SerializeField]
@@ -26,6 +30,12 @@ public class Gate2Behaviour : MonoBehaviour {
     {
         gem.onHit += OnGemHit;
         material.SetFloat("_EmissionScale", 0);
+        foreach (GameObject crystal in crystals)
+        {
+            crystal.SetActive(false);
+        }
+
+
     }
 
     void OnGemHit()
@@ -52,6 +62,10 @@ public class Gate2Behaviour : MonoBehaviour {
 
     void OpenDoor()
     {
+        foreach (GameObject crystal in crystals)
+        {
+            crystal.SetActive(true);
+        }
         door.transform.DOLocalRotate(new Vector3(-100, 0, 0), 1.8f).SetEase(Ease.InQuad).OnComplete(CurveWallker.instance.StartMovement);
     }
 
