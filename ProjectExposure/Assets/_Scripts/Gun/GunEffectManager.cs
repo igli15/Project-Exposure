@@ -42,7 +42,7 @@ public class GunEffectManager : MonoBehaviour
 
 	public void PlayGunParticles(SingleGun singleGun,Hittable hittable)
 	{
-		if (EventSystem.current.IsPointerOverGameObject()) return ;
+		//if (EventSystem.current.IsPointerOverGameObject()) return ;
 
 		singleGun.GetEffectGroupAt(0).PlayARandomEffectInAColor(singleGun.color);
 		singleGun.GetEffectGroupAt(1).PlayAllEffects();
@@ -50,13 +50,13 @@ public class GunEffectManager : MonoBehaviour
 
 	public void PlayMergeShotParticles(MergedGun mergedGun, Hittable hittable)
 	{
-		if (EventSystem.current.IsPointerOverGameObject()) return ;
+		//if (EventSystem.current.IsPointerOverGameObject()) return ;
 		mergedGun.GetEffectGroupAt(0).PlayAllEffects();
 	}
 
 	public void InitMergeGunRay(MergedGun gun,Hittable hittable)
 	{
-		if (EventSystem.current.IsPointerOverGameObject()) return ;
+		//if (EventSystem.current.IsPointerOverGameObject()) return ;
 
 		Material mat = m_rainbowBeam;
 		Color c = mat.GetColor("_TintColor");;
@@ -78,7 +78,7 @@ public class GunEffectManager : MonoBehaviour
 
 	public void InitSplitGunRays(SingleGun gun,Hittable hittable)
 	{
-		if (EventSystem.current.IsPointerOverGameObject()) return ;
+		//if (EventSystem.current.IsPointerOverGameObject()) return ;
 
 		Color c = gun.color;
 

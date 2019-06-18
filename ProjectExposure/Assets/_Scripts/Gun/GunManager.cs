@@ -27,12 +27,19 @@ public class GunManager : MonoBehaviour,IAgent
 
 	private Color m_color;
 
+    private TouchManager m_touchmanager;
+
 	public Fsm<GunManager> fsm
 	{
 		get { return m_fsm; }
 	}
 
-	public float damage
+    public TouchManager touchManager
+    {
+        get { return m_touchmanager; }
+    }
+
+    public float damage
 	{
 		get { return m_damage; }
 	}
@@ -63,6 +70,7 @@ public class GunManager : MonoBehaviour,IAgent
 		{
 			m_fsm = new Fsm<GunManager>(this);
 		}
+        m_touchmanager = GetComponent<TouchManager>();
 		
 		m_fsm.ChangeState<SplitGunsState>();
 		

@@ -66,17 +66,20 @@ public class SplitGunsState : GunState
 		
 	}
 
-	public override void Shoot()
+	public override void Shoot(int touchIndex)
 	{
-		if (target.isMouseDown || EventSystem.current.IsPointerOverGameObject()) return; //if the mouse is clicking on the gun dont shoot!
-		
-		//Hittable hittable = target.RaycastFromGuns();
+		//if (target.isMouseDown || EventSystem.current.IsPointerOverGameObject()) return; //if the mouse is clicking on the gun dont shoot!
 
-		Vector3 cameraViewportPos = Camera.main.ScreenToViewportPoint(Input.mousePosition);
+        //Hittable hittable = target.RaycastFromGuns();
+        //Debug.Log(touchIndex);
+		Vector3 cameraViewportPos = Camera.main.ScreenToViewportPoint(Input.GetTouch(touchIndex).position);
+        Debug.Log(cameraViewportPos);
+
 		if (cameraViewportPos.x > 0.5f) m_currentSingleGun = rightSingleGun;
 		else m_currentSingleGun = leftSingleGun;
 		
-		Hittable hittable = m_currentSingleGun.Shoot();
+    
+		Hittable hittable = m_currentSingleGun.Shoot(touchIndex);
 
 		if(OnShoot != null) OnShoot(m_currentSingleGun,hittable);
 		

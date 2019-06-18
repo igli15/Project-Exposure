@@ -20,10 +20,10 @@ public class SingleGun : AbstractGun
 		get { return m_gunSide; }
 	}
 
-	public override Hittable Shoot()
+	public override Hittable Shoot(int touchIndex)
 	{
-		
-		Hittable hittable = RaycastFromGuns();
+        //Debug.Log(touchIndex);
+		Hittable hittable = RaycastFromGuns(touchIndex);
 		
 		
 		if(hittable != null)

@@ -6,9 +6,9 @@ public class MergedGun : AbstractGun
 {
 	[SerializeField] private Transform m_cannonTransform;
 	
-	public override Hittable Shoot()
+	public override Hittable Shoot(int touchIndex)
 	{
-		Hittable hittable = RaycastFromGuns();
+		Hittable hittable = RaycastFromGuns(touchIndex);
 		LookInRayDirection(m_cannonTransform, new Ray(m_cannonTransform.position, GetDirFromGunToMouse()));
 		
 		if(hittable != null)
