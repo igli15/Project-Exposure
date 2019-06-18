@@ -218,6 +218,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 58a35bfbf18634ddc88b3135ef42640c, type: 3}
   m_IsPrefabParent: 0
+--- !u!224 &420425642 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224790293683023426, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+    type: 2}
+  m_PrefabInternal: {fileID: 1298828858}
 --- !u!1001 &746710855
 Prefab:
   m_ObjectHideFlags: 0
@@ -780,6 +785,16 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: -16.600128
       objectReference: {fileID: 0}
+    - target: {fileID: 224064768020057246, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114099177121377214, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+        type: 2}
+      propertyPath: m_shootBeam
+      value: 
+      objectReference: {fileID: 2100000, guid: ed410e505a1b34500be8ecbc33ea3743, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
   m_IsPrefabParent: 0
@@ -1041,6 +1056,23 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b8d59b2e86b29c74faa018cc051302ee, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1535090980 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1705621142970206, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+    type: 2}
+  m_PrefabInternal: {fileID: 1298828858}
+--- !u!114 &1535090991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1535090980}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10d9e5179fea0cf4c9babd7dd7df705d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shootingRect: {fileID: 420425642}
 --- !u!1001 &1616491786
 Prefab:
   m_ObjectHideFlags: 0

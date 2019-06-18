@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
+[RequireComponent(typeof(TouchManager))]
 public abstract class GunState : AbstractState<GunManager>
 {
     public abstract void Shoot();
@@ -11,14 +12,16 @@ public abstract class GunState : AbstractState<GunManager>
 
     protected bool m_canShoot = true;
 
+    protected TouchManager m_touchManager;
     private void Start()
     {
+        m_touchManager = GetComponent<TouchManager>();
         Input.multiTouchEnabled = true;
     }
 
     protected virtual void FixedUpdate()
     {
-        //Debug.Log(Input.touchCount);
+        Debug.Log(m_touchManager.GetIndexTheFirstTouchOnShootingArea());
         if (Input.GetMouseButtonDown(0) && m_canShoot)
         {
             if (isInsideShootingArea())
