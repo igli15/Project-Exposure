@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: rainbow
-  m_Shader: {fileID: 4800000, guid: 5bcb2d5f7ee894796a35587911a212ad, type: 3}
-  m_ShaderKeywords: 
+  m_Name: UILinesMat
+  m_Shader: {fileID: 4800000, guid: cdab7c28793cb422b8d738bf499d579f, type: 3}
+  m_ShaderKeywords: GRADIENT Horizontally MOVE NOISE USE USE NOISE VERICALLY
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -38,20 +38,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _EmissionTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+    - _Gradient:
+        m_Texture: {fileID: 2800000, guid: 0eaf05716a4c441c1a03f526c81fd3a3, type: 3}
+        m_Scale: {x: 2, y: 2}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: f150ada54a1f24300afe5e04c6576bfb, type: 3}
-        m_Scale: {x: 0.5, y: 0.5}
+        m_Texture: {fileID: 2800000, guid: ee10045c99cf2409b98479af268f111e, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
-        m_Texture: {fileID: 2800000, guid: 467573363f08b4f6da9c1dcc36ad0661, type: 3}
+        m_Texture: {fileID: 2800000, guid: fe86c81541abe9549800ac1471448029, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -67,34 +67,23 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-<<<<<<< HEAD
-    - _EmissionScale: 1.29
-=======
-    - _EmissionScale: 2.91
->>>>>>> feature/score_hud
     - _GlossMapScale: 1
-    - _Glossiness: 32
+    - _Glossiness: 0.5
     - _GlossyReflections: 1
     - _Metallic: 0
-    - _Mitigation: 18.3
+    - _Mitigation: 1
     - _Mode: 0
+    - _MoveHorizontally: 1
+    - _MoveVertically: 0
     - _OcclusionStrength: 1
     - _Parallax: 0.02
-<<<<<<< HEAD
-    - _RimAmount: 0.959
-=======
-    - _RimAmount: 0.14
->>>>>>> feature/score_hud
-    - _RimThreshold: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 3.7
+    - _Speed: 0.36
     - _SrcBlend: 1
     - _UVSec: 0
+    - _UseNoise: 1
     - _ZWrite: 1
     m_Colors:
-    - _AmbientColor: {r: 0.16981131, g: 0.16740832, b: 0.16740832, a: 1}
-    - _Color: {r: 0.46666667, g: 0.4627451, b: 0.46666667, a: 1}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SpecularColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

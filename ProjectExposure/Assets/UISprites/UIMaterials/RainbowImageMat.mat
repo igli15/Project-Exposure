@@ -8,8 +8,8 @@ Material:
   m_PrefabInternal: {fileID: 0}
   m_Name: RainbowImageMat
   m_Shader: {fileID: 4800000, guid: cdab7c28793cb422b8d738bf499d579f, type: 3}
-  m_ShaderKeywords: GRADIENT Horizontally MOVE MOVE GRADIENT Horizontally MOVE GRADIENT
-    VERICALLY NOISE USE USE NOISE VERICALLY
+  m_ShaderKeywords: GRADIENT Horizontally MOVE MOVE GRADIENT VERICALLY NOISE USE USE
+    NOISE VERICALLY
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -74,12 +74,12 @@ Material:
     - _DstBlend: 0
     - _EmissionScale: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 0
     - _GlossyReflections: 1
     - _Metallic: 0
-    - _Mitigation: 12.6
+    - _Mitigation: 5.5
     - _Mode: 0
-    - _MoveHorizontally: 1
+    - _MoveHorizontally: 0
     - _MoveVertically: 1
     - _OcclusionStrength: 1
     - _Parallax: 0.02
@@ -87,7 +87,7 @@ Material:
     - _RimThreshold: 0.1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.2
+    - _Speed: 1.76
     - _SrcBlend: 1
     - _UVSec: 0
     - _UseNoise: 1

@@ -7,8 +7,6 @@ using UnityEngine;
 
 public static class SaveLoadScript 
 {
-	
-	
 	public static void Save(object objToSave,string saveFileName)
 	{
 		var data = JsonUtility.ToJson(objToSave, true);

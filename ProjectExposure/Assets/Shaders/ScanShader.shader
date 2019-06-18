@@ -41,7 +41,7 @@
 
 		void surf (Input IN, inout SurfaceOutputStandard o) {
 			// Albedo comes from a texture tinted by color
-			IN.uv_Gradient.y += _Time.y;
+			IN.uv_Gradient.y += _Time.x;
 			fixed4 g = tex2D(_Gradient,IN.uv_Gradient);
 			
 			
