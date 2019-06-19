@@ -36,7 +36,9 @@ public class Gate2Behaviour : MonoBehaviour {
         material.SetFloat("_EmissionScale", 0);
         foreach (GameObject crystal in crystals)
         {
+            crystal.transform.localScale = new Vector3(0.01f, 0.01f, 0.01f);
             crystal.SetActive(false);
+
         }
 
         crystals[crystals.Count - 1].GetComponent<Crystal>().OnExplode += (Crystal c) => { m_shipAnimator.SetTrigger("Break"); };
@@ -67,10 +69,16 @@ public class Gate2Behaviour : MonoBehaviour {
 
     void OpenDoor()
     {
+        Sequence crystalSpawn = DOTween.Sequence();
+        //crystalSpawn.isBackwards = true;
+
         foreach (GameObject crystal in crystals)
         {
             crystal.SetActive(true);
+            Tween crystalApperance = crystal.transform.DOScale(1, 0.3f);
+            crystalSpawn.Append(crystalApperance);
         }
+        
         door.transform.DOLocalRotate(new Vector3(-100, 0, 0), 1.8f).SetEase(Ease.InQuad).OnComplete(CurveWallker.instance.StopMovement);
     }
 
