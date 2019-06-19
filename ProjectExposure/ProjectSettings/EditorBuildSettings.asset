@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/Waiwas scenes/ResolutionScene.unity
     guid: 32b4bcb7d0b304e01ab08594cdf6d7e2
+  - enabled: 0
+    path: Assets/_Scenes/Shooting scene.unity
+    guid: fb6b591d2a432410eaa2ecdfcba7c03b
   m_configObjects: {}
