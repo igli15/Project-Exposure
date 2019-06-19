@@ -124,6 +124,11 @@ public class GunManager : MonoBehaviour,IAgent
 		return damage;
 	}
 
+	public void MergeGuns()
+	{
+		m_fsm.ChangeState<MergedGunsState>();
+	}
+
 	public int GetGunCount()
 	{
 		return guns.Length;
