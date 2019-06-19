@@ -32,12 +32,6 @@ public class BezierCurve : MonoBehaviour
 
     public void Reset()
     {
-
-        if (!GetSplineManager().splines.Contains(this))
-        {
-            GetSplineManager().splines.Add(this);
-            Debug.Log("Added to this splines " + gameObject.name);
-        }
         //Default values
         m_points = new Vector3[] {
             new Vector3(1f, 0f, 0f),
