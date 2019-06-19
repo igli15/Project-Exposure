@@ -78,7 +78,7 @@ public abstract class AbstractGun : MonoBehaviour
     public Hittable RaycastFromGuns()
     {        
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.Log(manager.touchManager.GetIndexTheFirstTouchOnShootingArea());
+//        Debug.Log(manager.touchManager.GetIndexTheFirstTouchOnShootingArea());
         RaycastHit hit;
 
         if (EventSystem.current.IsPointerOverGameObject()) return null;
