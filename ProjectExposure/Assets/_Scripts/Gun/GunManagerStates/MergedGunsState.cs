@@ -25,6 +25,12 @@ public class MergedGunsState : GunState
 		DOVirtual.DelayedCall(m_mergedTimeInSeconds, delegate { target.fsm.ChangeState<SplitGunsState>(); });
 	}
 
+	public override void Shoot(int touchIndex)
+	{
+		Hittable h = m_mergedGun.Shoot(touchIndex);
+		if (OnShoot != null)  OnShoot(m_mergedGun,h);
+	}
+
 	public override void Shoot()
 	{
 		Hittable h = m_mergedGun.Shoot();

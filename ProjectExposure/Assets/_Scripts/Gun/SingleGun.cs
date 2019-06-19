@@ -20,15 +20,11 @@ public class SingleGun : AbstractGun
 		get { return m_gunSide; }
 	}
 
-	public override Hittable Shoot()
+	public override Hittable Shoot(int touchIndex)
 	{
-		
-		Hittable hittable = RaycastFromGuns();
-		
-		
+		Hittable hittable = RaycastFromGuns(touchIndex);
 		if(hittable != null)
 		{
-			
 			if (hittable.GetColor() == Color.white)
 			{
 				//m_currentMode = GunMode.COLOR;
@@ -39,7 +35,26 @@ public class SingleGun : AbstractGun
 			else
 			{
 				//m_currentMode = GunMode.SHOOT;
-				
+				float m_damage = manager.CalculateDamage(color, hittable.GetColor());
+				hittable.Hit(this,m_damage);
+			}
+		}
+
+		return hittable;
+	}
+
+	public override Hittable Shoot()
+	{
+		Hittable hittable = RaycastFromGuns();
+		if(hittable != null)
+		{
+			if (hittable.GetColor() == Color.white)
+			{
+				hittable.Hit(this,0);
+					
+			}
+			else
+			{
 				float m_damage = manager.CalculateDamage(color, hittable.GetColor());
 				hittable.Hit(this,m_damage);
 			}

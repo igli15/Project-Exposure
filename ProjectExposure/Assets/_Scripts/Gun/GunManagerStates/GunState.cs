@@ -6,6 +6,7 @@ using UnityEngine;
 
 public abstract class GunState : AbstractState<GunManager>
 {
+    public abstract void Shoot(int touchIndex);
     public abstract void Shoot();
     public abstract void SetGunColor(Color c);
 
@@ -13,19 +14,32 @@ public abstract class GunState : AbstractState<GunManager>
 
     private void Start()
     {
-        Input.multiTouchEnabled = true;
+       // Input.multiTouchEnabled = true;
     }
 
-    protected virtual void FixedUpdate()
+    protected virtual void Update()
     {
-        //Debug.Log(Input.touchCount);
-        if (Input.GetMouseButtonDown(0) && m_canShoot)
+        if (target.touchInputs)
         {
-            if (isInsideShootingArea())
+            if (target.touchManager.GetIndexTheFirstTouchOnShootingArea() >= 0)
             {
+                //Debug.Log(t);
                 m_canShoot = false;
-                DOVirtual.DelayedCall(0.1f, delegate { m_canShoot = true; });
-                Shoot();
+                //DOVirtual.DelayedCall(0.1f, delegate { m_canShoot = true; });
+                Shoot(target.touchManager.GetIndexTheFirstTouchOnShootingArea());
+
+            }
+        }
+        else
+        {
+            if (Input.GetMouseButtonDown(0) && m_canShoot)
+            {
+                if (isInsideShootingArea())
+                {
+                    m_canShoot = false;
+                    DOVirtual.DelayedCall(0.1f, delegate { m_canShoot = true; });
+                    Shoot();
+                }
             }
         }
     }

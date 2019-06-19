@@ -9,6 +9,7 @@ public class GunManager : MonoBehaviour,IAgent
 {
 	public static Action<Color> OnColorChanged;
 	
+	[SerializeField] private bool m_touchInputs = false;
 	[SerializeField] private AbstractGun[] guns;
 	
 	[SerializeField] private float m_baseDamage = 10;
@@ -27,12 +28,24 @@ public class GunManager : MonoBehaviour,IAgent
 
 	private Color m_color;
 
-	public Fsm<GunManager> fsm
+    public TouchManager m_touchManager;
+
+    public bool touchInputs
+    {
+	    get { return m_touchInputs; }
+    }
+
+    public Fsm<GunManager> fsm
 	{
 		get { return m_fsm; }
 	}
 
-	public float damage
+    public TouchManager touchManager
+    {
+	    get { return m_touchManager; }
+    }
+
+    public float damage
 	{
 		get { return m_damage; }
 	}
@@ -63,6 +76,7 @@ public class GunManager : MonoBehaviour,IAgent
 		{
 			m_fsm = new Fsm<GunManager>(this);
 		}
+        m_touchManager = GetComponent<TouchManager>();
 		
 		m_fsm.ChangeState<SplitGunsState>();
 		
