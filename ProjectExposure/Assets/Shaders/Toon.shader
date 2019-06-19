@@ -111,7 +111,7 @@
 
                 float4 rimDot = 1 - dot(viewDir, normal);
               float rimIntensity = rimDot * pow(NdotL, _RimThreshold);
-                rimIntensity = smoothstep(_RimAmount - 0.01, _RimAmount + 0.01, rimIntensity);
+                rimIntensity = smoothstep(_RimAmount - 0.05, _RimAmount + 0.01, rimIntensity);
                 float4 rim = rimIntensity * _RimColor;
 
 

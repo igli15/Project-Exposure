@@ -9,7 +9,7 @@ public class HudButton : TouchButton
 	private Image[] m_images;
 
 	// Use this for initialization
-	void Start()
+	void Awake()
 	{
 		m_images = GetComponentsInChildren<Image>();
 	}
