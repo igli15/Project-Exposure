@@ -41,7 +41,7 @@ public class Gate2Behaviour : MonoBehaviour {
 
         }
 
-        crystals[crystals.Count - 1].GetComponent<Crystal>().OnExplode += (Crystal c) => { m_shipAnimator.SetTrigger("Break"); };
+        crystals[crystals.Count - 1].GetComponent<Crystal>().OnExplode += (Crystal c) => { m_shipAnimator.SetTrigger("Break"); CurveWallker.instance.StartMovement(); };
 
     }
 
@@ -69,17 +69,30 @@ public class Gate2Behaviour : MonoBehaviour {
 
     void OpenDoor()
     {
-        Sequence crystalSpawn = DOTween.Sequence();
-        //crystalSpawn.isBackwards = true;
 
-        foreach (GameObject crystal in crystals)
-        {
-            crystal.SetActive(true);
-            Tween crystalApperance = crystal.transform.DOScale(1, 0.3f);
-            crystalSpawn.Append(crystalApperance);
-        }
         
-        door.transform.DOLocalRotate(new Vector3(-100, 0, 0), 1.8f).SetEase(Ease.InQuad).OnComplete(CurveWallker.instance.StopMovement);
+        door.transform.DOLocalRotate(new Vector3(-100, 0, 0), 1.8f).SetEase(Ease.InQuad).OnComplete(
+            ()=> {
+                
+                Sequence crystalSpawn = DOTween.Sequence();
+                //crystalSpawn.isBackwards = true;
+                int crystalCount = 0;
+                foreach (GameObject crystal in crystals)
+                {
+                    crystalCount++;
+                    crystal.SetActive(true);
+                    if (crystalCount == crystals.Count)
+                    {
+                        Tween crystalApperance = crystal.transform.DOScale(15, 0.3f);
+                        crystalSpawn.Append(crystalApperance);
+                    }
+                    else
+                    {
+                        Tween crystalApperance = crystal.transform.DOScale(4, 0.3f);
+                        crystalSpawn.Append(crystalApperance);
+                    }
+                }
+            });
     }
 
     void Update () {
