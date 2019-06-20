@@ -3,13 +3,15 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HudManager : MonoBehaviour,IAgent
 {
 	private Fsm<HudManager> m_fsm;
 
-	[SerializeField] private GameObject m_mergeButton;
-	[SerializeField] private GameObject m_mergeLines;
+	[SerializeField] private HudButton m_mergeButton;
+	[SerializeField] private HudButton m_companionButton;
+	[SerializeField] private Image m_rainbowImage;
 
 	private Vector3 m_leftBorderInit;
 	private Vector3 m_rightBorderInit;
@@ -23,16 +25,27 @@ public class HudManager : MonoBehaviour,IAgent
 		}
 		
 		
-		//SetUpElements();
-		
 		m_fsm.ChangeState<SplitHudState>();
-
-		m_mergeButton.SetActive(false);
+		
 		
 		MergedGunsState.OnMerge += ChangeStateToMerged;
 		SplitGunsState.OnSplit += ChangeStateToSplit;
 		SplitGunsState.OnColorsCollected += EnableMergeButton;
 
+		m_mergeButton.gameObject.SetActive(false);
+	}
+
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.L))
+		{
+			m_companionButton.FillButton(true);
+		}
+		
+		if (Input.GetKeyDown(KeyCode.K))
+		{
+			m_companionButton.UnFillButton(true);
+		}
 	}
 
 	public void ChangeStateToMerged(MergedGunsState mergedGunsState)
@@ -48,14 +61,16 @@ public class HudManager : MonoBehaviour,IAgent
 	
 	public void EnableMergeButton(SplitGunsState state = null)
 	{
-		m_mergeLines.SetActive(true);
-		m_mergeButton.SetActive(true);
+		m_mergeButton.gameObject.SetActive(true);
+		m_mergeButton.FillButton();
+		Tween t = m_rainbowImage.transform.DOScaleX(1, 0.3f);
 	}
 	
 	public void DisableMergeButton()
 	{
-		m_mergeLines.SetActive(false);
-		m_mergeButton.SetActive(false);
+		m_mergeButton.UnFillButton();
+		Tween t = m_rainbowImage.transform.DOScaleX(0, 0.3f);
+		t.onComplete += delegate { m_mergeButton.gameObject.SetActive(false); };
 	}
 
 	private void OnDestroy()
