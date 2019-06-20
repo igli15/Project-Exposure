@@ -39,12 +39,12 @@ public class HudManager : MonoBehaviour,IAgent
 	{
 		if (Input.GetKeyDown(KeyCode.L))
 		{
-			m_companionButton.FillButton();
+			m_companionButton.FillButton(true);
 		}
 		
 		if (Input.GetKeyDown(KeyCode.K))
 		{
-			m_companionButton.UnFillButton();
+			m_companionButton.UnFillButton(true);
 		}
 	}
 

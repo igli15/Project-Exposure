@@ -14,19 +14,24 @@ public class HudButton : TouchButton
 		m_images = GetComponentsInChildren<Image>();
 	}
 
-	public void FillButton()
+	public void FillButton(bool enable = false)
 	{
+		if(enable) gameObject.SetActive(true);
+		
 		foreach (var image in m_images)
 		{
 			image.DOFillAmount(1.0f, 0.3f);
 		}
 	}
 	
-	public void UnFillButton()
+	public void UnFillButton(bool disable = false)
 	{
+		Tween tween = null;
 		foreach (var image in m_images)
 		{
-			image.DOFillAmount(0f, 0.3f);
+			tween = image.DOFillAmount(0f, 0.3f);
 		}
+		
+		if(tween != null) tween.onComplete += delegate { if(disable) gameObject.SetActive(false); };
 	}
 }
