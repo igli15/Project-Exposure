@@ -12,6 +12,12 @@ public class HudButton : TouchButton
 	void Awake()
 	{
 		m_images = GetComponentsInChildren<Image>();
+		
+		foreach (var image in m_images)
+		{
+			image.fillAmount = 0;
+		}
+		gameObject.SetActive(false);
 	}
 
 	public void FillButton(bool enable = false)
