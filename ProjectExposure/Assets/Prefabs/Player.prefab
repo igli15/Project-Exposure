@@ -11905,6 +11905,12 @@ MonoBehaviour:
   - {fileID: 114291112576413604}
   - {fileID: 114526522543132710}
   - {fileID: 114306222756754756}
+  m_fillDuration: 0.3
+  m_breakFadeDuration: 0.2
+  m_textPunchDuration: 0.2
+  m_breakPunchDuration: 0.2
+  m_breakPunchRadius: 0.5
+  m_textPunchRadius: 2
 --- !u!114 &114851829400893584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128859,7 +128865,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -37.38916, y: -6.4490356}
+  m_AnchoredPosition: {x: -37.3891, y: -6.4490356}
   m_SizeDelta: {x: -4.050049, y: -9.527344}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224177855428994094

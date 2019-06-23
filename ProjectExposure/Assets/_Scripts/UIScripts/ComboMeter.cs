@@ -14,6 +14,16 @@ public class ComboMeter : MonoBehaviour
 	
 	[SerializeField] private Image[] m_fillFrames;
 
+	[Space] 
+	[Header("Tween Values")] 
+	[SerializeField] [Range(0, 1)] private float m_fillDuration = 0.3f;
+	[SerializeField] [Range(0, 1)] private float m_breakFadeDuration = 0.2f;
+	[SerializeField] [Range(0, 1)] private float m_textPunchDuration = 0.2f;
+	[SerializeField] [Range(0, 1)] private float m_breakPunchDuration = 0.2f;
+	
+	[SerializeField] [Range(0, 3)] private float m_breakPunchRadius = 0.5f;
+	[SerializeField] [Range(0, 3)] private float m_textPunchRadius = 2;
+
 	private Image m_image;
 
 	private int m_multiplier = 1;
@@ -48,7 +58,7 @@ public class ComboMeter : MonoBehaviour
 	{
 		ShowElements();
 		
-		m_image.DOFillAmount(m_image.fillAmount + (degrees / 360.0f), 0.3f);
+		m_image.DOFillAmount(m_image.fillAmount + (degrees / 360.0f), m_fillDuration);
 		float fillDegrees = (m_image.fillAmount) * 360 + degrees;
 
 		int index = (int)(fillDegrees / 36.0f) - 1;
@@ -71,10 +81,10 @@ public class ComboMeter : MonoBehaviour
 		HideAllElements();
 		
 		m_brokenImage.DOFade(1,0);
-		m_brokenImage.DOFade(0, 0.2f);
+		m_brokenImage.DOFade(0, m_breakFadeDuration);
 		
 		m_brokenImage.transform.localScale = Vector3.one;
-		m_brokenImage.transform.DOPunchScale(Random.insideUnitCircle * 0.5f,0.2f);
+		m_brokenImage.transform.DOPunchScale(Random.insideUnitCircle * m_breakPunchRadius,m_breakPunchDuration);
 		m_multiplier = 1;
 	}
 	
@@ -83,7 +93,7 @@ public class ComboMeter : MonoBehaviour
 		Reset();
 		m_multiplier += 1;
 		m_multiplierText.text = m_multiplier + "X";
-		m_multiplierText.transform.DOPunchScale(Random.insideUnitCircle * 2, 0.2f);
+		m_multiplierText.transform.DOPunchScale(Random.insideUnitCircle * m_textPunchRadius, m_textPunchDuration);
 	}
 
 
