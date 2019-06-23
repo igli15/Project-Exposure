@@ -73,7 +73,7 @@ public class ComboMeter : MonoBehaviour
 		m_brokenImage.DOFade(1,0);
 		m_brokenImage.DOFade(0, 0.2f);
 		
-		
+		m_brokenImage.transform.localScale = Vector3.one;
 		m_brokenImage.transform.DOPunchScale(Random.insideUnitCircle * 0.5f,0.2f);
 		m_multiplier = 1;
 	}
