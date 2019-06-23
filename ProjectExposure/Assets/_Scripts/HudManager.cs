@@ -10,7 +10,7 @@ public class HudManager : MonoBehaviour,IAgent
 	private Fsm<HudManager> m_fsm;
 
 	[SerializeField] private HudButton m_mergeButton;
-	[SerializeField] private HudButton m_companionButton;
+	[SerializeField] private CompanionButton m_companionButton;
 	[SerializeField] private Image m_rainbowImage;
 
 	private Vector3 m_leftBorderInit;
@@ -33,18 +33,16 @@ public class HudManager : MonoBehaviour,IAgent
 		SplitGunsState.OnColorsCollected += EnableMergeButton;
 
 		m_mergeButton.gameObject.SetActive(false);
+		
+		m_companionButton.ShowButton("Gate1Hint");
 	}
 
 	private void Update()
 	{
-		if (Input.GetKeyDown(KeyCode.L))
-		{
-			m_companionButton.FillButton(true);
-		}
 		
 		if (Input.GetKeyDown(KeyCode.K))
 		{
-			m_companionButton.UnFillButton(true);
+			m_companionButton.ShowButton("Gate1Hint");
 		}
 	}
 

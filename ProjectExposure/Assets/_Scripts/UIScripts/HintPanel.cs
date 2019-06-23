@@ -30,6 +30,14 @@ public class HintPanel : TouchButton
 
     private Dictionary<string, Hint> m_hintDictionary;
 
+    private string m_hintName;
+
+    public string hintName
+    {
+        get { return m_hintName; }
+        set { m_hintName = value; }
+    }
+
     private void Awake()
     {
         m_hintDictionary = new Dictionary<string, Hint>();
@@ -59,10 +67,10 @@ public class HintPanel : TouchButton
         }
     }
 
-    public void Show(string hintName)
+    public void Show()
     {
         m_shown = false;
-        Debug.Log(hintName);
+        
         Sequence s = DOTween.Sequence();   
         m_companionButton.gameObject.SetActive(false);
         s.Append(m_borders.DOFillAmount(1, m_timeInSeconds));
@@ -70,7 +78,7 @@ public class HintPanel : TouchButton
         s.Append(m_arrowBackdrop.DOFillAmount(1, m_timeInSeconds));
         s.Append(m_talkBox.DOFillAmount(1, m_timeInSeconds));
         s.onComplete += delegate {
-            m_hintDictionary[hintName].image.gameObject.SetActive(true);
+            m_hintDictionary[m_hintName].image.gameObject.SetActive(true);
         };
         s.onComplete += delegate { m_shown = true; };
         
