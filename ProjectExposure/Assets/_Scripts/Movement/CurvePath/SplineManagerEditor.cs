@@ -19,7 +19,7 @@ public class SplineManagerEditor : Editor
         if (GUILayout.Button("Activate all elements",opt))
         {
             SubscribeToUpdate(); 
-            m_manager.UpdateSplineList();
+            //m_manager.UpdateSplineList();
         }
     }
 
@@ -28,7 +28,7 @@ public class SplineManagerEditor : Editor
         if (SplineManager.SubscribedToUpdate == false)
         {
             Debug.Log("Subscribing to Editor Update");
-            EditorApplication.update += OnCustomSceneGUI;
+            //EditorApplication.update += OnCustomSceneGUI;
             SplineManager.SubscribedToUpdate = true;
         }
     }
@@ -45,7 +45,7 @@ public class SplineManagerEditor : Editor
         if (SplineManager.SubscribedToUpdate == true)
         {
             Debug.Log("Unsubscribing from Editor Update");
-            EditorApplication.update -= OnCustomSceneGUI;
+            //EditorApplication.update -= OnCustomSceneGUI;
             SplineManager.SubscribedToUpdate = false;
         }
     }
