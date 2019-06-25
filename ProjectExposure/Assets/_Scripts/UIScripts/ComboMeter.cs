@@ -135,23 +135,26 @@ public class ComboMeter : MonoBehaviour
 	
 	private void IncreaseMultiplier()
 	{
-		Reset();
+		//Reset();
+		m_image.fillAmount = 0;
 		m_multiplier += 1;
 		int index = m_multiplier - 1;
 		m_fillFrames[index].gameObject.SetActive(true);
+		m_multiplierText.transform.localScale = Vector3.one;
 		m_multiplierText.text = "x"+m_multiplier;
 		m_multiplierText.transform.DOPunchScale(Random.insideUnitCircle * m_textPunchRadius, m_textPunchDuration);
 	}
 	
 	private void DecreaseMultiplier()
 	{
-		Reset();
+		//Reset();
 		
 		m_image.fillAmount = 1;
 		
 		m_fillFrames[m_multiplier -1].gameObject.SetActive(false);
 		m_multiplier -= 1;
 
+		m_multiplierText.transform.localScale = Vector3.one;
 		m_multiplierText.text = "x"+m_multiplier;
 		m_multiplierText.transform.DOPunchScale(Random.insideUnitCircle * m_textPunchRadius, m_textPunchDuration);
 	}
