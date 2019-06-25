@@ -21,6 +21,9 @@ public class HighScoreManager : MonoBehaviour
 
 	[HideInInspector]
 	public HighscoreData[] highscoreArray;   //an array of data 
+	
+	[HideInInspector]
+	public HighscoreData[] highscoreArrayYearly;  
 
 	public IOrderedEnumerable<KeyValuePair<string, int>> orderedScores;
 
@@ -63,9 +66,7 @@ public class HighScoreManager : MonoBehaviour
 
 	public void LoadHighScores()
 	{
-		
-		SaveLoadScript.Load(this,"HighScoresDaily");
-		SaveLoadScript.Load(this,"HighScoresYearly");
+		SaveLoadScript.Load(this,"HighScores");
 
 		DateTime oldDate = DateTime.FromBinary(m_saveDate);
 
@@ -74,7 +75,7 @@ public class HighScoreManager : MonoBehaviour
 		if (highscoreArray != null)
 		{
 			highscoreDictionaryDaily = HighScoreDictionaryFromArray(highscoreArray);   //Load array if there is one
-			highscoreDictionaryYearly = HighScoreDictionaryFromArray(highscoreArray);
+			highscoreDictionaryYearly = HighScoreDictionaryFromArray(highscoreArrayYearly);
 		}
 		
 		if (saveSpan.Days >= 1)
@@ -112,8 +113,7 @@ public class HighScoreManager : MonoBehaviour
 	{
 		if (Input.GetKeyDown(KeyCode.R))
 		{
-			SaveLoadScript.DeleteJson("HighScoresDaily");
-			SaveLoadScript.DeleteJson("HighScoresYearly");
+			SaveLoadScript.DeleteJson("HighScores");
 		}
 		
 		if (Input.GetKeyDown(KeyCode.S))
@@ -128,6 +128,7 @@ public class HighScoreManager : MonoBehaviour
 		if(!highscoreDictionaryDaily.ContainsKey(userName))
 		{
 			highscoreDictionaryDaily.Add(userName,m_highScore);
+			highscoreDictionaryYearly.Add(userName,m_highScore);
 			SaveHighscore();
 		}
 		else
@@ -137,6 +138,7 @@ public class HighScoreManager : MonoBehaviour
 			if (score < m_highScore)
 			{
 				highscoreDictionaryDaily[userName] = m_highScore;
+				highscoreDictionaryYearly[userName] = m_highScore;
 			}
 			
 			SaveHighscore();
@@ -146,9 +148,9 @@ public class HighScoreManager : MonoBehaviour
 	private void SaveHighscore()
 	{
 		highscoreArray = HighScoreDictionaryToArray(highscoreDictionaryDaily);
-
-		SaveLoadScript.Save(this,"HighScoresDaily");
-		SaveLoadScript.Save(this,"HighScoresYearly");
+		highscoreArrayYearly = HighScoreDictionaryToArray(highscoreDictionaryYearly);
+		
+		SaveLoadScript.Save(this,"HighScores");
 	}
 	
 	public HighscoreData[] HighScoreDictionaryToArray(Dictionary<string,int> dictionaryToSerialize)   //Returns An array from dictionary
