@@ -9,6 +9,8 @@ public class GateSimpleBehaviour : MonoBehaviour {
     public Gem gem;
     [SerializeField]
     public GameObject door;
+    [SerializeField]
+    public GameObject collider;
 
     public void Start()
     {
@@ -17,6 +19,8 @@ public class GateSimpleBehaviour : MonoBehaviour {
 
     void OpenDoor()
     {
+        collider.SetActive(false);
+        enabled = false;
         door.transform.DOLocalRotate(new Vector3(-100, 0, 0), 1.8f).SetEase(Ease.InQuad).OnComplete(CurveWallker.instance.StartMovement);
     }
 }
