@@ -9,8 +9,10 @@ public class TentacleBehaviour : MonoBehaviour {
     [SerializeField]
     [Range(0,1)]
     public float range = 0.1f;
+
     [SerializeField]
-    List<Crystal> crystals;
+    public List<Transform> placeholders;
+
     int m_crystalCount;
     int m_currentCount;
 
@@ -22,13 +24,7 @@ public class TentacleBehaviour : MonoBehaviour {
 
     public void Initialize()
     {
-        foreach (Crystal c in crystals)
-        {
-            c.OnExplode += OnCrystalExplode;
-            c.gameObject.SetActive(false);
-        }
-
-        m_crystalCount = crystals.Count;
+        m_crystalCount = placeholders.Count;
         m_currentCount = m_crystalCount;
 
     }
@@ -52,12 +48,19 @@ public class TentacleBehaviour : MonoBehaviour {
         }
     }
 
-    public void ActivateTentacle()
+    public void ActivateTentacle(GameObject crystal)
     {
-        foreach (Crystal c in crystals)
+        foreach (Transform t in placeholders)
         {
-            c.gameObject.SetActive(true);
-            Debug.Log("activated " + c.name);
+            GameObject newCrytsal = GameObject.Instantiate(crystal, t.position, t.rotation, t);
+            Crystal c = newCrytsal.GetComponent<Crystal>();
+            c.OnExplode += OnCrystalExplode;
+            
+            c.SetColor(new Color(
+                UnityEngine.Random.Range(0, 255)/255.0f, UnityEngine.Random.Range(0, 255) / 255.0f,
+                UnityEngine.Random.Range(0, 255) / 255.0f, 1));
+            
+
         }
         transform.position = new Vector3(transform.position.x, -5, transform.position.z);
         transform.DOMoveY(6, 1);

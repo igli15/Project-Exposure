@@ -8,7 +8,8 @@ public class BossViewScript : MonoBehaviour {
 
     [SerializeField]
     List<TentacleBehaviour> m_tentacles;
-
+    [SerializeField]
+    GameObject m_crystal;
     private void Start()
     {
         instance = this;
@@ -26,7 +27,7 @@ public class BossViewScript : MonoBehaviour {
     {
         if (m_tentacles.Count == 0) return;
         m_tentacles[0].enabled = true;
-        m_tentacles[0].ActivateTentacle();
+        m_tentacles[0].ActivateTentacle(m_crystal);
         m_tentacles.RemoveAt(0);
     }
 
