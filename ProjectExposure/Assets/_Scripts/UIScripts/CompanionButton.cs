@@ -10,6 +10,6 @@ public class CompanionButton : HudButton
 	private void Start()
 	{
 		OnTouch.AddListener(delegate {
-			m_hintPanel.Show("Gate3Hint"); });
+			m_hintPanel.Show("Gate1Hint"); });
 	}
 }
