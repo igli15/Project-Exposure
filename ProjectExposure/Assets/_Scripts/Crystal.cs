@@ -96,7 +96,7 @@ public class Crystal : Hittable
 		AoeOverlapSphere(gun);
 		if (OnExplode != null) OnExplode(this);
         Instantiate(m_crystalExplosionPrefab.gameObject, transform.position, Quaternion.identity);
-        ScoreStats.instance.AddDeathData(GetColor(),transform, 2);
+        ScoreStats.instance.AddDeathData(GetColor(),transform);
 		Destroy(transform.gameObject);
 	}
 

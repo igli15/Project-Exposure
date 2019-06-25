@@ -75,7 +75,7 @@ public class ArcherFSM : EnemyFSM
     public override void DestroyEnemy()
     {
         if (m_isDead) return;
-        ScoreStats.instance.AddDeathData(m_enemy.GetColor(),transform,2);
+        ScoreStats.instance.AddDeathData(m_enemy.GetColor(),transform,true);
         
         base.DestroyEnemy();
         GameObject explotion = ObjectPooler.instance.SpawnFromPool("escapeEffect", transform.position, transform.rotation);
