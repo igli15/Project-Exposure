@@ -52,7 +52,9 @@ public class CurveWallker : MonoBehaviour
                 {
                     spline = binder.EndSpline;
                     progress = binder.endPprogress;
+
                 }
+                return;
             }
         }
         Vector3 position = spline.GetPoint(p);

@@ -129,7 +129,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   color: {r: 1, g: 0.64705884, b: 0, a: 1}
-  m_explosionRadius: 10
+  m_explosionRadius: 4
   m_crystalExplosionPrefab: {fileID: 1922569974235146, guid: c4858da8bb247d94db1b9727cd4d672d,
     type: 2}
 --- !u!135 &135004049051997738

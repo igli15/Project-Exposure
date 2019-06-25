@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 54253663648629104}
   - component: {fileID: 114098465520802656}
   m_Layer: 0
-  m_Name: CrystalPurple
+  m_Name: CrystalOrange 1
   m_TagString: Crystals
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,9 +128,9 @@ MonoBehaviour:
         m_CallState: 1
     m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  color: {r: 0.5019608, g: 0, b: 0.5019608, a: 1}
+  color: {r: 1, g: 0.99777603, b: 0, a: 1}
   m_explosionRadius: 4
-  m_crystalExplosionPrefab: {fileID: 1922569974235146, guid: 0247baa16e7f87d429fd54223f9ffac5,
+  m_crystalExplosionPrefab: {fileID: 1922569974235146, guid: ad892e2aea9c58b4a8af33e64155bbb0,
     type: 2}
 --- !u!135 &135004049051997738
 SphereCollider:
