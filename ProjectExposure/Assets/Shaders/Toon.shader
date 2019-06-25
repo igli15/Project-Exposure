@@ -21,6 +21,9 @@
          _EmissionScale("Emission Scale", Range(0, 5)) = 0
          [HDR]
         _EmissionColor("Emission Color", Color) = (1,1,1,1)
+        
+        [HDR] _OutlineColor ("Outline Color", Color) = (0, 0, 0, 1)
+        _OutlineThickness ("Outline Thickness", Range(0,5)) = 0
 
 	}
 	SubShader
@@ -127,6 +130,57 @@
 			}
 			ENDCG
 		}
+		
+		Pass
+		{
+		    Cull front
+		        
+		    CGPROGRAM
+		    
+		   
+            #include "UnityCG.cginc"
+
+          
+            #pragma vertex vert
+            #pragma fragment frag
+
+          
+            fixed4 _OutlineColor;
+            
+            float _OutlineThickness;
+            
+           
+            struct appdata{
+                float4 vertex : POSITION;
+                float3 normal : NORMAL;
+            };
+
+            
+            struct v2f{
+                float4 position : SV_POSITION;
+            };
+
+
+            v2f vert(appdata v){
+                v2f o;
+
+                float3 normal = normalize(v.normal);
+                float3 outlineOffset = normal * _OutlineThickness;
+                float3 position = v.vertex + outlineOffset;
+
+                o.position = UnityObjectToClipPos(position);
+
+                return o;
+            }
+
+            
+            fixed4 frag(v2f i) : SV_TARGET{
+                return _OutlineColor;
+            }
+		    
+		    ENDCG
+		        
+        }
         UsePass "Legacy Shaders/VertexLit/SHADOWCASTER"
 	}
 }
