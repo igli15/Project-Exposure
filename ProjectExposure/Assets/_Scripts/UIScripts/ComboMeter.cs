@@ -59,15 +59,10 @@ public class ComboMeter : MonoBehaviour
 		ShowElements();
 		
 		m_image.DOFillAmount(m_image.fillAmount + (degrees / 360.0f), m_fillDuration);
+		
 		float fillDegrees = (m_image.fillAmount) * 360 + degrees;
-
-		int index = (int)(fillDegrees / 36.0f) - 1;
 		
-		if(index >= 0 && index <= 9) 
-			m_fillFrames[index].gameObject.SetActive(true);
-		
-		
-		if (index >= 9 && m_multiplier < 9)
+		if (fillDegrees >= 360 && m_multiplier <= 9)
 		{
 			IncreaseMultiplier();
 		}
@@ -92,7 +87,9 @@ public class ComboMeter : MonoBehaviour
 	{
 		Reset();
 		m_multiplier += 1;
-		m_multiplierText.text = m_multiplier + "X";
+		int index = m_multiplier - 1;
+		m_fillFrames[index].gameObject.SetActive(true);
+		m_multiplierText.text = "x"+m_multiplier;
 		m_multiplierText.transform.DOPunchScale(Random.insideUnitCircle * m_textPunchRadius, m_textPunchDuration);
 	}
 
@@ -100,13 +97,15 @@ public class ComboMeter : MonoBehaviour
 	private void Reset()
 	{
 		DOTween.KillAll();
+		
 		for (int i = 0; i < m_fillFrames.Length; i++)
 		{
 			m_fillFrames[i].gameObject.SetActive(false);
 		}
+		m_fillFrames[0].gameObject.SetActive(true);
 
 		m_image.fillAmount = 0;
-		m_multiplierText.text = "1X";
+		m_multiplierText.text = "x1";
 	}
 
 	private void HideAllElements()
