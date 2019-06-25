@@ -22,6 +22,7 @@ public class HighScoreManager : MonoBehaviour
 	[HideInInspector]
 	public HighscoreData[] highscoreArray;   //an array of data 
 	
+	[HideInInspector]
 	public HighscoreData[] highscoreArrayYearly;  
 
 	public IOrderedEnumerable<KeyValuePair<string, int>> orderedScores;
