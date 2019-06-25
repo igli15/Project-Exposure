@@ -159,7 +159,7 @@ public class ComboMeter : MonoBehaviour
 
 	private void Reset()
 	{
-		DOTween.KillAll();
+		//DOTween.KillAll();
 		
 		m_fillFrames[0].gameObject.SetActive(true);
 

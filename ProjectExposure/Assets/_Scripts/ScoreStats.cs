@@ -8,7 +8,7 @@ public class ScoreStats : MonoBehaviour
 {
     [Header("Texts")]
     [SerializeField]
-    public GameObject critBox;
+    public ComboMeter comboMeter;
     [SerializeField]
     public Text text;
     [SerializeField]
@@ -18,7 +18,8 @@ public class ScoreStats : MonoBehaviour
     public static ScoreStats instance;
     [SerializeField]
     private float m_timeRange = 0.4f;
-
+    public float degreePerInput=90;
+    public float degreePenaltyPerSecond = 5;
     private Tween m_critTween;
 
     private int m_currentBonus = 1;
@@ -32,60 +33,29 @@ public class ScoreStats : MonoBehaviour
 
     public void Start()
     {
-        critBox.transform.localScale = new Vector3(0, 1,1);
         instance = this;
     }
 
     private void Update()
     {
-        if (isShot&& Time.time - m_lastTimeDeath > m_timeRange)
+        if (Time.time - m_lastTimeDeath > m_timeRange)
         {
-            isShot = false;
-            m_currentScore += m_critScore;
-
-            DOTween.To(() => m_tweenScore, x => { m_tweenScore = x; text.text = "" + m_tweenScore; }, m_currentScore, 0.2f).SetEase(Ease.Linear).SetUpdate(true);
-            DOTween.To(() => m_critScore, x =>
-            {
-                m_critScore = x;
-                if (m_critScore != 0) critText.text = "" + m_critScore;
-                else
-                {
-                    
-                    critText.text = "";
-                    HideCritBox();
-                }
-            }, 0, 0.2f);
+            comboMeter.DecreaseFillImmediate(Time.timeScale * degreePenaltyPerSecond);
         }
     }
 
-    public void ShowCritBox()
-    {
-        m_critTween =critBox.transform.DOScaleX(1, 0.1f).OnComplete ( ()=> {  } ).SetEase(Ease.InQuad);
-    }
-
-    public void HideCritBox()
-    {
-        m_critTween=critBox.transform.DOScaleX(0, 0.1f).OnComplete(() => { }).SetEase(Ease.InQuad);
-    }
 
     public void AddDeathData(Color color,Transform enemy,bool isFish=false)
     {
-        //If crit sequence is stoped
-        if (Time.time - m_lastTimeDeath < m_timeRange)
-        {
-            if (m_currentBonus < 10)
-                m_currentBonus++;
-        }
-        else
-        {
-            m_currentBonus = 1;
-        }
-        ShowCritBox();
+
+        comboMeter.IncreaseFill(degreePerInput);
         isShot = true;
 
         //Default setting
         int score = 0;
         string tag = "s1";
+        m_currentBonus = comboMeter.multiplier;
+
         Color currentColor = Color.gray;
 
         if (isFish)
@@ -152,32 +122,9 @@ public class ScoreStats : MonoBehaviour
                 break;
         }
 
-        if (m_currentBonus > 1)
-        {
-            
-            m_tweenCritScore = m_critScore;
-            m_critScore += score;
+        m_currentScore += score;
 
-            critText.color = currentColor;
-
-            //Tweening creet score to critScore
-            DOTween.To(() => m_tweenCritScore, x =>
-            {
-                m_tweenCritScore = x;
-                if (m_tweenCritScore != 0) critText.text = "" + m_tweenCritScore;
-                else
-                {
-                    HideCritBox();
-                    critText.text = "";
-                }
-            }, m_critScore, 0.2f);
-           // critBox.SetActive(true);
-        }
-        else
-        {
-            m_critScore = score;
-            
-        }
+        DOTween.To(() => m_tweenScore, x => { m_tweenScore = x; text.text = "" + m_tweenScore; }, m_currentScore, 0.03f).SetEase(Ease.Linear).SetUpdate(true);
 
         //Activating worldSpace scores
         GameObject scoreDisplay = ObjectPooler.instance.SpawnFromPool(tag, Camera.main.WorldToScreenPoint(enemy.position), new Quaternion(0, 0, 0, 0));

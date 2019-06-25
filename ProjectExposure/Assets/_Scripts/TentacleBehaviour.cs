@@ -55,11 +55,12 @@ public class TentacleBehaviour : MonoBehaviour {
             GameObject newCrytsal = GameObject.Instantiate(crystal, t.position, t.rotation, t);
             Crystal c = newCrytsal.GetComponent<Crystal>();
             c.OnExplode += OnCrystalExplode;
-            
-            c.SetColor(new Color(
+
+            /*c.SetColor(new Color(
                 UnityEngine.Random.Range(0, 255)/255.0f, UnityEngine.Random.Range(0, 255) / 255.0f,
-                UnityEngine.Random.Range(0, 255) / 255.0f, 1));
-            
+                UnityEngine.Random.Range(0, 255) / 255.0f, 1));*/
+            c.SetColor(new Color(1,0,0, 1));
+
 
         }
         transform.position = new Vector3(transform.position.x, -5, transform.position.z);
