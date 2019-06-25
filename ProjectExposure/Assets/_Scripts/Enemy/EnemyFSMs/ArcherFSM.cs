@@ -75,6 +75,7 @@ public class ArcherFSM : EnemyFSM
     public override void DestroyEnemy()
     {
         if (m_isDead) return;
+        m_isDead = true;
         ScoreStats.instance.AddDeathData(m_enemy.GetColor(),transform,true);
         
         base.DestroyEnemy();
@@ -85,6 +86,6 @@ public class ArcherFSM : EnemyFSM
 
         m_rigidBody.velocity = Vector3.zero;
 
-        m_isDead = true;
+        
     }
 }
