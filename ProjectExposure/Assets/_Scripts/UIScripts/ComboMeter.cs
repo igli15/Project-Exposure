@@ -28,6 +28,9 @@ public class ComboMeter : MonoBehaviour
 
 	private int m_multiplier = 1;
 
+	private Tweener m_fillTween;
+	private Tweener m_unfillTween;
+	
 	public int multiplier
 	{
 		get { return m_multiplier; }
@@ -63,9 +66,10 @@ public class ComboMeter : MonoBehaviour
 
 	public void IncreaseFill(float degrees)
 	{
+		KillTweens();
 		ShowElements();
 		
-		m_image.DOFillAmount(m_image.fillAmount + (degrees / 360.0f), m_fillDuration);
+		m_fillTween = m_image.DOFillAmount(m_image.fillAmount + (degrees / 360.0f), m_fillDuration);
 		
 		float fillDegrees = (m_image.fillAmount) * 360 + degrees;
 		
@@ -78,9 +82,10 @@ public class ComboMeter : MonoBehaviour
 	
 	public void DecreaseFill(float degrees)
 	{
+		KillTweens();
 		ShowElements();
 		
-		m_image.DOFillAmount(m_image.fillAmount - (degrees / 360.0f), m_fillDuration);
+		m_unfillTween = m_image.DOFillAmount(m_image.fillAmount - (degrees / 360.0f), m_fillDuration);
 		
 		float fillDegrees = (m_image.fillAmount) * 360 - degrees;
 		
@@ -100,7 +105,7 @@ public class ComboMeter : MonoBehaviour
 	public void DecreaseFillImmediate(float degrees)
 	{
 		ShowElements();
-
+		KillTweens();
 		m_image.fillAmount -=  (degrees / 360.0f);
 		
 		float fillDegrees = (m_image.fillAmount) * 360 - degrees;
@@ -136,6 +141,7 @@ public class ComboMeter : MonoBehaviour
 	private void IncreaseMultiplier()
 	{
 		//Reset();
+		KillTweens();
 		m_image.fillAmount = 0;
 		m_multiplier += 1;
 		int index = m_multiplier - 1;
@@ -148,7 +154,7 @@ public class ComboMeter : MonoBehaviour
 	private void DecreaseMultiplier()
 	{
 		//Reset();
-		
+		KillTweens();
 		m_image.fillAmount = 1;
 		
 		m_fillFrames[m_multiplier -1].gameObject.SetActive(false);
@@ -163,7 +169,7 @@ public class ComboMeter : MonoBehaviour
 	private void Reset()
 	{
 		//DOTween.KillAll();
-		
+		//KillTweens();
 		m_fillFrames[0].gameObject.SetActive(true);
 
 		m_image.fillAmount = 0;
@@ -187,6 +193,12 @@ public class ComboMeter : MonoBehaviour
 		m_outlineImage.gameObject.SetActive(true);
 		m_multiplierText.gameObject.SetActive(true);
 		m_fillFrames[0].gameObject.SetActive(true);
+	}
+
+	private void KillTweens()
+	{
+		m_fillTween.Kill();
+		m_unfillTween.Kill();
 	}
 	
 }
