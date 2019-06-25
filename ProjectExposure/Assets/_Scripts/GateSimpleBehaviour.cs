@@ -19,6 +19,7 @@ public class GateSimpleBehaviour : MonoBehaviour {
 
     void OpenDoor()
     {
+        gem.onHit -= OpenDoor;
         collider.SetActive(false);
         enabled = false;
         door.transform.DOLocalRotate(new Vector3(-100, 0, 0), 1.8f).SetEase(Ease.InQuad).OnComplete(CurveWallker.instance.StartMovement);

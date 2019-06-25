@@ -55,7 +55,7 @@ public class ScoreStats : MonoBehaviour
         int score = 0;
         string tag = "s1";
         m_currentBonus = comboMeter.multiplier;
-
+        Debug.Log("AddDeathFata");
         Color currentColor = Color.gray;
 
         if (isFish)
