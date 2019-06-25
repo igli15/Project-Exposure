@@ -68,7 +68,7 @@ public class ScoreStats : MonoBehaviour
         m_critTween=critBox.transform.DOScaleX(0, 0.1f).OnComplete(() => { }).SetEase(Ease.InQuad);
     }
 
-    public void AddDeathData(Color color,Transform enemy,int currentBonus=1)
+    public void AddDeathData(Color color,Transform enemy,bool isFish=false)
     {
         //If crit sequence is stoped
         if (Time.time - m_lastTimeDeath < m_timeRange)
@@ -78,52 +78,65 @@ public class ScoreStats : MonoBehaviour
         }
         else
         {
-            m_currentBonus = currentBonus;
+            m_currentBonus = 1;
         }
         ShowCritBox();
         isShot = true;
 
+        //Default setting
         int score = 0;
-        string tag = "s100";
+        string tag = "s1";
         Color currentColor = Color.gray;
+
+        if (isFish)
+        {
+            tag = "s" + (m_currentBonus*5);
+            score = m_currentBonus*5;
+        }
+        else
+        {
+            tag = "s" + m_currentBonus;
+            score = m_currentBonus;
+        }
+
         switch (m_currentBonus) {
             case 1:
-                score += 100;
-                tag = "s1";
+                //score += 100;
+                //tag = "s1";
                 currentColor = Color.gray;
                 break;
             case 2:
-                score += 200;
-                tag = "s2";
+                //score += 200;
+                //tag = "s2";
                 currentColor = Color.green;
                 break;
             case 3:
-                score += 400;
-                tag = "s3";
+                //score += 400;
+                //tag = "s3";
                 currentColor = Color.cyan;
                 break;
             case 4:
-                score += 800;
-                tag = "s4";
+                //score += 800;
+                //tag = "s4";
                 currentColor = Color.blue;
                 break;
             case 5:
-                score += 1000;
-                tag = "s5";
+                //score += 1000;
+                //tag = "s5";
                 currentColor = new Color(80,50,20,1);
                 break;
             case 6:
-                score += 2000;
-                tag = "s6";
+                //score += 2000;
+                //tag = "s6";
                 currentColor = new Color(192, 192, 192, 1);
                 break;
             case 7:
-                score += 4000;
-                tag = "s7";
+               // score += 4000;
+                //tag = "s7";
                 currentColor = new Color(255, 215, 0, 1);
                 break;
             case 8:
-                score += 8000;
+                //score += 8000;
                 //tag = "s8";
                 currentColor = new Color(185, 242, 255);
                 break;
