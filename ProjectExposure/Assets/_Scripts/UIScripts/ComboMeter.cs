@@ -37,7 +37,9 @@ public class ComboMeter : MonoBehaviour
 	void Start ()
 	{
 		m_image = GetComponent<Image>();
+		
 		Reset();
+		HideAllElements();
 	}
 
 	private void Update()
@@ -45,6 +47,11 @@ public class ComboMeter : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.A))
 		{
 			IncreaseFill(40);
+		}
+		
+		if (Input.GetKeyDown(KeyCode.F))
+		{
+			DecreaseFill(40);
 		}
 		
 		if (Input.GetKeyDown(KeyCode.B))
@@ -67,6 +74,49 @@ public class ComboMeter : MonoBehaviour
 			IncreaseMultiplier();
 		}
 		
+	}
+	
+	public void DecreaseFill(float degrees)
+	{
+		ShowElements();
+		
+		m_image.DOFillAmount(m_image.fillAmount - (degrees / 360.0f), m_fillDuration);
+		
+		float fillDegrees = (m_image.fillAmount) * 360 - degrees;
+		
+		if (fillDegrees <= 0)
+		{
+			if (m_multiplier == 1)
+			{
+				HideAllElements();
+			}
+			else
+			{
+				DecreaseMultiplier();
+			}
+		}
+	}
+	
+	public void DecreaseFillImmediate(float degrees)
+	{
+		ShowElements();
+
+		m_image.fillAmount -=  (degrees / 360.0f);
+		
+		float fillDegrees = (m_image.fillAmount) * 360 - degrees;
+		
+		if (fillDegrees <= 0 )
+		{
+			Debug.Log(m_multiplier);
+			if (m_multiplier == 1)
+			{
+				HideAllElements();
+			}
+			else
+			{
+				DecreaseMultiplier();
+			}
+		}
 
 	}
 
@@ -92,16 +142,25 @@ public class ComboMeter : MonoBehaviour
 		m_multiplierText.text = "x"+m_multiplier;
 		m_multiplierText.transform.DOPunchScale(Random.insideUnitCircle * m_textPunchRadius, m_textPunchDuration);
 	}
+	
+	private void DecreaseMultiplier()
+	{
+		Reset();
+		
+		m_image.fillAmount = 1;
+		
+		m_fillFrames[m_multiplier -1].gameObject.SetActive(false);
+		m_multiplier -= 1;
+
+		m_multiplierText.text = "x"+m_multiplier;
+		m_multiplierText.transform.DOPunchScale(Random.insideUnitCircle * m_textPunchRadius, m_textPunchDuration);
+	}
 
 
 	private void Reset()
 	{
 		DOTween.KillAll();
 		
-		for (int i = 0; i < m_fillFrames.Length; i++)
-		{
-			m_fillFrames[i].gameObject.SetActive(false);
-		}
 		m_fillFrames[0].gameObject.SetActive(true);
 
 		m_image.fillAmount = 0;
@@ -124,6 +183,7 @@ public class ComboMeter : MonoBehaviour
 	{
 		m_outlineImage.gameObject.SetActive(true);
 		m_multiplierText.gameObject.SetActive(true);
+		m_fillFrames[0].gameObject.SetActive(true);
 	}
 	
 }
