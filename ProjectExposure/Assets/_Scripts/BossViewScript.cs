@@ -16,6 +16,7 @@ public class BossViewScript : MonoBehaviour {
         foreach (TentacleBehaviour tentacle in m_tentacles)
         {
             tentacle.onEnd += OnTentacleEnd;
+            tentacle.Initialize();
             tentacle.enabled = false;
         }
         ActivateNextTentacle();

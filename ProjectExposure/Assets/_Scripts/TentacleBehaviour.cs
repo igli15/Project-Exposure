@@ -16,18 +16,24 @@ public class TentacleBehaviour : MonoBehaviour {
 
     public Action<TentacleBehaviour> onEnd;
 
-	void Start () {
+	public void Start () {
+
+    }
+
+    public void Initialize()
+    {
         foreach (Crystal c in crystals)
         {
             c.OnExplode += OnCrystalExplode;
+            c.gameObject.SetActive(false);
         }
 
         m_crystalCount = crystals.Count;
         m_currentCount = m_crystalCount;
-        
+
     }
-	
-	void Update () {
+
+    void Update () {
         Vector3 distance = ( BossViewScript.instance.transform.position- CurveWallker.instance.transform.position );
         distance *= range;
         Vector3 buffer = CurveWallker.instance.transform.position + distance;
@@ -48,6 +54,11 @@ public class TentacleBehaviour : MonoBehaviour {
 
     public void ActivateTentacle()
     {
+        foreach (Crystal c in crystals)
+        {
+            c.gameObject.SetActive(true);
+            Debug.Log("activated " + c.name);
+        }
         transform.position = new Vector3(transform.position.x, -5, transform.position.z);
         transform.DOMoveY(6, 1);
     }
