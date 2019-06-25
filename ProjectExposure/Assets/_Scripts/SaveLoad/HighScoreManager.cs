@@ -24,12 +24,15 @@ public class HighScoreManager : MonoBehaviour
 
 	public IOrderedEnumerable<KeyValuePair<string, int>> orderedScores;
 
-	Dictionary<string,int> highscoreDictionary = new Dictionary<string,int>();
+	Dictionary<string,int> highscoreDictionaryDaily = new Dictionary<string,int>();
 
+	Dictionary<string,int> highscoreDictionaryYearly = new Dictionary<string,int>();
+	
 	private int m_highScore;
 	
 	public static HighScoreManager instance;
 
+	[HideInInspector] public long m_saveDate = DateTime.Now.ToBinary();
 
 	public int highScore
 	{
@@ -60,45 +63,80 @@ public class HighScoreManager : MonoBehaviour
 
 	public void LoadHighScores()
 	{
-		SaveLoadScript.Load(this,"HighScores");
+		
+		SaveLoadScript.Load(this,"HighScoresDaily");
+		SaveLoadScript.Load(this,"HighScoresYearly");
+
+		DateTime oldDate = DateTime.FromBinary(m_saveDate);
+
+		TimeSpan saveSpan = DateTime.Now.Subtract(oldDate);
+		
 		if (highscoreArray != null)
 		{
-			highscoreDictionary = HighScoreDictionaryFromArray(highscoreArray);   //Load array if there is one
+			highscoreDictionaryDaily = HighScoreDictionaryFromArray(highscoreArray);   //Load array if there is one
+			highscoreDictionaryYearly = HighScoreDictionaryFromArray(highscoreArray);
 		}
+		
+		if (saveSpan.Days >= 1)
+		{
+			highscoreDictionaryDaily.Clear();
+			Debug.Log("one day passed");
+			m_saveDate = DateTime.Now.ToBinary();
+			SaveHighscore();
+		}
+
+		if (saveSpan.Days >= 364)
+		{
+			highscoreDictionaryYearly.Clear();
+			Debug.Log("one year passed");
+			m_saveDate = DateTime.Now.ToBinary();
+			SaveHighscore();
+		}
+
 		
 		OrderScores();
 	}
 
 	private void OrderScores()
 	{
-		orderedScores = from pair in highscoreDictionary
+		orderedScores = from pair in highscoreDictionaryDaily
 			orderby pair.Value descending 
 			select pair;
 
+		orderedScores = from pair in highscoreDictionaryYearly
+			orderby pair.Value descending 
+			select pair;
 	}
 
 	private void Update()
 	{
 		if (Input.GetKeyDown(KeyCode.R))
 		{
-			SaveLoadScript.DeleteJson("HighScores");
+			SaveLoadScript.DeleteJson("HighScoresDaily");
+			SaveLoadScript.DeleteJson("HighScoresYearly");
+		}
+		
+		if (Input.GetKeyDown(KeyCode.S))
+		{
+			m_highScore = 100;
+			SubmitHighScore("Igli");		
 		}
 	}
 
 	public void SubmitHighScore(string userName)         //Check if there is a username or not and apply score properly then save locally
 	{
-		if(!highscoreDictionary.ContainsKey(userName))
+		if(!highscoreDictionaryDaily.ContainsKey(userName))
 		{
-			highscoreDictionary.Add(userName,m_highScore);
+			highscoreDictionaryDaily.Add(userName,m_highScore);
 			SaveHighscore();
 		}
 		else
 		{
-			int score = highscoreDictionary[userName];
+			int score = highscoreDictionaryDaily[userName];
 
 			if (score < m_highScore)
 			{
-				highscoreDictionary[userName] = m_highScore;
+				highscoreDictionaryDaily[userName] = m_highScore;
 			}
 			
 			SaveHighscore();
@@ -107,8 +145,10 @@ public class HighScoreManager : MonoBehaviour
 
 	private void SaveHighscore()
 	{
-		highscoreArray = HighScoreDictionaryToArray(highscoreDictionary);
-		SaveLoadScript.Save(this,"HighScores");
+		highscoreArray = HighScoreDictionaryToArray(highscoreDictionaryDaily);
+
+		SaveLoadScript.Save(this,"HighScoresDaily");
+		SaveLoadScript.Save(this,"HighScoresYearly");
 	}
 	
 	public HighscoreData[] HighScoreDictionaryToArray(Dictionary<string,int> dictionaryToSerialize)   //Returns An array from dictionary

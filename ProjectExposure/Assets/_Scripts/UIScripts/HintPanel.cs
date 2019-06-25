@@ -14,7 +14,6 @@ public class Hint
 
 public class HintPanel : TouchButton
 {
-
     [SerializeField] [Range(0, 1)] private float m_timeInSeconds = 0.3f;
     
     [SerializeField] private CompanionButton m_companionButton;
@@ -32,10 +31,18 @@ public class HintPanel : TouchButton
 
     private string m_hintName;
 
+    private bool m_canHide = false;
+
     public string hintName
     {
         get { return m_hintName; }
         set { m_hintName = value; }
+    }
+
+    public bool canHide
+    {
+        get { return m_canHide; }
+        set { m_canHide = value; }
     }
 
     private void Awake()
@@ -61,7 +68,7 @@ public class HintPanel : TouchButton
     {
         base.Update();
 
-        if (Input.GetMouseButtonDown(0) && m_shown)
+        if (Input.GetMouseButtonDown(0) && m_shown && m_canHide)
         {
             Hide();
         }
@@ -70,7 +77,7 @@ public class HintPanel : TouchButton
     public void Show()
     {
         m_shown = false;
-        
+        m_canHide = true;
         Sequence s = DOTween.Sequence();   
         m_companionButton.gameObject.SetActive(false);
         s.Append(m_borders.DOFillAmount(1, m_timeInSeconds));
