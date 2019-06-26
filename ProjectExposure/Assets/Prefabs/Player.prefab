@@ -2116,7 +2116,7 @@ GameObject:
   - component: {fileID: 136555420616228676}
   m_Layer: 0
   m_Name: HandR
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2215,7 +2215,7 @@ GameObject:
   - component: {fileID: 136254775667402108}
   m_Layer: 0
   m_Name: HandL
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10039,9 +10039,9 @@ MonoBehaviour:
   comboMeter: {fileID: 114841438722578996}
   text: {fileID: 114823050578300730}
   critText: {fileID: 114295004742653416}
-  m_timeRange: 3
-  degreePerInput: 50
-  degreePenaltyPerSecond: 1.5
+  m_timeRange: 3.5
+  degreePerInput: 55
+  degreePenaltyPerSecond: 1.1
   isShot: 0
 --- !u!114 &114182171141394296
 MonoBehaviour:
@@ -129545,7 +129545,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.027541665, y: 0.16414815}
   m_AnchorMax: {x: 0.9744376, y: 1}
-  m_AnchoredPosition: {x: -1.2999878, y: -18.424988}
+  m_AnchoredPosition: {x: -1.2998047, y: -18.425049}
   m_SizeDelta: {x: -20.6, y: -36.85}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224798048351479314
