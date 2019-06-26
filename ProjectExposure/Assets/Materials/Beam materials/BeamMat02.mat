@@ -82,4 +82,8 @@ Material:
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _TintColor: {r: 1.6539011, g: 2, b: 0.288, a: 0}
+<<<<<<< HEAD
+    - _TintColor: {r: 2, g: 0.288, b: 0.288, a: 0}
+=======
+    - _TintColor: {r: 0.288, g: 2, b: 1.4444252, a: 0}
+>>>>>>> feature/Da_V_scene_one_mo_tiem
