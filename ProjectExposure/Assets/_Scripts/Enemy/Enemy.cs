@@ -29,7 +29,6 @@ public class Enemy : Hittable
 
     public void RemoveCrystal()
     {
-        return;
         if (m_crystals.Count == 0) return;
 
         GameObject crystal = m_crystals[0];

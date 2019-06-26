@@ -5,9 +5,7 @@ using DG.Tweening;
 
 public class GateSimpleBehaviour : MonoBehaviour {
 
-    [SerializeField]
     public Gem gem;
-    [SerializeField]
     public GameObject door;
     [SerializeField]
     public GameObject collider;

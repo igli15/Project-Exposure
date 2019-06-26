@@ -32,12 +32,6 @@ public class WaterSlide : MonoBehaviour {
             m_standardPath.isActivated = false;
             m_stdActive = false;
         }
-        else if (m_stdActive == false)
-        {
-            m_waterStream.SetActive(false);
-            m_optionalPath.isActivated = false;
-            m_standardPath.isActivated = true;
-            m_stdActive = true;
-        }
+        
     }
 }
