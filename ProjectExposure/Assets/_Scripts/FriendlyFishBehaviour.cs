@@ -18,8 +18,9 @@ public class FriendlyFishBehaviour : Hittable {
 
     public void StunFish()
     {
-       m_wallker.StopMovement();
-        transform.DOScale(1, 2).OnComplete(()=> { m_wallker.StartMovement(); ScoreStats.instance.comboMeter.BreakCombo(); });
+        m_wallker.StopMovement();
+        ScoreStats.instance.comboMeter.BreakCombo();
+        transform.DOScale(1, 2).OnComplete(()=> { m_wallker.StartMovement(); });
     }
 
     public override void SetColor(Color newColor)

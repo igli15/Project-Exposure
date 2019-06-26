@@ -1000,6 +1000,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2362a949f86bf3b4b926051aa98256ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  color: {r: 1, g: 0, b: 0, a: 0}
+--- !u!135 &1070234569
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1070234563}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.9041901
+  m_Center: {x: 0, y: -0.15266412, z: 0.11142492}
 --- !u!1 &1078187694
 GameObject:
   m_ObjectHideFlags: 0
@@ -1044,7 +1062,7 @@ MonoBehaviour:
   m_lengths: []
   drawInEditor: 0
   TotalLength: 0
-  Duration: 5
+  Duration: 10
 --- !u!114 &1078187696
 MonoBehaviour:
   m_ObjectHideFlags: 0
