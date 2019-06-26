@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Start Cave
-  m_Shader: {fileID: 4800000, guid: 48747aee604a54502930d8931b0440d9, type: 3}
+  m_Shader: {fileID: 4800000, guid: 39ad170c90c6c38499d984089b42a7a5, type: 3}
   m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
