@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: New Material 1
-  m_Shader: {fileID: 4800000, guid: 69a57431e20d246e8bf6a3b3ddf987ac, type: 3}
+  m_Name: New Material 2
+  m_Shader: {fileID: 4800000, guid: 39ad170c90c6c38499d984089b42a7a5, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -38,15 +38,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _EmissionTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -63,16 +63,15 @@ Material:
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmissionScale: 0
     - _GlossMapScale: 1
-    - _Glossiness: 0.5
+    - _Glossiness: 31
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineThickness: 0.01
+    - _OutlineThickness: 0.02
     - _Parallax: 0.02
-    - _RimAmount: 0
+    - _RimAmount: 0.21
     - _RimThreshold: 0.1
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -80,9 +79,9 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _AmbientColor: {r: 0.4, g: 0.4, b: 0.4, a: 1}
-    - _Color: {r: 0.6981132, g: 0.6981132, b: 0.6981132, a: 1}
+    - _AmbientColor: {r: 0.048949793, g: 0.41509432, b: 0.40083134, a: 1}
+    - _Color: {r: 0.044143822, g: 0.3018868, b: 0.28254685, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 0.71619105, g: 0.9528302, b: 0.6966447, a: 1}
-    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SpecularColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
+    - _OutlineColor: {r: 0.12126203, g: 0.21649194, b: 0.23584908, a: 1}
+    - _RimColor: {r: 0.3648539, g: 0.058873262, b: 0.5943396, a: 1}
+    - _SpecularColor: {r: 0.5471698, g: 0.36391956, b: 0.36391956, a: 1}
