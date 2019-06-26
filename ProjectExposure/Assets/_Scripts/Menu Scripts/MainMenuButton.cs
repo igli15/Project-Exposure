@@ -16,7 +16,7 @@ public class MainMenuButton : WorldButton
 		base.Click(ray);
 		
 		if(enabled)
-		m_levelLoader.LoadLevel("Menu");
+		m_levelLoader.LoadLevel(0);
 		
 	}
 }

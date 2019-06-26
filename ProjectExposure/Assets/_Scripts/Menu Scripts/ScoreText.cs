@@ -11,7 +11,7 @@ public class ScoreText : MonoBehaviour
 	void Start ()
 	{
 		m_textMeshPro = GetComponent<TextMeshProUGUI>();
-		m_textMeshPro.text = "Score: " + "\n" + HighScoreManager.instance.highScore;
+		m_textMeshPro.text = "YOUR SCORE: " + "\n" + HighScoreManager.instance.highScore;
 	}
 	
 

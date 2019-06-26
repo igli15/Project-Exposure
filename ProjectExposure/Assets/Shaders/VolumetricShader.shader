@@ -26,7 +26,7 @@
        
 
 		CGPROGRAM
-		#pragma surface surf Standard fullforwardshadows alpha:fade
+		#pragma surface surf Standard noshadow alpha:fade decal:blend
 
 		// Use shader model 3.0 target, to get nicer looking lighting
 		#pragma target 3.0
