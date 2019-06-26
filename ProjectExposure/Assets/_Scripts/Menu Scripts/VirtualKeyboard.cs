@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -15,7 +16,7 @@ public class VirtualKeyboard : MonoBehaviour
 	public UnityEvent OnSave;
 	
 	private string m_finalString;
-	private InputField m_inputField;
+	private TMP_InputField m_inputField;
 	private CanvasGroup m_canvasGroup;
 	private bool m_isShown = false;
 	
@@ -25,7 +26,7 @@ public class VirtualKeyboard : MonoBehaviour
 	[SerializeField] [Range(0, 1)] private float m_appearTime = 0.5f;
 	[SerializeField] [Range(0, 1)] private float m_dissapearTime = 0.5f;
 
-	public InputField inputField
+	public TMP_InputField inputField
 	{
 		get { return m_inputField; }
 	}
@@ -56,7 +57,7 @@ public class VirtualKeyboard : MonoBehaviour
 		*/
 	}
 
-	public void ShowKeyboard(InputField i)
+	public void ShowKeyboard(TMP_InputField i)
 	{
 		OnShow.Invoke();
 		
