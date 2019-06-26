@@ -32,6 +32,15 @@ public class LevelLoader : MonoBehaviour
 			StartCoroutine(LoadLevelAsync(levelName));  //Start out Async Loading
 		} 
 	}
+	
+	public void LoadLevel(int index)
+	{
+		if (!startedLoading)
+		{
+			startedLoading = true;
+			StartCoroutine(LoadLevelAsync(index));  //Start out Async Loading
+		} 
+	}
 
 	IEnumerator LoadLevelAsync(string levelName)     //Coroutine allows to load the level without disturbing the main thread.
 	{
@@ -53,6 +62,27 @@ public class LevelLoader : MonoBehaviour
 			yield return null;
 		}
 	}
+	
+	IEnumerator LoadLevelAsync(int index)     //Coroutine allows to load the level without disturbing the main thread.
+    	{
+    		OnLoadStarted.Invoke();
+    		
+    		yield return new WaitForSeconds(m_extraTimeToWait);         // if you want to load slowly */
+    		
+    		sceneLoadingData = SceneManager.LoadSceneAsync(index);   //Get the data and load async
+    		
+    		sceneLoadingData.allowSceneActivation = false;           //Don't automatically go to the next level if finished
+    
+    		while (!sceneLoadingData.isDone)
+    		{
+    			if (sceneLoadingData.progress >= maxTimeNeededToCompleteLoad) //If we are completed check If specified buttons are pressed and then go to next scene
+    			{
+    				OnLoadFinished.Invoke();
+    				sceneLoadingData.allowSceneActivation = true;
+    			}
+    			yield return null;
+    		}
+    	}
 
 	public void StartLevel()
 	{

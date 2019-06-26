@@ -13,7 +13,6 @@ public class PillarCrystalSmash : MonoBehaviour
         if (m_crystal != null)
         {
             Destroy(m_crystal.transform.gameObject);
-            Debug.Log("i collided");
         }
     }
 }
