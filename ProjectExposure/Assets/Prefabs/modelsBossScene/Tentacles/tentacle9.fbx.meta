@@ -1,0 +1,199 @@
+fileFormatVersion: 2
+guid: 74afc642034471c45a48c82e6279b660
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: AlsoHere
+    100002: And_here
+    100004: CrystalTransform
+    100006: CrystalTransform2
+    100008: CrystalTransform3
+    100010: CrystalTransform4
+    100012: CrystalTransform5
+    100014: CrystalTransform6
+    100016: CrystalTransform7
+    100018: CrystalTransform8
+    100020: CrystalTransform9
+    100022: endboss_0042:Tenticle
+    100024: Here
+    100026: Join20
+    100028: joint1
+    100030: joint10
+    100032: joint11
+    100034: joint12
+    100036: joint13
+    100038: joint15
+    100040: joint16
+    100042: joint18
+    100044: joint2
+    100046: joint21
+    100048: joint22
+    100050: joint23
+    100052: joint24
+    100054: joint25
+    100056: joint26
+    100058: joint3
+    100060: joint4
+    100062: joint5
+    100064: joint6
+    100066: joint7
+    100068: joint8
+    100070: joint9
+    100072: //RootNode
+    100074: Tenticle
+    400000: AlsoHere
+    400002: And_here
+    400004: CrystalTransform
+    400006: CrystalTransform2
+    400008: CrystalTransform3
+    400010: CrystalTransform4
+    400012: CrystalTransform5
+    400014: CrystalTransform6
+    400016: CrystalTransform7
+    400018: CrystalTransform8
+    400020: CrystalTransform9
+    400022: endboss_0042:Tenticle
+    400024: Here
+    400026: Join20
+    400028: joint1
+    400030: joint10
+    400032: joint11
+    400034: joint12
+    400036: joint13
+    400038: joint15
+    400040: joint16
+    400042: joint18
+    400044: joint2
+    400046: joint21
+    400048: joint22
+    400050: joint23
+    400052: joint24
+    400054: joint25
+    400056: joint26
+    400058: joint3
+    400060: joint4
+    400062: joint5
+    400064: joint6
+    400066: joint7
+    400068: joint8
+    400070: joint9
+    400072: //RootNode
+    400074: Tenticle
+    2100000: Tentacle_Mat
+    2100002: endboss_0042_Tentacle_Mat
+    2300000: endboss_0042:Tenticle
+    3300000: endboss_0042:Tenticle
+    4300000: Tenticle
+    4300002: endboss_0042:Tenticle
+    7400000: idle
+    9500000: //RootNode
+    13700000: Tenticle
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 1
+    importConstraints: 0
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: idle
+      takeName: Take 001
+      firstFrame: 10
+      lastFrame: 103
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

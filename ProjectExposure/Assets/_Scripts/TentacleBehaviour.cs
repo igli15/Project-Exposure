@@ -63,13 +63,13 @@ public class TentacleBehaviour : MonoBehaviour {
 
 
         }
-        transform.position = new Vector3(transform.position.x, -5, transform.position.z);
+        transform.position = new Vector3(transform.position.x, -40, transform.position.z);
         transform.DOMoveY(6, 1);
     }
 
     public void HideTentacle()
     {
         enabled = false;
-        transform.DOLocalMoveY(-10, 1).OnComplete(() => { gameObject.SetActive(false); if (onEnd != null) onEnd(this); });
+        transform.DOLocalMoveY(-40, 1).OnComplete(() => { gameObject.SetActive(false); if (onEnd != null) onEnd(this); });
     }
 }

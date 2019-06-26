@@ -13,7 +13,7 @@ public class BossViewScript : MonoBehaviour {
     private void Start()
     {
         instance = this;
-        CurveWallker.instance.lookForward = false;
+
         foreach (TentacleBehaviour tentacle in m_tentacles)
         {
             tentacle.onEnd += OnTentacleEnd;
@@ -37,6 +37,7 @@ public class BossViewScript : MonoBehaviour {
     }
 
     void Update () {
+        CurveWallker.instance.lookForward = false;
         CurveWallker.instance.transform.LookAt(transform);
 	}
 }
