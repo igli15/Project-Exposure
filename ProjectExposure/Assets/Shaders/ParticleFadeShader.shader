@@ -91,7 +91,6 @@ Shader "Custom/Particles/FadingShader"
                // i.gradientUV.y = (sin(_Time.y) + 1)/2;
                 fixed4 noiseVal = tex2D(_NoiseTex,i.texcoord);
                 
-               
 				//i.gradientUV.y += noiseVal / _Mitigation;
                  
                 if(_MoveVertically)
