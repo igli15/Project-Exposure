@@ -5,14 +5,13 @@ using UnityEngine;
 
 public class KeyboardAnims : MonoBehaviour
 {
-	
 	public void MoveDown()
 	{
-		transform.DOMoveY(transform.position.y-10, 0.5f);
+		transform.DOMoveY(transform.position.y-5, 0.5f);
 	}
 
 	public void MoveUp()
 	{
-		transform.DOMoveY(transform.position.y + 10, 0.5f);
+		transform.DOMoveY(transform.position.y + 5, 0.5f);
 	}
 }
