@@ -12,11 +12,8 @@ public class CompanionButton : HudButton
 	{
 		OnTouchEnter.AddListener(delegate {
 			m_hintPanel.Show(); });
-		
-		ShowButton("Gate1Hint");
-		m_hintPanel.gameObject.SetActive(true);
-		m_hintPanel.Show();
-		m_hintPanel.canHide = false;
+
+        UnFillButton();
 	}
 
 	public void ShowButton(string h)
@@ -24,4 +21,12 @@ public class CompanionButton : HudButton
 		m_hintPanel.hintName = h;
 		FillButton(true);
 	}
+
+    public void ShowTutorialHint()
+    {
+        ShowButton("Gate1Hint");
+        m_hintPanel.gameObject.SetActive(true);
+        m_hintPanel.Show();
+        m_hintPanel.canHide = false;
+    }
 }

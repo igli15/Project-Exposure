@@ -16,6 +16,8 @@ public class TutorialManager : MonoBehaviour
 	[SerializeField] private Sprite[] m_hintSprites;
 	[SerializeField] private Sprite[] m_highlightSprites;
 
+    [SerializeField] private CompanionButton m_companionButton;
+
 
 	// Use this for initialization
 	void Start ()
@@ -27,6 +29,8 @@ public class TutorialManager : MonoBehaviour
 		m_redCrystal.OnExplode += GreenHints;
 		m_greenCrystal.OnExplode += BlueHints;
 		m_blueCrystal.OnExplode += CompleteTutorial;
+
+        m_companionButton.ShowTutorialHint();
 	}
 
 	void GreenHints(Crystal c)
