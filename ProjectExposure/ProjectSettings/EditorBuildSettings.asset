@@ -15,6 +15,9 @@ EditorBuildSettings:
     path: Assets/_Scenes/Guillaume's SCenes/Sequence1Final.unity
     guid: 54d898e6c79809645ad6ae44420aef9e
   - enabled: 1
+    path: Assets/_Scenes/Guillaume's SCenes/Sequence2.unity
+    guid: c99615380a477604fa0b2e623a74d7c5
+  - enabled: 1
     path: Assets/_Scenes/Waiwas scenes/neercs noituloser.unity
     guid: 06f38dac47064439095b7e29b8b73808
   - enabled: 0
