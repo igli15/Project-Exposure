@@ -11,11 +11,21 @@ public class TentacleBehaviour : MonoBehaviour {
     public float range = 0.1f;
 
     [SerializeField]
+    float m_animationTime=5;
+    [SerializeField]
+    float m_vulnerableTime = 5;
+    [SerializeField]
+    float m_tweenTransferTime = 5;
+    [SerializeField]
+    Animator m_animator;
+
+    [SerializeField]
     public List<Transform> placeholders;
 
     int m_crystalCount;
     int m_currentCount;
-
+    float m_activationTime;
+    bool m_inAnimationProgress = false;
     public Action<TentacleBehaviour> onEnd;
 
 	public void Start () {
@@ -30,12 +40,32 @@ public class TentacleBehaviour : MonoBehaviour {
     }
 
     void Update () {
+
+        if (!m_inAnimationProgress && m_activationTime + m_vulnerableTime < Time.time)
+        {
+            Attack();
+        }
+
         Vector3 distance = ( BossViewScript.instance.transform.position- CurveWallker.instance.transform.position );
         distance *= range;
         Vector3 buffer = CurveWallker.instance.transform.position + distance;
         buffer.y = transform.position.y;
         transform.position = buffer;
         transform.LookAt(CurveWallker.instance.transform);
+    }
+
+    void Attack()
+    {
+        m_animator.SetTrigger("attack");
+        m_inAnimationProgress = true;
+        transform.DOLocalMoveY(-60, 2).SetDelay(m_animationTime).OnComplete(
+            () =>{
+                m_animator.SetTrigger("back");
+                transform.DOLocalMoveY(6, m_tweenTransferTime);
+                m_activationTime = Time.time + m_tweenTransferTime;
+                m_inAnimationProgress = false;
+            }
+        );
     }
 
     void OnCrystalExplode(Crystal c)
@@ -50,6 +80,8 @@ public class TentacleBehaviour : MonoBehaviour {
 
     public void ActivateTentacle(GameObject crystal)
     {
+        m_activationTime = Time.time;
+
         foreach (Transform t in placeholders)
         {
             GameObject newCrytsal = GameObject.Instantiate(crystal, t.position, t.rotation, t);
@@ -63,13 +95,13 @@ public class TentacleBehaviour : MonoBehaviour {
 
 
         }
-        transform.position = new Vector3(transform.position.x, -40, transform.position.z);
-        transform.DOMoveY(6, 1);
+        transform.position = new Vector3(transform.position.x, -60, transform.position.z);
+        transform.DOMoveY(6, m_tweenTransferTime);
     }
 
     public void HideTentacle()
     {
         enabled = false;
-        transform.DOLocalMoveY(-40, 1).OnComplete(() => { gameObject.SetActive(false); if (onEnd != null) onEnd(this); });
+        transform.DOLocalMoveY(-60, 1).OnComplete(() => { gameObject.SetActive(false); if (onEnd != null) onEnd(this); });
     }
 }
