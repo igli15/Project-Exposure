@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class BossViewScript : MonoBehaviour {
 
@@ -20,12 +21,14 @@ public class BossViewScript : MonoBehaviour {
             tentacle.Initialize();
             tentacle.enabled = false;
         }
-        ActivateNextTentacle();
+        transform.DOMoveY(transform.position.y, 1).OnComplete(ActivateNextTentacle);
     }
 
     public void ActivateNextTentacle()
     {
         if (m_tentacles.Count == 0) return;
+        Debug.Log("Activate new");
+        m_tentacles[0].gameObject.SetActive(true);
         m_tentacles[0].enabled = true;
         m_tentacles[0].ActivateTentacle(m_crystal);
         m_tentacles.RemoveAt(0);
