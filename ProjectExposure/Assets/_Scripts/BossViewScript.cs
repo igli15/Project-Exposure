@@ -9,10 +9,17 @@ public class BossViewScript : MonoBehaviour {
 
     [SerializeField]
     List<TentacleBehaviour> m_tentacles;
+
+    [SerializeField]
+    List<GameObject> m_backgroundTentacle;
+
     [SerializeField]
     GameObject m_crystal;
     [SerializeField]
     private Animator m_animator;
+
+
+
     private void Start()
     {
         instance = this;
@@ -25,6 +32,14 @@ public class BossViewScript : MonoBehaviour {
             tentacle.boss = this;
             tentacle.enabled = false;
         }
+
+        int i = 0;
+        foreach (GameObject tentacle in m_backgroundTentacle)
+        {
+            i++;
+            tentacle.GetComponent<Animator>().SetInteger("position", i);
+        }
+
         transform.DOMoveY(transform.position.y, 1).OnComplete(ActivateNextTentacle);
     }
 

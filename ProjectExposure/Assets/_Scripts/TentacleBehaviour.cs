@@ -76,12 +76,12 @@ public class TentacleBehaviour : MonoBehaviour {
 
     void OnCrystalExplode(Crystal c)
     {
-        boss.TakeDamage();
+       
 
         m_currentCount--;
         if (m_currentCount <= 0)
         {
-            Debug.Log("OVER");
+            boss.TakeDamage();
             HideTentacle();
         }
     }
