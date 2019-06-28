@@ -22,6 +22,8 @@ public class TentacleBehaviour : MonoBehaviour {
     [SerializeField]
     public List<Transform> placeholders;
 
+    public BossViewScript boss;
+
     int m_crystalCount;
     int m_currentCount;
     float m_activationTime;
@@ -57,7 +59,11 @@ public class TentacleBehaviour : MonoBehaviour {
     void Attack()
     {
         m_animator.SetTrigger("attack");
+        
         m_inAnimationProgress = true;
+
+        transform.DOLocalMoveX(0, 1.5f).OnComplete(boss.Attack); //after delay of 1 sec 
+
         transform.DOLocalMoveY(-60, 2).SetDelay(m_animationTime).OnComplete(
             () =>{
                 m_animator.SetTrigger("back");
@@ -70,6 +76,8 @@ public class TentacleBehaviour : MonoBehaviour {
 
     void OnCrystalExplode(Crystal c)
     {
+        boss.TakeDamage();
+
         m_currentCount--;
         if (m_currentCount <= 0)
         {

@@ -11,14 +11,18 @@ public class BossViewScript : MonoBehaviour {
     List<TentacleBehaviour> m_tentacles;
     [SerializeField]
     GameObject m_crystal;
+    [SerializeField]
+    private Animator m_animator;
     private void Start()
     {
         instance = this;
+        //m_animator = GetComponent<Animator>();
 
         foreach (TentacleBehaviour tentacle in m_tentacles)
         {
             tentacle.onEnd += OnTentacleEnd;
             tentacle.Initialize();
+            tentacle.boss = this;
             tentacle.enabled = false;
         }
         transform.DOMoveY(transform.position.y, 1).OnComplete(ActivateNextTentacle);
@@ -34,13 +38,29 @@ public class BossViewScript : MonoBehaviour {
         m_tentacles.RemoveAt(0);
     }
 
+    public void TakeDamage()
+    {
+        m_animator.SetTrigger("takingDamage");
+    }
+
+    public void Attack()
+    {
+        m_animator.SetTrigger("attack");
+    }
+
+    public void SetDeath(bool death)
+    {
+        m_animator.SetBool("death", death);
+    }
+
     public void OnTentacleEnd(TentacleBehaviour tentacle)
     {
         ActivateNextTentacle();
     }
 
     void Update () {
-        CurveWallker.instance.lookForward = false;
+        if(CurveWallker.instance==null) CurveWallker.instance.lookForward = false;
         CurveWallker.instance.transform.LookAt(transform);
+        transform.LookAt(CurveWallker.instance.transform);
 	}
 }
