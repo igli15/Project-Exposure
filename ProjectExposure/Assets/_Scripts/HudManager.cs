@@ -12,12 +12,11 @@ public class HudManager : MonoBehaviour,IAgent
 	[SerializeField] private HudButton m_mergeButton;
 	[SerializeField] private CompanionButton m_companionButton;
 	[SerializeField] private Image m_rainbowImage;
+	[SerializeField] private GameObject m_slider;
 
-	private Vector3 m_leftBorderInit;
-	private Vector3 m_rightBorderInit;
-	private Vector3 m_sliderInit;
+	private Vector3 m_sliderInitPos;
 	
-	void Start () 
+	void Start ()
 	{
 		if (m_fsm == null)
 		{
@@ -26,10 +25,13 @@ public class HudManager : MonoBehaviour,IAgent
 		
 		
 		m_fsm.ChangeState<SplitHudState>();
-		
+
+		m_sliderInitPos = m_slider.transform.position;
 		
 		MergedGunsState.OnMerge += ChangeStateToMerged;
+		MergedGunsState.OnMerge += MoveSliderDown;
 		SplitGunsState.OnSplit += ChangeStateToSplit;
+		SplitGunsState.OnSplit += MoveSliderUp;
 		SplitGunsState.OnColorsCollected += EnableMergeButton;
 
 		m_mergeButton.gameObject.SetActive(false);
@@ -71,10 +73,22 @@ public class HudManager : MonoBehaviour,IAgent
 		t.onComplete += delegate { m_mergeButton.gameObject.SetActive(false); };
 	}
 
+	public void MoveSliderDown(MergedGunsState mergedGunsState)
+	{
+		m_slider.transform.DOMove(m_sliderInitPos + (-Vector3.up * 400), 0.5f);
+	}
+	
+	public void MoveSliderUp(SplitGunsState splitGunsState)
+	{
+		m_slider.transform.DOMove(m_sliderInitPos, 0.5f);
+	}
+
 	private void OnDestroy()
 	{
 		MergedGunsState.OnMerge -= ChangeStateToMerged;
+		MergedGunsState.OnMerge -= MoveSliderDown;
 		SplitGunsState.OnSplit -= ChangeStateToSplit;
+		SplitGunsState.OnSplit -= MoveSliderUp;
 		SplitGunsState.OnColorsCollected -= EnableMergeButton;
 	}
 }

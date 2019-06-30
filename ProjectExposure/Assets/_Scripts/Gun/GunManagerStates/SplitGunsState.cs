@@ -55,9 +55,7 @@ public class SplitGunsState : GunState
 	{
 		m_collectedColors = new List<Color>();
 		
-		//if(PlayerStats.instance.hasMerged) AddAllCrystals();
 	}
-	
 
 	public override void Exit(IAgent pAgent)
 	{
@@ -123,6 +121,7 @@ public class SplitGunsState : GunState
 				m_hudCrystalManager.ActivateCrystalAt(i);
 			}
 		}
+		
 
 		if (!m_collectedAllCrystals &&  CheckIfCompletedList())
 		{
@@ -131,27 +130,12 @@ public class SplitGunsState : GunState
 		}
 	}
 
-	public void AddAllCrystals()
-	{
-		for (int i = 0; i < 7; i++)
-		{
-			m_collectedColors[i]=  m_hudCrystalManager.GetCrystalAt(i).color;
-			m_hudCrystalManager.ActivateCrystalAt(i);
-		}
-	}
-
 	private bool CheckIfCompletedList()
 	{
 		foreach (Color c in m_collectedColors)
 		{
-			if (c == Color.clear)
-			{
-				//PlayerStats.instance.hasMerged = false;
-				return false;
-			}
+			if (c == Color.clear) return false;
 		}
-
-		//PlayerStats.instance.hasMerged = true;
 		return true;
 	}
 }

@@ -26,7 +26,7 @@ public class HudCrystalManager : MonoBehaviour
 	public void StartFadingCrystals()
 	{
 		Sequence s = DOTween.Sequence();
-
+		
 		for (int i = 0; i < m_hudCrystals.Length ; i++)
 		{
 			var i1 = i;

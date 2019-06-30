@@ -50,7 +50,7 @@ public class HudCrystal : MonoBehaviour
 	{
 		
 		//ChangeToDisableSprite();
-		m_image.DOFade(0, 0.2f);
+		m_image.DOFade(0, 0.1f);
 	}
 
 	public void ResetCrystalSprite()
