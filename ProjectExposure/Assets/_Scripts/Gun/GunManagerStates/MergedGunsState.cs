@@ -13,6 +13,8 @@ public class MergedGunsState : GunState
 
 	[SerializeField] private MergedGun m_mergedGun;
 	[SerializeField] private float m_mergedTimeInSeconds = 10;
+
+	private bool m_mergedBefore = false;
 	
 
 	public override void Enter(IAgent pAgent)
@@ -23,7 +25,14 @@ public class MergedGunsState : GunState
 		if (OnMerge != null) OnMerge(this);
 
 		DOVirtual.DelayedCall(m_mergedTimeInSeconds, delegate { target.fsm.ChangeState<SplitGunsState>(); });
+
+		if (!m_mergedBefore)
+		{
+			VideoManager.instance.PlayVideo("rainbow");
+			m_mergedBefore = false;
+		}
 	}
+	
 
 	public override void Shoot(int touchIndex)
 	{
