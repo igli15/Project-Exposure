@@ -2,15 +2,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : MonoBehaviour
 {
 	private static PlayerStats m_instance;
 
 	private float m_comboFill = 0;
-	private float m_comboMultiplier = 0;
-	private float m_score = 0;
+	private int m_comboMultiplier = 1;
+	private int m_score = 0;
 	private bool m_hasMerged = false;
+
+	public static PlayerStats instance
+	{
+		get { return m_instance; }
+	}
 
 	public float comboFill
 	{
@@ -18,13 +24,13 @@ public class PlayerStats : MonoBehaviour
 		set { m_comboFill = value; }
 	}
 
-	public float comboMultiplier
+	public int comboMultiplier
 	{
 		get { return m_comboMultiplier; }
 		set { m_comboMultiplier = value; }
 	}
 
-	public float score
+	public int score
 	{
 		get { return m_score; }
 		set { m_score = value; }
@@ -45,5 +51,22 @@ public class PlayerStats : MonoBehaviour
 		else Destroy(gameObject);
 		
 		DontDestroyOnLoad(gameObject);
+	}
+
+
+	private void Update()
+	{
+		if (Input.GetKeyDown(KeyCode.RightArrow))
+		{
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1 );
+		}
+	}
+
+	public void ResetAllData()
+	{
+		m_comboFill = 0;
+		m_comboMultiplier = 1;
+		m_score = 0;
+		m_hasMerged = false;
 	}
 }
