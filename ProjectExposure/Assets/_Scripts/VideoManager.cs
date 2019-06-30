@@ -15,9 +15,11 @@ public class VideoManager : MonoBehaviour
     [SerializeField] private RawImage m_rawImage;
     [SerializeField] private Video[] m_videos;
     
+    
     [SerializeField] private bool m_closeOnStop = true;
+    [SerializeField] [Range(0,1)] private float m_timeScale = 0;
     [SerializeField] [Range(0,2)] private float m_fadeInTime = 0.5f;
-    [SerializeField] [Range(0,2)] private float m_fadeOutTime = 0.5f;
+    [SerializeField] [Range(0,2)] private float m_fadeOutTime = 0.1f;
 
     private VideoPlayer m_videoPlayer;
 
@@ -42,15 +44,13 @@ public class VideoManager : MonoBehaviour
         }
         
         DontDestroyOnLoad(gameObject);
-        
-        PlayVideo("dissolve");
-        
+
     }
 
     private void StopVideoPlayer()
-    { 
+    {
+        Time.timeScale = 1;
         m_rawImage.DOFade(0, m_fadeOutTime);
-
         m_videoPlayer.Stop();
     }
     
@@ -63,10 +63,12 @@ public class VideoManager : MonoBehaviour
             Debug.LogWarning("hey you made a typo, check video clip with name:  " + clipName);
             return ;
         }
+        
+        if(OnVideoPlay != null) OnVideoPlay(v);
 
-       if(OnVideoPlay != null) OnVideoPlay(v);
-
-        m_rawImage.DOFade(1, m_fadeInTime);
+        Tween f=  m_rawImage.DOFade(1, m_fadeInTime);
+        f.onComplete += delegate { Time.timeScale = m_timeScale; };
+        
         m_videoPlayer.clip = v.videoClip;
         m_videoPlayer.Play();
         
