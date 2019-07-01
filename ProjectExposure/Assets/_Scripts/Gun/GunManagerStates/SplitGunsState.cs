@@ -112,42 +112,16 @@ public class SplitGunsState : GunState
 	public void AddCollectedColor(Color c)
 	{
 		if (m_collectedAllCrystals) return;
+
+		for (int i = 0; i < 7; i++)
+		{
+			if (ColorUtils.CheckIfColorAreSimilar(c , m_hudCrystalManager.GetCrystalAt(i).color,15))
+			{
+				m_collectedColors[i]=  m_hudCrystalManager.GetCrystalAt(i).color;
+				m_hudCrystalManager.ActivateCrystalAt(i);
+			}
+		}
 		
-		if (ColorUtils.CheckIfColorAreSimilar(c , m_hudCrystalManager.GetCrystalAt(0).color,15))
-		{
-			m_collectedColors[0]=  m_hudCrystalManager.GetCrystalAt(0).color;
-			m_hudCrystalManager.ActivateCrystalAt(0);
-		}
-		else if (ColorUtils.CheckIfColorAreSimilar(c , m_hudCrystalManager.GetCrystalAt(1).color,15) )
-		{
-			m_collectedColors[1]=  m_hudCrystalManager.GetCrystalAt(1).color;
-			m_hudCrystalManager.ActivateCrystalAt(1);
-		}
-		else if (ColorUtils.CheckIfColorAreSimilar(c , m_hudCrystalManager.GetCrystalAt(2).color,15))
-		{
-			m_collectedColors[2]=  m_hudCrystalManager.GetCrystalAt(2).color;
-			m_hudCrystalManager.ActivateCrystalAt(2);
-		}
-		else if (ColorUtils.CheckIfColorAreSimilar(c , m_hudCrystalManager.GetCrystalAt(3).color,15))
-		{
-			m_collectedColors[3]=  m_hudCrystalManager.GetCrystalAt(3).color;
-			m_hudCrystalManager.ActivateCrystalAt(3);
-		}
-		else if (ColorUtils.CheckIfColorAreSimilar(c , m_hudCrystalManager.GetCrystalAt(4).color,15))
-		{
-			m_collectedColors[4]=  m_hudCrystalManager.GetCrystalAt(4).color;
-			m_hudCrystalManager.ActivateCrystalAt(4);
-		}
-		else if (ColorUtils.CheckIfColorAreSimilar(c , m_hudCrystalManager.GetCrystalAt(5).color,15))
-		{
-			m_collectedColors[5]=  m_hudCrystalManager.GetCrystalAt(5).color;
-			m_hudCrystalManager.ActivateCrystalAt(5);
-		}
-		else if (ColorUtils.CheckIfColorAreSimilar(c , m_hudCrystalManager.GetCrystalAt(6).color,15))
-		{
-			m_collectedColors[6]=  m_hudCrystalManager.GetCrystalAt(6).color;
-			m_hudCrystalManager.ActivateCrystalAt(6);
-		}
 
 		if (!m_collectedAllCrystals &&  CheckIfCompletedList())
 		{

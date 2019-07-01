@@ -11,6 +11,7 @@ using UnityEngine.Video;
 public class VideoManager : MonoBehaviour
 {
     public static Action<Video> OnVideoPlay;
+    public static Action<Video> OnVideoStop;
     
     [SerializeField] private RawImage m_rawImage;
     [SerializeField] private Video[] m_videos;
@@ -30,6 +31,11 @@ public class VideoManager : MonoBehaviour
         get { return m_instance; }
     }
 
+    public VideoPlayer videoPlayer
+    {
+        get { return m_videoPlayer; }
+    }
+
     private void Awake()
     {
         m_videoPlayer = GetComponent<VideoPlayer>();
@@ -47,8 +53,9 @@ public class VideoManager : MonoBehaviour
 
     }
 
-    private void StopVideoPlayer()
+    private void StopVideoPlayer(Video v)
     {
+        if(OnVideoStop != null) OnVideoStop(v);
         Time.timeScale = 1;
         m_rawImage.DOFade(0, m_fadeOutTime);
         m_videoPlayer.Stop();
@@ -74,7 +81,7 @@ public class VideoManager : MonoBehaviour
         
         double clipLength = v.videoClip.length;
         
-        if(m_closeOnStop) DOVirtual.DelayedCall((float)clipLength + 0.1f, delegate { StopVideoPlayer(); });
+        if(m_closeOnStop) DOVirtual.DelayedCall((float)clipLength + 0.1f, delegate { StopVideoPlayer(v); });
 
     }
     

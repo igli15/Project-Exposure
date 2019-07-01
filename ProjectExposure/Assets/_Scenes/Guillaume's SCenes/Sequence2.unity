@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.00003370721, g: 0.21672356, b: 0.16580462, a: 1}
+  m_IndirectSpecularColor: {r: 0.00003506984, g: 0.21687934, b: 0.16584218, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11516,12 +11516,12 @@ Transform:
   - {fileID: 2138177555}
   - {fileID: 1675063899}
   - {fileID: 1459077068}
+  - {fileID: 1198481492}
   - {fileID: 1514525441}
   - {fileID: 938656436}
   - {fileID: 489431618}
   - {fileID: 1708078400}
   - {fileID: 865376983}
-  - {fileID: 1198481492}
   - {fileID: 914453864}
   - {fileID: 1736462772}
   - {fileID: 449562225}
@@ -38230,7 +38230,7 @@ Transform:
   m_LocalScale: {x: 2.022177, y: 2.022177, z: 2.022177}
   m_Children: []
   m_Father: {fileID: 337344303}
-  m_RootOrder: 8
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -0.096, y: -18.648, z: 21.503}
 --- !u!1001 &1201437464
 Prefab:
@@ -52295,13 +52295,18 @@ Prefab:
     - target: {fileID: 114048288110898928, guid: 93736e1ef0ca5d842919074e5b8d1f95,
         type: 2}
       propertyPath: m_touchInputs
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114048288110898928, guid: 93736e1ef0ca5d842919074e5b8d1f95,
         type: 2}
       propertyPath: m_touchManager
       value: 
       objectReference: {fileID: 1530459847}
+    - target: {fileID: 114823050578300730, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+        type: 2}
+      propertyPath: m_Text
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 124102987107872606, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
     - {fileID: 114728541018148074, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}

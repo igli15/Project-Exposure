@@ -15,22 +15,23 @@ public class MergedGunsState : GunState
 	[SerializeField] private float m_mergedTimeInSeconds = 10;
 
 	private bool m_mergedBefore = false;
-	
+
+	private Tween m_mergeTimeTween;
 
 	public override void Enter(IAgent pAgent)
 	{
 		base.Enter(pAgent);
-
+		
 		m_mergedGun.manager = target;
 		if (OnMerge != null) OnMerge(this);
-
-		DOVirtual.DelayedCall(m_mergedTimeInSeconds, delegate { target.fsm.ChangeState<SplitGunsState>(); });
 
 		if (!m_mergedBefore)
 		{
 			VideoManager.instance.PlayVideo("rainbow");
-			m_mergedBefore = false;
+			m_mergedBefore = true;
+			m_mergeTimeTween = DOVirtual.DelayedCall(m_mergedTimeInSeconds + (float)VideoManager.instance.videoPlayer.clip.length, delegate { target.fsm.ChangeState<SplitGunsState>(); });
 		}
+		else m_mergeTimeTween = DOVirtual.DelayedCall(m_mergedTimeInSeconds, delegate { target.fsm.ChangeState<SplitGunsState>(); });
 	}
 	
 

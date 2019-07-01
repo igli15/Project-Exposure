@@ -34,6 +34,8 @@ public class ScoreStats : MonoBehaviour
     public void Start()
     {
         instance = this;
+
+        m_currentScore = PlayerStats.instance.score;
     }
 
     private void Update()
@@ -123,7 +125,9 @@ public class ScoreStats : MonoBehaviour
         }
 
         m_currentScore += score;
-
+        
+        PlayerStats.instance.score = m_currentScore;
+        
         DOTween.To(() => m_tweenScore, x => { m_tweenScore = x; text.text = "" + m_tweenScore; }, m_currentScore, 0.03f).SetEase(Ease.Linear).SetUpdate(true);
 
         //Activating worldSpace scores

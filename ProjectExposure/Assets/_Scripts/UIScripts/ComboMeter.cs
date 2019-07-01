@@ -43,6 +43,9 @@ public class ComboMeter : MonoBehaviour
 		
 		Reset();
 		HideAllElements();
+		
+		SetMultiplier(PlayerStats.instance.comboMultiplier);
+		m_image.fillAmount = PlayerStats.instance.comboFill / 360.0f;
 	}
 
 	private void Update()
@@ -77,7 +80,8 @@ public class ComboMeter : MonoBehaviour
 		{
 			IncreaseMultiplier();
 		}
-		
+
+		PlayerStats.instance.comboFill = fillDegrees;
 	}
 	
 	public void DecreaseFill(float degrees)
@@ -100,6 +104,7 @@ public class ComboMeter : MonoBehaviour
 				DecreaseMultiplier();
 			}
 		}
+		PlayerStats.instance.comboFill = m_image.fillAmount;
 	}
 	
 	public void DecreaseFillImmediate(float degrees)
@@ -122,6 +127,7 @@ public class ComboMeter : MonoBehaviour
 				DecreaseMultiplier();
 			}
 		}
+		PlayerStats.instance.comboFill = m_image.fillAmount;
 
 	}
 
@@ -136,6 +142,7 @@ public class ComboMeter : MonoBehaviour
 		m_brokenImage.transform.localScale = Vector3.one;
 		m_brokenImage.transform.DOPunchScale(Random.insideUnitCircle * m_breakPunchRadius,m_breakPunchDuration);
 		m_multiplier = 1;
+		PlayerStats.instance.comboMultiplier = m_multiplier; 
 	}
 	
 	private void IncreaseMultiplier()
@@ -144,13 +151,27 @@ public class ComboMeter : MonoBehaviour
 		KillTweens();
 		m_image.fillAmount = 0;
 		m_multiplier += 1;
+		
+		PlayerStats.instance.comboMultiplier = m_multiplier;
+		
 		int index = m_multiplier - 1;
 		m_fillFrames[index].gameObject.SetActive(true);
 		m_multiplierText.transform.localScale = Vector3.one;
 		m_multiplierText.text = "x"+m_multiplier;
 		m_multiplierText.transform.DOPunchScale(Random.insideUnitCircle * m_textPunchRadius, m_textPunchDuration);
 	}
-	
+
+	private void SetMultiplier(int m)
+	{
+		m_image.fillAmount = 0;
+		m_multiplier = m;
+		
+		int index = m_multiplier - 1;
+		m_fillFrames[index].gameObject.SetActive(true);
+		m_multiplierText.transform.localScale = Vector3.one;
+		m_multiplierText.text = "x"+m_multiplier;
+	}
+
 	private void DecreaseMultiplier()
 	{
 		//Reset();
@@ -159,7 +180,8 @@ public class ComboMeter : MonoBehaviour
 		
 		m_fillFrames[m_multiplier -1].gameObject.SetActive(false);
 		m_multiplier -= 1;
-
+		PlayerStats.instance.comboMultiplier = m_multiplier;
+		
 		m_multiplierText.transform.localScale = Vector3.one;
 		m_multiplierText.text = "x"+m_multiplier;
 		m_multiplierText.transform.DOPunchScale(Random.insideUnitCircle * m_textPunchRadius, m_textPunchDuration);
