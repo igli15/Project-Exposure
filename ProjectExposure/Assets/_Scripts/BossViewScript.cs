@@ -18,7 +18,7 @@ public class BossViewScript : MonoBehaviour {
     [SerializeField]
     private Animator m_animator;
 
-
+    private int m_tentacleCount=0;
 
     private void Start()
     {
@@ -39,7 +39,7 @@ public class BossViewScript : MonoBehaviour {
             i++;
             tentacle.GetComponent<Animator>().SetInteger("position", i);
         }
-
+        m_tentacleCount = m_tentacles.Count;
         transform.DOMoveY(transform.position.y, 1).OnComplete(ActivateNextTentacle);
     }
 
@@ -49,7 +49,7 @@ public class BossViewScript : MonoBehaviour {
         Debug.Log("Activate new");
         m_tentacles[0].gameObject.SetActive(true);
         m_tentacles[0].enabled = true;
-        m_tentacles[0].ActivateTentacle(m_crystal);
+        m_tentacles[0].ActivateTentacle(m_crystal,transform.position.y-20);
         m_tentacles.RemoveAt(0);
     }
 
@@ -70,12 +70,16 @@ public class BossViewScript : MonoBehaviour {
 
     public void OnTentacleEnd(TentacleBehaviour tentacle)
     {
+        transform.DOLocalMoveY(transform.localPosition.y - 5, 2);
         ActivateNextTentacle();
     }
 
     void Update () {
         if(CurveWallker.instance==null) CurveWallker.instance.lookForward = false;
+
         CurveWallker.instance.transform.LookAt(transform);
+
         transform.LookAt(CurveWallker.instance.transform);
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z);
 	}
 }

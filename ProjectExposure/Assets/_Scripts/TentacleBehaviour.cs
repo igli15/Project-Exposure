@@ -49,11 +49,13 @@ public class TentacleBehaviour : MonoBehaviour {
         }
 
         Vector3 distance = ( BossViewScript.instance.transform.position- CurveWallker.instance.transform.position );
+        distance -= new Vector3(0, distance.y, 0);
         distance *= range;
         Vector3 buffer = CurveWallker.instance.transform.position + distance;
         buffer.y = transform.position.y;
         transform.position = buffer;
         transform.LookAt(CurveWallker.instance.transform);
+        transform.eulerAngles = new Vector3(0, transform.eulerAngles.y, transform.eulerAngles.z);
     }
 
     void Attack()
@@ -86,7 +88,7 @@ public class TentacleBehaviour : MonoBehaviour {
         }
     }
 
-    public void ActivateTentacle(GameObject crystal)
+    public void ActivateTentacle(GameObject crystal,float ypos)
     {
         m_activationTime = Time.time;
 
@@ -104,7 +106,7 @@ public class TentacleBehaviour : MonoBehaviour {
 
         }
         transform.position = new Vector3(transform.position.x, -60, transform.position.z);
-        transform.DOMoveY(6, m_tweenTransferTime);
+        transform.DOMoveY(ypos, m_tweenTransferTime);
     }
 
     public void HideTentacle()
