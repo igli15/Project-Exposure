@@ -97,8 +97,8 @@ public class GateBehaviour : MonoBehaviour {
     {
         if (coinCount >= 3)
         {
-            doorLeft.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, -100, 0), 4).SetEase(Ease.OutBounce);
-            doorRight.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, 100, 0), 4).SetEase(Ease.OutBounce).onComplete+=()=> { CurveWallker.instance.StartMovement(); };
+            doorLeft.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, -100, 0), 4).SetEase(Ease.InQuad);
+            doorRight.transform.DOLocalRotateQuaternion(Quaternion.Euler(0, 100, 0), 4).SetEase(Ease.InQuad).onComplete+=()=> { CurveWallker.instance.StartMovement(); };
             
             this.enabled = false;
         }

@@ -10,7 +10,8 @@ public class Gate2Behaviour : MonoBehaviour {
     [SerializeField]
     public float delayTime = 3;
 
-
+    [SerializeField]
+    private float m_openingDuration = 1.8f;
 
     [Header("Crystals")]
     [SerializeField]
@@ -41,7 +42,7 @@ public class Gate2Behaviour : MonoBehaviour {
 
         }
 
-        crystals[crystals.Count - 1].GetComponent<Crystal>().OnExplode += (Crystal c) => { m_shipAnimator.SetTrigger("Break"); CurveWallker.instance.StartMovement(); };
+        crystals[crystals.Count - 1].GetComponent<Crystal>().OnExplode += (Crystal c) => { m_shipAnimator.SetTrigger("Break");};
 
     }
 
@@ -71,7 +72,7 @@ public class Gate2Behaviour : MonoBehaviour {
     {
 
         
-        door.transform.DOLocalRotate(new Vector3(-100, 0, 0), 1.8f).SetEase(Ease.InQuad).OnComplete(
+        door.transform.DOLocalRotate(new Vector3(-100, 0, 0), m_openingDuration).SetEase(Ease.InQuad).OnComplete(
             ()=> {
                 
                 Sequence crystalSpawn = DOTween.Sequence();
@@ -83,21 +84,28 @@ public class Gate2Behaviour : MonoBehaviour {
                     crystal.SetActive(true);
                     if (crystalCount == crystals.Count)
                     {
-                        Tween crystalApperance = crystal.transform.DOScale(15, 0.3f);
+                        Tween crystalApperance = crystal.transform.DOScale(15, speed);
                         crystalSpawn.Append(crystalApperance);
                     }
                     else
                     {
-                        Tween crystalApperance = crystal.transform.DOScale(4, 0.3f);
+                        Tween crystalApperance = crystal.transform.DOScale(4, speed);
                         crystalSpawn.Append(crystalApperance);
                     }
                 }
             });
+        Invoke("ContinueMoving", m_openingDuration+3.0f);
+        
+    }
+
+    void ContinueMoving()
+    {
+        CurveWallker.instance.StartMovement();
     }
 
     void Update () {
         
         if (m_rotate)
-            innerRing.transform.eulerAngles += new Vector3(0, 0, speed);
+            innerRing.transform.eulerAngles += new Vector3(0, 0, 0.5f);
 	}
 }
