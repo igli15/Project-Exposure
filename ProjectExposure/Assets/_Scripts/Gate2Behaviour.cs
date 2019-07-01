@@ -48,7 +48,7 @@ public class Gate2Behaviour : MonoBehaviour {
 
     void OnGemHit()
     {
-        if (innerRing.transform.eulerAngles.z < 60 || innerRing.transform.eulerAngles.z > 300)
+        if (innerRing.transform.eulerAngles.z < 20 || innerRing.transform.eulerAngles.z > 340)
         {
             //OpenDoor();
             this.enabled = false;
@@ -63,7 +63,8 @@ public class Gate2Behaviour : MonoBehaviour {
         {
             m_rotate = false;
 
-            innerRing.transform.DORotate(innerRing.transform.eulerAngles - new Vector3(0, 0, 10), 0.6f).OnComplete(()=> { m_rotate = true; });
+            material.SetFloat("_EmissionScale", 6);
+            innerRing.transform.DORotate(innerRing.transform.eulerAngles - new Vector3(0, 0, 0), 0.8f).OnComplete(()=> { m_rotate = true; material.SetFloat("_EmissionScale", 0); });
         }
         
     }
