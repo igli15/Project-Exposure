@@ -19,7 +19,7 @@ public static class SaveLoadScript
 		if (File.Exists(Application.persistentDataPath + "/"+ fileNameToLoadFrom + ".json"))
 		{
 			var loadedData = File.ReadAllText(Application.persistentDataPath + "/"+ fileNameToLoadFrom + ".json");
-			Debug.Log(loadedData);
+			//Debug.Log(loadedData);
 			JsonUtility.FromJsonOverwrite(loadedData, objToLoad);
 
 		}

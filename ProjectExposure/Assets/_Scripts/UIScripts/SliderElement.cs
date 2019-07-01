@@ -26,7 +26,7 @@ public class SliderElement : MonoBehaviour,IPointerClickHandler
 		get { return m_isFull; }
 	}
 
-	private void Start()
+	private void Awake()
 	{
 		m_image = GetComponent<Image>();
 	}
