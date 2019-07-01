@@ -16,7 +16,7 @@ public class HudManager : MonoBehaviour,IAgent
 
 	private Vector3 m_sliderInitPos;
 	
-	void Start ()
+	void Awake ()
 	{
 		if (m_fsm == null)
 		{
@@ -33,9 +33,10 @@ public class HudManager : MonoBehaviour,IAgent
 		SplitGunsState.OnSplit += ChangeStateToSplit;
 		SplitGunsState.OnSplit += MoveSliderUp;
 		SplitGunsState.OnColorsCollected += EnableMergeButton;
-
-		m_mergeButton.gameObject.SetActive(false);
 		
+		//m_mergeButton.gameObject.SetActive(false);
+		
+
 		m_companionButton.ShowButton("Gate1Hint");
 	}
 
