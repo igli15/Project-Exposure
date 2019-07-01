@@ -8,15 +8,15 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/_Scenes/Waiwas scenes/Menu.unity
     guid: 1f911eb1ad1984e43af96bb131d291ae
+  - enabled: 0
+    path: Assets/_Scenes/Shooting scene.unity
+    guid: fb6b591d2a432410eaa2ecdfcba7c03b
   - enabled: 1
     path: Assets/_Scenes/Waiwas scenes/NEW menu.unity
     guid: b8044c71c7b84b04faede8b87585cf75
   - enabled: 1
     path: Assets/_Scenes/Guillaume's SCenes/Sequence1Final.unity
     guid: 54d898e6c79809645ad6ae44420aef9e
-  - enabled: 1
-    path: Assets/_Scenes/Shooting scene.unity
-    guid: fb6b591d2a432410eaa2ecdfcba7c03b
   - enabled: 1
     path: Assets/_Scenes/Guillaume's SCenes/Sequence2.unity
     guid: c99615380a477604fa0b2e623a74d7c5
