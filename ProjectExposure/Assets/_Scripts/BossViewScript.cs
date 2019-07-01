@@ -34,11 +34,7 @@ public class BossViewScript : MonoBehaviour {
         }
 
         int i = 0;
-        foreach (GameObject tentacle in m_backgroundTentacle)
-        {
-            i++;
-           // tentacle.GetComponent<Animator>().SetInteger("position", i);
-        }
+
         m_tentacleCount = m_tentacles.Count;
         transform.DOMoveY(transform.position.y, 1).OnComplete(ActivateNextTentacle);
     }
@@ -47,10 +43,17 @@ public class BossViewScript : MonoBehaviour {
     {
         if (m_tentacles.Count == 0) return;
         Debug.Log("Activate new");
-        m_tentacles[0].gameObject.SetActive(true);
-        m_tentacles[0].enabled = true;
-        m_tentacles[0].ActivateTentacle(m_crystal,transform.position.y-20);
-        m_tentacles.RemoveAt(0);
+        m_backgroundTentacle[0].transform.DOLocalMoveY(-20, 1.2f).OnComplete(
+            ()=> {
+            m_tentacles[0].gameObject.SetActive(true);
+            m_tentacles[0].enabled = true;
+            m_tentacles[0].ActivateTentacle(m_crystal, transform.position.y - 20);
+            m_tentacles.RemoveAt(0);
+            }
+        );
+        m_backgroundTentacle.RemoveAt(0);
+
+
     }
 
     public void TakeDamage()

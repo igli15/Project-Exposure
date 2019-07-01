@@ -725,6 +725,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 634281500}
   m_Mesh: {fileID: 4300008, guid: df8ce22dd8e3c5e48a54469608f08918, type: 3}
+--- !u!1 &698081260 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100008, guid: f6f2c0ac1a6adee48b65ae8d5fd79b58, type: 3}
+  m_PrefabInternal: {fileID: 956533228}
 --- !u!1 &726423594
 GameObject:
   m_ObjectHideFlags: 0
@@ -895,6 +899,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 882231293}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &910684339 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100004, guid: f6f2c0ac1a6adee48b65ae8d5fd79b58, type: 3}
+  m_PrefabInternal: {fileID: 956533228}
 --- !u!1 &937534926
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,6 +940,10 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &952755785 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100006, guid: f6f2c0ac1a6adee48b65ae8d5fd79b58, type: 3}
+  m_PrefabInternal: {fileID: 956533228}
 --- !u!1001 &956533228
 Prefab:
   m_ObjectHideFlags: 0
@@ -1047,6 +1059,30 @@ Prefab:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: eec3db76f0142a54c9c1ca8c264e82d6, type: 2}
+    - target: {fileID: 100002, guid: f6f2c0ac1a6adee48b65ae8d5fd79b58, type: 3}
+      propertyPath: m_Name
+      value: background Tentacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100006, guid: f6f2c0ac1a6adee48b65ae8d5fd79b58, type: 3}
+      propertyPath: m_Name
+      value: background Tentacle 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: f6f2c0ac1a6adee48b65ae8d5fd79b58, type: 3}
+      propertyPath: m_Name
+      value: background Tentacle 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100012, guid: f6f2c0ac1a6adee48b65ae8d5fd79b58, type: 3}
+      propertyPath: m_Name
+      value: background Tentacle 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: f6f2c0ac1a6adee48b65ae8d5fd79b58, type: 3}
+      propertyPath: m_Name
+      value: background Tentacle 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 100010, guid: f6f2c0ac1a6adee48b65ae8d5fd79b58, type: 3}
+      propertyPath: m_Name
+      value: background Tentacle 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f6f2c0ac1a6adee48b65ae8d5fd79b58, type: 3}
   m_IsPrefabParent: 0
@@ -1516,7 +1552,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 5323e7f2c882d7d47aeb5860aeb4cad1, type: 2}
+  - {fileID: 2100000, guid: 8d026eb9b20304a7f99a52a3feae776e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1543,6 +1579,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1201954714}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1216352020 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100010, guid: f6f2c0ac1a6adee48b65ae8d5fd79b58, type: 3}
+  m_PrefabInternal: {fileID: 956533228}
 --- !u!1 &1271423395
 GameObject:
   m_ObjectHideFlags: 0
@@ -1959,6 +1999,10 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1794049752}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1913618930 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100012, guid: f6f2c0ac1a6adee48b65ae8d5fd79b58, type: 3}
+  m_PrefabInternal: {fileID: 956533228}
 --- !u!1 &1914505398
 GameObject:
   m_ObjectHideFlags: 0
@@ -2237,7 +2281,13 @@ MonoBehaviour:
   - {fileID: 1682083447}
   - {fileID: 1980181268}
   - {fileID: 1664200221}
-  m_backgroundTentacle: []
+  m_backgroundTentacle:
+  - {fileID: 2130162112}
+  - {fileID: 910684339}
+  - {fileID: 952755785}
+  - {fileID: 698081260}
+  - {fileID: 1216352020}
+  - {fileID: 1913618930}
   m_crystal: {fileID: 1473485078499192, guid: 3ad8684b69f71f24aa69b17bf952d7c4, type: 2}
   m_animator: {fileID: 2104729941}
 --- !u!1 &2096234931
@@ -2449,3 +2499,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2115465192}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &2130162112 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100002, guid: f6f2c0ac1a6adee48b65ae8d5fd79b58, type: 3}
+  m_PrefabInternal: {fileID: 956533228}

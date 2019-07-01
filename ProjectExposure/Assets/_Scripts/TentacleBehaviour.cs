@@ -30,6 +30,16 @@ public class TentacleBehaviour : MonoBehaviour {
     bool m_inAnimationProgress = false;
     public Action<TentacleBehaviour> onEnd;
 
+    private Color[] m_colors = new Color[]{
+        Color.red,
+        Color.green,
+        Color.blue,
+        Color.yellow,
+        Color.cyan,
+        new Color(1,0.5f,0,1), //orange
+        new Color(0.5f,0,0.5f,1)
+    };
+
 	public void Start () {
 
     }
@@ -101,7 +111,7 @@ public class TentacleBehaviour : MonoBehaviour {
             /*c.SetColor(new Color(
                 UnityEngine.Random.Range(0, 255)/255.0f, UnityEngine.Random.Range(0, 255) / 255.0f,
                 UnityEngine.Random.Range(0, 255) / 255.0f, 1));*/
-            c.SetColor(new Color(1,0,0, 1));
+            c.SetColor(m_colors[UnityEngine.Random.Range(0, m_colors.Length-1)]);
 
 
         }
