@@ -23,7 +23,7 @@ public class BossViewScript : MonoBehaviour
     GameObject m_crystal;
     [SerializeField]
     private Animator m_animator;
-
+    Vector3 m_initialPos;
     private int m_tentacleCount = 0;
     private bool m_deafeated = false;
     public int directionOfTentacle = 1;
@@ -41,10 +41,15 @@ public class BossViewScript : MonoBehaviour
             tentacle.enabled = false;
         }
 
-        int i = 0;
-
         m_tentacleCount = m_tentacles.Count;
-        transform.DOMoveY(transform.position.y, 1).OnComplete(ActivateNextTentacle);
+        m_initialPos = transform.position;
+        transform.position -= Vector3.up * 60;
+    }
+
+    public void ActivateBossFight()
+    {
+        Camera.main.transform.DOShakePosition(3, 0.02f);
+        transform.DOMoveY(m_initialPos.y, 4).OnComplete(ActivateNextTentacle);
     }
 
     public void ActivateNextTentacle()
