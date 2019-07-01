@@ -39390,6 +39390,11 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: -2.8999023
       objectReference: {fileID: 0}
+    - target: {fileID: 114048288110898928, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+        type: 2}
+      propertyPath: m_hueDamageRange
+      value: 50
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 124102987107872606, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
     - {fileID: 114728541018148074, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
