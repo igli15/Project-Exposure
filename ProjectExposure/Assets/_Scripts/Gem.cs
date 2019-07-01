@@ -9,6 +9,7 @@ public class Gem : Hittable {
 
     public override void Hit(AbstractGun gun, float damage)
     {
+        Debug.Log("SUPPOSE TO BE HIT");
         if (null != onHit) onHit();
     }
 

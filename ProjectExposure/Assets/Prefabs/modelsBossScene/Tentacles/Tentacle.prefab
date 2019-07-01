@@ -690,7 +690,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1719162926551302}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2, y: 11.41, z: 11.4}
+  m_LocalPosition: {x: 10, y: -99, z: 5.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4415127185272816}
@@ -1145,14 +1145,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 140abb40690330440ade148791de7394, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 0.7
+  m_riseTentacleEffect: {fileID: 1849135731459804, guid: 3e82601418987c647a2060b2a9e5877f,
+    type: 2}
+  range: 0.5
+  m_riseAnimTime: 2
   m_animationTime: 4
   m_vulnerableTime: 5
+  m_tweenTransferTime: 5
   m_animator: {fileID: 95863884217685432}
   placeholders:
   - {fileID: 4759117311023934}
   - {fileID: 4102480704931960}
   - {fileID: 4807259783781472}
+  boss: {fileID: 0}
+  direction: 1
 --- !u!136 &136126597766750110
 CapsuleCollider:
   m_ObjectHideFlags: 1
