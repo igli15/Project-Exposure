@@ -12,6 +12,8 @@ public class PlayerStats : MonoBehaviour
 	private int m_comboMultiplier = 1;
 	private int m_score = 0;
 	private bool m_hasMerged = false;
+	private bool m_hasHitFirstFish = false;
+	private List<int> m_collectedCrystalIndex = new List<int>();
 
 	public static PlayerStats instance
 	{
@@ -42,6 +44,17 @@ public class PlayerStats : MonoBehaviour
 		set { m_hasMerged = value; }
 	}
 
+	public bool hasHitFirstFish
+	{
+		get { return m_hasHitFirstFish; }
+		set { m_hasHitFirstFish = value; }
+	}
+
+	public List<int> CollectedCrystalIndex
+	{
+		get { return m_collectedCrystalIndex; }
+	}
+
 	private void Awake()
 	{
 		if (m_instance == null)
@@ -68,5 +81,7 @@ public class PlayerStats : MonoBehaviour
 		m_comboMultiplier = 1;
 		m_score = 0;
 		m_hasMerged = false;
+		m_hasHitFirstFish = false;
+		m_collectedCrystalIndex.Clear();
 	}
 }

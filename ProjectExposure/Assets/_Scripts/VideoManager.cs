@@ -38,18 +38,18 @@ public class VideoManager : MonoBehaviour
 
     private void Awake()
     {
-        m_videoPlayer = GetComponent<VideoPlayer>();
-        
         if (m_instance == null)
         {
             m_instance = this;
         }
         else
         {
-            Destroy(m_instance.gameObject);
+            Destroy(this);
         }
         
         DontDestroyOnLoad(gameObject);
+        
+        m_videoPlayer = GetComponent<VideoPlayer>();
 
     }
 

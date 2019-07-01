@@ -25,10 +25,10 @@ public class MergedGunsState : GunState
 		m_mergedGun.manager = target;
 		if (OnMerge != null) OnMerge(this);
 
-		if (!m_mergedBefore)
+		if (!PlayerStats.instance.hasMerged)
 		{
 			VideoManager.instance.PlayVideo("rainbow");
-			m_mergedBefore = true;
+			PlayerStats.instance.hasMerged = true;
 			m_mergeTimeTween = DOVirtual.DelayedCall(m_mergedTimeInSeconds + (float)VideoManager.instance.videoPlayer.clip.length, delegate { target.fsm.ChangeState<SplitGunsState>(); });
 		}
 		else m_mergeTimeTween = DOVirtual.DelayedCall(m_mergedTimeInSeconds, delegate { target.fsm.ChangeState<SplitGunsState>(); });

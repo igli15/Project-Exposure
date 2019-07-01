@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -33,6 +34,7 @@ public class SplitGunsState : GunState
 		get { return m_currentMode; }
 	}
 
+	
 	public override void Enter(IAgent pAgent)
 	{
 		if (OnSplit != null) OnSplit(this);
@@ -48,13 +50,29 @@ public class SplitGunsState : GunState
 			m_collectedColors.Add(Color.clear);
 		}
 		
+		
 		base.Enter(pAgent);
+		
+		foreach (var t in PlayerStats.instance.CollectedCrystalIndex)
+		{
+			CollectCrystal(t);
+		}
+		
+		if (!m_collectedAllCrystals &&  CheckIfCompletedList())
+		{
+			m_collectedAllCrystals = true;
+			DOVirtual.DelayedCall(2f, delegate
+			{
+				PlayerStats.instance.CollectedCrystalIndex.Clear();
+				if (OnColorsCollected != null) OnColorsCollected(this);
+			});
+		}
 	}
 	
 	private void Awake()
 	{
 		m_collectedColors = new List<Color>();
-		
+
 	}
 
 	public override void Exit(IAgent pAgent)
@@ -117,17 +135,23 @@ public class SplitGunsState : GunState
 		{
 			if (ColorUtils.CheckIfColorAreSimilar(c , m_hudCrystalManager.GetCrystalAt(i).color,15))
 			{
-				m_collectedColors[i]=  m_hudCrystalManager.GetCrystalAt(i).color;
-				m_hudCrystalManager.ActivateCrystalAt(i);
+				CollectCrystal(i);
+				PlayerStats.instance.CollectedCrystalIndex.Add(i);
 			}
 		}
 		
-
 		if (!m_collectedAllCrystals &&  CheckIfCompletedList())
 		{
 			m_collectedAllCrystals = true;
+			PlayerStats.instance.CollectedCrystalIndex.Clear();
 			if(OnColorsCollected != null) OnColorsCollected(this);
 		}
+	}
+
+	private void CollectCrystal(int i)
+	{
+		m_collectedColors[i]=  m_hudCrystalManager.GetCrystalAt(i).color;
+		m_hudCrystalManager.ActivateCrystalAt(i);
 	}
 
 	private bool CheckIfCompletedList()
