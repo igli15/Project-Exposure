@@ -37,7 +37,7 @@ public class BossViewScript : MonoBehaviour {
         foreach (GameObject tentacle in m_backgroundTentacle)
         {
             i++;
-            tentacle.GetComponent<Animator>().SetInteger("position", i);
+           // tentacle.GetComponent<Animator>().SetInteger("position", i);
         }
         m_tentacleCount = m_tentacles.Count;
         transform.DOMoveY(transform.position.y, 1).OnComplete(ActivateNextTentacle);
