@@ -18,7 +18,7 @@ public class MainMenuButton : WorldButton
 		if (enabled)
 		{
 			PlayerStats.instance.ResetAllData();
-			m_levelLoader.LoadLevel(0);
+			m_levelLoader.LoadLevel(4);
 		}
 
 	}
