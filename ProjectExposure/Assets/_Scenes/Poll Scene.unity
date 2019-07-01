@@ -413,6 +413,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 203607284}
+  - component: {fileID: 203607285}
   m_Layer: 5
   m_Name: ContinueButton
   m_TagString: Untagged
@@ -440,6 +441,43 @@ RectTransform:
   m_AnchoredPosition: {x: 2.5999973, y: 43.100006}
   m_SizeDelta: {x: 1457.3, y: 92.400024}
   m_Pivot: {x: 0.5, y: 0}
+--- !u!114 &203607285
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 203607283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9d4cd8b3d9b44f51bdd60da570a0ee8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnTouchEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1605962335}
+        m_MethodName: LoadLevel
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnTouch:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnTouchExit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &210322626
 GameObject:
   m_ObjectHideFlags: 0
@@ -707,6 +745,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84b8166cbd114879a0a4eb3e9c2bd55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: DiscreteSlider+ValueChangedEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   m_emptySprite: {fileID: 21300000, guid: 75bf0043b97234c18bec68f6b21c59e1, type: 3}
   m_filledSprite: {fileID: 21300000, guid: 7b9d184dc3d61412dbdd7b80f4066c20, type: 3}
   m_sliderElements:
@@ -1303,6 +1346,7 @@ GameObject:
   - component: {fileID: 871350715}
   - component: {fileID: 871350717}
   - component: {fileID: 871350716}
+  - component: {fileID: 871350718}
   m_Layer: 5
   m_Name: sadFace
   m_TagString: Untagged
@@ -1325,7 +1369,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.020665344, y: 0.13368092}
   m_AnchorMax: {x: 0.20300001, y: 1}
-  m_AnchoredPosition: {x: 0.7000122, y: -7}
+  m_AnchoredPosition: {x: 0.70007324, y: -7}
   m_SizeDelta: {x: 150.9, y: 159.79999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &871350716
@@ -1361,6 +1405,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 871350714}
+--- !u!114 &871350718
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 871350714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5c727a3476948d0b2a19c95c2f8921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_slider: {fileID: 273497280}
+  m_type: 1
 --- !u!1 &878565670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1588,6 +1645,7 @@ GameObject:
   - component: {fileID: 1173672570}
   - component: {fileID: 1173672572}
   - component: {fileID: 1173672571}
+  - component: {fileID: 1173672573}
   m_Layer: 5
   m_Name: happyFace
   m_TagString: Untagged
@@ -1610,7 +1668,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.7904742, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -12.899994, y: 4.100006}
+  m_AnchoredPosition: {x: -12.900024, y: 4.100006}
   m_SizeDelta: {x: 110.48999, y: 164.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1173672571
@@ -1646,6 +1704,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1173672569}
+--- !u!114 &1173672573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1173672569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5c727a3476948d0b2a19c95c2f8921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_slider: {fileID: 1465777920}
+  m_type: 0
 --- !u!1 &1226064391
 GameObject:
   m_ObjectHideFlags: 0
@@ -1994,6 +2065,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d84b8166cbd114879a0a4eb3e9c2bd55, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnValueChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: DiscreteSlider+ValueChangedEvent, Assembly-CSharp, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
   m_emptySprite: {fileID: 21300000, guid: 75bf0043b97234c18bec68f6b21c59e1, type: 3}
   m_filledSprite: {fileID: 21300000, guid: 7b9d184dc3d61412dbdd7b80f4066c20, type: 3}
   m_sliderElements:
@@ -2012,6 +2088,7 @@ GameObject:
   - component: {fileID: 1476087863}
   - component: {fileID: 1476087865}
   - component: {fileID: 1476087864}
+  - component: {fileID: 1476087866}
   m_Layer: 5
   m_Name: happyFace
   m_TagString: Untagged
@@ -2034,7 +2111,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.809, y: 0}
   m_AnchorMax: {x: 0.98726296, y: 1}
-  m_AnchoredPosition: {x: -15.399994, y: 4.100006}
+  m_AnchoredPosition: {x: -15.400024, y: 4.100006}
   m_SizeDelta: {x: 139.48999, y: 164.94}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1476087864
@@ -2070,6 +2147,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1476087862}
+--- !u!114 &1476087866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1476087862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5c727a3476948d0b2a19c95c2f8921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_slider: {fileID: 273497280}
+  m_type: 0
 --- !u!1 &1493502623
 GameObject:
   m_ObjectHideFlags: 0
@@ -2219,6 +2309,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83a4af7c940794188b4e9a0ba24f4226, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1605962334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1605962336}
+  - component: {fileID: 1605962335}
+  m_Layer: 0
+  m_Name: LevelLoader
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1605962335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1605962334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fcb1f469293db4afc863b0f99fb2328c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnLoadFinished:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  OnLoadStarted:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  m_extraTimeToWait: 0
+--- !u!4 &1605962336
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1605962334}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 584, y: 328.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1637425218
 GameObject:
   m_ObjectHideFlags: 0
@@ -2557,6 +2698,7 @@ GameObject:
   - component: {fileID: 2002330787}
   - component: {fileID: 2002330789}
   - component: {fileID: 2002330788}
+  - component: {fileID: 2002330790}
   m_Layer: 5
   m_Name: sadFace
   m_TagString: Untagged
@@ -2615,6 +2757,19 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2002330786}
+--- !u!114 &2002330790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2002330786}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e5c727a3476948d0b2a19c95c2f8921, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_slider: {fileID: 1465777920}
+  m_type: 1
 --- !u!1 &2042782511
 GameObject:
   m_ObjectHideFlags: 0
