@@ -12,6 +12,7 @@ public class KeyboardButton : MonoBehaviour,IPointerDownHandler
 	public UnityEvent OnClick;
 	
 	[SerializeField] private string m_key = "";
+	[SerializeField] private bool specialKey = false;
 
 	private Image m_image;
 	private Tween m_delayTween;
@@ -49,7 +50,10 @@ public class KeyboardButton : MonoBehaviour,IPointerDownHandler
 		m_delayTween = DOVirtual.DelayedCall(0.2f, delegate { m_image.color = Color.white; }, true);
 		//Debug.Log( m_key );
 
-		m_parentKeyboard.finalString += m_key;
-		m_parentKeyboard.inputField.text += m_key;
+		if (!specialKey)
+		{
+			m_parentKeyboard.finalString += m_key;
+			m_parentKeyboard.inputField.text += m_key;
+		}
 	}
 }
