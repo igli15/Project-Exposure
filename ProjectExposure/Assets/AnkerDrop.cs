@@ -17,18 +17,20 @@ public class AnkerDrop : MonoBehaviour {
     private float m_camShakeDuration = 0.3f;
     [SerializeField]
     private Vector3 m_desiredPosition;
-    
+    [SerializeField]
+    private Vector3 m_desiredRotation;
 
 
-    public void OnDestroy()
+
+    public void AnkerGO()
     {
-        /*Tweener t = m_anker.gameObject.transform.DOMove(m_desiredPosition, m_duration);
+        Tweener t = m_anker.gameObject.transform.DOLocalMove(m_desiredPosition, m_duration);
+        m_anker.gameObject.transform.DOLocalRotate(m_desiredRotation, m_duration);
         Tweener camShake = m_player.transform.DOShakePosition(m_camShakeDuration, m_camShakeStrength); 
         t.SetEase(Ease.InQuad);
-        m_anker.gameObject.transform.DORotate(new Vector3(391.904f, -60.286f, 90), m_duration);
         Sequence s = DOTween.Sequence();
         s.Append(t);
-        s.Append(camShake);*/
+        s.Append(camShake);
         
     }
     
