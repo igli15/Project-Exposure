@@ -10,5 +10,7 @@ public class Video
 	public string clipName;
 	
 	public VideoClip videoClip;
-	
+
+	[HideInInspector] public VideoPlayer videoPlayer;
+	[HideInInspector] public RenderTexture renderTexture;
 }

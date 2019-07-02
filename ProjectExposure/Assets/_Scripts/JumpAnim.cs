@@ -13,8 +13,7 @@ public class JumpAnim : MonoBehaviour
 	
 	public void Jump()
 	{
-        vidMan.videoPlayer.waitForFirstFrame = true;
-        vidMan.PlayVideo("krakenSwims");
+		vidMan.PlayVideo("krakenSwims");
 
         transform.DOScale(Vector3.zero, 2);
 		transform.DORotate(new Vector3(transform.rotation.eulerAngles.x + 60, transform.rotation.eulerAngles.y , transform.rotation.eulerAngles.z), 1);

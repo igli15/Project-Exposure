@@ -57,7 +57,7 @@ public class Enemy : Hittable
             if (m_videoPlayed == false)
             {
                 Debug.Log("try playing the video");
-                videoMan.PlayVideo("grabFish");
+                VideoManager.instance.PlayVideo("grabFish");
                 m_videoPlayed = true;
             }
         }
