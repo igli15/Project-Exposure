@@ -42,6 +42,7 @@ public class GateBehaviour : MonoBehaviour {
     public GameObject doorLeft;
     [SerializeField]
     public GameObject doorRight;
+    public VideoManager vidMan;
 
     [HideInInspector]
     public int coinCount = 0;

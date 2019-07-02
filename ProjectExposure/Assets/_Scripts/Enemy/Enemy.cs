@@ -33,13 +33,6 @@ public class Enemy : Hittable
     {
         if (m_crystals.Count == 0)
         {
-            Debug.Log("0 crystals");
-            if (m_videoPlayed==false)
-            {
-                Debug.Log("try playing the video");
-                videoMan.PlayVideo("grabFish");
-                m_videoPlayed = true;
-            }
             return;
         }
         GameObject crystal = m_crystals[0];
@@ -60,6 +53,12 @@ public class Enemy : Hittable
             for (int i = 0; i < countToRemove; i++)
             {
                 RemoveCrystal();
+            }
+            if (m_videoPlayed == false)
+            {
+                Debug.Log("try playing the video");
+                videoMan.PlayVideo("grabFish");
+                m_videoPlayed = true;
             }
         }
     }
