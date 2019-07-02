@@ -7,7 +7,10 @@ public class BossViewScript : MonoBehaviour
 {
 
     public static BossViewScript instance;
-
+    [SerializeField]
+    GameObject m_mainFog;
+    [SerializeField]
+    GameObject m_expEffect;
     [SerializeField]
     GameObject m_riseEffect;
     [SerializeField]
@@ -33,7 +36,7 @@ public class BossViewScript : MonoBehaviour
     public int directionOfTentacle = 1;
     public bool isActivated = false;
 
-    int m_lifesAfterDeath=3;
+    int m_lifesAfterDeath = 3;
 
     private void Start()
     {
@@ -59,7 +62,7 @@ public class BossViewScript : MonoBehaviour
         if (isActivated) return;
         isActivated = true;
 
-        GameObject.Instantiate(m_riseEffect, transform.position+transform.up*10, m_riseEffect.transform.rotation, null);
+        GameObject.Instantiate(m_riseEffect, transform.position + transform.up * 10, m_riseEffect.transform.rotation, null);
 
         Camera.main.transform.DOShakePosition(3, 0.02f);
         transform.DOMoveY(m_initialPos.y, 4).OnComplete(ActivateNextTentacle);
@@ -124,9 +127,17 @@ public class BossViewScript : MonoBehaviour
 
     }
 
+    public void BossDefeat()
+    {
+        Camera.main.transform.DOShakePosition(4, 0.02f).OnComplete(()=> { GameObject.Instantiate(m_riseEffect, transform.position + transform.up * 10, m_riseEffect.transform.rotation, null); });
+        transform.DOMoveY(m_initialPos.y-70, 5).OnComplete(
+            ()=> {  });
+    }
 
     public void OnGemHit()
     {
+        float delay = 0.3f;
+        int amount = 5;
 
         if (!m_deafeated)
         {
@@ -135,19 +146,63 @@ public class BossViewScript : MonoBehaviour
         }
         else
         {
-            if (m_lifesAfterDeath == 0) return;
-            m_lifesAfterDeath--;
-            bool b= false;
-            foreach (Transform t in m_scoreTransforms)
+            if (m_lifesAfterDeath == 0)
             {
-                b = !b;
-                ScoreStats.instance.AddDeathData(Color.red, t, b);
+                return;
+
             }
-            ScoreStats.instance.AddDeathData(Color.red, m_mainGem.transform, true);
+            if (m_lifesAfterDeath == 1)
+            {
+                Explode(amount * 2);
+                BossDefeat();
+                m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(delay).OnComplete(() =>
+                {
+                    amount ++;
+                    Explode(amount); m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(delay).OnComplete(() =>
+                    {
+                        amount++;
+                        Explode(amount); m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(3 * delay).OnComplete(() =>
+                        {
+                            amount++;
+                            Explode(amount); m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(delay).OnComplete(() => { amount++; Explode(amount); m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(delay).OnComplete(() => { amount++; Explode(amount); m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(2 * delay).OnComplete(() => { amount++; Explode(amount); }); }); });
+                        });
+                    });
+                });
+
+            }
+            m_lifesAfterDeath--;
+            bool b = false;
+            m_scoreTransforms[0].parent.Rotate(new Vector3(10, 0, 0));
+
+
+
+
+            Explode(amount);
+            m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(delay).OnComplete(() => { Explode(amount); m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(delay).OnComplete(() => { Explode(amount); m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(delay).OnComplete(() => { Explode(amount); }); }); });
 
             m_animator.SetTrigger("takingDamageDeath");
         }
         m_deafeated = true;
+    }
+
+    public void Explode(int numberOfScore)
+    {
+        Camera.main.transform.DOShakePosition(0.5f, 0.005f);
+        for (int i = 0; i < numberOfScore; i++)
+        {
+            Transform randomTransform = m_scoreTransforms[UnityEngine.Random.Range(0, m_scoreTransforms.Count)];
+            GameObject effect = GameObject.Instantiate(m_expEffect, randomTransform.position, transform.rotation, null);
+            effect.transform.localScale = new Vector3(3, 3, 3);
+            ScoreStats.instance.AddDeathData(Color.red, randomTransform, true);
+        }
+        return;
+        foreach (Transform t in m_scoreTransforms)
+        {
+            GameObject effect = GameObject.Instantiate(m_expEffect, t.position, transform.rotation, null);
+            effect.transform.localScale = new Vector3(3, 3, 3);
+            ScoreStats.instance.AddDeathData(Color.red, t, true);
+        }
+        ScoreStats.instance.AddDeathData(Color.red, m_mainGem.transform, true);
     }
 
     void Update()
