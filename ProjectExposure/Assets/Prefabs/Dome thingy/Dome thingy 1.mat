@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: branching coral tree 1
-  m_Shader: {fileID: 4800000, guid: 69a57431e20d246e8bf6a3b3ddf987ac, type: 3}
-  m_ShaderKeywords: 
+  m_Name: Dome thingy 1
+  m_Shader: {fileID: 4800000, guid: 39ad170c90c6c38499d984089b42a7a5, type: 3}
+  m_ShaderKeywords: _METALLICGLOSSMAP _NORMALMAP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 61c74bd09eb0b39488c55ee4ff8644f1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -38,15 +38,15 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _EmissionTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 45b9788f20a20eb4d9a95a32168407af, type: 3}
+        m_Texture: {fileID: 2800000, guid: 246a280a45f426f49973fa218d410f35, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
+        m_Texture: {fileID: 2800000, guid: 014d32956101c2c40a32869c111a8b1f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
@@ -58,27 +58,21 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _WindTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Amplitude: 1
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmissionScale: 0
     - _GlossMapScale: 1
-    - _Glossiness: 32
+    - _Glossiness: 31
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineThickness: 0
+    - _OutlineThickness: 0.003
     - _Parallax: 0.02
-    - _RimAmount: 0.21
-    - _RimThreshold: 0.1
+    - _RimAmount: 0.607
+    - _RimThreshold: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
@@ -86,12 +80,8 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - _AmbientColor: {r: 1, g: 1, b: 1, a: 1}
-    - _AxisEffected: {r: 1, g: 0, b: 1, a: 1}
-    - _Color: {r: 0.47156912, g: 0.44134924, b: 0.5471698, a: 1}
+    - _Color: {r: 0.19582887, g: 0.18525274, b: 0.21698111, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
-    - _SpecularColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
-    - _WaveSpeed: {r: 1, g: 1, b: 1, a: 1}
-    - _WindSpeed: {r: 1, g: 1, b: 0, a: 0}
-    - _WorldSize: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0.28235295, g: 0.03921569, b: 0.043929104, a: 1}
+    - _RimColor: {r: 1, g: 0, b: 0.008412361, a: 1}
+    - _SpecularColor: {r: 1, g: 0, b: 0, a: 1}
