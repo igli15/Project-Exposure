@@ -94,7 +94,8 @@ public class HudManager : MonoBehaviour,IAgent
 		SplitGunsState.OnSplit -= ChangeStateToSplit;
 		SplitGunsState.OnSplit -= MoveSliderUp;
 		SplitGunsState.OnColorsCollected -= EnableMergeButton;
-	}
+        SplitGunsState.OnColorsCollected -= PlayCrystalMergeEffect;
+    }
 
 	public void PlayCrystalMergeEffect(SplitGunsState state = null)
 	{
