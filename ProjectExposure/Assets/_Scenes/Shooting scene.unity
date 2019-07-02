@@ -882,6 +882,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 468875f91c357a64fa819425f9c1bd4b, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1161204487 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4023943337153022, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+    type: 2}
+  m_PrefabInternal: {fileID: 2132774957}
 --- !u!1 &1313327565
 GameObject:
   m_ObjectHideFlags: 0
@@ -1737,6 +1742,16 @@ Prefab:
       propertyPath: m_isInputParsingRequired
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 224064768020057246, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114532118442511948, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+        type: 2}
+      propertyPath: m_gunGroupTransform
+      value: 
+      objectReference: {fileID: 1161204487}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
   m_IsPrefabParent: 0
