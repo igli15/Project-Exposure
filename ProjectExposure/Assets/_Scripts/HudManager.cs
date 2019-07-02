@@ -13,7 +13,9 @@ public class HudManager : MonoBehaviour,IAgent
 	[SerializeField] private CompanionButton m_companionButton;
 	[SerializeField] private Image m_rainbowImage;
 	[SerializeField] private GameObject m_slider;
-
+	
+	[SerializeField] private GameObject m_crystalMergeEffect;
+	
 	private Vector3 m_sliderInitPos;
 	
 	void Awake ()
@@ -33,6 +35,7 @@ public class HudManager : MonoBehaviour,IAgent
 		SplitGunsState.OnSplit += ChangeStateToSplit;
 		SplitGunsState.OnSplit += MoveSliderUp;
 		SplitGunsState.OnColorsCollected += EnableMergeButton;
+		SplitGunsState.OnColorsCollected += PlayCrystalMergeEffect;
 		
 		//m_mergeButton.gameObject.SetActive(false);
 		
@@ -91,5 +94,11 @@ public class HudManager : MonoBehaviour,IAgent
 		SplitGunsState.OnSplit -= ChangeStateToSplit;
 		SplitGunsState.OnSplit -= MoveSliderUp;
 		SplitGunsState.OnColorsCollected -= EnableMergeButton;
+	}
+
+	public void PlayCrystalMergeEffect(SplitGunsState state = null)
+	{
+		m_crystalMergeEffect.SetActive(true);
+		DOVirtual.DelayedCall(1.1f, delegate { m_crystalMergeEffect.SetActive(false); });
 	}
 }
