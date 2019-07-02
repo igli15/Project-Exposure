@@ -9,14 +9,60 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8e6292b2c06870d4495f009f912b9600, type: 3}
-  m_Name: Resolution screen scene
+  m_Name: Boss fight
   m_EditorClassIdentifier: 
   settings:
-  - {fileID: 114241683691548440}
-  - {fileID: 114089213530897012}
-  - {fileID: 114460704171900186}
-  - {fileID: 114453888699153620}
---- !u!114 &114089213530897012
+  - {fileID: 114311355632384212}
+  - {fileID: 114617877517442376}
+  - {fileID: 114649578574082310}
+  - {fileID: 114732179105744816}
+--- !u!114 &114311355632384212
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
+  m_Name: Bloom
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  intensity:
+    overrideState: 1
+    value: 6.57
+  threshold:
+    overrideState: 1
+    value: 1
+  softKnee:
+    overrideState: 1
+    value: 0.58
+  clamp:
+    overrideState: 0
+    value: 65472
+  diffusion:
+    overrideState: 0
+    value: 7
+  anamorphicRatio:
+    overrideState: 0
+    value: 0
+  color:
+    overrideState: 0
+    value: {r: 1, g: 1, b: 1, a: 1}
+  fastMode:
+    overrideState: 0
+    value: 0
+  dirtTexture:
+    overrideState: 0
+    value: {fileID: 0}
+    defaultState: 1
+  dirtIntensity:
+    overrideState: 0
+    value: 0
+--- !u!114 &114617877517442376
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
@@ -40,7 +86,7 @@ MonoBehaviour:
     defaultState: 1
   tonemapper:
     overrideState: 0
-    value: 2
+    value: 0
   toneCurveToeStrength:
     overrideState: 0
     value: 0
@@ -68,10 +114,10 @@ MonoBehaviour:
     value: 1
   temperature:
     overrideState: 1
-    value: -0.51
+    value: -10
   tint:
     overrideState: 0
-    value: -4.05
+    value: -24
   colorFilter:
     overrideState: 0
     value: {r: 1, g: 1, b: 1, a: 1}
@@ -85,8 +131,8 @@ MonoBehaviour:
     overrideState: 0
     value: 0
   postExposure:
-    overrideState: 0
-    value: 0
+    overrideState: 1
+    value: 0.8
   contrast:
     overrideState: 0
     value: 0
@@ -119,13 +165,13 @@ MonoBehaviour:
     value: 100
   lift:
     overrideState: 1
-    value: {x: 0.9092066, y: 0.8903793, z: 1, w: -0.013645176}
+    value: {x: 1, y: 0.99160826, z: 0.9874628, w: -0.00060014566}
   gamma:
     overrideState: 1
-    value: {x: 0.81132877, y: 1, z: 0.8215243, w: 0.17988734}
+    value: {x: 0.9850969, y: 1, z: 0.97112185, w: -0.020554988}
   gain:
     overrideState: 1
-    value: {x: 0.6035224, y: 0.54847723, z: 1, w: 1}
+    value: {x: 0.6855135, y: 0.74124944, z: 1, w: 0.008026986}
   masterCurve:
     overrideState: 0
     value:
@@ -1326,53 +1372,7 @@ MonoBehaviour:
       - 0.5
       - 0.5
       - 0.5
---- !u!114 &114241683691548440
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48a79b01ea5641d4aa6daa2e23605641, type: 3}
-  m_Name: Bloom
-  m_EditorClassIdentifier: 
-  active: 1
-  enabled:
-    overrideState: 1
-    value: 1
-  intensity:
-    overrideState: 1
-    value: 6.57
-  threshold:
-    overrideState: 1
-    value: 1
-  softKnee:
-    overrideState: 1
-    value: 0.58
-  clamp:
-    overrideState: 0
-    value: 65472
-  diffusion:
-    overrideState: 0
-    value: 7
-  anamorphicRatio:
-    overrideState: 0
-    value: 0
-  color:
-    overrideState: 0
-    value: {r: 1, g: 1, b: 1, a: 1}
-  fastMode:
-    overrideState: 0
-    value: 0
-  dirtTexture:
-    overrideState: 0
-    value: {fileID: 0}
-    defaultState: 1
-  dirtIntensity:
-    overrideState: 0
-    value: 0
---- !u!114 &114453888699153620
+--- !u!114 &114649578574082310
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
@@ -1392,7 +1392,7 @@ MonoBehaviour:
     value: 0
   color:
     overrideState: 1
-    value: {r: 0.13082945, g: 0.16022535, b: 0.18867922, a: 1}
+    value: {r: 0.11320752, g: 0.09364514, b: 0.0934496, a: 1}
   center:
     overrideState: 0
     value: {x: 0.5, y: 0.5}
@@ -1415,7 +1415,7 @@ MonoBehaviour:
   opacity:
     overrideState: 0
     value: 1
---- !u!114 &114460704171900186
+--- !u!114 &114732179105744816
 MonoBehaviour:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
@@ -1438,7 +1438,7 @@ MonoBehaviour:
     value: 0.2
   color:
     overrideState: 1
-    value: {r: 0, g: 0.6759999, b: 1, a: 1}
+    value: {r: 0.21807098, g: 0, b: 1, a: 1}
   ambientOnly:
     overrideState: 1
     value: 1

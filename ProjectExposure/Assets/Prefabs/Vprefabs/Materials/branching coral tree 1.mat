@@ -87,7 +87,7 @@ Material:
     m_Colors:
     - _AmbientColor: {r: 1, g: 1, b: 1, a: 1}
     - _AxisEffected: {r: 1, g: 0, b: 1, a: 1}
-    - _Color: {r: 0.9716981, g: 0.7588729, b: 0.7104397, a: 1}
+    - _Color: {r: 0.47156912, g: 0.44134924, b: 0.5471698, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _RimColor: {r: 1, g: 1, b: 1, a: 1}
