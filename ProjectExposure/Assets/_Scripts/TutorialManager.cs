@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
+using Slider = UnityEngine.Experimental.UIElements.Slider;
 
 public class TutorialManager : MonoBehaviour
 {
@@ -20,10 +21,16 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private CompanionButton m_companionButton;
     [SerializeField] private Transform m_tutorialFinger;
 
+    [SerializeField] private UnityEngine.UI.Slider m_slider;
+
+    private bool m_moveFinger = true;
+
+    private Sequence m_fingerSequence;
 
 	// Use this for initialization
 	void Start ()
 	{
+		m_fingerSequence = DOTween.Sequence();
 		m_highlightImage.sprite = m_highlightSprites[0];
 		m_hintImage.sprite = m_hintSprites[0];
 		
@@ -35,6 +42,12 @@ public class TutorialManager : MonoBehaviour
         m_companionButton.ShowTutorialHint();
 
         MoveFinger();
+        m_slider.onValueChanged.AddListener(delegate(float arg0)
+        {
+	        m_moveFinger = false; 
+	        m_fingerSequence.Kill();
+	        m_tutorialFinger.gameObject.SetActive(false);
+        });
 	}
 
 	void GreenHints(Crystal c)
@@ -57,11 +70,16 @@ public class TutorialManager : MonoBehaviour
 
 	void MoveFinger()
 	{
-		Sequence s = DOTween.Sequence();
+		m_fingerSequence.Append(m_tutorialFinger.DOMove(m_tutorialFinger.GetChild(1).position, 1));
 
-		s.Append(m_tutorialFinger.DOMove(m_tutorialFinger.GetChild(1).position, 1));
-		s.Append(m_tutorialFinger.DOMove(m_tutorialFinger.GetChild(2).position, 1));
-		s.Append(m_tutorialFinger.DOMove(m_tutorialFinger.GetChild(1).position, 1));
-		s.Append(DOVirtual.DelayedCall(0.1f, delegate { m_tutorialFinger.gameObject.SetActive(false); }));
+		for (int i = 0; i <= 20; i++)
+		{
+			m_fingerSequence.Append(m_tutorialFinger.DOMove(m_tutorialFinger.GetChild(1).position, 1));
+			m_fingerSequence.Append(m_tutorialFinger.DOMove(m_tutorialFinger.GetChild(2).position, 1));
+		}
+
+
 	}
+
+	
 }
