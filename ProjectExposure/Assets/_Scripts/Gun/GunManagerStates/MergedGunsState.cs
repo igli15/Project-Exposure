@@ -27,7 +27,7 @@ public class MergedGunsState : GunState
 		m_mergedGun.manager = target;
 		if (OnMerge != null) OnMerge(this);
 		
-		m_gunGroupTransform.DOMove(new Vector3(m_gunGroupTransform.position.x,m_gunGroupTransform.position.y - 0.068f,m_gunGroupTransform.position.z - 0.04f),0.5f);
+		m_gunGroupTransform.DOLocalMove(new Vector3(m_gunGroupTransform.localPosition.x,m_gunGroupTransform.localPosition.y - 0.068f,m_gunGroupTransform.localPosition.z - 0.04f),0.5f);
 
 		if (!PlayerStats.instance.hasMerged)
 		{
@@ -59,6 +59,6 @@ public class MergedGunsState : GunState
 	public override void Exit(IAgent pAgent)
 	{
 		base.Exit(pAgent);
-		m_gunGroupTransform.DOMove(new Vector3(m_gunGroupTransform.position.x,m_gunGroupTransform.position.y + 0.068f,m_gunGroupTransform.position.z + 0.04f),0.5f);
+		m_gunGroupTransform.DOLocalMove(new Vector3(m_gunGroupTransform.localPosition.x,m_gunGroupTransform.localPosition.y + 0.068f,m_gunGroupTransform.localPosition.z + 0.04f),0.5f);
 	}
 }
