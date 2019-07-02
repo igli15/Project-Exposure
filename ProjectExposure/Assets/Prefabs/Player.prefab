@@ -11333,6 +11333,7 @@ MonoBehaviour:
   target: {fileID: 0}
   m_mergedGun: {fileID: 114326089437906758}
   m_mergedTimeInSeconds: 10
+  m_gunGroupTransform: {fileID: 4023943337153022}
 --- !u!114 &114536150092480254
 MonoBehaviour:
   m_ObjectHideFlags: 1
