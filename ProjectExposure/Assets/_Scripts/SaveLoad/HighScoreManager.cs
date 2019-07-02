@@ -26,6 +26,7 @@ public class HighScoreManager : MonoBehaviour
 	public HighscoreData[] highscoreArrayYearly;  
 
 	public IOrderedEnumerable<KeyValuePair<string, int>> orderedScores;
+	public IOrderedEnumerable<KeyValuePair<string, int>> orderedScoresYearly;
 
 	Dictionary<string,int> highscoreDictionaryDaily = new Dictionary<string,int>();
 
@@ -104,7 +105,7 @@ public class HighScoreManager : MonoBehaviour
 			orderby pair.Value descending 
 			select pair;
 
-		orderedScores = from pair in highscoreDictionaryYearly
+		orderedScoresYearly = from pair in highscoreDictionaryYearly
 			orderby pair.Value descending 
 			select pair;
 	}
@@ -128,8 +129,6 @@ public class HighScoreManager : MonoBehaviour
 		if(!highscoreDictionaryDaily.ContainsKey(userName))
 		{
 			highscoreDictionaryDaily.Add(userName,m_highScore);
-			highscoreDictionaryYearly.Add(userName,m_highScore);
-			SaveHighscore();
 		}
 		else
 		{
@@ -138,11 +137,24 @@ public class HighScoreManager : MonoBehaviour
 			if (score < m_highScore)
 			{
 				highscoreDictionaryDaily[userName] = m_highScore;
+			}
+		}
+		
+		if(!highscoreDictionaryYearly.ContainsKey(userName))
+		{
+			highscoreDictionaryYearly.Add(userName,m_highScore);
+		}
+		else
+		{
+			int score = highscoreDictionaryYearly[userName];
+
+			if (score < m_highScore)
+			{
 				highscoreDictionaryYearly[userName] = m_highScore;
 			}
-			
-			SaveHighscore();
 		}
+		
+		SaveHighscore();
 	}
 
 	private void SaveHighscore()

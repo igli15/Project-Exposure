@@ -16134,6 +16134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_virtualKeyboard: {fileID: 1690355969}
+  m_type: 0
 --- !u!1001 &255812608
 Prefab:
   m_ObjectHideFlags: 0
@@ -39499,6 +39500,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_virtualKeyboard: {fileID: 1690355969}
+  m_type: 1
 --- !u!114 &1762171350
 MonoBehaviour:
   m_ObjectHideFlags: 0
