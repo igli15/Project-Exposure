@@ -33,10 +33,13 @@ public class HudButton : TouchButton
 	public void UnFillButton(bool disable = false)
 	{
 		Tween tween = null;
-		foreach (var image in m_images)
-		{
-			tween = image.DOFillAmount(0f, 0.3f);
-		}
+        if (m_images != null)
+        {
+            foreach (var image in m_images)
+            {
+                tween = image.DOFillAmount(0f, 0.3f);
+            }
+        }
 		
 		if(tween != null) tween.onComplete += delegate { if(disable) gameObject.SetActive(false); };
 	}
