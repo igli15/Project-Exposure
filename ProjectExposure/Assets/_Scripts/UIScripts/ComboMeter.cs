@@ -117,7 +117,7 @@ public class ComboMeter : MonoBehaviour
 		
 		if (fillDegrees <= 0 )
 		{
-			Debug.Log(m_multiplier);
+			//Debug.Log(m_multiplier);
 			if (m_multiplier == 1)
 			{
 				HideAllElements();

@@ -41,7 +41,7 @@ public class CurveBinder : MonoBehaviour {
             isActivated&&
             CurveWallker.instance.spline==m_startSpline)
         {
-            Debug.Log("MyProgress: " + startProgress + " PlayerProgress: " + CurveWallker.instance.progress);
+            //Debug.Log("MyProgress: " + startProgress + " PlayerProgress: " + CurveWallker.instance.progress);
             CurveWallker.instance.spline = GetComponent<BezierCurve>();
             CurveWallker.instance.progress = 0;
             isActivated = false;
