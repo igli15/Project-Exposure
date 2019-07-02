@@ -7,6 +7,7 @@ using UnityEngine;
 public class CompanionButton : HudButton
 {
 	[SerializeField] private HintPanel m_hintPanel;
+	[SerializeField] private Animator m_companionAppearEffect;
 
 	private void Start()
 	{
@@ -19,6 +20,11 @@ public class CompanionButton : HudButton
 	public void ShowButton(string h)
 	{
 		m_hintPanel.hintName = h;
+		
+		m_companionAppearEffect.gameObject.SetActive(true);
+		
+		DOVirtual.DelayedCall(m_companionAppearEffect.runtimeAnimatorController.animationClips[0].length, delegate { m_companionAppearEffect.gameObject.SetActive(false); });
+		
 		FillButton(true);
 	}
 

@@ -14,7 +14,7 @@ public class HudManager : MonoBehaviour,IAgent
 	[SerializeField] private Image m_rainbowImage;
 	[SerializeField] private GameObject m_slider;
 	
-	[SerializeField] private GameObject m_crystalMergeEffect;
+	[SerializeField] private Animator m_crystalMergeEffect;
 	
 	private Vector3 m_sliderInitPos;
 	
@@ -98,7 +98,7 @@ public class HudManager : MonoBehaviour,IAgent
 
 	public void PlayCrystalMergeEffect(SplitGunsState state = null)
 	{
-		m_crystalMergeEffect.SetActive(true);
-		DOVirtual.DelayedCall(1.1f, delegate { m_crystalMergeEffect.SetActive(false); });
+		m_crystalMergeEffect.gameObject.SetActive(true);
+		DOVirtual.DelayedCall(m_crystalMergeEffect.runtimeAnimatorController.animationClips[0].length, delegate { m_crystalMergeEffect.gameObject.SetActive(false); });
 	}
 }
