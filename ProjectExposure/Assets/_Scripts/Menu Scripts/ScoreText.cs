@@ -10,6 +10,8 @@ public class ScoreText : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		ScoreStats.instance.UpdateHighScore();
+		
 		m_textMeshPro = GetComponent<TextMeshProUGUI>();
 		m_textMeshPro.text = "YOUR SCORE: " + "\n" + HighScoreManager.instance.highScore;
 	}
