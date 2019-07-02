@@ -11,10 +11,9 @@ public class GateStopper : MonoBehaviour {
     public Gate2Behaviour gate2;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player")&& gate2.alreadySolved == false)
         {
             m_compButton.ShowButton(m_showButton);
-            if(gate2.alreadySolved == false)
             CurveWallker.instance.StopMovement();
         }
     }
