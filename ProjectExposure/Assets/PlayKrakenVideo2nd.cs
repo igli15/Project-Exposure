@@ -10,7 +10,6 @@ public class PlayKrakenVideo2nd : MonoBehaviour {
     {
         if(other.CompareTag("Player") &&m_alreadyPlayed == false)
         {
-            vidMan.videoPlayer.waitForFirstFrame = true;
             vidMan.PlayVideo("krakenCave");
             m_alreadyPlayed = true;
         }

@@ -15,6 +15,7 @@ public class VideoManager : MonoBehaviour
     
     [SerializeField] private RawImage m_rawImage;
     [SerializeField] private Video[] m_videos;
+    [SerializeField] private RenderTexture m_renderTexture;
     
     
     [SerializeField] private bool m_closeOnStop = true;
@@ -22,18 +23,11 @@ public class VideoManager : MonoBehaviour
     [SerializeField] [Range(0,2)] private float m_fadeInTime = 0.5f;
     [SerializeField] [Range(0,2)] private float m_fadeOutTime = 0.1f;
 
-    private VideoPlayer m_videoPlayer;
-
     private static VideoManager m_instance;
 
     public static VideoManager instance
     {
         get { return m_instance; }
-    }
-
-    public VideoPlayer videoPlayer
-    {
-        get { return m_videoPlayer; }
     }
 
     private void Awake()
@@ -44,12 +38,20 @@ public class VideoManager : MonoBehaviour
         }
         else
         {
-            Destroy(this);
+            Destroy(gameObject);
+        }
+
+        foreach (Video v in m_videos)
+        {
+            v.videoPlayer = gameObject.AddComponent<VideoPlayer>();
+            v.videoPlayer.playOnAwake = false;
+            v.renderTexture = new RenderTexture(1920,1080,16,RenderTextureFormat.ARGB32);
+            v.renderTexture.Create();
+            v.videoPlayer.targetTexture = v.renderTexture;
+            v.videoPlayer.clip = v.videoClip;
         }
         
         DontDestroyOnLoad(gameObject);
-        
-        m_videoPlayer = GetComponent<VideoPlayer>();
 
     }
 
@@ -58,7 +60,7 @@ public class VideoManager : MonoBehaviour
         if(OnVideoStop != null) OnVideoStop(v);
         Time.timeScale = 1;
         m_rawImage.DOFade(0, m_fadeOutTime);
-        m_videoPlayer.Stop();
+        v.videoPlayer.Stop();
     }
     
     public void PlayVideo(string clipName)
@@ -75,14 +77,28 @@ public class VideoManager : MonoBehaviour
 
         Tween f=  m_rawImage.DOFade(1, m_fadeInTime);
         f.onComplete += delegate { Time.timeScale = m_timeScale; };
-        
-        m_videoPlayer.clip = v.videoClip;
-        m_videoPlayer.Play();
+
+        m_rawImage.texture = v.renderTexture;
+        v.videoPlayer.Play();
         
         double clipLength = v.videoClip.length;
         
         if(m_closeOnStop) DOVirtual.DelayedCall((float)clipLength + 0.1f, delegate { StopVideoPlayer(v); });
 
+    }
+
+
+    public Video GetVideo(string clipName)
+    {
+        Video v = Array.Find(m_videos, video => video.clipName == clipName);
+       
+        if (v == null)
+        {
+            Debug.LogWarning("hey you made a typo, check video clip with name:  " + clipName);
+            return null;
+        }
+
+        return v;
     }
     
 }

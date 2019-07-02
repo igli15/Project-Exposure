@@ -29,7 +29,7 @@ public class MergedGunsState : GunState
 		{
 			VideoManager.instance.PlayVideo("rainbow");
 			PlayerStats.instance.hasMerged = true;
-			m_mergeTimeTween = DOVirtual.DelayedCall(m_mergedTimeInSeconds + (float)VideoManager.instance.videoPlayer.clip.length + 0.2f, delegate { target.fsm.ChangeState<SplitGunsState>(); });
+			m_mergeTimeTween = DOVirtual.DelayedCall(m_mergedTimeInSeconds + (float)VideoManager.instance.GetVideo("rainbow").videoPlayer.clip.length + 0.2f, delegate { target.fsm.ChangeState<SplitGunsState>(); });
 		}
 		else m_mergeTimeTween = DOVirtual.DelayedCall(m_mergedTimeInSeconds, delegate { target.fsm.ChangeState<SplitGunsState>(); });
 	}

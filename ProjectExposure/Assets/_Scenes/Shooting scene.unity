@@ -1198,12 +1198,16 @@ MonoBehaviour:
   m_videos:
   - clipName: dissolve
     videoClip: {fileID: 32900000, guid: 10fbb70476c874480b61df1ddada4778, type: 3}
+    videoPlayer: {fileID: 0}
   - clipName: grabFish
     videoClip: {fileID: 32900000, guid: 7996eff14d78e4523956041a90127a45, type: 3}
+    videoPlayer: {fileID: 0}
   - clipName: kraken
     videoClip: {fileID: 32900000, guid: 798f7e5a52987439ebf9afebe168ef78, type: 3}
+    videoPlayer: {fileID: 0}
   - clipName: rainbow
-    videoClip: {fileID: 32900000, guid: dda6c772bc6b840b78cd594fceaa8bd1, type: 3}
+    videoClip: {fileID: 32900000, guid: 3228b5ac0c6d67f48934c089cdc76fe8, type: 3}
+    videoPlayer: {fileID: 0}
   m_closeOnStop: 1
   m_timeScale: 0
   m_fadeInTime: 0.5
@@ -1234,7 +1238,7 @@ VideoPlayer:
   m_EnabledAudioTracks: 
   m_DirectAudioMutes: 
   m_ControlledAudioTrackCount: 0
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_SkipOnDrop: 1
   m_Looping: 0
   m_WaitForFirstFrame: 1
@@ -1732,6 +1736,16 @@ Prefab:
         type: 2}
       propertyPath: m_AnchoredPosition.x
       value: -14.899902
+      objectReference: {fileID: 0}
+    - target: {fileID: 224064768020057246, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+        type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224074587191868546, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.8999023
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
