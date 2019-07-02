@@ -14,9 +14,12 @@ public class MainMenuButton : WorldButton
 	public override void Click(Ray ray)
 	{
 		base.Click(ray);
-		
-		if(enabled)
-		m_levelLoader.LoadLevel(0);
-		
+
+		if (enabled)
+		{
+			PlayerStats.instance.ResetAllData();
+			m_levelLoader.LoadLevel(0);
+		}
+
 	}
 }

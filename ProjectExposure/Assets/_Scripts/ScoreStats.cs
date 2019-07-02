@@ -36,6 +36,7 @@ public class ScoreStats : MonoBehaviour
         instance = this;
 
         m_currentScore = PlayerStats.instance.score;
+        text.text = m_currentScore.ToString();
     }
 
     private void Update()
