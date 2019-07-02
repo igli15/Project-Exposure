@@ -40,7 +40,7 @@ public class HudManager : MonoBehaviour,IAgent
 		//m_mergeButton.gameObject.SetActive(false);
 		
 
-		m_companionButton.ShowButton("Gate1Hint");
+		//m_companionButton.ShowButton("Gate1Hint");
 	}
 
 	private void Update()
