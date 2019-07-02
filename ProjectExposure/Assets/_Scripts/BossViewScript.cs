@@ -123,7 +123,7 @@ public class BossViewScript : MonoBehaviour
     {
         Debug.Log("COUNT: " + m_tentacles.Count);
 
-        if (m_tentacles.Count == 5)
+        if (m_tentacles.Count == 0)
         {
             OpenBigEye();
             return;
