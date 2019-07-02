@@ -7,6 +7,10 @@ public class BossViewScript : MonoBehaviour
 {
 
     public static BossViewScript instance;
+
+    [SerializeField]
+    LevelLoader m_levelLoader;
+
     [SerializeField]
     GameObject m_mainFog;
     [SerializeField]
@@ -38,6 +42,11 @@ public class BossViewScript : MonoBehaviour
 
     int m_lifesAfterDeath = 1;
 
+    private void Awake()
+    {
+        
+    }
+
     private void Start()
     {
 
@@ -55,6 +64,8 @@ public class BossViewScript : MonoBehaviour
         m_tentacleCount = m_tentacles.Count;
         m_initialPos = transform.position;
         transform.position -= Vector3.up * 60;
+
+        
     }
 
     public void ActivateBossFight()
@@ -63,7 +74,7 @@ public class BossViewScript : MonoBehaviour
         isActivated = true;
 
         GameObject.Instantiate(m_riseEffect, transform.position + transform.up * 10, m_riseEffect.transform.rotation, null);
-
+        
         Camera.main.transform.DOShakePosition(3, 0.02f);
         transform.DOMoveY(m_initialPos.y, 4).OnComplete(ActivateNextTentacle);
     }
@@ -140,8 +151,8 @@ public class BossViewScript : MonoBehaviour
         transform.DOMoveY(m_initialPos.y - 70, 5).OnComplete(
             () =>
             {
-                m_mainFog.transform.DOMoveY(m_mainFog.transform.position.y + 15, 2);
-                m_mainFog.transform.DOScale(m_mainFog.transform.localScale * 2, 1);
+                m_mainFog.transform.DOMoveY(m_mainFog.transform.position.y + 15, 2).OnComplete(()=> { VideoManager.instance.PlayVideo("dissolve");  });
+                m_mainFog.transform.DOScale(m_mainFog.transform.localScale * 2, 3).OnComplete(()=> { m_levelLoader.LoadLevel(3); });
             });
     }
 
