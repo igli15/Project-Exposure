@@ -21,6 +21,9 @@ public class BossViewScript : MonoBehaviour
     List<GameObject> m_backgroundTentacle;
 
     [SerializeField]
+    List<Transform> m_scoreTransforms;
+
+    [SerializeField]
     GameObject m_crystal;
     [SerializeField]
     private Animator m_animator;
@@ -29,6 +32,9 @@ public class BossViewScript : MonoBehaviour
     private bool m_deafeated = false;
     public int directionOfTentacle = 1;
     public bool isActivated = false;
+
+    int m_lifesAfterDeath=3;
+
     private void Start()
     {
 
@@ -108,7 +114,7 @@ public class BossViewScript : MonoBehaviour
     {
         Debug.Log("COUNT: " + m_tentacles.Count);
 
-        if (m_tentacles.Count == 0)
+        if (m_tentacles.Count == 5)
         {
             OpenBigEye();
             return;
@@ -127,7 +133,20 @@ public class BossViewScript : MonoBehaviour
             CurveWallker.instance.StopMovement();
             m_animator.SetTrigger("death");
         }
-        else m_animator.SetTrigger("attack");
+        else
+        {
+            if (m_lifesAfterDeath == 0) return;
+            m_lifesAfterDeath--;
+            bool b= false;
+            foreach (Transform t in m_scoreTransforms)
+            {
+                b = !b;
+                ScoreStats.instance.AddDeathData(Color.red, t, b);
+            }
+            ScoreStats.instance.AddDeathData(Color.red, m_mainGem.transform, true);
+
+            m_animator.SetTrigger("takingDamageDeath");
+        }
         m_deafeated = true;
     }
 
