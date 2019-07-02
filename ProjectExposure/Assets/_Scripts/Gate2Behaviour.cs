@@ -28,6 +28,7 @@ public class Gate2Behaviour : MonoBehaviour {
     public GameObject door;
     [SerializeField]
     public Material material;
+    public bool alreadySolved = false;
 
     private bool m_rotate=true;
 
@@ -50,6 +51,7 @@ public class Gate2Behaviour : MonoBehaviour {
     {
         if (innerRing.transform.eulerAngles.z < 20 || innerRing.transform.eulerAngles.z > 340)
         {
+            alreadySolved =true;
             //OpenDoor();
             this.enabled = false;
             m_rotate = false;
