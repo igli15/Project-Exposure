@@ -36,7 +36,7 @@ public class BossViewScript : MonoBehaviour
     public int directionOfTentacle = 1;
     public bool isActivated = false;
 
-    int m_lifesAfterDeath = 3;
+    int m_lifesAfterDeath = 1;
 
     private void Start()
     {
@@ -94,8 +94,14 @@ public class BossViewScript : MonoBehaviour
 
     public void OpenBigEye()
     {
+        m_animator.SetTrigger("death");
+        m_mainGem.transform.DOScale(new Vector3(1, 1, 1) * 2, 1).OnComplete(() => {
+            CurveWallker.instance.StopMovement();
+            StartCoroutine(ActivateExplodesequence());
+        });
         m_mainGem.onHit += (OnGemHit);
         m_eyeLip.transform.DOLocalRotate(new Vector3(-60, 0, 0), 2);
+
     }
 
     public void TakeDamage()
@@ -129,60 +135,33 @@ public class BossViewScript : MonoBehaviour
 
     public void BossDefeat()
     {
-        Camera.main.transform.DOShakePosition(4, 0.02f).OnComplete(()=> { GameObject.Instantiate(m_riseEffect, transform.position + transform.up * 10, m_riseEffect.transform.rotation, null); });
-        transform.DOMoveY(m_initialPos.y-70, 5).OnComplete(
-            ()=> {  });
+
+        Camera.main.transform.DOShakePosition(4, 0.02f).OnComplete(() => { GameObject.Instantiate(m_riseEffect, transform.position + transform.up * 10, m_riseEffect.transform.rotation, null); });
+        transform.DOMoveY(m_initialPos.y - 70, 5).OnComplete(
+            () =>
+            {
+                m_mainFog.transform.DOMoveY(m_mainFog.transform.position.y + 15, 2);
+                m_mainFog.transform.DOScale(m_mainFog.transform.localScale * 2, 1);
+            });
     }
 
     public void OnGemHit()
     {
-        float delay = 0.3f;
-        int amount = 5;
-
         if (!m_deafeated)
         {
-            CurveWallker.instance.StopMovement();
-            m_animator.SetTrigger("death");
-        }
-        else
-        {
-            if (m_lifesAfterDeath == 0)
-            {
-                return;
 
-            }
-            if (m_lifesAfterDeath == 1)
-            {
-                Explode(amount * 2);
-                BossDefeat();
-                m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(delay).OnComplete(() =>
-                {
-                    amount ++;
-                    Explode(amount); m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(delay).OnComplete(() =>
-                    {
-                        amount++;
-                        Explode(amount); m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(3 * delay).OnComplete(() =>
-                        {
-                            amount++;
-                            Explode(amount); m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(delay).OnComplete(() => { amount++; Explode(amount); m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(delay).OnComplete(() => { amount++; Explode(amount); m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(2 * delay).OnComplete(() => { amount++; Explode(amount); }); }); });
-                        });
-                    });
-                });
-
-            }
-            m_lifesAfterDeath--;
-            bool b = false;
-            m_scoreTransforms[0].parent.Rotate(new Vector3(10, 0, 0));
-
-
-
-
-            Explode(amount);
-            m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(delay).OnComplete(() => { Explode(amount); m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(delay).OnComplete(() => { Explode(amount); m_scoreTransforms[0].DOScaleX(1, 0).SetDelay(delay).OnComplete(() => { Explode(amount); }); }); });
-
-            m_animator.SetTrigger("takingDamageDeath");
         }
         m_deafeated = true;
+    }
+
+    IEnumerator ActivateExplodesequence()
+    {
+        for (int i=0;i<7;i++)
+        {
+            Explode(5+i);
+            yield return new WaitForSeconds(0.3f);
+        }
+        BossDefeat();
     }
 
     public void Explode(int numberOfScore)
@@ -195,14 +174,6 @@ public class BossViewScript : MonoBehaviour
             effect.transform.localScale = new Vector3(3, 3, 3);
             ScoreStats.instance.AddDeathData(Color.red, randomTransform, true);
         }
-        return;
-        foreach (Transform t in m_scoreTransforms)
-        {
-            GameObject effect = GameObject.Instantiate(m_expEffect, t.position, transform.rotation, null);
-            effect.transform.localScale = new Vector3(3, 3, 3);
-            ScoreStats.instance.AddDeathData(Color.red, t, true);
-        }
-        ScoreStats.instance.AddDeathData(Color.red, m_mainGem.transform, true);
     }
 
     void Update()

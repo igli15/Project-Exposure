@@ -14,8 +14,8 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
-  m_FogColor: {r: 0.18431373, g: 0.25490198, b: 0.50980395, a: 1}
+  m_Fog: 0
+  m_FogColor: {r: 0.50980395, g: 0.18431371, b: 0.19026089, a: 1}
   m_FogMode: 2
   m_FogDensity: 0.015
   m_LinearFogStart: 0
@@ -121,6 +121,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 13757166}
+  - component: {fileID: 13757167}
   m_Layer: 0
   m_Name: scoreSpawn (20)
   m_TagString: Untagged
@@ -141,6 +142,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &13757167
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 13757165}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &30862908
 GameObject:
   m_ObjectHideFlags: 0
@@ -149,6 +162,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 30862909}
+  - component: {fileID: 30862910}
   m_Layer: 0
   m_Name: scoreSpawn (12)
   m_TagString: Untagged
@@ -169,6 +183,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &30862910
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 30862908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &40098387 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114772586839318462, guid: 05cd6e799915c1f4ba0389ccd62d738a,
@@ -183,6 +209,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 44342131}
+  - component: {fileID: 44342132}
   m_Layer: 0
   m_Name: scoreSpawn
   m_TagString: Untagged
@@ -203,6 +230,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &44342132
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 44342130}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &58366397
 GameObject:
   m_ObjectHideFlags: 0
@@ -211,6 +250,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 58366398}
+  - component: {fileID: 58366399}
   m_Layer: 0
   m_Name: scoreSpawn (43)
   m_TagString: Untagged
@@ -231,6 +271,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 43
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &58366399
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 58366397}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &69007709
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,6 +291,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 69007710}
+  - component: {fileID: 69007711}
   m_Layer: 0
   m_Name: scoreSpawn (37)
   m_TagString: Untagged
@@ -259,6 +312,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &69007711
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 69007709}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &87178562
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +332,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 87178563}
+  - component: {fileID: 87178564}
   m_Layer: 0
   m_Name: scoreSpawn (36)
   m_TagString: Untagged
@@ -287,6 +353,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &87178564
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 87178562}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &105630607
 GameObject:
   m_ObjectHideFlags: 0
@@ -295,6 +373,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 105630608}
+  - component: {fileID: 105630609}
   m_Layer: 0
   m_Name: scoreSpawn (57)
   m_TagString: Untagged
@@ -315,6 +394,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 57
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &105630609
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 105630607}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &119230980
 Prefab:
   m_ObjectHideFlags: 0
@@ -437,6 +528,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 140552473}
+  - component: {fileID: 140552474}
   m_Layer: 0
   m_Name: scoreSpawn (44)
   m_TagString: Untagged
@@ -457,6 +549,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 44
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &140552474
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 140552472}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &169935251
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +569,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 169935252}
+  - component: {fileID: 169935253}
   m_Layer: 0
   m_Name: scoreSpawn (5)
   m_TagString: Untagged
@@ -485,6 +590,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &169935253
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 169935251}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &187539230 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1963691364746678, guid: 93736e1ef0ca5d842919074e5b8d1f95,
@@ -504,6 +621,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 212783142}
+  - component: {fileID: 212783143}
   m_Layer: 0
   m_Name: scoreSpawn (18)
   m_TagString: Untagged
@@ -524,6 +642,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &212783143
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 212783141}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &216253358
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +662,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 216253359}
+  - component: {fileID: 216253360}
   m_Layer: 0
   m_Name: scoreSpawn (45)
   m_TagString: Untagged
@@ -552,6 +683,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 45
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &216253360
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 216253358}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &247466777
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,6 +703,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 247466778}
+  - component: {fileID: 247466779}
   m_Layer: 0
   m_Name: scoreSpawn (63)
   m_TagString: Untagged
@@ -580,6 +724,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 63
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &247466779
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 247466777}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &249646294
 GameObject:
   m_ObjectHideFlags: 0
@@ -588,6 +744,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 249646295}
+  - component: {fileID: 249646296}
   m_Layer: 0
   m_Name: scoreSpawn (48)
   m_TagString: Untagged
@@ -608,6 +765,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 48
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &249646296
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 249646294}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &261100923
 GameObject:
   m_ObjectHideFlags: 0
@@ -616,6 +785,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 261100924}
+  - component: {fileID: 261100925}
   m_Layer: 0
   m_Name: scoreSpawn (53)
   m_TagString: Untagged
@@ -636,6 +806,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 53
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &261100925
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 261100923}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &278472740
 Prefab:
   m_ObjectHideFlags: 0
@@ -712,6 +894,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 283070909}
+  - component: {fileID: 283070910}
   m_Layer: 0
   m_Name: scoreSpawn (49)
   m_TagString: Untagged
@@ -732,6 +915,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 49
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &283070910
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 283070908}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &305106463
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,6 +935,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 305106464}
+  - component: {fileID: 305106465}
   m_Layer: 0
   m_Name: scoreSpawn (23)
   m_TagString: Untagged
@@ -760,6 +956,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 23
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &305106465
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 305106463}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &326543463
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,6 +976,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 326543464}
+  - component: {fileID: 326543465}
   m_Layer: 0
   m_Name: scoreSpawn (60)
   m_TagString: Untagged
@@ -788,6 +997,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 60
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &326543465
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 326543463}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &355448042
 Prefab:
   m_ObjectHideFlags: 0
@@ -859,6 +1080,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 377391702}
+  - component: {fileID: 377391703}
   m_Layer: 0
   m_Name: scoreSpawn (22)
   m_TagString: Untagged
@@ -879,6 +1101,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 22
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &377391703
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 377391701}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &409096970
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,6 +1121,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 409096971}
+  - component: {fileID: 409096972}
   m_Layer: 0
   m_Name: scoreSpawn (13)
   m_TagString: Untagged
@@ -907,6 +1142,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &409096972
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 409096970}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &413799345
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,6 +1162,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 413799346}
+  - component: {fileID: 413799347}
   m_Layer: 0
   m_Name: scoreSpawn (27)
   m_TagString: Untagged
@@ -935,6 +1183,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &413799347
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 413799345}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &435598355
 GameObject:
   m_ObjectHideFlags: 0
@@ -1037,6 +1297,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 501281236}
+  - component: {fileID: 501281237}
   m_Layer: 0
   m_Name: scoreSpawn (59)
   m_TagString: Untagged
@@ -1057,6 +1318,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 59
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &501281237
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 501281235}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &509380444 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114080216132091564, guid: 28a46ed49bc5bcf449620d60e8d16ded,
@@ -1111,7 +1384,7 @@ MonoBehaviour:
     size: 10
   - tag: s5
     prefab: {fileID: 1012370297967324, guid: 30532325199e77044904306ec130aed2, type: 2}
-    size: 30
+    size: 70
   - tag: s6
     prefab: {fileID: 1650648435216554, guid: 21c4e1245e105254a84aa6cedaba7f41, type: 2}
     size: 30
@@ -1132,28 +1405,28 @@ MonoBehaviour:
     size: 30
   - tag: s15
     prefab: {fileID: 1497224784518916, guid: 2027ea29191248d4c8bb5c7abc9a6c50, type: 2}
-    size: 10
+    size: 70
   - tag: s20
     prefab: {fileID: 1267501931026240, guid: 5a3761d5928905e4fa434f1471177829, type: 2}
     size: 10
   - tag: s25
     prefab: {fileID: 1279888389579326, guid: d6ecd9c917ed53a45a40591fb8312466, type: 2}
-    size: 30
+    size: 70
   - tag: s30
     prefab: {fileID: 1826343200501174, guid: f2b60def471b571409ccc0060f0e39a2, type: 2}
     size: 10
   - tag: s35
     prefab: {fileID: 1635720702156654, guid: 82e081ae4b3813643aba697c7d690bd0, type: 2}
-    size: 10
+    size: 70
   - tag: s40
     prefab: {fileID: 1560819963694510, guid: be895c286c5ad544982da3c497c48110, type: 2}
     size: 10
   - tag: s45
     prefab: {fileID: 1953691605681686, guid: 792f0a1368818424e87e43f51b2ecee3, type: 2}
-    size: 10
+    size: 70
   - tag: s50
     prefab: {fileID: 1322904234117816, guid: cddd7477f4cbee14bb525d3771b43b7f, type: 2}
-    size: 10
+    size: 70
 --- !u!4 &514240084
 Transform:
   m_ObjectHideFlags: 0
@@ -1175,6 +1448,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 527148264}
+  - component: {fileID: 527148265}
   m_Layer: 0
   m_Name: scoreSpawn (50)
   m_TagString: Untagged
@@ -1195,6 +1469,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 50
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &527148265
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 527148263}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &551055025
 GameObject:
   m_ObjectHideFlags: 0
@@ -1203,6 +1489,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 551055026}
+  - component: {fileID: 551055027}
   m_Layer: 0
   m_Name: scoreSpawn (56)
   m_TagString: Untagged
@@ -1223,6 +1510,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 56
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &551055027
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 551055025}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &557632734
 GameObject:
   m_ObjectHideFlags: 0
@@ -1329,6 +1628,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 571831789}
+  - component: {fileID: 571831790}
   m_Layer: 0
   m_Name: scoreSpawn (38)
   m_TagString: Untagged
@@ -1349,6 +1649,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &571831790
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 571831788}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &599020407
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,6 +1669,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 599020408}
+  - component: {fileID: 599020409}
   m_Layer: 0
   m_Name: scoreSpawn (40)
   m_TagString: Untagged
@@ -1377,6 +1690,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &599020409
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 599020407}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &618002585
 GameObject:
   m_ObjectHideFlags: 0
@@ -1385,6 +1710,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 618002586}
+  - component: {fileID: 618002587}
   m_Layer: 0
   m_Name: scoreSpawn (47)
   m_TagString: Untagged
@@ -1405,6 +1731,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 47
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &618002587
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 618002585}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &634281500
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,6 +1829,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 737281500}
+  - component: {fileID: 737281501}
   m_Layer: 0
   m_Name: scoreSpawn (32)
   m_TagString: Untagged
@@ -1511,6 +1850,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &737281501
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 737281499}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &763812424
 Prefab:
   m_ObjectHideFlags: 0
@@ -1577,6 +1928,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 772872133}
+  - component: {fileID: 772872134}
   m_Layer: 0
   m_Name: scoreSpawn (41)
   m_TagString: Untagged
@@ -1597,6 +1949,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &772872134
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 772872132}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &806202497
 GameObject:
   m_ObjectHideFlags: 0
@@ -1620,7 +1984,7 @@ Transform:
   m_GameObject: {fileID: 806202497}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.04, y: 1, z: 1}
   m_Children:
   - {fileID: 44342131}
   - {fileID: 1529389336}
@@ -1698,6 +2062,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 858767787}
+  - component: {fileID: 858767788}
   m_Layer: 0
   m_Name: scoreSpawn (25)
   m_TagString: Untagged
@@ -1718,6 +2083,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &858767788
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 858767786}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &866709123
 GameObject:
   m_ObjectHideFlags: 0
@@ -1726,6 +2103,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 866709124}
+  - component: {fileID: 866709125}
   m_Layer: 0
   m_Name: scoreSpawn (61)
   m_TagString: Untagged
@@ -1746,6 +2124,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 61
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &866709125
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 866709123}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &902032312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1754,6 +2144,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 902032313}
+  - component: {fileID: 902032314}
   m_Layer: 0
   m_Name: scoreSpawn (51)
   m_TagString: Untagged
@@ -1774,6 +2165,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 51
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &902032314
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 902032312}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &903231528 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: eba0c5798b0cd4a4cbbec447e6f4dbd1, type: 3}
@@ -1976,6 +2379,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 959312898}
+  - component: {fileID: 959312899}
   m_Layer: 0
   m_Name: scoreSpawn (15)
   m_TagString: Untagged
@@ -1996,6 +2400,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &959312899
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 959312897}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &976077035
 GameObject:
   m_ObjectHideFlags: 0
@@ -2004,6 +2420,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 976077036}
+  - component: {fileID: 976077037}
   m_Layer: 0
   m_Name: scoreSpawn (31)
   m_TagString: Untagged
@@ -2024,6 +2441,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &976077037
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 976077035}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &984382736
 GameObject:
   m_ObjectHideFlags: 0
@@ -2032,6 +2461,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 984382737}
+  - component: {fileID: 984382738}
   m_Layer: 0
   m_Name: scoreSpawn (55)
   m_TagString: Untagged
@@ -2052,6 +2482,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 55
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &984382738
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 984382736}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &995264894
 Prefab:
   m_ObjectHideFlags: 0
@@ -2194,6 +2636,11 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: -2.8999023
       objectReference: {fileID: 0}
+    - target: {fileID: 224442821579816370, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 1.5000343
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
   m_IsPrefabParent: 0
@@ -2247,6 +2694,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1014844759}
+  - component: {fileID: 1014844760}
   m_Layer: 0
   m_Name: scoreSpawn (42)
   m_TagString: Untagged
@@ -2267,6 +2715,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 42
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1014844760
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1014844758}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1062890392
 GameObject:
   m_ObjectHideFlags: 0
@@ -2349,6 +2809,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1069475652}
+  - component: {fileID: 1069475653}
   m_Layer: 0
   m_Name: scoreSpawn (33)
   m_TagString: Untagged
@@ -2369,6 +2830,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1069475653
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1069475651}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1073732587
 GameObject:
   m_ObjectHideFlags: 0
@@ -2377,6 +2850,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1073732588}
+  - component: {fileID: 1073732589}
   m_Layer: 0
   m_Name: scoreSpawn (30)
   m_TagString: Untagged
@@ -2397,6 +2871,23 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1073732589
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1073732587}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1114695930 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1157192848699352, guid: 005c9cf28d0ccae4aa5031e9d1ab9d75,
+    type: 2}
+  m_PrefabInternal: {fileID: 355448042}
 --- !u!1 &1131947257
 GameObject:
   m_ObjectHideFlags: 0
@@ -2405,6 +2896,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1131947258}
+  - component: {fileID: 1131947259}
   m_Layer: 0
   m_Name: scoreSpawn (14)
   m_TagString: Untagged
@@ -2425,6 +2917,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1131947259
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1131947257}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1136153318
 Prefab:
   m_ObjectHideFlags: 0
@@ -2629,6 +3133,8 @@ GameObject:
   - component: {fileID: 1163338481}
   - component: {fileID: 1163338483}
   - component: {fileID: 1163338482}
+  - component: {fileID: 1163338485}
+  - component: {fileID: 1163338484}
   m_Layer: 0
   m_Name: Eyeball
   m_TagString: Untagged
@@ -2693,6 +3199,35 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1163338480}
   m_Mesh: {fileID: 4300004, guid: df8ce22dd8e3c5e48a54469608f08918, type: 3}
+--- !u!135 &1163338484
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1163338480}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.64986444
+  m_Center: {x: 0.04683128, y: 1.9073055, z: 2.1699913}
+--- !u!114 &1163338485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1163338480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eda7c502d570ea64489913517dac69b9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnHit:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1216352020 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100010, guid: f6f2c0ac1a6adee48b65ae8d5fd79b58, type: 3}
@@ -2705,6 +3240,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1265784053}
+  - component: {fileID: 1265784054}
   m_Layer: 0
   m_Name: scoreSpawn (4)
   m_TagString: Untagged
@@ -2725,6 +3261,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1265784054
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1265784052}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1271423395
 GameObject:
   m_ObjectHideFlags: 0
@@ -2795,6 +3343,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1280616521}
+  - component: {fileID: 1280616522}
   m_Layer: 0
   m_Name: scoreSpawn (28)
   m_TagString: Untagged
@@ -2815,6 +3364,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 28
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1280616522
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1280616520}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1314123978 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114259252630321956, guid: 93736e1ef0ca5d842919074e5b8d1f95,
@@ -2829,6 +3390,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1371120028}
+  - component: {fileID: 1371120029}
   m_Layer: 0
   m_Name: scoreSpawn (16)
   m_TagString: Untagged
@@ -2849,6 +3411,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1371120029
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1371120027}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1396312428
 GameObject:
   m_ObjectHideFlags: 0
@@ -2933,8 +3507,6 @@ GameObject:
   - component: {fileID: 1429149927}
   - component: {fileID: 1429149929}
   - component: {fileID: 1429149928}
-  - component: {fileID: 1429149931}
-  - component: {fileID: 1429149930}
   m_Layer: 0
   m_Name: Eyelid
   m_TagString: Untagged
@@ -2999,35 +3571,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1429149926}
   m_Mesh: {fileID: 4300002, guid: df8ce22dd8e3c5e48a54469608f08918, type: 3}
---- !u!114 &1429149930
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1429149926}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eda7c502d570ea64489913517dac69b9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnHit:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: UnityEngine.Events.UnityEvent, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  color: {r: 1, g: 0, b: 0, a: 0}
---- !u!135 &1429149931
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1429149926}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.7594167
-  m_Center: {x: 0.046250522, y: 2.2088926, z: 2.1660676}
 --- !u!1 &1429769920
 GameObject:
   m_ObjectHideFlags: 0
@@ -3036,6 +3579,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1429769921}
+  - component: {fileID: 1429769922}
   m_Layer: 0
   m_Name: scoreSpawn (35)
   m_TagString: Untagged
@@ -3056,6 +3600,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1429769922
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1429769920}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1433362799
 GameObject:
   m_ObjectHideFlags: 0
@@ -3064,6 +3620,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1433362800}
+  - component: {fileID: 1433362801}
   m_Layer: 0
   m_Name: scoreSpawn (7)
   m_TagString: Untagged
@@ -3084,6 +3641,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1433362801
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1433362799}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1474280380
 GameObject:
   m_ObjectHideFlags: 0
@@ -3092,6 +3661,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1474280381}
+  - component: {fileID: 1474280382}
   m_Layer: 0
   m_Name: scoreSpawn (54)
   m_TagString: Untagged
@@ -3112,6 +3682,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 54
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1474280382
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1474280380}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1492405449
 GameObject:
   m_ObjectHideFlags: 0
@@ -3120,6 +3702,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1492405450}
+  - component: {fileID: 1492405451}
   m_Layer: 0
   m_Name: scoreSpawn (9)
   m_TagString: Untagged
@@ -3140,6 +3723,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1492405451
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1492405449}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1493634621
 GameObject:
   m_ObjectHideFlags: 0
@@ -3148,6 +3743,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1493634622}
+  - component: {fileID: 1493634623}
   m_Layer: 0
   m_Name: scoreSpawn (2)
   m_TagString: Untagged
@@ -3168,6 +3764,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1493634623
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1493634621}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1506517964
 GameObject:
   m_ObjectHideFlags: 0
@@ -3176,6 +3784,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1506517965}
+  - component: {fileID: 1506517966}
   m_Layer: 0
   m_Name: scoreSpawn (26)
   m_TagString: Untagged
@@ -3196,6 +3805,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1506517966
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1506517964}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1523591535
 GameObject:
   m_ObjectHideFlags: 0
@@ -3204,6 +3825,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1523591536}
+  - component: {fileID: 1523591537}
   m_Layer: 0
   m_Name: scoreSpawn (24)
   m_TagString: Untagged
@@ -3224,6 +3846,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 24
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1523591537
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1523591535}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1523995678 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114363726843136374, guid: 93736e1ef0ca5d842919074e5b8d1f95,
@@ -3238,6 +3872,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1529389336}
+  - component: {fileID: 1529389337}
   m_Layer: 0
   m_Name: scoreSpawn (1)
   m_TagString: Untagged
@@ -3258,6 +3893,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1529389337
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1529389335}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1536244641
 GameObject:
   m_ObjectHideFlags: 0
@@ -3266,6 +3913,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1536244642}
+  - component: {fileID: 1536244643}
   m_Layer: 0
   m_Name: scoreSpawn (21)
   m_TagString: Untagged
@@ -3286,6 +3934,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1536244643
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1536244641}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1552624542
 GameObject:
   m_ObjectHideFlags: 0
@@ -3294,6 +3954,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1552624543}
+  - component: {fileID: 1552624544}
   m_Layer: 0
   m_Name: scoreSpawn (34)
   m_TagString: Untagged
@@ -3314,6 +3975,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1552624544
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1552624542}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1588637218
 GameObject:
   m_ObjectHideFlags: 0
@@ -3322,6 +3995,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1588637219}
+  - component: {fileID: 1588637220}
   m_Layer: 0
   m_Name: scoreSpawn (17)
   m_TagString: Untagged
@@ -3342,6 +4016,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1588637220
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1588637218}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1650565560
 GameObject:
   m_ObjectHideFlags: 0
@@ -3350,6 +4036,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1650565561}
+  - component: {fileID: 1650565562}
   m_Layer: 0
   m_Name: scoreSpawn (62)
   m_TagString: Untagged
@@ -3370,6 +4057,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 62
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1650565562
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1650565560}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1664200220
 Prefab:
   m_ObjectHideFlags: 0
@@ -3440,6 +4139,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1669910885}
+  - component: {fileID: 1669910886}
   m_Layer: 0
   m_Name: scoreSpawn (10)
   m_TagString: Untagged
@@ -3460,6 +4160,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1669910886
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1669910884}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1682083446
 Prefab:
   m_ObjectHideFlags: 0
@@ -3530,6 +4242,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1706569965}
+  - component: {fileID: 1706569966}
   m_Layer: 0
   m_Name: scoreSpawn (3)
   m_TagString: Untagged
@@ -3550,6 +4263,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1706569966
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1706569964}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1725643896
 GameObject:
   m_ObjectHideFlags: 0
@@ -3558,6 +4283,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1725643897}
+  - component: {fileID: 1725643898}
   m_Layer: 0
   m_Name: scoreSpawn (46)
   m_TagString: Untagged
@@ -3578,6 +4304,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 46
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1725643898
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1725643896}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1754462868
 GameObject:
   m_ObjectHideFlags: 0
@@ -3800,6 +4538,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1818124255}
+  - component: {fileID: 1818124256}
   m_Layer: 0
   m_Name: scoreSpawn (52)
   m_TagString: Untagged
@@ -3820,6 +4559,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 52
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1818124256
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1818124254}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1851835294
 GameObject:
   m_ObjectHideFlags: 0
@@ -3828,6 +4579,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1851835295}
+  - component: {fileID: 1851835296}
   m_Layer: 0
   m_Name: scoreSpawn (19)
   m_TagString: Untagged
@@ -3848,6 +4600,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1851835296
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1851835294}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1860562661
 GameObject:
   m_ObjectHideFlags: 0
@@ -3856,6 +4620,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1860562662}
+  - component: {fileID: 1860562663}
   m_Layer: 0
   m_Name: scoreSpawn (8)
   m_TagString: Untagged
@@ -3876,6 +4641,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1860562663
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1860562661}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1877642101
 GameObject:
   m_ObjectHideFlags: 0
@@ -3884,6 +4661,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1877642102}
+  - component: {fileID: 1877642103}
   m_Layer: 0
   m_Name: scoreSpawn (11)
   m_TagString: Untagged
@@ -3904,6 +4682,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1877642103
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1877642101}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1883867479
 GameObject:
   m_ObjectHideFlags: 0
@@ -3912,6 +4702,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1883867480}
+  - component: {fileID: 1883867481}
   m_Layer: 0
   m_Name: scoreSpawn (6)
   m_TagString: Untagged
@@ -3932,6 +4723,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1883867481
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1883867479}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1886452947 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400002, guid: cdb93ad47df514b45ac672325e270144, type: 3}
@@ -3948,6 +4751,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1919156151}
+  - component: {fileID: 1919156152}
   m_Layer: 0
   m_Name: scoreSpawn (58)
   m_TagString: Untagged
@@ -3968,6 +4772,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 58
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1919156152
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1919156150}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &1931038023 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: f6f2c0ac1a6adee48b65ae8d5fd79b58, type: 3}
@@ -4056,6 +4872,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1951695310}
+  - component: {fileID: 1951695311}
   m_Layer: 0
   m_Name: scoreSpawn (39)
   m_TagString: Untagged
@@ -4076,6 +4893,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1951695311
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1951695309}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1980181267
 Prefab:
   m_ObjectHideFlags: 0
@@ -4146,6 +4975,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1999878057}
+  - component: {fileID: 1999878058}
   m_Layer: 0
   m_Name: scoreSpawn (29)
   m_TagString: Untagged
@@ -4166,6 +4996,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 29
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &1999878058
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1999878056}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &2021291252 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114415253567215364, guid: 93736e1ef0ca5d842919074e5b8d1f95,
@@ -4216,12 +5058,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8a08177bb25e1040ae16e06df475afe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_mainFog: {fileID: 1114695930}
   m_expEffect: {fileID: 1922569974235146, guid: fc97c8e18fc697944be50802471a61d5,
     type: 2}
   m_riseEffect: {fileID: 1410876396400064, guid: 7b6f1831d7115eb429bd6ffddee171cd,
     type: 2}
   m_eyeLip: {fileID: 490436460}
-  m_mainGem: {fileID: 1429149930}
+  m_mainGem: {fileID: 1163338485}
   m_tentacles:
   - {fileID: 509380444}
   - {fileID: 119230981}
@@ -4437,6 +5280,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2127288000}
+  - component: {fileID: 2127288001}
   m_Layer: 0
   m_Name: scoreSpawn (64)
   m_TagString: Untagged
@@ -4457,6 +5301,18 @@ Transform:
   m_Father: {fileID: 806202498}
   m_RootOrder: 64
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &2127288001
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2127287999}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2130162112 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100002, guid: f6f2c0ac1a6adee48b65ae8d5fd79b58, type: 3}
