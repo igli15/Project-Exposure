@@ -152,7 +152,7 @@ public class BossViewScript : MonoBehaviour
             () =>
             {
                 m_mainFog.transform.DOMoveY(m_mainFog.transform.position.y + 15, 2).OnComplete(()=> { VideoManager.instance.PlayVideo("dissolve");  });
-                m_mainFog.transform.DOScale(m_mainFog.transform.localScale * 2, 3).OnComplete(()=> { m_levelLoader.LoadLevel(3); });
+                m_mainFog.transform.DOScale(m_mainFog.transform.localScale * 2, 3).OnComplete(()=> { m_levelLoader.LoadLevel(0); });
             });
     }
 
