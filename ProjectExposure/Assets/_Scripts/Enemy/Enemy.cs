@@ -9,7 +9,7 @@ public class Enemy : Hittable
     public GameObject crystalsParrent;
     private List<GameObject> m_crystals;
     private int m_maxCrystalCount = 1;
-    private bool m_videoPlayed = false;
+    private static bool m_videoPlayed = false;
     public VideoManager videoMan;
 
     public void Start()
