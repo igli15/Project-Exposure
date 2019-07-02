@@ -53257,7 +53257,13 @@ MonoBehaviour:
   - clipName: kraken
     videoClip: {fileID: 32900000, guid: 798f7e5a52987439ebf9afebe168ef78, type: 3}
   - clipName: rainbow
-    videoClip: {fileID: 32900000, guid: dda6c772bc6b840b78cd594fceaa8bd1, type: 3}
+    videoClip: {fileID: 32900000, guid: 3228b5ac0c6d67f48934c089cdc76fe8, type: 3}
+  - clipName: krakenFight
+    videoClip: {fileID: 32900000, guid: 798f7e5a52987439ebf9afebe168ef78, type: 3}
+  - clipName: krakenCave
+    videoClip: {fileID: 32900000, guid: 3228b5ac0c6d67f48934c089cdc76fe8, type: 3}
+  - clipName: krakenSwims
+    videoClip: {fileID: 32900000, guid: 3228b5ac0c6d67f48934c089cdc76fe8, type: 3}
   m_closeOnStop: 1
   m_timeScale: 0
   m_fadeInTime: 0.5
