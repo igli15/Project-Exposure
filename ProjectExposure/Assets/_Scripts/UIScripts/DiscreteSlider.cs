@@ -14,6 +14,7 @@ public class DiscreteSlider : MonoBehaviour
 
 	public ValueChangedEvent OnValueChanged;
 
+	[SerializeField] private int m_startingValue = 1;
 	[SerializeField] private Sprite m_emptySprite;
 	[SerializeField] private Sprite m_filledSprite;
 
@@ -44,8 +45,12 @@ public class DiscreteSlider : MonoBehaviour
 			m_sliderElements[i].SetParentSlider(this);
 			m_sliderElements[i].index = i;
 		}
+
+		for (int i = 0; i < m_startingValue; i++)
+		{
+			FillElement(m_sliderElements[i]);
+		}
 		
-		FillElement(m_sliderElements[0]);
 	}
 
 	public void SelectElement(SliderElement sliderElement)
