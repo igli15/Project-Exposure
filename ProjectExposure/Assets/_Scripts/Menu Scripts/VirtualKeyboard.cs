@@ -22,6 +22,7 @@ public class VirtualKeyboard : MonoBehaviour
 	
 	[Space(30)]
 	[SerializeField] private KeyboardButton m_saveButton;
+	[SerializeField] private KeyboardButton m_backSpaceButton;
 
 	[SerializeField] [Range(0, 1)] private float m_appearTime = 0.5f;
 	[SerializeField] [Range(0, 1)] private float m_dissapearTime = 0.5f;
@@ -35,6 +36,7 @@ public class VirtualKeyboard : MonoBehaviour
 	{
 		m_saveButton.isSaveButton = true;
 		m_saveButton.OnClick.AddListener(delegate { Apply(); });
+		m_backSpaceButton.OnClick.AddListener(delegate {m_inputField.text =  m_inputField.text.Remove(m_inputField.text.Length - 1); });
 	}
 
 	public string finalString

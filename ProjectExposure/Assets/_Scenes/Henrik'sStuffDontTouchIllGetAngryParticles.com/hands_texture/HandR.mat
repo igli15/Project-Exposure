@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: HandR
-  m_Shader: {fileID: 4800000, guid: b909daebb2fff48d994f1f1bdf1ec85e, type: 3}
+  m_Shader: {fileID: 4800000, guid: 39ad170c90c6c38499d984089b42a7a5, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -39,11 +39,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissionTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 6d3da2bdf119f4aa494fb571f02c02d0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 492a55deaa9dd164fa80e0f9e26d6a12, type: 3}
+        m_Texture: {fileID: 2800000, guid: 90fd94cdbd19b4b4c958f548b2270853, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -51,7 +51,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 6d3da2bdf119f4aa494fb571f02c02d0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
