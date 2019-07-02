@@ -77,7 +77,7 @@ public class HintPanel : TouchButton
     public void Show()
     {
         m_shown = false;
-        m_canHide = true;
+       // m_canHide = true;
         Sequence s = DOTween.Sequence();   
         m_companionButton.gameObject.SetActive(false);
         s.Append(m_borders.DOFillAmount(1, m_timeInSeconds));
