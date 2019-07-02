@@ -28,6 +28,8 @@ public class Gate2Behaviour : MonoBehaviour {
     public GameObject door;
     [SerializeField]
     public Material material;
+    public bool alreadySolved = false;
+    public HintPanel hint;
 
     private bool m_rotate=true;
 
@@ -50,12 +52,14 @@ public class Gate2Behaviour : MonoBehaviour {
     {
         if (innerRing.transform.eulerAngles.z < 20 || innerRing.transform.eulerAngles.z > 340)
         {
+            Debug.Log("solved");
+            alreadySolved =true;
             //OpenDoor();
             this.enabled = false;
             m_rotate = false;
             gem.onHit -= OnGemHit;
             material.SetFloat("_EmissionScale", 6);
-
+            hint.Hide();
             gem.transform.DOLocalMoveZ(gem.transform.localPosition.z - 0.04f, delayTime).OnComplete(OpenDoor);
 
         }

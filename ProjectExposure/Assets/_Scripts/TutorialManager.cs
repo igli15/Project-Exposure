@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,6 +18,7 @@ public class TutorialManager : MonoBehaviour
 	[SerializeField] private Sprite[] m_highlightSprites;
 
     [SerializeField] private CompanionButton m_companionButton;
+    [SerializeField] private Transform m_tutorialFinger;
 
 
 	// Use this for initialization
@@ -31,6 +33,8 @@ public class TutorialManager : MonoBehaviour
 		m_blueCrystal.OnExplode += CompleteTutorial;
 
         m_companionButton.ShowTutorialHint();
+
+        MoveFinger();
 	}
 
 	void GreenHints(Crystal c)
@@ -49,5 +53,15 @@ public class TutorialManager : MonoBehaviour
 	{
 		m_hintPanel.Hide();
 		gameObject.SetActive(false);
+	}
+
+	void MoveFinger()
+	{
+		Sequence s = DOTween.Sequence();
+
+		s.Append(m_tutorialFinger.DOMove(m_tutorialFinger.GetChild(1).position, 1));
+		s.Append(m_tutorialFinger.DOMove(m_tutorialFinger.GetChild(2).position, 1));
+		s.Append(m_tutorialFinger.DOMove(m_tutorialFinger.GetChild(1).position, 1));
+		s.Append(DOVirtual.DelayedCall(0.1f, delegate { m_tutorialFinger.gameObject.SetActive(false); }));
 	}
 }
