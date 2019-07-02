@@ -53,6 +53,23 @@ public class Enemy : Hittable
         }
     }
 
+    public override void Hit(AbstractGun gun, float damage)
+    {
+        OnHit.Invoke();
+
+        if (gun is SingleGun)
+        {
+            Health health = GetComponent<Health>();
+            if (health != null) health.InflictDamage(40);
+        }
+        else if (gun is MergedGun)
+        {
+            Health health = GetComponent<Health>();
+			
+            if (health != null) health.InflictDamage(60);
+        }
+    }
+
     private void Update()
     {
      
