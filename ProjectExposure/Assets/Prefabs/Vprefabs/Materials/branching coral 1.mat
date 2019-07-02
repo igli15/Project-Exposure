@@ -6,9 +6,9 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Ship
-  m_Shader: {fileID: 4800000, guid: 69a57431e20d246e8bf6a3b3ddf987ac, type: 3}
-  m_ShaderKeywords: _NORMALMAP
+  m_Name: branching coral 1
+  m_Shader: {fileID: 4800000, guid: 28bf2e852bf5a49d3a141ac68df992b9, type: 3}
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -19,7 +19,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: ccca1161c80729e40b8fb877f0a84bdd, type: 3}
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -38,20 +38,12 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    - _EmissionTex:
-        m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 792e3b7798ee03746b4c2bc89c366711, type: 3}
+        m_Texture: {fileID: 2800000, guid: ef331b0005089474e8553d0cf7691a7f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NormalMap:
-        m_Texture: {fileID: 2800000, guid: ccca1161c80729e40b8fb877f0a84bdd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -62,31 +54,37 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _WindTex:
+        m_Texture: {fileID: 2800000, guid: 991e7ae3f55cb45b2bfd28f36ed28076, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
+    - _Amplitude: 1
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _EmissionScale: 1.36
     - _GlossMapScale: 1
-    - _Glossiness: 31
+    - _Glossiness: 32
     - _GlossyReflections: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
-    - _OutlineThickness: 0.005
     - _Parallax: 0.02
-    - _RimAmount: 1
-    - _RimThreshold: 0.08
+    - _RimAmount: 0.21
+    - _RimThreshold: 0
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _AmbientColor: {r: 1, g: 1, b: 1, a: 1}
-    - _Color: {r: 0.6740388, g: 0.7775188, b: 0.9339623, a: 1}
-    - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _OutlineColor: {r: 0.2287736, g: 0.48645207, b: 0.5, a: 1}
-    - _RimColor: {r: 0.5896226, g: 0.70151407, b: 1, a: 1}
-    - _SpecularColor: {r: 0.9, g: 0.9, b: 0.9, a: 1}
+    - _AmbientColor: {r: 0.21226418, g: 0.5903263, b: 1, a: 1}
+    - _AxisEffected: {r: 0, g: 0.2, b: 0, a: 1}
+    - _Color: {r: 0.6132076, g: 0.3326362, b: 0.38659218, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _RimColor: {r: 1, g: 1, b: 1, a: 1}
+    - _SpecularColor: {r: 1, g: 1, b: 1, a: 1}
+    - _WaveSpeed: {r: 1, g: 0.5, b: 0, a: 1}
+    - _WindSpeed: {r: 1, g: 2, b: 0, a: 0}
+    - _WorldSize: {r: 2, g: 0.1, b: 0, a: 1}
