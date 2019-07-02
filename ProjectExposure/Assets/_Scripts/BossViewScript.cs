@@ -8,7 +8,8 @@ public class BossViewScript : MonoBehaviour
 
     public static BossViewScript instance;
 
-
+    [SerializeField]
+    GameObject m_riseEffect;
     [SerializeField]
     Transform m_eyeLip;
     [SerializeField]
@@ -27,6 +28,7 @@ public class BossViewScript : MonoBehaviour
     private int m_tentacleCount = 0;
     private bool m_deafeated = false;
     public int directionOfTentacle = 1;
+    public bool isActivated = false;
     private void Start()
     {
 
@@ -48,6 +50,11 @@ public class BossViewScript : MonoBehaviour
 
     public void ActivateBossFight()
     {
+        if (isActivated) return;
+        isActivated = true;
+
+        GameObject.Instantiate(m_riseEffect, transform.position+transform.up*10, m_riseEffect.transform.rotation, null);
+
         Camera.main.transform.DOShakePosition(3, 0.02f);
         transform.DOMoveY(m_initialPos.y, 4).OnComplete(ActivateNextTentacle);
     }

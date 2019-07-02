@@ -78,21 +78,23 @@ public class TentacleBehaviour : MonoBehaviour {
         m_animator.SetTrigger("attack");
         
         m_inAnimationProgress = true;
-
+        //Update();
+        GameObject fartEffect = GameObject.Instantiate(m_riseTentacleEffect, transform.position + new Vector3(0, 50, 0), m_riseTentacleEffect.transform.rotation, null);
         transform.DOLocalMoveX(0, 1.5f).OnComplete(()=> { boss.Attack();  }); //after delay of 1 sec 
-
+        Camera.main.transform.DOShakePosition(1, 0.02f).SetDelay(2.7f);
         transform.DOLocalMoveY(-60, 2).SetDelay(m_animationTime).OnComplete(
             () =>{
                 m_animator.SetTrigger("back");
                 direction *= -1;
 
-                Camera.main.transform.DOShakePosition(1, 0.02f);
+                
                 transform.DOLocalMoveY(6, m_tweenTransferTime);
                 m_activationTime = Time.time + m_tweenTransferTime;
                 m_inAnimationProgress = false;
                 
             }
         );
+
     }
 
     void OnCrystalExplode(Crystal c)
@@ -131,10 +133,10 @@ public class TentacleBehaviour : MonoBehaviour {
         }
         transform.position = new Vector3(transform.position.x, -60, transform.position.z);
         transform.DOMoveY(ypos, m_riseAnimTime);
-        
-        GameObject fartEffect = GameObject.Instantiate(m_riseTentacleEffect, transform.position - transform.right * direction * 10 + new Vector3(0, transform.position.y + 100, 0), m_riseTentacleEffect.transform.rotation, null);
+        Update();
 
-        SpawnFogEffect();
+        GameObject fartEffect = GameObject.Instantiate(m_riseTentacleEffect, transform.position +new Vector3(0,50,0) , m_riseTentacleEffect.transform.rotation, null);
+        Debug.Log("EFFECT: "+ fartEffect.transform.position);
     }
 
     public void HideTentacle()

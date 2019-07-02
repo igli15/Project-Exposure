@@ -10,6 +10,7 @@ public class BossActivator : MonoBehaviour {
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("OBJ: " + other.name);
             m_boss.ActivateBossFight();
         }
     }
