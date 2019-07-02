@@ -9,6 +9,8 @@ public class Enemy : Hittable
     public GameObject crystalsParrent;
     private List<GameObject> m_crystals;
     private int m_maxCrystalCount = 1;
+    private bool m_videoPlayed = false;
+    public VideoManager videoMan;
 
     public void Start()
     {
@@ -29,8 +31,17 @@ public class Enemy : Hittable
 
     public void RemoveCrystal()
     {
-        if (m_crystals.Count == 0) return;
-
+        if (m_crystals.Count == 0)
+        {
+            Debug.Log("0 crystals");
+            if (m_videoPlayed==false)
+            {
+                Debug.Log("try playing the video");
+                videoMan.PlayVideo("grabFish");
+                m_videoPlayed = true;
+            }
+            return;
+        }
         GameObject crystal = m_crystals[0];
         m_crystals.RemoveAt(0);
         crystal.gameObject.SetActive(false);
