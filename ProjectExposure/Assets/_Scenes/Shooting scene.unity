@@ -1199,15 +1199,20 @@ MonoBehaviour:
   - clipName: dissolve
     videoClip: {fileID: 32900000, guid: 10fbb70476c874480b61df1ddada4778, type: 3}
     videoPlayer: {fileID: 0}
+    renderTexture: {fileID: 0}
   - clipName: grabFish
     videoClip: {fileID: 32900000, guid: 7996eff14d78e4523956041a90127a45, type: 3}
     videoPlayer: {fileID: 0}
+    renderTexture: {fileID: 0}
   - clipName: kraken
     videoClip: {fileID: 32900000, guid: 798f7e5a52987439ebf9afebe168ef78, type: 3}
     videoPlayer: {fileID: 0}
+    renderTexture: {fileID: 0}
   - clipName: rainbow
     videoClip: {fileID: 32900000, guid: 3228b5ac0c6d67f48934c089cdc76fe8, type: 3}
     videoPlayer: {fileID: 0}
+    renderTexture: {fileID: 0}
+  m_renderTexture: {fileID: 0}
   m_closeOnStop: 1
   m_timeScale: 0
   m_fadeInTime: 0.5
@@ -1747,6 +1752,11 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: -2.8999023
       objectReference: {fileID: 0}
+    - target: {fileID: 23216672479910946, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 84e6678d5f2afe04b9e5abb40a511f6c, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
   m_IsPrefabParent: 0
