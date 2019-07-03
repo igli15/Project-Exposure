@@ -39,6 +39,7 @@ public class BossViewScript : MonoBehaviour
     private bool m_deafeated = false;
     public int directionOfTentacle = 1;
     public bool isActivated = false;
+    public VideoManager vidMan;
 
     int m_lifesAfterDeath = 1;
 
@@ -151,7 +152,7 @@ public class BossViewScript : MonoBehaviour
         transform.DOMoveY(m_initialPos.y - 70, 5).OnComplete(
             () =>
             {
-                m_mainFog.transform.DOMoveY(m_mainFog.transform.position.y + 15, 2).OnComplete(()=> { VideoManager.instance.PlayVideo("dissolve");  });
+                m_mainFog.transform.DOMoveY(m_mainFog.transform.position.y + 15, 2).OnComplete(()=> { vidMan.PlayVideo("dissolve");  });
                 m_mainFog.transform.DOScale(m_mainFog.transform.localScale * 2, 3).OnComplete(()=> { m_levelLoader.LoadLevel(4); });
             });
     }
