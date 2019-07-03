@@ -145,7 +145,7 @@ MonoBehaviour:
       Culture=neutral, PublicKeyToken=null
   color: {r: 0, g: 1, b: 0.1273694, a: 1}
   m_explosionRadius: 0
-  m_crystalExplosionPrefab: {fileID: 1922569974235146, guid: 0247baa16e7f87d429fd54223f9ffac5,
+  m_crystalExplosionPrefab: {fileID: 1922569974235146, guid: fa0264ec15eb14343892fd1ebe48c4e1,
     type: 2}
 --- !u!135 &135757353353048274
 SphereCollider:
