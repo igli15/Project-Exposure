@@ -8,11 +8,15 @@ using UnityEngine.UI;
 public class MenuController : MonoBehaviour
 {
 	[SerializeField] private Image[] m_imagesToFade;
+
+	private bool m_inputReceived = false;
 	
 	// Use this for initialization
 	void Start () 
 	{
-		
+		//CheckToPlayScreenSaverVideo();
+		VideoManager.instance.PlayVideo("menuComic");
+		StartCoroutine("StartCountdown");
 	}
 	
 	// Update is called once per frame
@@ -20,6 +24,7 @@ public class MenuController : MonoBehaviour
 	{
 		if (Input.GetMouseButtonDown(0))
 		{
+			m_inputReceived = true;
 			Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 
@@ -37,5 +42,29 @@ public class MenuController : MonoBehaviour
 		{
 			i.DOFade(0,0.3f).onComplete += delegate { i.gameObject.SetActive(false); };
 		}
+	}
+
+	public void CheckToPlayScreenSaverVideo()
+	{
+		if (!m_inputReceived)
+		{
+			m_inputReceived = false;
+			DOVirtual.DelayedCall(10, delegate {
+				VideoManager.instance.PlayVideo("menuComic");
+			
+			});
+		}
+	}
+	
+	public IEnumerator StartCountdown()
+	{
+		
+		yield return new WaitForSeconds(13f);
+		if (!m_inputReceived)
+		{
+			VideoManager.instance.PlayVideo("menuComic");
+			m_inputReceived = false;
+		}
+		
 	}
 }

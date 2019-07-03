@@ -21,6 +21,8 @@ public class ScoreTable : MonoBehaviour
 
 	[SerializeField] private Image[] m_highlighters;
 
+	[SerializeField] private Image[] m_crowns;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -58,6 +60,21 @@ public class ScoreTable : MonoBehaviour
 		for (int i = 0; i <count; i++)
 		{
 			finalText += scores.ElementAt(i).Key + ": " + scores.ElementAt(i).Value + "\n";
+		}
+
+		if (scoreList.Count > 0)
+		{
+			m_crowns[0].gameObject.SetActive(true);
+		}
+		
+		if (scoreList.Count > 1)
+		{
+			m_crowns[1].gameObject.SetActive(true);
+		}
+		
+		if (scoreList.Count > 2)
+		{
+			m_crowns[2].gameObject.SetActive(true);
 		}
 
 		m_textMeshPro.text = finalText;
