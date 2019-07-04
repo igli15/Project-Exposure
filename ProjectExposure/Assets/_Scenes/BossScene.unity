@@ -12571,6 +12571,11 @@ Prefab:
       value: 
       objectReference: {fileID: 11400000, guid: 8c39d72352cc6514eb688faf66b2479b,
         type: 2}
+    - target: {fileID: 114048288110898928, guid: 93736e1ef0ca5d842919074e5b8d1f95,
+        type: 2}
+      propertyPath: m_touchInputs
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 93736e1ef0ca5d842919074e5b8d1f95, type: 2}
   m_IsPrefabParent: 0
